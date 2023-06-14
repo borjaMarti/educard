@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const ClassSchema = new mongoose.Schema({
+const CourseSchema = new mongoose.Schema({
   className: {
     type: String,
     required: true,
@@ -17,4 +17,4 @@ const ClassSchema = new mongoose.Schema({
   }
 });
 
-export default mongoose.models.User || mongoose.model('Class', ClassSchema);
+export default mongoose.models.User || mongoose.model('Course', CourseSchema);

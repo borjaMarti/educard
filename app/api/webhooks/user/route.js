@@ -6,8 +6,8 @@ import User from '@/models/User';
 
 const webhookSecret = process.env.WEBHOOK_SECRET;
 
-export async function POST(request) {
-  const payload = await request.json();
+export async function POST(req) {
+  const payload = await req.json();
   const headersList = headers();
   const heads = {
     "svix-id": headersList.get('svix-id'),
