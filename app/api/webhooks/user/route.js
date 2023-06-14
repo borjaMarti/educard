@@ -4,10 +4,9 @@ import { Webhook } from 'svix';
 import dbConnect from '@/lib/dbConnect';
 import User from '@/models/User';
 
-
 const webhookSecret = process.env.WEBHOOK_SECRET;
 
-export async function handler(request) {
+export async function POST(request) {
   const payload = await request.json();
   const headersList = headers();
   const heads = {
@@ -52,5 +51,3 @@ export async function handler(request) {
     }
   }
 }
-
-export const POST = handler;
