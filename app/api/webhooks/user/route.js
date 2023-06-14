@@ -1,6 +1,9 @@
 import { headers } from 'next/headers';
 import { NextResponse } from 'next/server';
 import { Webhook } from 'svix';
+import dbConnect from '@/lib/dbConnect';
+import User from '@/models/User';
+
 
 const webhookSecret = process.env.WEBHOOK_SECRET;
 
@@ -26,17 +29,28 @@ export async function handler(request) {
     return NextResponse.json({}, { status: 400 });
   }
 
-  // Future feature: Depending on msg.type, handle user deletion.
+  // Future feature: Handle user deletion.
 
-  const {
-    id: loginId,
-    email_addresses: [
-        {
-          email_address: email
-        },
-    ],
-  } = msg.data;
-  console.log(loginId, email);
+  await dbConnect();
+  const eventType = msg.type;
+  if (eventType === 'user.created') {
+    const {
+      id: loginId,
+      email_addresses: [
+          {
+            email_address: email
+          },
+      ],
+    } = msg.data;
+
+    try {
+      const user = await User.create({loginId: loginId, email: email});
+      console.log('User has been created!');
+      return NextResponse.json(user);
+    } catch(err) {
+      console.log(err);
+    }
+  }
 }
 
 export const GET = handler;
