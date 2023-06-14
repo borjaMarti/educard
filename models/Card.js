@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const CardSchema = new mongoose.Schema({
   classId: {
@@ -19,4 +19,4 @@ const CardSchema = new mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model('Card', CardSchema);
+export default mongoose.models.User || mongoose.model('Card', CardSchema);

@@ -53,6 +53,4 @@ export async function handler(request) {
   }
 }
 
-export const GET = handler;
 export const POST = handler;
-export const PUT = handler;

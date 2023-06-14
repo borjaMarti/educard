@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const InvitationSchema = new mongoose.Schema({
   classId: {
@@ -11,4 +11,4 @@ const InvitationSchema = new mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model('Invitation', InvitationSchema);
+export default mongoose.models.User || mongoose.model('Invitation', InvitationSchema);

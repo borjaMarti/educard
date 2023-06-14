@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const DeckSchema = new mongoose.Schema({
   deckName: {
@@ -11,4 +11,4 @@ const DeckSchema = new mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model('Deck', DeckSchema);
+export default mongoose.models.User || mongoose.model('Deck', DeckSchema);
