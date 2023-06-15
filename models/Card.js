@@ -19,4 +19,4 @@ const CardSchema = new mongoose.Schema({
   }
 });
 
-export default mongoose.models.User || mongoose.model('Card', CardSchema);
+export default mongoose.models.Card || mongoose.model('Card', CardSchema);

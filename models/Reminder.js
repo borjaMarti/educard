@@ -23,4 +23,4 @@ const ReminderSchema = new mongoose.Schema({
   }
 });
 
-export default mongoose.models.User || mongoose.model('Reminder', ReminderSchema);
+export default mongoose.models.Reminder || mongoose.model('Reminder', ReminderSchema);

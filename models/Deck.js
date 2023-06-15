@@ -11,4 +11,4 @@ const DeckSchema = new mongoose.Schema({
   }
 });
 
-export default mongoose.models.User || mongoose.model('Deck', DeckSchema);
+export default mongoose.models.Deck || mongoose.model('Deck', DeckSchema);
