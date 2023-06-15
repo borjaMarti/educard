@@ -19,7 +19,7 @@ export async function POST(req) {
   let msg;
 
   try {
-    msg = wh.verify(
+    msg = await wh.verify(
         JSON.stringify(payload),
         heads);
   } catch (err) {
@@ -34,16 +34,20 @@ export async function POST(req) {
   const eventType = msg.type;
   if (eventType === 'user.created') {
     const {
-      id: loginId,
+      id: clerkId,
       email_addresses: [
           {
             email_address: email
           },
       ],
+      first_name: firstName,
+      last_name: lastName
     } = msg.data;
 
+    const fullName = lastName ? `${firstName} ${lastName}` : firstName;
+
     try {
-      const user = await User.create({loginId: loginId, email: email});
+      const user = await User.create({ email: email, name: fullName, clerkId: clerkId });
       console.log('User has been created!');
       return NextResponse.json(user);
     } catch(err) {
