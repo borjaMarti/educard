@@ -13,7 +13,7 @@ const CreateCoursePage = () => {
         },
         body: JSON.stringify({name: text})
       })
-      console.log(submit)
+      console.log(submit);
       setText('');
   }
 
