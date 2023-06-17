@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const InvitationSchema = new mongoose.Schema({
-  classId: {
+  courseId: {
     type: String,
     required: true,
   },

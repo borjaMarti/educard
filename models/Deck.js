@@ -5,7 +5,7 @@ const DeckSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  classId: {
+  courseId: {
     type: String,
     required: true
   }

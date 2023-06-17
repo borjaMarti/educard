@@ -1,12 +1,12 @@
 'use client'
 import { useState } from 'react';
 
-const CreateCoursePage = () => {
+const CreateCourse = () => {
   const [text, setText] = useState('');
 
   const handleSubmit = async (e) => {
       e.preventDefault();
-      const submit = await fetch('/courses', {
+      const submit = await fetch('../../api/courses', {
         method: 'POST',
         headers: {
           'Content-type': 'application/json'
@@ -34,4 +34,4 @@ const CreateCoursePage = () => {
   )
 }
 
-export default CreateCoursePage
+export default CreateCourse

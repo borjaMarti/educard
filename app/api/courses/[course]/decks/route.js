@@ -60,13 +60,13 @@ export async function PUT(req) {
       return NextResponse.json({ error: 'Unauthorized access' });
     }
 
-    const updatedDeck = await Deck.findOneAndUpdate(
-      { _id: deckId },
-      { deckName: content },
-      { new: true }
-    );
+    const updatedCourse = await Deck.findOneAndUpdate(
+          { _id: courseId },
+          { courseName: content },
+          { new: true }
+        );
 
-    return NextResponse.json(updatedDeck);
+    return NextResponse.json(updatedCourse);
   } catch (err) {
     console.log(err);
   }
