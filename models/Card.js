@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const CardSchema = new mongoose.Schema({
-  classId: {
+  courseId: {
     type: String,
     required: true,
   },
