@@ -19,4 +19,8 @@ const CardSchema = new mongoose.Schema({
   }
 });
 
+// Compound index, so front is unique for documents with the same deckId:
+
+CardSchema.index({ deckId: 1, front: 1 }, { unique: true });
+
 export default mongoose.models.Card || mongoose.model('Card', CardSchema);

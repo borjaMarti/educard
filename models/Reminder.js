@@ -5,7 +5,7 @@ const ReminderSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  cardId: {
+  courseId: {
     type: String,
     required: true
   },
@@ -13,12 +13,16 @@ const ReminderSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  date: {
-    type: Date,
+  cardId: {
+    type: String,
     required: true
   },
   phase: {
     type: Number,
+    required: true
+  },
+  date: {
+    type: Date,
     required: true
   }
 });

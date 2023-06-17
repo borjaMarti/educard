@@ -11,4 +11,8 @@ const InvitationSchema = new mongoose.Schema({
   }
 });
 
+// Compound index, so courseId is unique for documents with the same userId:
+
+InvitationSchema.index({ userId: 1, courseId: 1 }, { unique: true });
+
 export default mongoose.models.Invitation || mongoose.model('Invitation', InvitationSchema);
