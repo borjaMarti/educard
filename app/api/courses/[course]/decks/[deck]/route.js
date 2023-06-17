@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
+import { auth } from '@clerk/nextjs';
 import dbConnect from '@/lib/dbConnect';
 import Course from '@/models/Course';
 import Deck from '@/models/Deck';
-import { auth } from '@clerk/nextjs';
 
 export async function PUT(req, { params }) {
   await dbConnect();

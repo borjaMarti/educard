@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
-import dbConnect from '@/lib/dbConnect';
-import Deck from '@/models/Deck';
-import Course from '@/models/Course';
 import { auth } from '@clerk/nextjs';
+import dbConnect from '@/lib/dbConnect';
+import Course from '@/models/Course';
+import Deck from '@/models/Deck';
 
 export async function POST(req, { params }) {
   await dbConnect();
