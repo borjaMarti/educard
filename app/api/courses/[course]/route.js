@@ -13,23 +13,17 @@ export async function PUT(req, { params }) {
     const { updateType, content } = data;
 
     const course = await Course.findOne({ _id: courseId, ownerId: userId });
-    if (!course) {
+    if (!course && userId !== content) {
       return NextResponse.json({ error: 'Unauthorized access' });
     }
 
     let updatedCourse;
     switch (updateType) {
-      case 'courseName':
+      case 'changeName':
+        if (!course) return NextResponse.json({ error: 'Unauthorized access' });
         updatedCourse = await Course.findOneAndUpdate(
           { _id: courseId },
           { courseName: content },
-          { new: true }
-        );
-        break;
-      case 'addStudent':
-        updatedCourse = await Course.findOneAndUpdate(
-          { _id: courseId },
-          { $addToSet: { studentIds: content } },
           { new: true }
         );
         break;

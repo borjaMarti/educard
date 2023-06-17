@@ -18,17 +18,11 @@ export async function POST(req, { params }) {
       return NextResponse.json({ error: 'Unauthorized access' });
     }
 
-    const deck = await Deck.create({ deckName: deckName, courseId: courseId });
-
-    const updatedCourse = await Course.findOneAndUpdate(
-      { _id: courseId },
-      { $addToSet: { deckIds: deck._id } },
-      { new: true }
-    );
+    const deck = await Deck.create({ deckName: deckName, courseId: courseId });ç
 
     console.log('Deck created!');
 
-    return NextResponse.json({ deck, updatedCourse });
+    return NextResponse.json({ deck });
   } catch(err) {
     console.log(err);
   }
