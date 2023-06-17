@@ -1,5 +1,6 @@
 import { authMiddleware } from "@clerk/nextjs";
 
+// Test publicRoute regExp: /^\/api\/.*$/
 
 export default authMiddleware({
     publicRoutes: ['/', '/about', '/api/webhooks/user']
