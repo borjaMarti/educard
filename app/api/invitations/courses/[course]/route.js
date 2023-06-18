@@ -5,7 +5,7 @@ import Course from '@/models/Course';
 import User from '@/models/User';
 import Invitation from '@/models/Invitation';
 
-export async function POST(req) {
+export async function POST(req, { params }) {
   await dbConnect();
   const { userId: ownerId } = auth();
   const data = await req.json();
@@ -13,7 +13,7 @@ export async function POST(req) {
   try {
     const courseId = params.course;
     const email = data.email;
-    const userId = await User.find({ email }).select('clerkId');
+    const [ { clerkId: userId } ] = await User.find({ email }).select('clerkId');
 
     const course = await Course.findOne({ _id: courseId, ownerId: ownerId });
     if (!course) {
