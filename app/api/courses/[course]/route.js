@@ -63,6 +63,21 @@ export async function PUT(req, { params }) {
   }
 }
 
+// @desc Fetch course data (owner and students' name and mails)
+// @route GET /api/courses/[course]
+export async function GET(req, { params }) {
+  await dbConnect();
+  
+  try {
+    const courseId = params.course;
+    const course = await Course.find({ _id: courseId }).select('ownerId studentIds');
+
+    return NextResponse.json(course);
+  } catch(err) {
+    console.log(err);
+  }
+}
+
 // @desc Delete course
 // @route DELETE /api/courses/[course]
 export async function DELETE(req) {

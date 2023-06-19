@@ -1,32 +1,7 @@
 import { NextResponse } from 'next/server';
 import { auth } from '@clerk/nextjs';
 import dbConnect from '@/lib/dbConnect';
-import Course from '@/models/Course';
 import Reminder from '@/models/Reminder';
-
-export async function POST(req, { params }) {
-  await dbConnect();
-  const { userId: ownerId } = auth();
-  const data = await req.json();
-
-  try {
-    const { card: cardId } = params;
-    const { userId, deckId, courseId } = data;
-    const course = await Course.findOne({ _id: courseId, ownerId: ownerId });
-
-    if (!course) {
-      return NextResponse.json({ error: 'Unauthorized access' });
-    }
-
-    const reminder = await Reminder.create({ userId: userId, courseId: courseId, deckId: deckId, cardId: cardId, phase: 0, date: new Date() });
-
-    console.log('Reminder created!');
-
-    return NextResponse.json({ reminder });
-  } catch(err) {
-    console.log(err);
-  }
-}
 
 export async function PUT(req, { params }) {
   await dbConnect();

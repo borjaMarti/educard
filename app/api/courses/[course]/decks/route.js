@@ -21,7 +21,7 @@ export async function POST(req, { params }) {
       return NextResponse.json({ error: 'Unauthorized access' });
     }
 
-    const deck = await Deck.create({ deckName: deckName, courseId: courseId });ç
+    const deck = await Deck.create({ deckName: deckName, courseId: courseId });
 
     console.log('Deck created!');
 
