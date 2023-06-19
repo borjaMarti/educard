@@ -23,7 +23,6 @@ export async function POST(req, { params }) {
     }
 
     const card = await Card.create({ front: front, back: back, courseId: courseId, deckId: deckId });
-    console.log('Card created!');
 
     // Now we create reminders for every student that is part of the course.
     const students = await Course.find({ _id: courseId }).select('studentIds');

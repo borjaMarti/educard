@@ -53,8 +53,6 @@ export async function PUT(req, { params }) {
           { new: true }
     );
 
-    console.log('Reminder updated!')
-
     return NextResponse.json(updatedReminder);
   } catch (err) {
     console.log(err);

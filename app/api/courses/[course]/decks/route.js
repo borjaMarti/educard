@@ -23,8 +23,6 @@ export async function POST(req, { params }) {
 
     const deck = await Deck.create({ deckName: deckName, courseId: courseId });
 
-    console.log('Deck created!');
-
     return NextResponse.json({ deck });
   } catch(err) {
     console.log(err);

@@ -12,8 +12,7 @@ export async function POST(req) {
 
   try {
     const course = await Course.create({ courseName: data.name, ownerId: userId });
-    console.log('Course created!');
-    console.log(course);
+    
     return NextResponse.json(course);
   } catch(err) {
     console.log(err);
