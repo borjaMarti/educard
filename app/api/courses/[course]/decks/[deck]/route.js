@@ -16,7 +16,7 @@ export async function PUT(req, { params }) {
     const { content } = data;
 
     // Verify the user making the request is the owner of the course.
-    const course = await Course.findOne({ courseId: courseId, ownerId: userId });
+    const course = await Course.findOne({ _id: courseId, ownerId: userId });
     if (!course) {
       return NextResponse.json({ error: 'Unauthorized access' });
     }
