@@ -23,7 +23,6 @@ export async function POST(req) {
         JSON.stringify(payload),
         heads);
   } catch (err) {
-    console.log('error here');
     console.error(err.message);
     return NextResponse.json({}, { status: 400 });
   }
@@ -51,6 +50,7 @@ export async function POST(req) {
       console.log('User has been created!');
       return NextResponse.json(user);
     } catch(err) {
+      console.log('something happened');
       console.log(err);
     }
   }
