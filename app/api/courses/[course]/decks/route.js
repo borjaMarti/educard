@@ -4,6 +4,8 @@ import dbConnect from '@/lib/dbConnect';
 import Course from '@/models/Course';
 import Deck from '@/models/Deck';
 
+// @desc Create new deck
+// @route POST /api/courses/[course]/decks
 export async function POST(req, { params }) {
   await dbConnect();
   const { userId } = auth();
@@ -12,8 +14,9 @@ export async function POST(req, { params }) {
   try {
     const courseId = params.course;
     const { deckName } = data;
-    const course = await Course.findOne({ _id: courseId, ownerId: userId });
 
+    // Verify the user making the request is the owner of the course.
+    const course = await Course.findOne({ _id: courseId, ownerId: userId });
     if (!course) {
       return NextResponse.json({ error: 'Unauthorized access' });
     }
@@ -28,6 +31,8 @@ export async function POST(req, { params }) {
   }
 }
 
+// @desc Fetch all decks
+// @route GET /api/courses/[course]/decks
 export async function GET(req, { params }) {
   await dbConnect();
 

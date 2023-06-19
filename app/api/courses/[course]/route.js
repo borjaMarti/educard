@@ -4,6 +4,8 @@ import dbConnect from '@/lib/dbConnect';
 import Course from '@/models/Course';
 import Invitation from '@/models/Invitation';
 
+// @desc Update course (change name, add/remove students)
+// @route PUT /api/courses/[course]
 export async function PUT(req, { params }) {
   await dbConnect();
   const { userId } = auth();
@@ -17,7 +19,7 @@ export async function PUT(req, { params }) {
 
     // Depending on the update type, for verification, we'll need either to be invited,
     // own the course, or be an enroled student.
-    const invited= await Invitation.findOne({ courseId: courseId, userId: userId });
+    const invited = await Invitation.findOne({ courseId: courseId, userId: userId });
     const owned = await Course.findOne({ _id: courseId, ownerId: userId });
     const student = await Course.findOne({ _id: courseId, studentIds: userId });
 
@@ -42,6 +44,7 @@ export async function PUT(req, { params }) {
           { $addToSet: { studentIds: userId } },
           { new: true }
         );
+        break;
       case 'removeStudent':
         if (!owned && !student) return NextResponse.json({ error: 'Unauthorized access' });
         updatedCourse = await Course.findOneAndUpdate(
@@ -60,6 +63,8 @@ export async function PUT(req, { params }) {
   }
 }
 
+// @desc Delete course
+// @route DELETE /api/courses/[course]
 export async function DELETE(req) {
 
 }

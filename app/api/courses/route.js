@@ -3,6 +3,8 @@ import { auth } from '@clerk/nextjs';
 import dbConnect from '@/lib/dbConnect';
 import Course from '@/models/Course';
 
+// @desc Create new course
+// @route POST /api/courses
 export async function POST(req) {
   await dbConnect();
   const { userId } = auth();
@@ -18,6 +20,8 @@ export async function POST(req) {
   }
 }
 
+// @desc Fetch all courses
+// @route GET /api/courses
 export async function GET() {
   await dbConnect();
   const { userId } = auth();

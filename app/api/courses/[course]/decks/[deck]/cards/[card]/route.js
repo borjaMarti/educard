@@ -4,6 +4,8 @@ import dbConnect from '@/lib/dbConnect';
 import Course from '@/models/Course';
 import Card from '@/models/Card';
 
+// @desc Update card (change front and/or back)
+// @route PUT /api/courses/[course]/decks/[deck]/cards/[card]
 export async function PUT(req, { params }) {
   await dbConnect();
   const { userId } = auth();
@@ -12,8 +14,9 @@ export async function PUT(req, { params }) {
   try {
     const { course: courseId, card: cardId } = params;
     const { front, back } = data;
-    const course = await Course.findOne({ courseId: courseId, ownerId: userId });
 
+    // Verify the user making the request is the owner of the course.
+    const course = await Course.findOne({ courseId: courseId, ownerId: userId });
     if (!course) {
       return NextResponse.json({ error: 'Unauthorized access' });
     }
@@ -33,6 +36,8 @@ export async function PUT(req, { params }) {
   }
 }
 
+// @desc Delete card
+// @route DELETE /api/courses/[course]/decks/[deck]/cards/[card]
 export async function DELETE(req) {
 
 }

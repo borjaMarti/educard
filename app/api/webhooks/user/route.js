@@ -6,18 +6,24 @@ import User from '@/models/User';
 
 const webhookSecret = process.env.WEBHOOK_SECRET;
 
+// @desc This webhook activates whenever a user is created/modified/deleted
+// in the Clerk database (authentication provider), allowing to mirror the
+// action in the project's MongoDataBase database.
+// @route POST /api/webhooks/user
 export async function POST(req) {
   const payload = await req.json();
   const headersList = headers();
+  // We use svix to verify the webhook's validity against our secret.
+  // First we extract the relevant info from the headers:
   const heads = {
     "svix-id": headersList.get('svix-id'),
     "svix-timestamp": headersList.get('svix-timestamp'),
     "svix-signature": headersList.get('svix-signature'),
   };
-
+  // We create a new webhook with our secret.
   const wh = new Webhook(webhookSecret);
   let msg;
-
+  // Then we verify the headers and payload.
   try {
     msg = await wh.verify(
         JSON.stringify(payload),
@@ -27,8 +33,7 @@ export async function POST(req) {
     return NextResponse.json({}, { status: 400 });
   }
 
-  // Future feature: Handle user deletion.
-
+  // MongoDB user creation with Clerk's user data.
   await dbConnect();
   const eventType = msg.type;
   if (eventType === 'user.created') {
@@ -50,8 +55,9 @@ export async function POST(req) {
       console.log('User has been created!');
       return NextResponse.json(user);
     } catch(err) {
-      console.log('something happened');
       console.log(err);
     }
   }
+
+    // Future feature: Handle user deletion/updating.
 }
