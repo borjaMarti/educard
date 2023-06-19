@@ -12,7 +12,7 @@ export async function PUT(req, { params }) {
 
   try {
     const { card: cardId } = params;
-    const { phase } = data;
+    let { phase } = data;
 
     // Verify the user making the request is the owner of the reminder.
     const reminder = await Reminder.findOne({ cardId: cardId, userId: userId });
@@ -23,9 +23,6 @@ export async function PUT(req, { params }) {
     // Set new date and study phase based on previous phase.
     let date;
     switch(phase) {
-      case 0:
-        date = new Date();
-        break;
       case 1:
         date = new Date();
         date.setDate(date.getDate() + 1);
@@ -47,7 +44,7 @@ export async function PUT(req, { params }) {
     }
 
     const updatedReminder = await Reminder.findOneAndUpdate(
-          { _id: cardId },
+          { cardId: cardId },
           { phase: phase,
             date: date },
           { new: true }
