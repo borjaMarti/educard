@@ -26,17 +26,17 @@ export async function POST(req, { params }) {
     console.log('Card created!');
 
     // Now we create reminders for every student that is part of the course.
-
     const students = await Course.find({ _id: courseId }).select('studentIds');
     const [ { studentIds } ] = students;
 
+    // Iterate through the studentIds, creating a reminder for each.
     const reminders = await Promise.all(studentIds.map(async (studentId) => {
       const reminder = await Reminder.create({ userId: studentId, courseId: courseId, deckId: deckId, cardId: card._id, phase: 0, date: new Date() });
 
       return reminder;
     }));
 
-    return NextResponse.json({ card, reminders });
+    return NextResponse.json({ card });
   } catch(err) {
     console.log(err);
   }

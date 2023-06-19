@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { auth } from '@clerk/nextjs';
 import dbConnect from '@/lib/dbConnect';
 import Course from '@/models/Course';
+import User from '@/models/User';
 import Invitation from '@/models/Invitation';
 
 // @desc Update course (change name, add/remove students)
@@ -67,12 +68,21 @@ export async function PUT(req, { params }) {
 // @route GET /api/courses/[course]
 export async function GET(req, { params }) {
   await dbConnect();
-  
+
   try {
     const courseId = params.course;
     const course = await Course.find({ _id: courseId }).select('ownerId studentIds');
+    const [ { studentIds, ownerId } ] = course;
 
-    return NextResponse.json(course);
+    const owner = await User.find({ clerkId: ownerId }).select('name email');
+
+    const students = await Promise.all(studentIds.map(async (student) => {
+      const user = await User.find({ clerkId: student }).select('email name');
+      const [ { name, email } ] = user;
+      return { studentId: student, name: name, email: email };
+    }));
+
+    return NextResponse.json({ owner, students });
   } catch(err) {
     console.log(err);
   }
