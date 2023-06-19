@@ -3,6 +3,8 @@ import { auth } from '@clerk/nextjs';
 import dbConnect from '@/lib/dbConnect';
 import Invitation from '@/models/Invitation';
 
+// @desc Delete invitation
+// @route DELETE /api/user/invitations/[invitation]
 export async function DELETE(req, { params }) {
   await dbConnect();
   const { userId } = auth();
@@ -10,6 +12,7 @@ export async function DELETE(req, { params }) {
   try {
     const invitationId = params.invitation;
 
+    // Verify the user making the request is the invitation recipient.
     const invitation = await Invitation.findOne({ _id: invitationId, userId: userId });
     if (!invitation) {
       return NextResponse.json({ error: 'Unauthorized access' });

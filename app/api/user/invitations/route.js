@@ -5,6 +5,8 @@ import Course from '@/models/Course';
 import User from '@/models/User';
 import Invitation from '@/models/Invitation';
 
+// @desc Fetch all invitations
+// @route PUT /api/user/invitations
 export async function GET() {
   await dbConnect();
   const { userId } = auth();

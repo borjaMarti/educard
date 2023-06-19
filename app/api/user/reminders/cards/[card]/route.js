@@ -3,6 +3,8 @@ import { auth } from '@clerk/nextjs';
 import dbConnect from '@/lib/dbConnect';
 import Reminder from '@/models/Reminder';
 
+// @desc Update reminder (modify phase and date based on study result).
+// @route PUT /api/user/reminders/cards/[card]
 export async function PUT(req, { params }) {
   await dbConnect();
   const { userId } = auth();
@@ -11,14 +13,15 @@ export async function PUT(req, { params }) {
   try {
     const { card: cardId } = params;
     const { phase } = data;
-    const reminder = await Reminder.findOne({ cardId: cardId, userId: userId });
 
+    // Verify the user making the request is the owner of the reminder.
+    const reminder = await Reminder.findOne({ cardId: cardId, userId: userId });
     if (!reminder) {
       return NextResponse.json({ error: 'Unauthorized access' });
     }
 
+    // Set new date and study phase based on previous phase.
     let date;
-
     switch(phase) {
       case 0:
         date = new Date();
