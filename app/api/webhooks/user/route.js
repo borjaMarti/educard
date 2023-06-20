@@ -33,31 +33,63 @@ export async function POST(req) {
     return NextResponse.json({}, { status: 400 });
   }
 
-  // MongoDB user creation with Clerk's user data.
+  // Connect to DB.
   await dbConnect();
+
+  // Bind event type (user created, updated, or deleted).
   const eventType = msg.type;
-  if (eventType === 'user.created') {
-    const {
-      id: clerkId,
-      email_addresses: [
-          {
-            email_address: email
-          },
-      ],
-      first_name: firstName,
-      last_name: lastName
-    } = msg.data;
 
-    const fullName = lastName ? `${firstName} ${lastName}` : firstName;
+  let user;
 
-    try {
-      const user = await User.create({ email: email, name: fullName, clerkId: clerkId });
-      console.log('User has been created!');
-      return NextResponse.json(user);
-    } catch(err) {
-      console.log(err);
+  // Depending on event type, create, modify, or delete user.
+  // We repeat data binding for each event type because the 'user.deleted'
+  // hook sends less data, causing errors if we try to bind the missing data.
+  try {
+    if (eventType === 'user.created') {
+      // Bind user data.
+      const {
+        id: clerkId,
+        email_addresses: [
+            {
+              email_address: email
+            },
+        ],
+        first_name: firstName,
+        last_name: lastName
+      } = msg.data;
+      // If both names are provided, use them.
+      const fullName = lastName ? `${firstName} ${lastName}` : firstName;
+
+      user = await User.create({ email: email, name: fullName, clerkId: clerkId });
+    } else if (eventType === 'user.updated') {
+      // Bind user data.
+      const {
+        id: clerkId,
+        email_addresses: [
+            {
+              email_address: email
+            },
+        ],
+        first_name: firstName,
+        last_name: lastName
+      } = msg.data;
+      // If both names are provided, use them.
+      const fullName = lastName ? `${firstName} ${lastName}` : firstName;
+
+      user = await User.findOneAndUpdate(
+        { clerkId: clerkId},
+        { email: email,
+          name: fullName
+        },
+        { new: true }
+      );
+    } else if (eventType === 'user.deleted') {
+      const { id: clerkId } = msg.data;
+      user = await User.findOneAndDelete({ clerkId: clerkId });
     }
-  }
 
-    // Future feature: Handle user deletion/updating.
+    return NextResponse.json(user);
+  } catch(err) {
+    console.log(err);
+  }
 }
