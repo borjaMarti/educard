@@ -2,6 +2,9 @@ import { NextResponse } from 'next/server';
 import { auth } from '@clerk/nextjs';
 import dbConnect from '@/lib/dbConnect';
 import Course from '@/models/Course';
+import Deck from '@/models/Deck';
+import Card from '@/models/Card';
+import Reminder from '@/models/Reminder';
 import User from '@/models/User';
 import Invitation from '@/models/Invitation';
 
@@ -74,12 +77,12 @@ export async function GET(req, { params }) {
     const course = await Course.find({ _id: courseId }).select('ownerId studentIds');
     const [ { studentIds, ownerId } ] = course;
 
-    const owner = await User.find({ clerkId: ownerId }).select('name email');
+    const owner = await User.find({ clerkId: ownerId }).select('email name');
 
     const students = await Promise.all(studentIds.map(async (student) => {
       const user = await User.find({ clerkId: student }).select('email name');
-      const [ { name, email } ] = user;
-      return { studentId: student, name: name, email: email };
+      const [ { email, name } ] = user;
+      return { studentId: student, email: email, name: name };
     }));
 
     return NextResponse.json({ owner, students });
@@ -90,6 +93,26 @@ export async function GET(req, { params }) {
 
 // @desc Delete course
 // @route DELETE /api/courses/[course]
-export async function DELETE(req) {
+export async function DELETE(req, { params }) {
+  await dbConnect();
+  const { userId } = auth();
 
+  try {
+    const { course: courseId } = params;
+
+    // Verify the user making the request is the owner of the course.
+    const course = await Course.findOne({ _id: courseId, ownerId: userId });
+    if (!course) {
+      return NextResponse.json({ error: 'Unauthorized access' });
+    }
+
+    const deletedReminders = await Reminder.deleteMany({ courseId: courseId });
+    const deletedCards = await Card.deleteMany({ courseId: courseId });
+    const deletedDeck = await Deck.deleteMany({ courseId: courseId });
+    const deletedCourse = await Course.findOneAndDelete({ _id: courseId });
+
+    return NextResponse.json({ deletedCourse, deletedDeck, deletedCards, deletedReminders });
+  } catch (err) {
+    console.log(err);
+  }
 }
