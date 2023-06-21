@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { auth } from '@clerk/nextjs';
 import dbConnect from '@/lib/dbConnect';
 import Course from '@/models/Course';
+import Reminder from '@/models/Reminder';
 
 // @desc Create new course
 // @route POST /api/courses
@@ -12,7 +13,7 @@ export async function POST(req) {
 
   try {
     const course = await Course.create({ courseName: data.name, ownerId: userId });
-    
+
     return NextResponse.json(course);
   } catch(err) {
     console.log(err);
@@ -26,12 +27,23 @@ export async function GET() {
   const { userId } = auth();
 
   try {
-    const ownedCourses = await Course.find({ ownerId: userId }).select('_id courseName');
-    const studentCourses = await Course.find({ studentIds: userId }).select('_id courseName');
+    const ownedCourses = await Course.find({ ownerId: userId }).select('_id courseName').lean();
+    let studentCourses = await Course.find({ studentIds: userId }).select('_id courseName').lean();
+    let actualDate = new Date();
+
+    studentCourses = await Promise.all(studentCourses.map(async (studentCourse) => {
+      const reminders = await Reminder.find({ courseId: studentCourse._id, userId: userId }).select('date').lean();
+      studentCourse.activeReminders = 0;
+
+      for (let reminder of reminders) {
+        if (actualDate > reminder.date) studentCourse.activeReminders++;
+      }
+      return studentCourse;
+    }));
 
     const courses = {
-      owned: ownedCourses,
-      student: studentCourses,
+      ownedCourses,
+      studentCourses
     };
 
     return NextResponse.json(courses);

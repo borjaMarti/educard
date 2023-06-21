@@ -14,11 +14,12 @@ export async function PUT(req, { params }) {
   const data = await req.json();
 
   try {
-    const { course: courseId, deck: deckId } = params;
+    const { deck: deckId } = params;
     const { content } = data;
 
-    // Verify the user making the request is the owner of the course.
-    const course = await Course.findOne({ _id: courseId, ownerId: userId });
+    // Verify the user making the request is the owner of the deck's course.
+    const deck = await Deck.findOne({ _id: deckId }).select('courseId').lean();
+    const course = await Course.findOne({ _id: deck.courseId, ownerId: userId }).lean();
     if (!course) {
       return NextResponse.json({ error: 'Unauthorized access' });
     }
@@ -27,7 +28,7 @@ export async function PUT(req, { params }) {
           { _id: deckId },
           { deckName: content },
           { new: true }
-    );
+    ).lean();
 
     return NextResponse.json(updatedDeck);
   } catch (err) {
@@ -42,19 +43,20 @@ export async function DELETE(req, { params }) {
   const { userId } = auth();
 
   try {
-    const { course: courseId, deck: deckId } = params;
+    const { deck: deckId } = params;
 
-    // Verify the user making the request is the owner of the course.
-    const course = await Course.findOne({ _id: courseId, ownerId: userId });
+    // Verify the user making the request is the owner of the deck's course.
+    const deck = await Deck.findOne({ _id: deckId }).select('courseId').lean();
+    const course = await Course.findOne({ _id: deck.courseId, ownerId: userId }).lean();
     if (!course) {
       return NextResponse.json({ error: 'Unauthorized access' });
     }
 
-    const deletedReminders = await Reminder.deleteMany({ deckId: deckId });
+    await Reminder.deleteMany({ deckId: deckId });
     const deletedCards = await Card.deleteMany({ deckId: deckId });
-    const deletedDeck = await Deck.findOneAndDelete({ _id: deckId });
+    const deletedDeck = await Deck.findOneAndDelete({ _id: deckId }).lean();
 
-    return NextResponse.json({ deletedDeck, deletedCards, deletedReminders });
+    return NextResponse.json({ deletedDeck, deletedCards });
   } catch (err) {
     console.log(err);
   }

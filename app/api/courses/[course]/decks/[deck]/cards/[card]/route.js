@@ -13,11 +13,12 @@ export async function PUT(req, { params }) {
   const data = await req.json();
 
   try {
-    const { course: courseId, card: cardId } = params;
+    const { card: cardId } = params;
     const { front, back } = data;
 
-    // Verify the user making the request is the owner of the course.
-    const course = await Course.findOne({ _id: courseId, ownerId: userId });
+    // Verify the user making the request is the owner of the card's course.
+    const card = await Card.findOne({ _id: cardId }).select('courseId').lean();
+    const course = await Course.findOne({ _id: card.courseId, ownerId: userId }).lean();
     if (!course) {
       return NextResponse.json({ error: 'Unauthorized access' });
     }
@@ -27,7 +28,7 @@ export async function PUT(req, { params }) {
           { front: front,
             back: back },
           { new: true }
-    );
+    ).lean();
 
     return NextResponse.json(updatedCard);
   } catch (err) {
@@ -42,16 +43,17 @@ export async function DELETE(req, { params }) {
   const { userId } = auth();
 
   try {
-    const { course: courseId, card: cardId } = params;
+    const { card: cardId } = params;
 
-    // Verify the user making the request is the owner of the course.
-    const course = await Course.findOne({ _id: courseId, ownerId: userId });
+    // Verify the user making the request is the owner of the card's course.
+    const card = await Card.findOne({ _id: cardId }).select('courseId').lean();
+    const course = await Course.findOne({ _id: card.courseId, ownerId: userId }).lean();
     if (!course) {
       return NextResponse.json({ error: 'Unauthorized access' });
     }
 
     const deletedReminders = await Reminder.deleteMany({ cardId: cardId });
-    const deletedCard = await Card.findOneAndDelete({ _id: cardId });
+    const deletedCard = await Card.findOneAndDelete({ _id: cardId }).lean();
 
     return NextResponse.json({ deletedCard, deletedReminders });
   } catch (err) {

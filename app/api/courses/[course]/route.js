@@ -23,9 +23,9 @@ export async function PUT(req, { params }) {
 
     // Depending on the update type, for verification, we'll need either to be invited,
     // own the course, or be an enroled student.
-    const invited = await Invitation.findOne({ courseId: courseId, userId: userId });
-    const owned = await Course.findOne({ _id: courseId, ownerId: userId });
-    const student = await Course.findOne({ _id: courseId, studentIds: userId });
+    const invited = await Invitation.findOne({ courseId: courseId, userId: userId }).lean();
+    const owned = await Course.findOne({ _id: courseId, ownerId: userId }).lean();
+    const student = await Course.findOne({ _id: courseId, studentIds: userId }).lean();
 
     // If we aren't the owners, to prevent enroled students from removing other students,
     // studentId will default to the userId.
@@ -39,7 +39,7 @@ export async function PUT(req, { params }) {
           { _id: courseId },
           { courseName: content },
           { new: true }
-        );
+        ).lean();
         break;
       case 'addStudent':
         if (!invited) return NextResponse.json({ error: 'Unauthorized access' });
@@ -47,7 +47,7 @@ export async function PUT(req, { params }) {
           { _id: courseId },
           { $addToSet: { studentIds: userId } },
           { new: true }
-        );
+        ).lean();
         break;
       case 'removeStudent':
         if (!owned && !student) return NextResponse.json({ error: 'Unauthorized access' });
@@ -55,7 +55,7 @@ export async function PUT(req, { params }) {
           { _id: courseId },
           { $pull: { studentIds: studentId } },
           { new: true }
-        );
+        ).lean();
         break;
       default:
         throw new Error('Invalid update type');
@@ -74,15 +74,14 @@ export async function GET(req, { params }) {
 
   try {
     const courseId = params.course;
-    const course = await Course.find({ _id: courseId }).select('ownerId studentIds');
-    const [ { studentIds, ownerId } ] = course;
+    const course = await Course.findOne({ _id: courseId }).select('ownerId studentIds').lean();
+    const { studentIds, ownerId } = course;
 
-    const owner = await User.find({ clerkId: ownerId }).select('email name');
+    const owner = await User.findOne({ clerkId: ownerId }).select('email name').lean();
 
-    const students = await Promise.all(studentIds.map(async (student) => {
-      const user = await User.find({ clerkId: student }).select('email name');
-      const [ { email, name } ] = user;
-      return { studentId: student, email: email, name: name };
+    const students = await Promise.all(studentIds.map(async (studentId) => {
+      const user = await User.findOne({ clerkId: studentId }).select('email name').lean();
+      return { studentId: studentId, email: user.email, name: user.name };
     }));
 
     return NextResponse.json({ owner, students });
@@ -101,17 +100,17 @@ export async function DELETE(req, { params }) {
     const { course: courseId } = params;
 
     // Verify the user making the request is the owner of the course.
-    const course = await Course.findOne({ _id: courseId, ownerId: userId });
+    const course = await Course.findOne({ _id: courseId, ownerId: userId }).lean();
     if (!course) {
       return NextResponse.json({ error: 'Unauthorized access' });
     }
 
-    const deletedReminders = await Reminder.deleteMany({ courseId: courseId });
+    await Reminder.deleteMany({ courseId: courseId });
     const deletedCards = await Card.deleteMany({ courseId: courseId });
     const deletedDeck = await Deck.deleteMany({ courseId: courseId });
-    const deletedCourse = await Course.findOneAndDelete({ _id: courseId });
+    const deletedCourse = await Course.findOneAndDelete({ _id: courseId }).lean();
 
-    return NextResponse.json({ deletedCourse, deletedDeck, deletedCards, deletedReminders });
+    return NextResponse.json({ deletedCourse, deletedDeck, deletedCards });
   } catch (err) {
     console.log(err);
   }

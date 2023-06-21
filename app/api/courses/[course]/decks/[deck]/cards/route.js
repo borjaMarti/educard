@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { auth } from '@clerk/nextjs';
 import dbConnect from '@/lib/dbConnect';
 import Course from '@/models/Course';
+import Deck from '@/models/Deck';
 import Card from '@/models/Card';
 import Reminder from '@/models/Reminder';
 
@@ -13,27 +14,26 @@ export async function POST(req, { params }) {
   const data = await req.json();
 
   try {
-    const { course: courseId, deck: deckId } = params;
+    const { deck: deckId } = params;
     const { front, back } = data;
 
-    // Verify the user making the request is the owner of the course.
-    const course = await Course.findOne({ _id: courseId, ownerId: userId });
+    // Verify the user making the request is the owner of the deck's course.
+    const deck = await Deck.findOne({ _id: deckId }).select('courseId').lean();
+    const course = await Course.findOne({ _id: deck.courseId, ownerId: userId }).lean();
     if (!course) {
       return NextResponse.json({ error: 'Unauthorized access' });
     }
 
-    const card = await Card.create({ front: front, back: back, courseId: courseId, deckId: deckId });
+    const card = await Card.create({ front: front, back: back, courseId: deck.courseId, deckId: deckId });
 
     // Now we create reminders for every student that is part of the course.
-    const students = await Course.find({ _id: courseId }).select('studentIds');
-    const [ { studentIds } ] = students;
+    const students = await Course.findOne({ _id: deck.courseId }).select('studentIds').lean();
+    const { studentIds } = students;
 
-    // Iterate through the studentIds, creating a reminder for each.
-    const reminders = await Promise.all(studentIds.map(async (studentId) => {
-      const reminder = await Reminder.create({ userId: studentId, courseId: courseId, deckId: deckId, cardId: card._id, phase: 0, date: new Date() });
-
-      return reminder;
-    }));
+    // Iterate through the studentIds, creating a reminder for each studentId.
+    for (let studentId of studentIds) {
+      await Reminder.create({ userId: studentId, courseId: deck.courseId, deckId: deckId, cardId: card._id, phase: 0, date: new Date() });
+    }
 
     return NextResponse.json({ card });
   } catch(err) {
@@ -48,7 +48,7 @@ export async function GET(req, { params }) {
 
   try {
     const deckId = params.deck;
-    const cards = await Card.find({ deckId: deckId }).select('_id front back');
+    const cards = await Card.find({ deckId: deckId }).select('_id front back').lean();
 
     return NextResponse.json(cards);
   } catch(err) {
