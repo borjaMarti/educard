@@ -36,7 +36,7 @@ export async function PUT(req, { params }) {
   }
 }
 
-// @desc Delete card.
+// @desc Delete card (and its reminder).
 // @route DELETE /api/courses/[course]/decks/[deck]/cards/[card]
 export async function DELETE(req, { params }) {
   await dbConnect();

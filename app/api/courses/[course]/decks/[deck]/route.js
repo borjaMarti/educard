@@ -36,7 +36,7 @@ export async function PUT(req, { params }) {
   }
 }
 
-// @desc Delete deck.
+// @desc Delete deck (and its cards and reminders).
 // @route DELETE /api/courses/[course]/decks/[deck]
 export async function DELETE(req, { params }) {
   await dbConnect();

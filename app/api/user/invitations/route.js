@@ -14,6 +14,8 @@ export async function GET() {
   try {
     const invitations = await Invitation.find({ userId: userId }).lean();
 
+    // From each invitation, we gather the course's owner info,
+    // and we include it in the response.
     const info = await Promise.all(invitations.map(async (invitation) => {
       const course = await Course.findOne({ _id: invitation.courseId }).select('ownerId courseName').lean();
       const user = await User.findOne({ clerkId: course.ownerId }).select('email name').lean();

@@ -20,7 +20,7 @@ export async function POST(req) {
   }
 }
 
-// @desc Fetch all of the user's courses.
+// @desc Fetch all of the user's courses (including active reminders).
 // @route GET /api/courses
 export async function GET() {
   await dbConnect();
@@ -29,15 +29,20 @@ export async function GET() {
   try {
     const ownedCourses = await Course.find({ ownerId: userId }).select('courseName').lean();
     let studentCourses = await Course.find({ studentIds: userId }).select('courseName').lean();
-    
-    const actualDate = new Date();
 
+    const currentDate = new Date();
+
+    // In addition to fetching the courses, we'll include the number of active
+    // reminders in each deck. For that, we iterate through the courses,
+    // fetching any associated reminders, and comparing their date against
+    // the current date. For each reminder which date's passed, we increment
+    // the newly declared activeReminder property of the course.
     studentCourses = await Promise.all(studentCourses.map(async (studentCourse) => {
       const reminders = await Reminder.find({ courseId: studentCourse._id, userId: userId }).select('date').lean();
       studentCourse.activeReminders = 0;
 
       for (let reminder of reminders) {
-        if (actualDate > reminder.date) studentCourse.activeReminders++;
+        if (currentDate > reminder.date) studentCourse.activeReminders++;
       }
       return studentCourse;
     }));

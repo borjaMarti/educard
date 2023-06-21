@@ -90,7 +90,7 @@ export async function GET(req, { params }) {
   }
 }
 
-// @desc Delete course.
+// @desc Delete course (and its decks, cards, and reminders).
 // @route DELETE /api/courses/[course]
 export async function DELETE(req, { params }) {
   await dbConnect();
