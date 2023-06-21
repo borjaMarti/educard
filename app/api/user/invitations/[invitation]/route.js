@@ -3,7 +3,7 @@ import { auth } from '@clerk/nextjs';
 import dbConnect from '@/lib/dbConnect';
 import Invitation from '@/models/Invitation';
 
-// @desc Delete invitation
+// @desc Delete invitation.
 // @route DELETE /api/user/invitations/[invitation]
 export async function DELETE(req, { params }) {
   await dbConnect();

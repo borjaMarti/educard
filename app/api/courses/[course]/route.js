@@ -8,7 +8,7 @@ import Reminder from '@/models/Reminder';
 import User from '@/models/User';
 import Invitation from '@/models/Invitation';
 
-// @desc Update course (change name, add/remove students)
+// @desc Update course (change name, add/remove students).
 // @route PUT /api/courses/[course]
 export async function PUT(req, { params }) {
   await dbConnect();
@@ -67,7 +67,7 @@ export async function PUT(req, { params }) {
   }
 }
 
-// @desc Fetch course data (owner and students' name and mails)
+// @desc Fetch course data (owner and students' name and mails).
 // @route GET /api/courses/[course]
 export async function GET(req, { params }) {
   await dbConnect();
@@ -90,7 +90,7 @@ export async function GET(req, { params }) {
   }
 }
 
-// @desc Delete course
+// @desc Delete course.
 // @route DELETE /api/courses/[course]
 export async function DELETE(req, { params }) {
   await dbConnect();

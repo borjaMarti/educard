@@ -5,7 +5,7 @@ import Course from '@/models/Course';
 import User from '@/models/User';
 import Invitation from '@/models/Invitation';
 
-// @desc Fetch all invitations
+// @desc Fetch all of the user's invitations.
 // @route GET /api/user/invitations
 export async function GET() {
   await dbConnect();

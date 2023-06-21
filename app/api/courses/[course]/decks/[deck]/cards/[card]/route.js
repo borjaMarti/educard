@@ -5,7 +5,7 @@ import Course from '@/models/Course';
 import Card from '@/models/Card';
 import Reminder from '@/models/Reminder';
 
-// @desc Update card (change front and/or back)
+// @desc Update card (change front and/or back).
 // @route PUT /api/courses/[course]/decks/[deck]/cards/[card]
 export async function PUT(req, { params }) {
   await dbConnect();
@@ -36,7 +36,7 @@ export async function PUT(req, { params }) {
   }
 }
 
-// @desc Delete card
+// @desc Delete card.
 // @route DELETE /api/courses/[course]/decks/[deck]/cards/[card]
 export async function DELETE(req, { params }) {
   await dbConnect();

@@ -6,7 +6,7 @@ import Deck from '@/models/Deck';
 import Card from '@/models/Card';
 import Reminder from '@/models/Reminder';
 
-// @desc Update deck (change name)
+// @desc Update deck (change name).
 // @route PUT /api/courses/[course]/decks/[deck]
 export async function PUT(req, { params }) {
   await dbConnect();
@@ -36,7 +36,7 @@ export async function PUT(req, { params }) {
   }
 }
 
-// @desc Delete deck
+// @desc Delete deck.
 // @route DELETE /api/courses/[course]/decks/[deck]
 export async function DELETE(req, { params }) {
   await dbConnect();

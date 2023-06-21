@@ -4,7 +4,7 @@ import dbConnect from '@/lib/dbConnect';
 import Course from '@/models/Course';
 import Reminder from '@/models/Reminder';
 
-// @desc Create new course
+// @desc Create new course.
 // @route POST /api/courses
 export async function POST(req) {
   await dbConnect();
@@ -20,7 +20,7 @@ export async function POST(req) {
   }
 }
 
-// @desc Fetch all courses
+// @desc Fetch all of the user's courses.
 // @route GET /api/courses
 export async function GET() {
   await dbConnect();

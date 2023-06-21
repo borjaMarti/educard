@@ -4,7 +4,7 @@ import dbConnect from '@/lib/dbConnect';
 import Course from '@/models/Course';
 import Invitation from '@/models/Invitation';
 
-// @desc Delete an invitation
+// @desc Delete an invitation.
 // @route DELETE /api/courses/[course]/invitations/[invitation]
 export async function DELETE(req, { params }) {
   await dbConnect();

@@ -5,7 +5,7 @@ import Course from '@/models/Course';
 import Deck from '@/models/Deck';
 import Reminder from '@/models/Reminder';
 
-// @desc Create new deck
+// @desc Create new deck.
 // @route POST /api/courses/[course]/decks
 export async function POST(req, { params }) {
   await dbConnect();
@@ -30,7 +30,7 @@ export async function POST(req, { params }) {
   }
 }
 
-// @desc Fetch all decks
+// @desc Fetch all of the course's decks.
 // @route GET /api/courses/[course]/decks
 export async function GET(req, { params }) {
   await dbConnect();

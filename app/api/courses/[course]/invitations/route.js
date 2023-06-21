@@ -5,7 +5,7 @@ import Course from '@/models/Course';
 import User from '@/models/User';
 import Invitation from '@/models/Invitation';
 
-// @desc Create student invitation
+// @desc Create student invitation.
 // @route POST /api/courses/[course]/invitations
 export async function POST(req, { params }) {
   await dbConnect();
@@ -37,7 +37,7 @@ export async function POST(req, { params }) {
 }
 
 
-// @desc Fetch course invitations
+// @desc Fetch course's invitations.
 // @route GET /api/courses/[course]/invitations
 export async function GET(req, { params }) {
   await dbConnect();

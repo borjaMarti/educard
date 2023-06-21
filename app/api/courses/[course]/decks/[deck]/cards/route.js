@@ -41,7 +41,7 @@ export async function POST(req, { params }) {
   }
 }
 
-// @desc Fetch all cards.
+// @desc Fetch all of the deck's cards.
 // @route GET /api/courses/[course]/decks/[deck]/cards
 export async function GET(req, { params }) {
   await dbConnect();
