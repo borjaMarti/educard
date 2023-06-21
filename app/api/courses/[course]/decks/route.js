@@ -40,7 +40,7 @@ export async function GET(req, { params }) {
     const courseId = params.course;
     let decks = await Deck.find({ courseId: courseId }).select('deckName').lean();
 
-    let actualDate = new Date();
+    const actualDate = new Date();
 
     decks = await Promise.all(decks.map(async (deck) => {
       const reminders = await Reminder.find({ deckId: deck._id, userId: userId }).select('date').lean();
