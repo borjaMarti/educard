@@ -27,8 +27,8 @@ export async function GET() {
   const { userId } = auth();
 
   try {
-    const ownedCourses = await Course.find({ ownerId: userId }).select('_id courseName').lean();
-    let studentCourses = await Course.find({ studentIds: userId }).select('_id courseName').lean();
+    const ownedCourses = await Course.find({ ownerId: userId }).select('courseName').lean();
+    let studentCourses = await Course.find({ studentIds: userId }).select('courseName').lean();
     let actualDate = new Date();
 
     studentCourses = await Promise.all(studentCourses.map(async (studentCourse) => {

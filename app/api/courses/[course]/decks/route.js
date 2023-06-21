@@ -38,7 +38,7 @@ export async function GET(req, { params }) {
 
   try {
     const courseId = params.course;
-    let decks = await Deck.find({ courseId: courseId }).select('_id deckName').lean();
+    let decks = await Deck.find({ courseId: courseId }).select('deckName').lean();
 
     let actualDate = new Date();
 
