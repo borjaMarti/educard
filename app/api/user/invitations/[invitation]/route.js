@@ -13,12 +13,12 @@ export async function DELETE(req, { params }) {
     const invitationId = params.invitation;
 
     // Verify the user making the request is the invitation recipient.
-    const invitation = await Invitation.findOne({ _id: invitationId, userId: userId });
+    const invitation = await Invitation.findOne({ _id: invitationId, userId: userId }).lean();
     if (!invitation) {
       return NextResponse.json({ error: 'Unauthorized access' });
     }
 
-    const deletedInvitation = await Invitation.findOneAndRemove({ _id: invitationId, userId: userId });
+    const deletedInvitation = await Invitation.findOneAndRemove({ _id: invitationId, userId: userId }).lean();
 
     return NextResponse.json({ deletedInvitation });
   } catch (err) {

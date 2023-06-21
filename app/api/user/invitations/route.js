@@ -6,18 +6,18 @@ import User from '@/models/User';
 import Invitation from '@/models/Invitation';
 
 // @desc Fetch all invitations
-// @route PUT /api/user/invitations
+// @route GET /api/user/invitations
 export async function GET() {
   await dbConnect();
   const { userId } = auth();
 
   try {
-    const invitations = await Invitation.find({ userId: userId });
+    const invitations = await Invitation.find({ userId: userId }).lean();
 
     const info = await Promise.all(invitations.map(async (invitation) => {
-      const course = await Course.find({ _id: invitations.courseId }).select('ownerId courseName');
-      const user = await User.find({ clerkId: course.ownerId }).select('email name');
-      return { invitationId: invitation._id, courseName: course.courseName, userName: user.name, userEmail: user.email };
+      const course = await Course.findOne({ _id: invitation.courseId }).select('ownerId courseName').lean();
+      const user = await User.findOne({ clerkId: course.ownerId }).select('email name').lean();
+      return { invitationId: invitation._id, courseName: course.courseName, ownerName: user.name, ownerEmail: user.email };
     }));
 
     return NextResponse.json(info);
