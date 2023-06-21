@@ -1,6 +1,14 @@
-import './globals.css'
-import { Inter } from 'next/font/google'
-import { ClerkProvider } from '@clerk/nextjs'
+import './globals.css';
+import { Inter } from 'next/font/google';
+import {
+  ClerkProvider,
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  SignUpButton,
+  UserButton
+} from '@clerk/nextjs';
+import Link from 'next/link';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -13,8 +21,29 @@ export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={inter.className}>{children}</body>
+        <body className={inter.className}>
+          <header>
+            <h1>EduCard</h1>
+            <SignedIn>
+              <Link href="/dashboard">Dashboard</Link>
+              <UserButton afterSignOutUrl="/"/>
+            </SignedIn>
+            <SignedOut>
+              <SignInButton mode="modal" redirectUrl="/dashboard">
+                <button>
+                  Iniciar Sesión
+                </button>
+              </SignInButton>
+              <SignUpButton mode="modal" redirectUrl="/dashboard">
+                <button>
+                  Registrarse
+                </button>
+              </SignUpButton>
+            </SignedOut>
+          </header>
+          {children}
+        </body>
       </html>
     </ClerkProvider>
-  )
+  );
 }
