@@ -2,6 +2,10 @@ import { headers } from 'next/headers';
 import { NextResponse } from 'next/server';
 import { Webhook } from 'svix';
 import dbConnect from '@/lib/dbConnect';
+import Course from '@/models/Course';
+import Deck from '@/models/Deck';
+import Card from '@/models/Card';
+import Reminder from '@/models/Reminder';
 import User from '@/models/User';
 
 const webhookSecret = process.env.WEBHOOK_SECRET;
@@ -82,10 +86,19 @@ export async function POST(req) {
           name: fullName
         },
         { new: true }
-      );
+      ).lean();
     } else if (eventType === 'user.deleted') {
       const { id: clerkId } = msg.data;
-      user = await User.findOneAndDelete({ clerkId: clerkId });
+      const courses = await Course.find({ ownerId: clerkId }).select('_id').lean();
+
+      for (let course of courses) {
+        await Reminder.deleteMany({ courseId: course._id });
+        await Card.deleteMany({ courseId: course._id });
+        await Deck.deleteMany({ courseId: course._id });
+        await Course.deleteOne({ _id: course._id });
+      }
+
+      user = await User.findOneAndDelete({ clerkId: clerkId }).lean();
     }
 
     return NextResponse.json(user);
