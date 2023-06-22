@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { auth } from '@clerk/nextjs';
+import { getAuth } from '@clerk/nextjs';
 import dbConnect from '@/lib/dbConnect';
 import Card from '@/models/Card';
 import Reminder from '@/models/Reminder';
@@ -9,7 +9,7 @@ import Reminder from '@/models/Reminder';
 // @route GET /api/study/focus/courses/[course]/decks/[deck]
 export async function GET(req, { params }) {
   await dbConnect();
-  const { userId } = auth();
+  const { userId } = getAuth(req);
 
   try {
     const deckId = params.deck;

@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { auth } from '@clerk/nextjs';
+import { getAuth } from '@clerk/nextjs/server';
 import dbConnect from '@/lib/dbConnect';
 import Reminder from '@/models/Reminder';
 
@@ -7,7 +7,7 @@ import Reminder from '@/models/Reminder';
 // @route PUT /api/user/reminders/cards/[card]
 export async function PUT(req, { params }) {
   await dbConnect();
-  const { userId } = auth();
+  const { userId } = getAuth(req);
   const data = await req.json();
 
   try {

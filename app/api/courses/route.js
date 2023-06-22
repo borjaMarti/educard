@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { auth } from '@clerk/nextjs';
+import { getAuth } from '@clerk/nextjs/server';
 import dbConnect from '@/lib/dbConnect';
 import Course from '@/models/Course';
 import Reminder from '@/models/Reminder';
@@ -8,7 +8,7 @@ import Reminder from '@/models/Reminder';
 // @route POST /api/courses
 export async function POST(req) {
   await dbConnect();
-  const { userId } = auth();
+  const { userId } = getAuth(req);
   const data = await req.json();
 
   try {
@@ -22,9 +22,9 @@ export async function POST(req) {
 
 // @desc Fetch all of the user's courses (including active reminders).
 // @route GET /api/courses
-export async function GET() {
+export async function GET(req) {
   await dbConnect();
-  const { userId } = auth();
+  const { userId } = getAuth(req);
 
   try {
     const ownedCourses = await Course.find({ ownerId: userId }).select('courseName').lean();

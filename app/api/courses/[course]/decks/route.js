@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { auth } from '@clerk/nextjs';
+import { getAuth } from '@clerk/nextjs/server';
 import dbConnect from '@/lib/dbConnect';
 import Course from '@/models/Course';
 import Deck from '@/models/Deck';
@@ -9,7 +9,7 @@ import Reminder from '@/models/Reminder';
 // @route POST /api/courses/[course]/decks
 export async function POST(req, { params }) {
   await dbConnect();
-  const { userId } = auth();
+  const { userId } = getAuth(req);
   const data = await req.json();
 
   try {
@@ -34,7 +34,7 @@ export async function POST(req, { params }) {
 // @route GET /api/courses/[course]/decks
 export async function GET(req, { params }) {
   await dbConnect();
-  const { userId } = auth();
+  const { userId } = getAuth(req);
 
   try {
     const courseId = params.course;

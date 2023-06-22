@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { auth } from '@clerk/nextjs';
+import { getAuth } from '@clerk/nextjs';
 import dbConnect from '@/lib/dbConnect';
 import Course from '@/models/Course';
 import User from '@/models/User';
@@ -9,7 +9,7 @@ import Invitation from '@/models/Invitation';
 // @route POST /api/courses/[course]/invitations
 export async function POST(req, { params }) {
   await dbConnect();
-  const { userId: ownerId } = auth();
+  const { userId: ownerId } = getAuth(req);
   const data = await req.json();
 
   try {

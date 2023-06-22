@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { auth } from '@clerk/nextjs';
+import { getAuth } from '@clerk/nextjs/server';
 import dbConnect from '@/lib/dbConnect';
 import Course from '@/models/Course';
 import User from '@/models/User';
@@ -7,9 +7,9 @@ import Invitation from '@/models/Invitation';
 
 // @desc Fetch all of the user's invitations.
 // @route GET /api/user/invitations
-export async function GET() {
+export async function GET(req) {
   await dbConnect();
-  const { userId } = auth();
+  const { userId } = getAuth(req);
 
   try {
     const invitations = await Invitation.find({ userId: userId }).lean();

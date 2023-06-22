@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { auth } from '@clerk/nextjs';
+import { getAuth } from '@clerk/nextjs';
 import dbConnect from '@/lib/dbConnect';
 import Course from '@/models/Course';
 import Invitation from '@/models/Invitation';
@@ -8,7 +8,7 @@ import Invitation from '@/models/Invitation';
 // @route DELETE /api/courses/[course]/invitations/[invitation]
 export async function DELETE(req, { params }) {
   await dbConnect();
-  const { userId } = auth();
+  const { userId } = getAuth(req);
 
   try {
     const invitationId = params.invitation;

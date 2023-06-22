@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { auth } from '@clerk/nextjs';
+import { getAuth } from '@clerk/nextjs';
 import dbConnect from '@/lib/dbConnect';
 import Course from '@/models/Course';
 import Deck from '@/models/Deck';
@@ -10,7 +10,7 @@ import Reminder from '@/models/Reminder';
 // @route PUT /api/courses/[course]/decks/[deck]
 export async function PUT(req, { params }) {
   await dbConnect();
-  const { userId } = auth();
+  const { userId } = getAuth(req);
   const data = await req.json();
 
   try {
@@ -40,7 +40,7 @@ export async function PUT(req, { params }) {
 // @route DELETE /api/courses/[course]/decks/[deck]
 export async function DELETE(req, { params }) {
   await dbConnect();
-  const { userId } = auth();
+  const { userId } = getAuth(req);
 
   try {
     const { deck: deckId } = params;
