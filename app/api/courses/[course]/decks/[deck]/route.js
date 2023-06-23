@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getAuth } from '@clerk/nextjs';
+import { getAuth } from '@clerk/nextjs/server';
 import dbConnect from '@/lib/dbConnect';
 import Course from '@/models/Course';
 import Deck from '@/models/Deck';
