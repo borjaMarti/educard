@@ -1,7 +1,8 @@
 import { auth } from "@clerk/nextjs";
-import { FaStar } from "react-icons/fa";
+import { FaBookmark, FaEnvelope, FaGear } from "react-icons/fa";
 import Link from "next/link";
 import CreateCourse from "../components/CreateCourse";
+import ManageStudentInvitations from "../components/ManageStudentInvitations";
 
 async function fetchCourses() {
   const authResponse = auth();
@@ -11,8 +12,17 @@ async function fetchCourses() {
   return courses;
 }
 
+async function fetchInvitations() {
+  const authResponse = auth();
+  const bearerToken = await authResponse.getToken({});
+  const response = await fetch("http://localhost:3000/api/user/invitations", { headers: { 'Authorization': `Bearer ${bearerToken}`}});
+  const invitations = await response.json();
+  return invitations;
+}
+
 const DashboardPage = async () => {
   const courses = await fetchCourses();
+  const invitations = await fetchInvitations();
   const { ownedCourses, studentCourses } = courses;
 
   return (
@@ -26,6 +36,10 @@ const DashboardPage = async () => {
             </Link>
           </li>
         ))}
+        { invitations[0] ?
+          <ManageStudentInvitations invitationsArray={invitations} />
+          : ''
+        }
       </ul>
       <h2>Your Classes</h2>
       <ul>
