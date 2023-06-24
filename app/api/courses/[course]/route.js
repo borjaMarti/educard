@@ -84,7 +84,7 @@ export async function GET(req, { params }) {
       return { studentId: studentId, email: user.email, name: user.name };
     }));
 
-    return NextResponse.json({ owner, students });
+    return NextResponse.json({ courseName: course.courseName, owner, students });
   } catch(err) {
     console.log(err);
   }
