@@ -28,6 +28,12 @@ export async function POST(req, { params }) {
       return NextResponse.json({ error: "User doesn't exist" });
     }
 
+    // We check the user isn't already enroled.
+    const enroled = await Course.findOne({ _id: courseId, studentIds: userId }).lean();
+    if (enroled) {
+      return NextResponse.json({ error: 'User is student already' });
+    }
+
     const invitation = await Invitation.create({ courseId: courseId, userId: userId });
 
     return NextResponse.json(invitation);
