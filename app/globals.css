@@ -1,3 +1,29 @@
+/**
+ * CONTENTS
+ *
+ * SETTINGS
+ * Normalize.css........Level playing field.
+ *
+ * GENERIC
+ * List elements........Do away with type.
+ * Links................Default link styling.
+ *
+ * BASE
+ * Headings.............H1–H6 styles.
+ *
+ * OBJECTS
+ * Wrappers.............Wrapping and constraining elements.
+ *
+ * COMPONENTS
+ * Page-head............The main page header.
+ * Page-foot............The main page footer.
+ * Buttons..............Button elements.
+ */
+
+/*------------------------------------*\
+  #SETTINGS
+\*------------------------------------*/
+
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
 /* Document
@@ -347,3 +373,33 @@ template {
 [hidden] {
   display: none;
 }
+
+/**
+ * I am a long-form comment. I describe, in detail, the CSS that follows. I am
+ * such a long comment that I easily break the 80 character limit, so I am
+ * broken across several lines.
+ */
+
+
+
+
+
+/*------------------------------------*\
+  #GENERIC
+\*------------------------------------*/
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+
+
+
+/*------------------------------------*\
+  #BASE
+\*------------------------------------*/
