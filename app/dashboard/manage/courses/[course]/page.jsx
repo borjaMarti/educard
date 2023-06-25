@@ -22,7 +22,7 @@ async function fetchCourseInfo(params) {
 
 const ManageCoursePage = async ({ params }) => {
   const decks = await fetchDecks(params);
-  const { courseName, students } = await fetchCourseInfo(params);
+  const { students } = await fetchCourseInfo(params);
 
   return (
     <>
@@ -35,7 +35,7 @@ const ManageCoursePage = async ({ params }) => {
             </Link>
           </li>
         ))}
-        <CreateDeck />
+        <CreateDeck params={params}/>
       </ul>
       <h2>Alumnos</h2>
       <ul>
@@ -45,7 +45,7 @@ const ManageCoursePage = async ({ params }) => {
             <h3>{student.email}</h3>
           </li>
         ))}
-        <InviteStudent />
+        <InviteStudent params={params}/>
       </ul>
     </>
   )
