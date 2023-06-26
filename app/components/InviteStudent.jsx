@@ -21,7 +21,6 @@ const InviteStudent = ({ params }) => {
         body: JSON.stringify({email: text})
       });
       const data = await submit.json();
-      router.push(`/dashboard/manage/courses/${params.course}/decks/${data._id}`);
   }
 
   return (
