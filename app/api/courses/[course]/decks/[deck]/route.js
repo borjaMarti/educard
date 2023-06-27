@@ -6,6 +6,22 @@ import Deck from '@/models/Deck';
 import Card from '@/models/Card';
 import Reminder from '@/models/Reminder';
 
+// @desc Fetch deck name.
+// @route GET /api/courses/[course]/decks/[deck]
+export async function GET(req, { params }) {
+  await dbConnect();
+
+  try {
+    const deckId = params.deck;
+    const deck = await Deck.findOne({ _id: deckId }).select('deckName').lean();
+    const { deckName } = deck;
+
+    return NextResponse.json({ deckName });
+  } catch(err) {
+    console.log(err);
+  }
+}
+
 // @desc Update deck (change name).
 // @route PUT /api/courses/[course]/decks/[deck]
 export async function PUT(req, { params }) {
