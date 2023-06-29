@@ -19,10 +19,10 @@ export async function GET(req, { params }) {
     // For each card, we are going to fetch its reminder, and compare
     // its date to the current date. If it's passed, we include
     // the card in the response.
-    const activeCards = await Promise.all(cards.map(async (card) => {
+    const activeCards = (await Promise.all(cards.map(async (card) => {
       const reminder = await Reminder.findOne({ cardId: card._id, userId: userId }).select('date').lean();
       if (currentDate > reminder.date) return card;
-    }));
+    }))).filter(card => card);
 
     return NextResponse.json(activeCards);
   } catch(err) {
