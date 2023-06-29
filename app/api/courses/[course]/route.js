@@ -48,6 +48,12 @@ export async function PUT(req, { params }) {
           { $addToSet: { studentIds: userId } },
           { new: true }
         ).lean();
+        // We also need to create reminders for all the course's cards.
+        const cards = await Card.find({ courseId: courseId }).select('deckId').lean();
+        // Iterate through the cards, creating a reminder for each card.
+        for (let card of cards) {
+          await Reminder.create({ userId: userId, courseId: courseId, deckId: card.deckId, cardId: card._id, phase: 0, date: new Date() });
+        }
         break;
       case 'removeStudent':
         if (!owned && !student) return NextResponse.json({ error: 'Unauthorized access' });
@@ -71,6 +77,7 @@ export async function PUT(req, { params }) {
 // @route GET /api/courses/[course]
 export async function GET(req, { params }) {
   await dbConnect();
+  const { userId } = getAuth(req);
 
   try {
     const courseId = params.course;
@@ -84,7 +91,17 @@ export async function GET(req, { params }) {
       return { studentId: studentId, email: user.email, name: user.name };
     }));
 
-    return NextResponse.json({ courseName: course.courseName, owner, students });
+    // We include the amount of active reminders by comparing their dates against
+    // the current date.
+    const currentDate = new Date();
+    const reminders = await Reminder.find({ courseId: courseId, userId: userId }).select('date').lean();
+    let activeReminders = 0;
+
+    for (let reminder of reminders) {
+      if (currentDate > reminder.date) activeReminders++;
+    }
+
+    return NextResponse.json({ courseName: course.courseName, owner, students, activeReminders });
   } catch(err) {
     console.log(err);
   }
