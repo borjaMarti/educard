@@ -1,4 +1,5 @@
 import { auth } from "@clerk/nextjs";
+// import { notFound } from 'next/navigation'
 import { FaGear, FaEnvelope, FaUserXmark } from "react-icons/fa";
 import Link from "next/link";
 import CreateDeck from "@/app/components/CreateDeck";
@@ -45,10 +46,10 @@ const ManageCoursePage = async ({ params }) => {
             </Link>
           </li>
         ))}
-        <CreateDeck params={params}/>
+        <CreateDeck />
       </ul>
       <h2>Alumnos</h2>
-      <ManageCourseInvitations params={params} invitationsArray={invitationsArray} />
+      <ManageCourseInvitations invitationsArray={invitationsArray} />
       <ul>
         {students.map((student) => (
           <li key={student.studentId}>
@@ -56,7 +57,7 @@ const ManageCoursePage = async ({ params }) => {
             <h3>{student.email}</h3>
           </li>
         ))}
-        <InviteStudent params={params}/>
+        <InviteStudent />
       </ul>
     </>
   )

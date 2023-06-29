@@ -32,7 +32,7 @@ const ManageDeckPage = async ({ params }) => {
             <p>Reverso: {card.back}</p>
           </li>
         ))}
-        <CreateCard params={params}/>
+        <CreateCard />
       </ul>
     </>
   )
