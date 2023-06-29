@@ -396,6 +396,10 @@ a {
   text-decoration: none;
 }
 
+a:visited {
+  color: LinkText;
+}
+
 
 
 
