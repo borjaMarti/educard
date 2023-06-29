@@ -11,21 +11,21 @@ function shuffleCards(cards) {
 async function fetchCards(params) {
   const authResponse = auth();
   const bearerToken = await authResponse.getToken({});
-  const response = await fetch(`http://localhost:3000/api/study/free/courses/${params.course}/decks/${params.deck}`, { headers: { 'Authorization': `Bearer ${bearerToken}`}});
+  const response = await fetch(`http://localhost:3000/api/study/focus/courses/${params.course}`, { headers: { 'Authorization': `Bearer ${bearerToken}`}});
   const cards = await response.json();
   return cards;
 }
 
-const FreeStudyDeckPage = async ({params}) => {
+const FocusStudyCoursePage = async ({params}) => {
   const cards = await fetchCards(params);
   shuffleCards(cards);
 
   return (
     <StudyApp
       cards={cards}
-      focus={false}
+      focus={true}
     />
   );
 };
 
-export default FreeStudyDeckPage;
+export default FocusStudyCoursePage;
