@@ -34,6 +34,7 @@ const DashboardPage = async () => {
             <Link href={`/dashboard/courses/${course._id}`}>
               <h3>{course.courseName}</h3>
             </Link>
+            <span>{course.activeReminders}</span>
           </li>
         ))}
         { invitations[0] ?
