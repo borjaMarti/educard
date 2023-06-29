@@ -12,12 +12,22 @@ export async function PUT(req, { params }) {
 
   try {
     const cardId = params.card;
-    let { phase } = data;
+    let { result } = data;
 
     // Verify the user making the request is the owner of the reminder.
     const reminder = await Reminder.findOne({ cardId: cardId, userId: userId }).lean();
     if (!reminder) {
       return NextResponse.json({ error: 'Unauthorized access' });
+    }
+
+    // Update the phase based on previous phase and whether result
+    // was good (true) or repeat (false).
+    let phase = reminder.phase;
+
+    if (result) {
+      phase > 2 ? '' : phase++;
+    } else {
+      phase = 0;
     }
 
     // Set new date and study phase based on previous phase.
