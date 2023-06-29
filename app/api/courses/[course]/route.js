@@ -74,7 +74,7 @@ export async function GET(req, { params }) {
 
   try {
     const courseId = params.course;
-    const course = await Course.findOne({ _id: courseId }).select('ownerId studentIds').lean();
+    const course = await Course.findOne({ _id: courseId }).lean();
     const { studentIds, ownerId } = course;
 
     const owner = await User.findOne({ clerkId: ownerId }).select('email name').lean();
