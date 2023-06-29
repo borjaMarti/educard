@@ -20,7 +20,8 @@ const InviteStudent = ({ params }) => {
         },
         body: JSON.stringify({email: text})
       });
-      const data = await submit.json();
+      setText('');
+      router.refresh();
   }
 
   return (

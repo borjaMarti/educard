@@ -3,6 +3,7 @@ import { FaGear, FaEnvelope, FaUserXmark } from "react-icons/fa";
 import Link from "next/link";
 import CreateDeck from "@/app/components/CreateDeck";
 import InviteStudent from "@/app/components/InviteStudent";
+import ManageCourseInvitations from "@/app/components/ManageCourseInvitations";
 
 async function fetchDecks(params) {
   const authResponse = auth();
@@ -20,9 +21,18 @@ async function fetchCourseInfo(params) {
   return { courseName, students };
 }
 
+async function fetchCourseInvitations(params) {
+  const authResponse = auth();
+  const bearerToken = await authResponse.getToken({});
+  const response = await fetch(`http://localhost:3000/api/courses/${params.course}/invitations`, { headers: { 'Authorization': `Bearer ${bearerToken}`}});
+  const invitationsArray = await response.json();
+  return invitationsArray;
+}
+
 const ManageCoursePage = async ({ params }) => {
   const decks = await fetchDecks(params);
   const { students } = await fetchCourseInfo(params);
+  const invitationsArray = await fetchCourseInvitations(params);
 
   return (
     <>
@@ -38,6 +48,7 @@ const ManageCoursePage = async ({ params }) => {
         <CreateDeck params={params}/>
       </ul>
       <h2>Alumnos</h2>
+      <ManageCourseInvitations params={params} invitationsArray={invitationsArray} />
       <ul>
         {students.map((student) => (
           <li key={student.studentId}>

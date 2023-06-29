@@ -24,7 +24,6 @@ const CreateCard = ({ params }) => {
           back: back
         })
       });
-      const data = await submit.json();
       router.refresh();
   }
 

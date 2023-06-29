@@ -1,8 +1,8 @@
 'use client'
 import { useState } from 'react';
-import { FaCheck, FaXmark } from 'react-icons/fa6';
+import { FaXmark } from 'react-icons/fa6';
 
-const ManageStudentInvitations = ({ invitationsArray }) => {
+const ManageCourseInvitations = ({ invitationsArray, params }) => {
   const [invitations, setInvitations] = useState(invitationsArray);
   const [showInvitations, setShowInvitations] = useState(false);
 
@@ -11,31 +11,11 @@ const ManageStudentInvitations = ({ invitationsArray }) => {
   }
 
   const handleDelete = async (id) => {
-    await fetch(`/api/user/invitations/${id}`, {
+    await fetch(`/api/courses/${params.course}/invitations/${id}`, {
       method: 'DELETE'
     });
     const newInvitations = invitations.filter( inv => inv.invitationId !== id);
     setInvitations(newInvitations);
-  };
-
-  const handleAccept = async (inv) => {
-    const { invitationId, courseId } = inv;
-    console.log(inv);
-    try {
-      await fetch(`/api/courses/${courseId}`, {
-        method: 'PUT',
-        headers: {
-          'Content-type': 'application/json'
-        },
-        body: JSON.stringify({
-          updateType: 'addStudent'
-        })
-      });
-
-      handleDelete(invitationId);
-    } catch(err) {
-      console.log(err);
-    }
   };
 
   return (
@@ -46,13 +26,11 @@ const ManageStudentInvitations = ({ invitationsArray }) => {
           {invitations.map( (invitation) => (
             <li key={invitation.invitationId}>
               <div>
-                <span>Clase: {invitation.courseName}</span>
-                <span>Profesor: {invitation.ownerName}</span>
-                <span>Email: {invitation.ownerEmail}</span>
+                <span>Nombre: {invitation.userName}</span>
+                <span>Email: {invitation.userEmail}</span>
               </div>
               <div>
-                <button onClick={() => handleAccept(invitation)} value={invitation.invitationId}><FaCheck /></button>
-                <button onClick={() => handleDelete(invitation.invitationId)} value={invitation.invitationId}><FaXmark /></button>
+                <button onClick={() => handleDelete(invitation.invitationId)} ><FaXmark /></button>
               </div>
             </li>
           ))}
@@ -62,4 +40,4 @@ const ManageStudentInvitations = ({ invitationsArray }) => {
   );
 };
 
-export default ManageStudentInvitations;
+export default ManageCourseInvitations;
