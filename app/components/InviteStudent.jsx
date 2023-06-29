@@ -1,8 +1,9 @@
 'use client'
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 
-const InviteStudent = ({ params }) => {
+const InviteStudent = () => {
+  const params = useParams();
   const [text, setText] = useState('');
   const [showInviteStudent, setShowInviteStudent] = useState(false);
   const router = useRouter();

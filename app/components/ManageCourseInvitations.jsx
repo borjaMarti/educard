@@ -1,8 +1,10 @@
 'use client'
 import { useState } from 'react';
 import { FaXmark } from 'react-icons/fa6';
+import { useParams } from 'next/navigation';
 
-const ManageCourseInvitations = ({ invitationsArray, params }) => {
+const ManageCourseInvitations = ({ invitationsArray }) => {
+  const params = useParams();
   const [invitations, setInvitations] = useState(invitationsArray);
   const [showInvitations, setShowInvitations] = useState(false);
 

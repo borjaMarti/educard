@@ -1,8 +1,9 @@
 'use client'
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 
-const CreateCard = ({ params }) => {
+const CreateCard = () => {
+  const params = useParams();
   const [front, setFront] = useState('');
   const [back, setBack] = useState('');
   const [showCreateCard, setShowCreateCard] = useState(false);

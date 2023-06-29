@@ -1,8 +1,9 @@
 'use client'
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 
-const CreateDeck = ({ params }) => {
+const CreateDeck = () => {
+  const params = useParams();
   const [text, setText] = useState('');
   const [showCreateDeck, setShowCreateDeck] = useState(false);
   const router = useRouter();
