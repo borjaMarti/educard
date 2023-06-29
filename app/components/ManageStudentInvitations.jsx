@@ -1,10 +1,12 @@
 'use client'
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { FaCheck, FaXmark } from 'react-icons/fa6';
 
 const ManageStudentInvitations = ({ invitationsArray }) => {
   const [invitations, setInvitations] = useState(invitationsArray);
   const [showInvitations, setShowInvitations] = useState(false);
+  const router = useRouter();
 
   const handleToggleInvitations = () => {
     setShowInvitations(!showInvitations);
@@ -32,7 +34,8 @@ const ManageStudentInvitations = ({ invitationsArray }) => {
         })
       });
   
-      handleDelete(invitationId);
+      await handleDelete(invitationId);
+      router.refresh();
     } catch(err) {
       console.log(err);
     }
