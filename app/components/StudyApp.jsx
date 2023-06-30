@@ -49,7 +49,7 @@ const StudyApp = ({ cards, focus }) => {
 
     if (studyCards.length === 1) {
       setBlinds(false);
-      router.push(`/dashboard/courses/${params.course}`);
+      router.replace(`/dashboard/courses/${params.course}`);
       return router.refresh();
     }
 

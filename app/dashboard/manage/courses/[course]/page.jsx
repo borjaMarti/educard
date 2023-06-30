@@ -26,14 +26,14 @@ async function fetchCourseInvitations(params) {
   const authResponse = auth();
   const bearerToken = await authResponse.getToken({});
   const response = await fetch(`http://localhost:3000/api/courses/${params.course}/invitations`, { headers: { 'Authorization': `Bearer ${bearerToken}`}});
-  const invitationsArray = await response.json();
-  return invitationsArray;
+  const invitations = await response.json();
+  return invitations;
 }
 
 const ManageCoursePage = async ({ params }) => {
   const decks = await fetchDecks(params);
   const { students } = await fetchCourseInfo(params);
-  const invitationsArray = await fetchCourseInvitations(params);
+  const invitations = await fetchCourseInvitations(params);
 
   return (
     <>
@@ -49,7 +49,10 @@ const ManageCoursePage = async ({ params }) => {
         <CreateDeck />
       </ul>
       <h2>Alumnos</h2>
-      <ManageCourseInvitations invitationsArray={invitationsArray} />
+      { invitations[0] ?
+        <ManageCourseInvitations invitationsArray={invitations} />
+        : ''
+      }
       <ul>
         {students.map((student) => (
           <li key={student.studentId}>
