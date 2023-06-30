@@ -1,5 +1,5 @@
 import { auth } from "@clerk/nextjs";
-import StudyApp from "@/app/components/StudyApp";
+import StudyApp from "@/components/study/StudyApp";
 
 function shuffleCards(cards) {
   for (let i = cards.length - 1; i > 0; i--) {
