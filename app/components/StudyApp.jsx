@@ -8,6 +8,7 @@ const StudyApp = ({ cards, focus }) => {
   const [studyCards, setStudyCards] = useState(cards);
   const [currentCard, setCurrentCard] = useState(studyCards[studyCards.length - 1]);
   const [front, setFront] = useState(true);
+  const [blinds, setBlinds] = useState(true);
   const router = useRouter();
 
   const totalCards = cards.length;
@@ -47,8 +48,9 @@ const StudyApp = ({ cards, focus }) => {
     }
 
     if (studyCards.length === 1) {
-      console.log(currentCard)
-      return router.push(`/dashboard/courses/${params.course}`);
+      setBlinds(false);
+      router.push(`/dashboard/courses/${params.course}`);
+      return router.refresh();
     }
 
     let newCards = [...studyCards];
@@ -61,20 +63,28 @@ const StudyApp = ({ cards, focus }) => {
 
   return (
     <>
-      <span>{totalCards - studyCards.length + 1} / {totalCards}</span>
-      {front &&
+      {blinds &&
         <>
-          <h2>{currentCard.front}</h2>
-          <button onClick={handleToggleFront}>Mostrar Respuesta</button>
-        </>
-      }
+          <span>{totalCards - studyCards.length + 1} / {totalCards}</span>
+          {front &&
+            <>
+              <h2>{currentCard.front}</h2>
+              <button onClick={handleToggleFront}>Mostrar Respuesta</button>
+            </>
+          }
 
-      {!front &&
-        <>
-          <h2>{currentCard.back}</h2>
-          <button onClick={() => handleRepeat(currentCard._id)}>Repetir</button>
-          <button onClick={() => handleGood(currentCard._id)}>Bien</button>
+          {!front &&
+            <>
+              <h2>{currentCard.back}</h2>
+              <button onClick={() => handleRepeat(currentCard._id)}>Repetir</button>
+              <button onClick={() => handleGood(currentCard._id)}>Bien</button>
+            </>
+          }
         </>
+        ||
+        <span>
+          ¡Terminaste!
+        </span>
       }
     </>
   );
