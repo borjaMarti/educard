@@ -56,6 +56,9 @@ const CoursePage = async ({params}) => {
             <Link href={`/study/free/courses/${params.course}/decks/${deck._id}`}>
               <h3>{deck.deckName}</h3>
             </Link>
+            <Link href={`/dashboard/courses/${params.course}/decks/${deck._id}`}>
+              <FaFolderOpen />
+            </Link>
           </li>
         ))}
       </ul>

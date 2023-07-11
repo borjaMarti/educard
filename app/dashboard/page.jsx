@@ -1,8 +1,9 @@
 import { auth } from "@clerk/nextjs";
-import { FaBookmark, FaEnvelope, FaGear } from "react-icons/fa";
+import { FaBookmark, FaEnvelope, FaGear } from "react-icons/fa6";
 import Link from "next/link";
 import CreateCourse from "@/components/courses/CreateCourse";
 import ManageStudentInvitations from "@/components/users/ManageStudentInvitations";
+import ManageCourse from "@/components/courses/ManageCourse";
 
 async function fetchCourses() {
   const authResponse = auth();
@@ -49,6 +50,7 @@ const DashboardPage = async () => {
             <Link href={`/dashboard/manage/courses/${course._id}`}>
               <h3>{course.courseName}</h3>
             </Link>
+            <ManageCourse courseId={course._id} />
           </li>
         ))}
         <CreateCourse />
