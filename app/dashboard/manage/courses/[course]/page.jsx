@@ -5,6 +5,7 @@ import Link from "next/link";
 import CreateDeck from "@/components/decks/CreateDeck";
 import InviteStudent from "@/components/courses/InviteStudent";
 import ManageCourseInvitations from "@/components/courses/ManageCourseInvitations";
+import ManageCourse from "@/components/courses/ManageCourse";
 
 async function fetchDecks(params) {
   const authResponse = auth();
@@ -32,12 +33,13 @@ async function fetchCourseInvitations(params) {
 
 const ManageCoursePage = async ({ params }) => {
   const decks = await fetchDecks(params);
-  const { students } = await fetchCourseInfo(params);
+  const { students, courseName } = await fetchCourseInfo(params);
   const invitations = await fetchCourseInvitations(params);
 
   return (
     <>
-      <h2>Mazos</h2>
+      <h2>{courseName}</h2>
+      <ManageCourse courseId={params.course} />
       <ul>
         {decks.map((deck) => (
           <li key={deck._id}>
