@@ -37,6 +37,7 @@ const ManageCourse = ({ courseId }) => {
       });
     }
 
+    router.replace(`/dashboard`);
     router.refresh();
   }
 
