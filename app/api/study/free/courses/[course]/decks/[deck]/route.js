@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
-import dbConnect from '@/lib/dbConnect';
-import Card from '@/models/Card';
+import dbConnect from '@/lib/db-connect';
+import Card from '@/models/card';
 
 
 // @desc Fetch all of the deck's cards.

@@ -1,6 +1,6 @@
 import { auth } from "@clerk/nextjs";
 import { FaGear } from "react-icons/fa";
-import CreateCard from "@/components/cards/CreateCard";
+import CreateCard from "@/components/cards/create-card";
 
 async function fetchCards(params) {
   const authResponse = auth();

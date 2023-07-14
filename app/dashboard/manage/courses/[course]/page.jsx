@@ -2,10 +2,10 @@ import { auth } from "@clerk/nextjs";
 // import { notFound } from 'next/navigation'
 import { FaGear, FaEnvelope, FaUserXmark } from "react-icons/fa";
 import Link from "next/link";
-import CreateDeck from "@/components/decks/CreateDeck";
-import InviteStudent from "@/components/courses/InviteStudent";
-import ManageCourseInvitations from "@/components/courses/ManageCourseInvitations";
-import ManageCourse from "@/components/courses/ManageCourse";
+import CreateDeck from "@/components/decks/create-deck";
+import InviteStudent from "@/components/courses/invite-student";
+import ManageCourseInvitations from "@/components/courses/manage-course-invitations";
+import ManageCourse from "@/components/courses/manage-course";
 
 async function fetchDecks(params) {
   const authResponse = auth();

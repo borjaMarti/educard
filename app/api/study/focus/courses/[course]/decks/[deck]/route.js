@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
 import { getAuth } from '@clerk/nextjs/server';
-import dbConnect from '@/lib/dbConnect';
-import Card from '@/models/Card';
-import Reminder from '@/models/Reminder';
+import dbConnect from '@/lib/db-connect';
+import Card from '@/models/card';
+import Reminder from '@/models/reminder';
 
 
 // @desc Fetch all of the deck's active cards.

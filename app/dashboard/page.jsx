@@ -1,9 +1,9 @@
 import { auth } from "@clerk/nextjs";
 import { FaBookmark, FaEnvelope, FaGear } from "react-icons/fa6";
 import Link from "next/link";
-import CreateCourse from "@/components/courses/CreateCourse";
-import ManageStudentInvitations from "@/components/users/ManageStudentInvitations";
-import ManageCourse from "@/components/courses/ManageCourse";
+import CreateCourse from "@/components/courses/create-course";
+import ManageStudentInvitations from "@/components/users/manage-student-invitations";
+import ManageCourse from "@/components/courses/manage-course";
 
 async function fetchCourses() {
   const authResponse = auth();
