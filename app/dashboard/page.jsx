@@ -8,7 +8,10 @@ import ManageCourse from "@/components/courses/manage-course";
 async function fetchCourses() {
   const authResponse = auth();
   const bearerToken = await authResponse.getToken({});
-  const response = await fetch("http://localhost:3000/api/courses", { headers: { 'Authorization': `Bearer ${bearerToken}`}});
+  const response = await fetch(
+      "http://localhost:3000/api/courses",
+      {headers: {'Authorization': `Bearer ${bearerToken}`}}
+  );
   const courses = await response.json();
   return courses;
 }
@@ -16,7 +19,10 @@ async function fetchCourses() {
 async function fetchInvitations() {
   const authResponse = auth();
   const bearerToken = await authResponse.getToken({});
-  const response = await fetch("http://localhost:3000/api/user/invitations", { headers: { 'Authorization': `Bearer ${bearerToken}`}});
+  const response = await fetch(
+      "http://localhost:3000/api/user/invitations",
+      {headers: {'Authorization': `Bearer ${bearerToken}`}}
+  );
   const invitations = await response.json();
   return invitations;
 }

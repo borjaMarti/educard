@@ -10,7 +10,10 @@ import ManageCourse from "@/components/courses/manage-course";
 async function fetchDecks(params) {
   const authResponse = auth();
   const bearerToken = await authResponse.getToken({});
-  const response = await fetch(`http://localhost:3000/api/courses/${params.course}/decks`, { headers: { 'Authorization': `Bearer ${bearerToken}`}});
+  const response = await fetch(
+      `http://localhost:3000/api/courses/${params.course}/decks`,
+      {headers: {'Authorization': `Bearer ${bearerToken}`}}
+  );
   const decks = await response.json();
   return decks;
 }
@@ -18,7 +21,10 @@ async function fetchDecks(params) {
 async function fetchCourseInfo(params) {
   const authResponse = auth();
   const bearerToken = await authResponse.getToken({});
-  const response = await fetch(`http://localhost:3000/api/courses/${params.course}`, { headers: { 'Authorization': `Bearer ${bearerToken}`}});
+  const response = await fetch(
+      `http://localhost:3000/api/courses/${params.course}`,
+      {headers: {'Authorization': `Bearer ${bearerToken}`}}
+  );
   const { courseName, students } = await response.json();
   return { courseName, students };
 }
@@ -26,7 +32,10 @@ async function fetchCourseInfo(params) {
 async function fetchCourseInvitations(params) {
   const authResponse = auth();
   const bearerToken = await authResponse.getToken({});
-  const response = await fetch(`http://localhost:3000/api/courses/${params.course}/invitations`, { headers: { 'Authorization': `Bearer ${bearerToken}`}});
+  const response = await fetch(
+      `http://localhost:3000/api/courses/${params.course}/invitations`,
+      {headers: {'Authorization': `Bearer ${bearerToken}`}}
+  );
   const invitations = await response.json();
   return invitations;
 }

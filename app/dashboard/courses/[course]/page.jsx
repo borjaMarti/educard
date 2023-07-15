@@ -5,7 +5,10 @@ import Link from "next/link";
 async function fetchDecks(params) {
   const authResponse = auth();
   const bearerToken = await authResponse.getToken({});
-  const response = await fetch(`http://localhost:3000/api/courses/${params.course}/decks`, { headers: { 'Authorization': `Bearer ${bearerToken}`}});
+  const response = await fetch(
+      `http://localhost:3000/api/courses/${params.course}/decks`,
+      {headers: {'Authorization': `Bearer ${bearerToken}`}}
+  );
   const decks = await response.json();
   return decks;
 }
@@ -13,7 +16,10 @@ async function fetchDecks(params) {
 async function fetchCourse(params) {
   const authResponse = auth();
   const bearerToken = await authResponse.getToken({});
-  const response = await fetch(`http://localhost:3000/api/courses/${params.course}`, { headers: { 'Authorization': `Bearer ${bearerToken}`}});
+  const response = await fetch(
+      `http://localhost:3000/api/courses/${params.course}`,
+      {headers: {'Authorization': `Bearer ${bearerToken}`}}
+  );
   const course = await response.json();
   return course;
 }

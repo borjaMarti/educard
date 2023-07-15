@@ -11,7 +11,10 @@ function shuffleCards(cards) {
 async function fetchCards(params) {
   const authResponse = auth();
   const bearerToken = await authResponse.getToken({});
-  const response = await fetch(`http://localhost:3000/api/study/focus/courses/${params.course}/decks/${params.deck}`, { headers: { 'Authorization': `Bearer ${bearerToken}`}});
+  const response = await fetch(
+      `http://localhost:3000/api/study/focus/courses/${params.course}/decks/${params.deck}`,
+      { headers: { 'Authorization': `Bearer ${bearerToken}`}}
+  );
   const cards = await response.json();
   return cards;
 }
