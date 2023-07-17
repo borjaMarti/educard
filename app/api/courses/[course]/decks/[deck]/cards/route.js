@@ -68,7 +68,9 @@ export async function GET(req, { params }) {
 
   try {
     const deckId = params.deck;
-    const cards = await Card.find({ deckId: deckId }).select('front back').lean();
+    const cards = await Card.find({ deckId: deckId })
+      .select('front back')
+      .lean();
 
     return NextResponse.json(cards);
   } catch(err) {
