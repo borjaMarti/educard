@@ -16,23 +16,43 @@ export async function POST(req, { params }) {
   try {
     const { deck: deckId } = params;
     const { front, back } = data;
-
     // Verify the user making the request is the owner of the deck's course.
-    const deck = await Deck.findOne({ _id: deckId }).select('courseId').lean();
-    const course = await Course.findOne({ _id: deck.courseId, ownerId: userId }).lean();
+    const deck = await Deck.findOne({ _id: deckId })
+      .select('courseId')
+      .lean();
+    const course = await Course.findOne({ _id: deck.courseId, ownerId: userId })
+      .lean();
+
     if (!course) {
       return NextResponse.json({ error: 'Unauthorized access' });
     }
 
-    const card = await Card.create({ front: front, back: back, courseId: deck.courseId, deckId: deckId });
-
+    const card = await Card.create(
+        {
+          front: front,
+          back: back,
+          courseId: deck.courseId,
+          deckId: deckId,
+        }
+    );
     // Now we create reminders for every student that is part of the course.
-    const students = await Course.findOne({ _id: deck.courseId }).select('studentIds').lean();
+    const students = await Course.findOne({ _id: deck.courseId })
+      .select('studentIds')
+      .lean();
     const { studentIds } = students;
 
     // Iterate through the studentIds, creating a reminder for each studentId.
     for (let studentId of studentIds) {
-      await Reminder.create({ userId: studentId, courseId: deck.courseId, deckId: deckId, cardId: card._id, phase: 0, date: new Date() });
+      await Reminder.create(
+          {
+            userId: studentId,
+            courseId: deck.courseId,
+            deckId: deckId,
+            cardId: card._id,
+            phase: 0,
+            date: new Date()
+          }
+      );
     }
 
     return NextResponse.json({ card });
