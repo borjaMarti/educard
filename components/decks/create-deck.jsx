@@ -1,34 +1,34 @@
-'use client'
-import { useState } from 'react';
-import { useParams, useRouter } from 'next/navigation';
+"use client";
+import { useState } from "react";
+import { useParams, useRouter } from "next/navigation";
 
 const CreateDeck = () => {
   const params = useParams();
-  const [text, setText] = useState('');
+  const [text, setText] = useState("");
   const [showCreateDeck, setShowCreateDeck] = useState(false);
   const router = useRouter();
 
   const handleToggleCreateDeck = () => {
     setShowCreateDeck(!showCreateDeck);
-  }
+  };
 
   const handleSubmit = async (e) => {
-      e.preventDefault();
-      const submit = await fetch(`/api/courses/${params.course}/decks`, {
-        method: 'POST',
-        headers: {
-          'Content-type': 'application/json'
-        },
-        body: JSON.stringify({deckName: text})
-      });
-      const data = await submit.json();
-      router.push(`/dashboard/manage/courses/${params.course}/decks/${data._id}`);
-  }
+    e.preventDefault();
+    const submit = await fetch(`/api/courses/${params.course}/decks`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({ deckName: text }),
+    });
+    const data = await submit.json();
+    router.push(`/dashboard/manage/courses/${params.course}/decks/${data._id}`);
+  };
 
   return (
     <>
       <h4 onClick={handleToggleCreateDeck}>Crear Mazo</h4>
-      {showCreateDeck &&
+      {showCreateDeck && (
         <form onSubmit={handleSubmit}>
           <label htmlFor="deck-name">Nombre del Mazo</label>
           <input
@@ -40,7 +40,7 @@ const CreateDeck = () => {
           />
           <button type="submit">Crear Mazo</button>
         </form>
-      }
+      )}
     </>
   );
 };

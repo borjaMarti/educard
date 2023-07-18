@@ -1,9 +1,9 @@
-import { NextResponse } from 'next/server';
-import { getAuth } from '@clerk/nextjs/server';
-import dbConnect from '@/lib/db-connect';
-import Course from '@/models/course';
-import User from '@/models/user';
-import Invitation from '@/models/invitation';
+import { NextResponse } from "next/server";
+import { getAuth } from "@clerk/nextjs/server";
+import dbConnect from "@/lib/db-connect";
+import Course from "@/models/course";
+import User from "@/models/user";
+import Invitation from "@/models/invitation";
 
 // @desc Fetch all of the user's invitations.
 // @route GET /api/user/invitations
@@ -16,11 +16,23 @@ export async function GET(req) {
 
     // From each invitation, we gather the course's owner info,
     // and we include it in the response.
-    const info = await Promise.all(invitations.map(async (invitation) => {
-      const course = await Course.findOne({ _id: invitation.courseId }).select('ownerId courseName').lean();
-      const user = await User.findOne({ clerkId: course.ownerId }).select('email name').lean();
-      return { invitationId: invitation._id, courseId: invitation.courseId, courseName: course.courseName, ownerName: user.name, ownerEmail: user.email };
-    }));
+    const info = await Promise.all(
+      invitations.map(async (invitation) => {
+        const course = await Course.findOne({ _id: invitation.courseId })
+          .select("ownerId courseName")
+          .lean();
+        const user = await User.findOne({ clerkId: course.ownerId })
+          .select("email name")
+          .lean();
+        return {
+          invitationId: invitation._id,
+          courseId: invitation.courseId,
+          courseName: course.courseName,
+          ownerName: user.name,
+          ownerEmail: user.email,
+        };
+      }),
+    );
 
     return NextResponse.json(info);
   } catch (err) {

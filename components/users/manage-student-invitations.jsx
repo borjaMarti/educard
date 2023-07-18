@@ -1,7 +1,7 @@
-'use client'
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { FaCheck, FaXmark } from 'react-icons/fa6';
+"use client";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { FaCheck, FaXmark } from "react-icons/fa6";
 
 const ManageStudentInvitations = ({ invitationsArray }) => {
   const [invitations, setInvitations] = useState(invitationsArray);
@@ -10,13 +10,13 @@ const ManageStudentInvitations = ({ invitationsArray }) => {
 
   const handleToggleInvitations = () => {
     setShowInvitations(!showInvitations);
-  }
+  };
 
   const handleDelete = async (id) => {
     await fetch(`/api/user/invitations/${id}`, {
-      method: 'DELETE'
+      method: "DELETE",
     });
-    const newInvitations = invitations.filter( inv => inv.invitationId !== id);
+    const newInvitations = invitations.filter((inv) => inv.invitationId !== id);
     setInvitations(newInvitations);
   };
 
@@ -25,18 +25,18 @@ const ManageStudentInvitations = ({ invitationsArray }) => {
     console.log(inv);
     try {
       await fetch(`/api/courses/${courseId}`, {
-        method: 'PUT',
+        method: "PUT",
         headers: {
-          'Content-type': 'application/json'
+          "Content-type": "application/json",
         },
         body: JSON.stringify({
-          updateType: 'addStudent'
-        })
+          updateType: "addStudent",
+        }),
       });
-  
+
       await handleDelete(invitationId);
       router.refresh();
-    } catch(err) {
+    } catch (err) {
       console.log(err);
     }
   };
@@ -46,7 +46,7 @@ const ManageStudentInvitations = ({ invitationsArray }) => {
       <h4 onClick={handleToggleInvitations}>Invitaciones</h4>
       {showInvitations && (
         <ul>
-          {invitations.map( (invitation) => (
+          {invitations.map((invitation) => (
             <li key={invitation.invitationId}>
               <div>
                 <span>Clase: {invitation.courseName}</span>
@@ -54,8 +54,18 @@ const ManageStudentInvitations = ({ invitationsArray }) => {
                 <span>Email: {invitation.ownerEmail}</span>
               </div>
               <div>
-                <button onClick={() => handleAccept(invitation)} value={invitation.invitationId}><FaCheck /></button>
-                <button onClick={() => handleDelete(invitation.invitationId)} value={invitation.invitationId}><FaXmark /></button>
+                <button
+                  onClick={() => handleAccept(invitation)}
+                  value={invitation.invitationId}
+                >
+                  <FaCheck />
+                </button>
+                <button
+                  onClick={() => handleDelete(invitation.invitationId)}
+                  value={invitation.invitationId}
+                >
+                  <FaXmark />
+                </button>
               </div>
             </li>
           ))}

@@ -34,7 +34,7 @@
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
 
- html {
+html {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
 }
@@ -200,7 +200,8 @@ textarea {
  */
 
 button,
-input { /* 1 */
+input {
+  /* 1 */
   overflow: visible;
 }
 
@@ -210,7 +211,8 @@ input { /* 1 */
  */
 
 button,
-select { /* 1 */
+select {
+  /* 1 */
   text-transform: none;
 }
 
@@ -380,10 +382,6 @@ template {
  * broken across several lines.
  */
 
-
-
-
-
 /*------------------------------------*\
   #GENERIC
 \*------------------------------------*/
@@ -399,10 +397,6 @@ a {
 a:visited {
   color: LinkText;
 }
-
-
-
-
 
 /*------------------------------------*\
   #BASE

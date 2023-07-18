@@ -3,7 +3,7 @@ const LoadingPage = () => {
     <>
       <span>Cargando . . .</span>
     </>
-  )
+  );
 };
 
 export default LoadingPage;

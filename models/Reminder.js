@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const ReminderSchema = new mongoose.Schema({
   userId: {
@@ -7,24 +7,25 @@ const ReminderSchema = new mongoose.Schema({
   },
   courseId: {
     type: String,
-    required: true
+    required: true,
   },
   deckId: {
     type: String,
-    required: true
+    required: true,
   },
   cardId: {
     type: String,
-    required: true
+    required: true,
   },
   phase: {
     type: Number,
-    required: true
+    required: true,
   },
   date: {
     type: Date,
-    required: true
-  }
+    required: true,
+  },
 });
 
-export default mongoose.models.Reminder || mongoose.model('Reminder', ReminderSchema);
+export default mongoose.models.Reminder ||
+  mongoose.model("Reminder", ReminderSchema);

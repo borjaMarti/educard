@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const CardSchema = new mongoose.Schema({
   courseId: {
@@ -7,20 +7,20 @@ const CardSchema = new mongoose.Schema({
   },
   deckId: {
     type: String,
-    required: true
+    required: true,
   },
   front: {
     type: String,
-    required: true
+    required: true,
   },
   back: {
     type: String,
-    required: true
-  }
+    required: true,
+  },
 });
 
 // Compound index, so front is unique for documents with the same deckId:
 
 CardSchema.index({ deckId: 1, front: 1 }, { unique: true });
 
-export default mongoose.models.Card || mongoose.model('Card', CardSchema);
+export default mongoose.models.Card || mongoose.model("Card", CardSchema);

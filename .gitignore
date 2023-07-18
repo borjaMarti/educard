@@ -14,6 +14,8 @@
 
 # production
 /build
+.prettierignore
+.prettierrc.json
 
 # misc
 .DS_Store

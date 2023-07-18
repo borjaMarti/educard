@@ -4,8 +4,8 @@ async function fetchCards(params) {
   const authResponse = auth();
   const bearerToken = await authResponse.getToken({});
   const response = await fetch(
-      `http://localhost:3000/api/courses/${params.course}/decks/${params.deck}/cards`,
-      {headers: {'Authorization': `Bearer ${bearerToken}`}}
+    `http://localhost:3000/api/courses/${params.course}/decks/${params.deck}/cards`,
+    { headers: { Authorization: `Bearer ${bearerToken}` } },
   );
   const cards = await response.json();
   return cards;
@@ -15,8 +15,8 @@ async function fetchDeckName(params) {
   const authResponse = auth();
   const bearerToken = await authResponse.getToken({});
   const response = await fetch(
-      `http://localhost:3000/api/courses/${params.course}/decks/${params.deck}`,
-      {headers: {'Authorization': `Bearer ${bearerToken}`}}
+    `http://localhost:3000/api/courses/${params.course}/decks/${params.deck}`,
+    { headers: { Authorization: `Bearer ${bearerToken}` } },
   );
   const { deckName } = await response.json();
   return deckName;
@@ -38,7 +38,7 @@ const DeckPage = async ({ params }) => {
         ))}
       </ul>
     </>
-  )
-}
+  );
+};
 
 export default DeckPage;

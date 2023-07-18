@@ -1,11 +1,11 @@
-import { NextResponse } from 'next/server';
-import { getAuth } from '@clerk/nextjs/server';
-import dbConnect from '@/lib/db-connect';
-import Course from '@/models/course';
-import Card from '@/models/card';
-import Reminder from '@/models/reminder';
+import { NextResponse } from "next/server";
+import { getAuth } from "@clerk/nextjs/server";
+import dbConnect from "@/lib/db-connect";
+import Course from "@/models/course";
+import Card from "@/models/card";
+import Reminder from "@/models/reminder";
 
-// @desc Update card (change front and/or back).
+// @desc Update card (change front and/or back)
 // @route PUT /api/courses/[course]/decks/[deck]/cards/[card]
 export async function PUT(req, { params }) {
   await dbConnect();
@@ -15,22 +15,22 @@ export async function PUT(req, { params }) {
   try {
     const { card: cardId } = params;
     const { front, back } = data;
-    // Verify the user making the request is the owner of the card's course.
-    const card = await Card.findOne({ _id: cardId })
-      .select('courseId')
-      .lean();
-    const course = await Course.findOne({ _id: card.courseId, ownerId: userId })
-      .lean();
+    // Verify the user making the request is the owner of the card's course
+    const card = await Card.findOne({ _id: cardId }).select("courseId").lean();
+    const course = await Course.findOne({
+      _id: card.courseId,
+      ownerId: userId,
+    }).lean();
 
     if (!course) {
-      return NextResponse.json({ error: 'Unauthorized access' });
+      return NextResponse.json({ error: "Unauthorized access" });
     }
 
     const updatedCard = await Card.findOneAndUpdate(
-        { _id: cardId },
-        { front: front, back: back },
-        { new: true })
-      .lean();
+      { _id: cardId },
+      { front: front, back: back },
+      { new: true },
+    ).lean();
 
     return NextResponse.json(updatedCard);
   } catch (err) {
@@ -38,7 +38,7 @@ export async function PUT(req, { params }) {
   }
 }
 
-// @desc Delete card (and its reminder).
+// @desc Delete card (and its reminder)
 // @route DELETE /api/courses/[course]/decks/[deck]/cards/[card]
 export async function DELETE(req, { params }) {
   await dbConnect();
@@ -46,13 +46,15 @@ export async function DELETE(req, { params }) {
 
   try {
     const { card: cardId } = params;
-    // Verify the user making the request is the owner of the card's course.
-    const card = await Card.findOne({ _id: cardId }).select('courseId').lean();
-    const course = await Course.findOne({ _id: card.courseId, ownerId: userId })
-      .lean();
+    // Verify the user making the request is the owner of the card's course
+    const card = await Card.findOne({ _id: cardId }).select("courseId").lean();
+    const course = await Course.findOne({
+      _id: card.courseId,
+      ownerId: userId,
+    }).lean();
 
     if (!course) {
-      return NextResponse.json({ error: 'Unauthorized access' });
+      return NextResponse.json({ error: "Unauthorized access" });
     }
 
     const deletedReminders = await Reminder.deleteMany({ cardId: cardId });

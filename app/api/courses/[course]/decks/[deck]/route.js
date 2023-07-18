@@ -1,10 +1,10 @@
-import { NextResponse } from 'next/server';
-import { getAuth } from '@clerk/nextjs/server';
-import dbConnect from '@/lib/db-connect';
-import Course from '@/models/course';
-import Deck from '@/models/deck';
-import Card from '@/models/card';
-import Reminder from '@/models/reminder';
+import { NextResponse } from "next/server";
+import { getAuth } from "@clerk/nextjs/server";
+import dbConnect from "@/lib/db-connect";
+import Course from "@/models/course";
+import Deck from "@/models/deck";
+import Card from "@/models/card";
+import Reminder from "@/models/reminder";
 
 // @desc Fetch deck name.
 // @route GET /api/courses/[course]/decks/[deck]
@@ -13,11 +13,11 @@ export async function GET(req, { params }) {
 
   try {
     const deckId = params.deck;
-    const deck = await Deck.findOne({ _id: deckId }).select('deckName').lean();
+    const deck = await Deck.findOne({ _id: deckId }).select("deckName").lean();
     const { deckName } = deck;
 
     return NextResponse.json({ deckName });
-  } catch(err) {
+  } catch (err) {
     console.log(err);
   }
 }
@@ -34,16 +34,19 @@ export async function PUT(req, { params }) {
     const { content } = data;
 
     // Verify the user making the request is the owner of the deck's course.
-    const deck = await Deck.findOne({ _id: deckId }).select('courseId').lean();
-    const course = await Course.findOne({ _id: deck.courseId, ownerId: userId }).lean();
+    const deck = await Deck.findOne({ _id: deckId }).select("courseId").lean();
+    const course = await Course.findOne({
+      _id: deck.courseId,
+      ownerId: userId,
+    }).lean();
     if (!course) {
-      return NextResponse.json({ error: 'Unauthorized access' });
+      return NextResponse.json({ error: "Unauthorized access" });
     }
 
     const updatedDeck = await Deck.findOneAndUpdate(
-          { _id: deckId },
-          { deckName: content },
-          { new: true }
+      { _id: deckId },
+      { deckName: content },
+      { new: true },
     ).lean();
 
     return NextResponse.json(updatedDeck);
@@ -62,10 +65,13 @@ export async function DELETE(req, { params }) {
     const { deck: deckId } = params;
 
     // Verify the user making the request is the owner of the deck's course.
-    const deck = await Deck.findOne({ _id: deckId }).select('courseId').lean();
-    const course = await Course.findOne({ _id: deck.courseId, ownerId: userId }).lean();
+    const deck = await Deck.findOne({ _id: deckId }).select("courseId").lean();
+    const course = await Course.findOne({
+      _id: deck.courseId,
+      ownerId: userId,
+    }).lean();
     if (!course) {
-      return NextResponse.json({ error: 'Unauthorized access' });
+      return NextResponse.json({ error: "Unauthorized access" });
     }
 
     await Reminder.deleteMany({ deckId: deckId });

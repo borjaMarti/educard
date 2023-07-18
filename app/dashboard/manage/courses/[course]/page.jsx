@@ -11,8 +11,8 @@ async function fetchDecks(params) {
   const authResponse = auth();
   const bearerToken = await authResponse.getToken({});
   const response = await fetch(
-      `http://localhost:3000/api/courses/${params.course}/decks`,
-      {headers: {'Authorization': `Bearer ${bearerToken}`}}
+    `http://localhost:3000/api/courses/${params.course}/decks`,
+    { headers: { Authorization: `Bearer ${bearerToken}` } },
   );
   const decks = await response.json();
   return decks;
@@ -22,8 +22,8 @@ async function fetchCourseInfo(params) {
   const authResponse = auth();
   const bearerToken = await authResponse.getToken({});
   const response = await fetch(
-      `http://localhost:3000/api/courses/${params.course}`,
-      {headers: {'Authorization': `Bearer ${bearerToken}`}}
+    `http://localhost:3000/api/courses/${params.course}`,
+    { headers: { Authorization: `Bearer ${bearerToken}` } },
   );
   const { courseName, students } = await response.json();
   return { courseName, students };
@@ -33,8 +33,8 @@ async function fetchCourseInvitations(params) {
   const authResponse = auth();
   const bearerToken = await authResponse.getToken({});
   const response = await fetch(
-      `http://localhost:3000/api/courses/${params.course}/invitations`,
-      {headers: {'Authorization': `Bearer ${bearerToken}`}}
+    `http://localhost:3000/api/courses/${params.course}/invitations`,
+    { headers: { Authorization: `Bearer ${bearerToken}` } },
   );
   const invitations = await response.json();
   return invitations;
@@ -52,7 +52,9 @@ const ManageCoursePage = async ({ params }) => {
       <ul>
         {decks.map((deck) => (
           <li key={deck._id}>
-            <Link href={`/dashboard/manage/courses/${params.course}/decks/${deck._id}`}>
+            <Link
+              href={`/dashboard/manage/courses/${params.course}/decks/${deck._id}`}
+            >
               <h3>{deck.deckName}</h3>
             </Link>
           </li>
@@ -60,10 +62,11 @@ const ManageCoursePage = async ({ params }) => {
         <CreateDeck />
       </ul>
       <h2>Alumnos</h2>
-      { invitations[0] ?
+      {invitations[0] ? (
         <ManageCourseInvitations invitationsArray={invitations} />
-        : ''
-      }
+      ) : (
+        ""
+      )}
       <ul>
         {students.map((student) => (
           <li key={student.studentId}>
@@ -74,7 +77,7 @@ const ManageCoursePage = async ({ params }) => {
         <InviteStudent />
       </ul>
     </>
-  )
-}
+  );
+};
 
 export default ManageCoursePage;

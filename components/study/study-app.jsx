@@ -1,12 +1,14 @@
-'use client'
-import { useState } from 'react';
-import { useParams, useRouter } from 'next/navigation';
+"use client";
+import { useState } from "react";
+import { useParams, useRouter } from "next/navigation";
 
 const StudyApp = ({ cards, focus }) => {
   const params = useParams();
 
   const [studyCards, setStudyCards] = useState(cards);
-  const [currentCard, setCurrentCard] = useState(studyCards[studyCards.length - 1]);
+  const [currentCard, setCurrentCard] = useState(
+    studyCards[studyCards.length - 1],
+  );
   const [front, setFront] = useState(true);
   const [blinds, setBlinds] = useState(true);
   const router = useRouter();
@@ -15,17 +17,20 @@ const StudyApp = ({ cards, focus }) => {
 
   const handleToggleFront = () => {
     setFront(!front);
-  }
+  };
 
   const handleRepeat = async (id) => {
     if (focus) {
-      await fetch(`/api/courses/${params.course}/decks/${params.deck}/cards/${id}/reminder`, {
-        method: 'PUT',
-        headers: {
-          'Content-type': 'application/json'
+      await fetch(
+        `/api/courses/${params.course}/decks/${params.deck}/cards/${id}/reminder`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({ result: 0 }),
         },
-        body: JSON.stringify({result: 0})
-      });
+      );
     }
 
     let newCards = [...studyCards];
@@ -34,17 +39,20 @@ const StudyApp = ({ cards, focus }) => {
     setStudyCards(newCards);
     setCurrentCard(newCards[newCards.length - 1]);
     setFront(!front);
-  }
+  };
 
   const handleGood = async (id) => {
     if (focus) {
-      await fetch(`/api/courses/${params.course}/decks/${params.deck}/cards/${id}/reminder`, {
-        method: 'PUT',
-        headers: {
-          'Content-type': 'application/json'
+      await fetch(
+        `/api/courses/${params.course}/decks/${params.deck}/cards/${id}/reminder`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({ result: 1 }),
         },
-        body: JSON.stringify({result: 1})
-      });
+      );
     }
 
     if (studyCards.length === 1) {
@@ -59,33 +67,33 @@ const StudyApp = ({ cards, focus }) => {
     setStudyCards(newCards);
     setCurrentCard(newCards[newCards.length - 1]);
     setFront(!front);
-  }
+  };
 
   return (
     <>
-      {blinds &&
+      {(blinds && (
         <>
-          <span>{totalCards - studyCards.length + 1} / {totalCards}</span>
-          {front &&
+          <span>
+            {totalCards - studyCards.length + 1} / {totalCards}
+          </span>
+          {front && (
             <>
               <h2>{currentCard.front}</h2>
               <button onClick={handleToggleFront}>Mostrar Respuesta</button>
             </>
-          }
+          )}
 
-          {!front &&
+          {!front && (
             <>
               <h2>{currentCard.back}</h2>
-              <button onClick={() => handleRepeat(currentCard._id)}>Repetir</button>
+              <button onClick={() => handleRepeat(currentCard._id)}>
+                Repetir
+              </button>
               <button onClick={() => handleGood(currentCard._id)}>Bien</button>
             </>
-          }
+          )}
         </>
-        ||
-        <span>
-          ¡Terminaste!
-        </span>
-      }
+      )) || <span>¡Terminaste!</span>}
     </>
   );
 };

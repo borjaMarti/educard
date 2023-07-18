@@ -1,12 +1,12 @@
-import { headers } from 'next/headers';
-import { NextResponse } from 'next/server';
-import { Webhook } from 'svix';
-import dbConnect from '@/lib/db-connect';
-import Course from '@/models/course';
-import Deck from '@/models/deck';
-import Card from '@/models/card';
-import Reminder from '@/models/reminder';
-import User from '@/models/user';
+import { headers } from "next/headers";
+import { NextResponse } from "next/server";
+import { Webhook } from "svix";
+import dbConnect from "@/lib/db-connect";
+import Course from "@/models/course";
+import Deck from "@/models/deck";
+import Card from "@/models/card";
+import Reminder from "@/models/reminder";
+import User from "@/models/user";
 
 const webhookSecret = process.env.WEBHOOK_SECRET;
 
@@ -20,18 +20,16 @@ export async function POST(req) {
   // We use svix to verify the webhook's validity against our secret.
   // First we extract the relevant info from the headers:
   const heads = {
-    "svix-id": headersList.get('svix-id'),
-    "svix-timestamp": headersList.get('svix-timestamp'),
-    "svix-signature": headersList.get('svix-signature'),
+    "svix-id": headersList.get("svix-id"),
+    "svix-timestamp": headersList.get("svix-timestamp"),
+    "svix-signature": headersList.get("svix-signature"),
   };
   // We create a new webhook with our secret.
   const wh = new Webhook(webhookSecret);
   let msg;
   // Then we verify the headers and payload.
   try {
-    msg = await wh.verify(
-        JSON.stringify(payload),
-        heads);
+    msg = await wh.verify(JSON.stringify(payload), heads);
   } catch (err) {
     console.error(err.message);
     return NextResponse.json({}, { status: 400 });
@@ -49,47 +47,43 @@ export async function POST(req) {
   // We repeat data binding for each event type because the 'user.deleted'
   // hook sends less data, causing errors if we try to bind the missing data.
   try {
-    if (eventType === 'user.created') {
+    if (eventType === "user.created") {
       // Bind user data.
       const {
         id: clerkId,
-        email_addresses: [
-            {
-              email_address: email
-            },
-        ],
+        email_addresses: [{ email_address: email }],
         first_name: firstName,
-        last_name: lastName
+        last_name: lastName,
       } = msg.data;
       // If both names are provided, use them.
       const fullName = lastName ? `${firstName} ${lastName}` : firstName;
 
-      user = await User.create({ email: email, name: fullName, clerkId: clerkId });
-    } else if (eventType === 'user.updated') {
+      user = await User.create({
+        email: email,
+        name: fullName,
+        clerkId: clerkId,
+      });
+    } else if (eventType === "user.updated") {
       // Bind user data.
       const {
         id: clerkId,
-        email_addresses: [
-            {
-              email_address: email
-            },
-        ],
+        email_addresses: [{ email_address: email }],
         first_name: firstName,
-        last_name: lastName
+        last_name: lastName,
       } = msg.data;
       // If both names are provided, use them.
       const fullName = lastName ? `${firstName} ${lastName}` : firstName;
 
       user = await User.findOneAndUpdate(
-        { clerkId: clerkId},
-        { email: email,
-          name: fullName
-        },
-        { new: true }
+        { clerkId: clerkId },
+        { email: email, name: fullName },
+        { new: true },
       ).lean();
-    } else if (eventType === 'user.deleted') {
+    } else if (eventType === "user.deleted") {
       const { id: clerkId } = msg.data;
-      const courses = await Course.find({ ownerId: clerkId }).select('_id').lean();
+      const courses = await Course.find({ ownerId: clerkId })
+        .select("_id")
+        .lean();
 
       for (let course of courses) {
         await Reminder.deleteMany({ courseId: course._id });
@@ -102,7 +96,7 @@ export async function POST(req) {
     }
 
     return NextResponse.json(user);
-  } catch(err) {
+  } catch (err) {
     console.log(err);
   }
 }

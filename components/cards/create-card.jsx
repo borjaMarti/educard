@@ -1,37 +1,40 @@
-'use client'
-import { useState } from 'react';
-import { useParams, useRouter } from 'next/navigation';
+"use client";
+import { useState } from "react";
+import { useParams, useRouter } from "next/navigation";
 
 const CreateCard = () => {
   const params = useParams();
-  const [front, setFront] = useState('');
-  const [back, setBack] = useState('');
+  const [front, setFront] = useState("");
+  const [back, setBack] = useState("");
   const [showCreateCard, setShowCreateCard] = useState(false);
   const router = useRouter();
 
   const handleToggleCreateCard = () => {
     setShowCreateCard(!showCreateCard);
-  }
+  };
 
   const handleSubmit = async (e) => {
-      e.preventDefault();
-      const submit = await fetch(`/api/courses/${params.course}/decks/${params.deck}/cards`, {
-        method: 'POST',
+    e.preventDefault();
+    const submit = await fetch(
+      `/api/courses/${params.course}/decks/${params.deck}/cards`,
+      {
+        method: "POST",
         headers: {
-          'Content-type': 'application/json'
+          "Content-type": "application/json",
         },
         body: JSON.stringify({
           front: front,
-          back: back
-        })
-      });
-      router.refresh();
-  }
+          back: back,
+        }),
+      },
+    );
+    router.refresh();
+  };
 
   return (
     <>
       <h4 onClick={handleToggleCreateCard}>Crear Carta</h4>
-      {showCreateCard &&
+      {showCreateCard && (
         <form onSubmit={handleSubmit}>
           <label htmlFor="card-front">Anverso</label>
           <input
@@ -51,7 +54,7 @@ const CreateCard = () => {
           />
           <button type="submit">Crear Carta</button>
         </form>
-      }
+      )}
     </>
   );
 };

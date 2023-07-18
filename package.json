@@ -17,5 +17,8 @@
     "react-dom": "18.2.0",
     "react-icons": "^4.10.1",
     "svix": "^1.4.12"
+  },
+  "devDependencies": {
+    "prettier": "3.0.0"
   }
 }

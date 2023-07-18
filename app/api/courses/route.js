@@ -1,8 +1,8 @@
-import { NextResponse } from 'next/server';
-import { getAuth } from '@clerk/nextjs/server';
-import dbConnect from '@/lib/db-connect';
-import Course from '@/models/course';
-import Reminder from '@/models/reminder';
+import { NextResponse } from "next/server";
+import { getAuth } from "@clerk/nextjs/server";
+import dbConnect from "@/lib/db-connect";
+import Course from "@/models/course";
+import Reminder from "@/models/reminder";
 
 // @desc Create new course.
 // @route POST /api/courses
@@ -12,10 +12,13 @@ export async function POST(req) {
   const data = await req.json();
 
   try {
-    const course = await Course.create({ courseName: data.name, ownerId: userId });
+    const course = await Course.create({
+      courseName: data.name,
+      ownerId: userId,
+    });
 
     return NextResponse.json(course);
-  } catch(err) {
+  } catch (err) {
     console.log(err);
   }
 }
@@ -27,8 +30,12 @@ export async function GET(req) {
   const { userId } = getAuth(req);
 
   try {
-    const ownedCourses = await Course.find({ ownerId: userId }).select('courseName').lean();
-    let studentCourses = await Course.find({ studentIds: userId }).select('courseName').lean();
+    const ownedCourses = await Course.find({ ownerId: userId })
+      .select("courseName")
+      .lean();
+    let studentCourses = await Course.find({ studentIds: userId })
+      .select("courseName")
+      .lean();
 
     const currentDate = new Date();
 
@@ -37,23 +44,30 @@ export async function GET(req) {
     // fetching any associated reminders, and comparing their date against
     // the current date. For each reminder which date's passed, we increment
     // the newly declared activeReminder property of the course.
-    studentCourses = await Promise.all(studentCourses.map(async (studentCourse) => {
-      const reminders = await Reminder.find({ courseId: studentCourse._id, userId: userId }).select('date').lean();
-      studentCourse.activeReminders = 0;
+    studentCourses = await Promise.all(
+      studentCourses.map(async (studentCourse) => {
+        const reminders = await Reminder.find({
+          courseId: studentCourse._id,
+          userId: userId,
+        })
+          .select("date")
+          .lean();
+        studentCourse.activeReminders = 0;
 
-      for (let reminder of reminders) {
-        if (currentDate > reminder.date) studentCourse.activeReminders++;
-      }
-      return studentCourse;
-    }));
+        for (let reminder of reminders) {
+          if (currentDate > reminder.date) studentCourse.activeReminders++;
+        }
+        return studentCourse;
+      }),
+    );
 
     const courses = {
       ownedCourses,
-      studentCourses
+      studentCourses,
     };
 
     return NextResponse.json(courses);
-  } catch(err) {
+  } catch (err) {
     console.log(err);
   }
 }
