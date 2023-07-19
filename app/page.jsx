@@ -1,7 +1,7 @@
 const HomePage = async () => {
   return (
     <>
-      <h1>TEST</h1>
+      <h1>Welcome to Educard!</h1>
     </>
   );
 };
