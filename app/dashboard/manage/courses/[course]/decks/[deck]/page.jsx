@@ -1,6 +1,7 @@
 import { auth } from "@clerk/nextjs";
 import { FaGear } from "react-icons/fa";
 import CreateCard from "@/components/cards/create-card";
+import ManageDeck from "@/components/decks/manage-deck";
 
 async function fetchCards(params) {
   const authResponse = auth();
@@ -31,6 +32,7 @@ const ManageDeckPage = async ({ params }) => {
   return (
     <>
       <h2>{deckName}</h2>
+      <ManageDeck courseId={params.course} deckId={params.deck} />
       <ul>
         {cards.map((card) => (
           <li key={card._id}>

@@ -24,6 +24,7 @@ const ManageCourse = ({ courseId }) => {
       });
     }
 
+    setShowManageCourse(!showManageCourse);
     router.refresh();
   };
 

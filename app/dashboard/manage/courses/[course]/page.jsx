@@ -6,6 +6,7 @@ import CreateDeck from "@/components/decks/create-deck";
 import InviteStudent from "@/components/courses/invite-student";
 import ManageCourseInvitations from "@/components/courses/manage-course-invitations";
 import ManageCourse from "@/components/courses/manage-course";
+import ManageDeck from "@/components/decks/manage-deck";
 
 async function fetchDecks(params) {
   const authResponse = auth();
@@ -57,6 +58,7 @@ const ManageCoursePage = async ({ params }) => {
             >
               <h3>{deck.deckName}</h3>
             </Link>
+            <ManageDeck courseId={params.course} deckId={deck._id} />
           </li>
         ))}
         <CreateDeck />

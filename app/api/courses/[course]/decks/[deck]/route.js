@@ -39,6 +39,7 @@ export async function PUT(req, { params }) {
       _id: deck.courseId,
       ownerId: userId,
     }).lean();
+
     if (!course) {
       return NextResponse.json({ error: "Unauthorized access" });
     }
