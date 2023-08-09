@@ -4,6 +4,11 @@ import { useParams, useRouter } from "next/navigation";
 
 const StudyApp = ({ cards, focus }) => {
   const params = useParams();
+  const router = useRouter();
+
+  if (cards[0] === undefined) {
+    return router.replace(`/dashboard/courses/${params.course}`);
+  }
 
   const [studyCards, setStudyCards] = useState(cards);
   const [currentCard, setCurrentCard] = useState(
@@ -11,7 +16,6 @@ const StudyApp = ({ cards, focus }) => {
   );
   const [front, setFront] = useState(true);
   const [blinds, setBlinds] = useState(true);
-  const router = useRouter();
 
   const totalCards = cards.length;
 
