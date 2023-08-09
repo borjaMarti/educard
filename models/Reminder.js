@@ -27,5 +27,9 @@ const ReminderSchema = new mongoose.Schema({
   },
 });
 
+// Compound index, so cardId is unique for documents with the same userId:
+
+ReminderSchema.index({ userId: 1, cardId: 1 }, { unique: true });
+
 export default mongoose.models.Reminder ||
   mongoose.model("Reminder", ReminderSchema);

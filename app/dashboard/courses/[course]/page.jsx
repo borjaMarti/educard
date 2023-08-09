@@ -1,6 +1,7 @@
 import { auth } from "@clerk/nextjs";
 import { FaFolderOpen, FaGear } from "react-icons/fa";
 import Link from "next/link";
+import CourseInfo from "@/components/users/course-info";
 
 async function fetchDecks(params) {
   const authResponse = auth();
@@ -64,6 +65,8 @@ const CoursePage = async ({ params }) => {
 
           <span>{course.activeReminders}</span>
 
+          <CourseInfo course={course} />
+
           <ul>
             {decks.map((deck) => (
               <>
@@ -86,6 +89,7 @@ const CoursePage = async ({ params }) => {
       ) : (
         <>
           <h2>{course.courseName}</h2>
+          <CourseInfo course={course} />
           {check ? (
             <span>¡No hay cartas por repasar!</span>
           ) : (

@@ -7,11 +7,7 @@ const RemoveStudent = ({ studentId }) => {
   const router = useRouter();
 
   const handleDelete = async (studentId) => {
-    if (
-      confirm(
-        "¿Seguro que quieres echar a este estudiante? Perderá todos sus recordatorios.",
-      )
-    ) {
+    if (confirm("¿Seguro que quieres echar a este estudiante?")) {
       await fetch(`/api/courses/${params.course}`, {
         method: "PUT",
         headers: {
