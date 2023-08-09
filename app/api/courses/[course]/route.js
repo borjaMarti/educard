@@ -47,7 +47,7 @@ export async function PUT(req, { params }) {
         updatedCourse = await Course.findOneAndUpdate(
           { _id: courseId },
           { courseName: content },
-          { new: true },
+          { new: true, runValidators: true },
         ).lean();
         break;
       case "addStudent":

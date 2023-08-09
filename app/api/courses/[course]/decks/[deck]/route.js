@@ -47,7 +47,7 @@ export async function PUT(req, { params }) {
     const updatedDeck = await Deck.findOneAndUpdate(
       { _id: deckId },
       { deckName: content },
-      { new: true },
+      { new: true, runValidators: true },
     ).lean();
 
     return NextResponse.json(updatedDeck);

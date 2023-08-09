@@ -29,7 +29,7 @@ export async function PUT(req, { params }) {
     const updatedCard = await Card.findOneAndUpdate(
       { _id: cardId },
       { front: front, back: back },
-      { new: true },
+      { new: true, runValidators: true },
     ).lean();
 
     return NextResponse.json(updatedCard);

@@ -2,6 +2,7 @@ import { auth } from "@clerk/nextjs";
 import { FaGear } from "react-icons/fa";
 import CreateCard from "@/components/cards/create-card";
 import ManageDeck from "@/components/decks/manage-deck";
+import ManageCard from "@/components/cards/manage-card";
 
 async function fetchCards(params) {
   const authResponse = auth();
@@ -38,6 +39,7 @@ const ManageDeckPage = async ({ params }) => {
           <li key={card._id}>
             <p>Anverso: {card.front}</p>
             <p>Reverso: {card.back}</p>
+            <ManageCard cardId={card._id} />
           </li>
         ))}
         <CreateCard />
