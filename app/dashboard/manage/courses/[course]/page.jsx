@@ -7,6 +7,7 @@ import InviteStudent from "@/components/courses/invite-student";
 import ManageCourseInvitations from "@/components/courses/manage-course-invitations";
 import ManageCourse from "@/components/courses/manage-course";
 import ManageDeck from "@/components/decks/manage-deck";
+import RemoveStudent from "@/components/courses/remove-student";
 
 async function fetchDecks(params) {
   const authResponse = auth();
@@ -74,6 +75,7 @@ const ManageCoursePage = async ({ params }) => {
           <li key={student.studentId}>
             <h3>{student.name}</h3>
             <h3>{student.email}</h3>
+            <RemoveStudent studentId={student.studentId} />
           </li>
         ))}
         <InviteStudent />
