@@ -68,22 +68,20 @@ const CoursePage = async ({ params }) => {
           <CourseInfo course={course} />
 
           <ul>
-            {decks.map((deck) => (
-              <>
-                {deck.activeReminders ? (
-                  <li key={deck._id}>
-                    <Link
-                      href={`/study/focus/courses/${params.course}/decks/${deck._id}`}
-                    >
-                      <h3>{deck.deckName}</h3>
-                    </Link>
-                    <span>{deck.activeReminders}</span>
-                  </li>
-                ) : (
-                  ""
-                )}
-              </>
-            ))}
+            {decks.map((deck) =>
+              deck.activeReminders ? (
+                <li key={deck._id}>
+                  <Link
+                    href={`/study/focus/courses/${params.course}/decks/${deck._id}`}
+                  >
+                    <h3>{deck.deckName}</h3>
+                  </Link>
+                  <span>{deck.activeReminders}</span>
+                </li>
+              ) : (
+                ""
+              ),
+            )}
           </ul>
         </>
       ) : (
@@ -105,26 +103,24 @@ const CoursePage = async ({ params }) => {
           </Link>
 
           <ul>
-            {decks.map((deck) => (
-              <>
-                {deck.check ? (
-                  <li key={deck._id}>
-                    <Link
-                      href={`/study/free/courses/${params.course}/decks/${deck._id}`}
-                    >
-                      <h3>{deck.deckName}</h3>
-                    </Link>
-                    <Link
-                      href={`/dashboard/courses/${params.course}/decks/${deck._id}`}
-                    >
-                      <FaFolderOpen />
-                    </Link>
-                  </li>
-                ) : (
-                  ""
-                )}
-              </>
-            ))}
+            {decks.map((deck) =>
+              deck.check ? (
+                <li key={deck._id}>
+                  <Link
+                    href={`/study/free/courses/${params.course}/decks/${deck._id}`}
+                  >
+                    <h3>{deck.deckName}</h3>
+                  </Link>
+                  <Link
+                    href={`/dashboard/courses/${params.course}/decks/${deck._id}`}
+                  >
+                    <FaFolderOpen />
+                  </Link>
+                </li>
+              ) : (
+                ""
+              ),
+            )}
           </ul>
         </>
       ) : (
