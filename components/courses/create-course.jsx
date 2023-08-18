@@ -1,14 +1,18 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Modal from "../ui/modal";
 
 const CreateCourse = () => {
   const [text, setText] = useState("");
-  const [showCreateCourse, setShowCreateCourse] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
 
-  const handleToggleCreateCourse = () => {
-    setShowCreateCourse(!showCreateCourse);
+  const openModal = () => {
+    setIsOpen(true);
+  };
+  const closeModal = () => {
+    setIsOpen(false);
   };
 
   const handleSubmit = async (e) => {
@@ -26,8 +30,8 @@ const CreateCourse = () => {
 
   return (
     <>
-      <h4 onClick={handleToggleCreateCourse}>Crear Curso</h4>
-      {showCreateCourse && (
+      <button onClick={openModal}>Crear Curso</button>
+      <Modal onClose={closeModal} open={isOpen}>
         <form onSubmit={handleSubmit}>
           <label htmlFor="course-name">Nombre del Curso</label>
           <input
@@ -39,7 +43,8 @@ const CreateCourse = () => {
           />
           <button type="submit">Crear Curso</button>
         </form>
-      )}
+        <button onClick={closeModal}>Close</button>
+      </Modal>
     </>
   );
 };
