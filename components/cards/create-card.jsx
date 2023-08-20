@@ -1,20 +1,26 @@
 "use client";
 import { useState } from "react";
 import { useParams, useRouter } from "next/navigation";
+import Modal from "@/components/ui/modal";
 
 const CreateCard = () => {
   const params = useParams();
   const [front, setFront] = useState("");
   const [back, setBack] = useState("");
-  const [showCreateCard, setShowCreateCard] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const router = useRouter();
 
-  const handleToggleCreateCard = () => {
-    setShowCreateCard(!showCreateCard);
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitted(true);
     const submit = await fetch(
       `/api/courses/${params.course}/decks/${params.deck}/cards`,
       {
@@ -29,12 +35,13 @@ const CreateCard = () => {
       },
     );
     router.refresh();
+    setIsSubmitted(false);
   };
 
   return (
     <>
-      <h4 onClick={handleToggleCreateCard}>Crear Carta</h4>
-      {showCreateCard && (
+      <button onClick={openModal}>Crear Carta</button>
+      <Modal title="Crear Carta" onClose={closeModal} open={isModalOpen}>
         <form onSubmit={handleSubmit}>
           <label htmlFor="card-front">Anverso</label>
           <input
@@ -43,6 +50,7 @@ const CreateCard = () => {
             value={front}
             placeholder="Anverso de la carta"
             onChange={(e) => setFront(e.target.value)}
+            disabled={isSubmitted}
           />
           <label htmlFor="card-back">Reverso</label>
           <input
@@ -51,10 +59,13 @@ const CreateCard = () => {
             value={back}
             placeholder="Reverso de la carta"
             onChange={(e) => setBack(e.target.value)}
+            disabled={isSubmitted}
           />
-          <button type="submit">Crear Carta</button>
+          <button type="submit" disabled={isSubmitted}>
+            Crear Carta
+          </button>
         </form>
-      )}
+      </Modal>
     </>
   );
 };
