@@ -75,7 +75,10 @@ const ManageCoursePage = async ({ params }) => {
           <li key={student.studentId}>
             <h3>{student.name}</h3>
             <h3>{student.email}</h3>
-            <RemoveStudent studentId={student.studentId} />
+            <RemoveStudent
+              studentId={student.studentId}
+              studentEmail={student.email}
+            />
           </li>
         ))}
         <InviteStudent />
