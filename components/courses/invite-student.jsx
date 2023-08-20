@@ -1,15 +1,21 @@
 "use client";
 import { useState } from "react";
-import { useParams, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
+import { FaPlus } from "react-icons/fa6";
+import Modal from "@/components/ui/modal";
 
 const InviteStudent = () => {
   const params = useParams();
   const [text, setText] = useState("");
-  const [showInviteStudent, setShowInviteStudent] = useState(false);
-  const router = useRouter();
+  const [sentInvitation, setSentInvitation] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleToggleInviteStudent = () => {
-    setShowInviteStudent(!showInviteStudent);
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+  const closeModal = () => {
+    setSentInvitation("");
+    setIsModalOpen(false);
   };
 
   const handleSubmit = async (e) => {
@@ -21,26 +27,45 @@ const InviteStudent = () => {
       },
       body: JSON.stringify({ email: text }),
     });
+    const data = await submit.json();
+
+    // TODO: Handle already existing invitation
+
+    if (data?.error === "Inexistent") {
+      setSentInvitation(
+        `El correo ${text} no existe en nuestra base de datos.`,
+      );
+    } else if (data?.error === "Enroled") {
+      setSentInvitation(`${text} ya es parte del curso.`);
+    } else {
+      setSentInvitation(`Invitación enviada a ${text}`);
+    }
     setText("");
-    router.refresh();
   };
 
   return (
     <>
-      <h4 onClick={handleToggleInviteStudent}>Invitar Alumno</h4>
-      {showInviteStudent && (
+      <button onClick={openModal}>
+        <FaPlus /> Invitar Estudiante
+      </button>
+      <Modal
+        title="Invitar Estudiantes"
+        onClose={closeModal}
+        open={isModalOpen}
+      >
+        <span>{sentInvitation}</span>
         <form onSubmit={handleSubmit}>
-          <label htmlFor="student-email">Email del Alumno</label>
+          <label htmlFor="student-email">Email del estudiante</label>
           <input
             id="student-email"
             type="text"
             value={text}
-            placeholder="Email del Alumno"
+            placeholder="Email del estudiante"
             onChange={(e) => setText(e.target.value)}
           />
           <button type="submit">Enviar Invitación</button>
         </form>
-      )}
+      </Modal>
     </>
   );
 };
