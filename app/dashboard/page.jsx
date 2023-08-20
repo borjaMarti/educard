@@ -55,7 +55,10 @@ const DashboardPage = async () => {
             <Link href={`/dashboard/manage/courses/${course._id}`}>
               <h3>{course.courseName}</h3>
             </Link>
-            <ManageCourse courseId={course._id} />
+            <ManageCourse
+              courseId={course._id}
+              courseName={course.courseName}
+            />
           </li>
         ))}
         <CreateCourse />
