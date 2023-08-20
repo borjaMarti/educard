@@ -26,12 +26,14 @@ export async function POST(req, { params }) {
     }
 
     // We fetch the user's clerkId from the body's email.
-    const { clerkId: userId } = await User.findOne({ email: email })
+    const invitedId = await User.findOne({ email: email })
       .select("clerkId")
       .lean();
-    if (!userId) {
-      return NextResponse.json({ error: "User doesn't exist" });
+    if (!invitedId) {
+      return NextResponse.json({ error: "Inexistent" });
     }
+
+    const { clerkId: userId } = invitedId;
 
     // We check the user isn't already enroled.
     const enroled = await Course.findOne({
@@ -39,7 +41,7 @@ export async function POST(req, { params }) {
       studentIds: userId,
     }).lean();
     if (enroled) {
-      return NextResponse.json({ error: "User is student already" });
+      return NextResponse.json({ error: "Enroled" });
     }
 
     const invitation = await Invitation.create({
