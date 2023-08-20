@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-const Confirm = ({ open, onClose, onConfirm, children, title, ...props }) => {
+const Confirm = ({ open, onClose, onConfirm, children, title }) => {
   const confirmRef = useRef(null);
   const cancelRef = useRef(null);
 

@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef } from "react";
 import { FaXmark } from "react-icons/fa6";
 
-const Modal = ({ open, onClose, children, title, ...props }) => {
+const Modal = ({ open, onClose, children, title }) => {
   const modalRef = useRef(null);
 
   // Closes when clicking outside
