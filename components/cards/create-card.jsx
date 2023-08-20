@@ -5,11 +5,11 @@ import Modal from "@/components/ui/modal";
 
 const CreateCard = () => {
   const params = useParams();
+  const router = useRouter();
   const [front, setFront] = useState("");
   const [back, setBack] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const router = useRouter();
 
   const openModal = () => {
     setIsModalOpen(true);

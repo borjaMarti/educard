@@ -37,6 +37,7 @@ const ManageDeck = ({ courseId, deckId, deckName }) => {
       body: JSON.stringify({ content: text }),
     });
 
+    setIsSubmitted(false);
     closeModal();
     router.refresh();
   };

@@ -43,7 +43,11 @@ const ManageDeckPage = async ({ params }) => {
           <li key={card._id}>
             <p>Anverso: {card.front}</p>
             <p>Reverso: {card.back}</p>
-            <ManageCard cardId={card._id} />
+            <ManageCard
+              cardId={card._id}
+              cardFront={card.front}
+              cardBack={card.back}
+            />
           </li>
         ))}
         <CreateCard />

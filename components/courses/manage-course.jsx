@@ -37,6 +37,7 @@ const ManageCourse = ({ courseId, courseName }) => {
       body: JSON.stringify({ updateType: "changeName", content: text }),
     });
 
+    setIsSubmitted(false);
     closeModal();
     router.refresh();
   };
