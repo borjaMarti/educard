@@ -9,6 +9,7 @@ const ManageCourse = ({ courseId, courseName }) => {
   const [text, setText] = useState(courseName);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const router = useRouter();
 
   const openModal = () => {
@@ -27,6 +28,7 @@ const ManageCourse = ({ courseId, courseName }) => {
 
   const handleEditCourse = async (e) => {
     e.preventDefault();
+    setIsSubmitted(true);
     const submit = await fetch(`/api/courses/${courseId}`, {
       method: "PUT",
       headers: {
@@ -65,8 +67,9 @@ const ManageCourse = ({ courseId, courseName }) => {
             value={text}
             placeholder={courseName}
             onChange={(e) => setText(e.target.value)}
+            disabled={isSubmitted}
           />
-          <button type="submit">
+          <button type="submit" disabled={isSubmitted}>
             <FaRegPenToSquare /> Editar Nombre
           </button>
         </form>

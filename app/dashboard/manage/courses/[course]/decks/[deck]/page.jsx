@@ -33,7 +33,11 @@ const ManageDeckPage = async ({ params }) => {
   return (
     <>
       <h2>{deckName}</h2>
-      <ManageDeck courseId={params.course} deckId={params.deck} />
+      <ManageDeck
+        courseId={params.course}
+        deckId={params.deck}
+        deckName={deckName}
+      />
       <ul>
         {cards.map((card) => (
           <li key={card._id}>
