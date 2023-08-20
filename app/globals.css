@@ -5,19 +5,18 @@
  * Normalize.css........Level playing field.
  *
  * GENERIC
+ * Body.................Border-box by default.
  * List elements........Do away with type.
  * Links................Default link styling.
  *
  * BASE
  * Headings.............H1–H6 styles.
  *
- * OBJECTS
- * Wrappers.............Wrapping and constraining elements.
- *
  * COMPONENTS
  * Page-head............The main page header.
  * Page-foot............The main page footer.
  * Buttons..............Button elements.
+ * Modals...............Modal-type dialogs.
  */
 
 /*------------------------------------*\
@@ -376,15 +375,13 @@ template {
   display: none;
 }
 
-/**
- * I am a long-form comment. I describe, in detail, the CSS that follows. I am
- * such a long comment that I easily break the 80 character limit, so I am
- * broken across several lines.
- */
-
 /*------------------------------------*\
   #GENERIC
 \*------------------------------------*/
+
+body {
+  box-sizing: border-box;
+}
 
 li {
   list-style-type: none;
@@ -401,3 +398,29 @@ a:visited {
 /*------------------------------------*\
   #BASE
 \*------------------------------------*/
+
+.whatever {
+  color: black;
+}
+
+/*------------------------------------*\
+  #COMPONENTS
+\*------------------------------------*/
+
+.dialog {
+  padding: 0;
+}
+
+.dialog__container {
+  padding: 2rem;
+}
+
+.dialog__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dialog__alert-controls {
+  display: flex;
+  justify-content: space-evenly;
+}
