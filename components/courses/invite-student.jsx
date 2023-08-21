@@ -37,6 +37,8 @@ const InviteStudent = () => {
       );
     } else if (data?.error === "Enroled") {
       setSentInvitation(`${text} ya es parte del curso.`);
+    } else if (data?.error === "Invited") {
+      setSentInvitation(`Ya se ha invitado a ${text} anteriormente.`);
     } else {
       setSentInvitation(`Invitación enviada a ${text}`);
     }
@@ -63,7 +65,9 @@ const InviteStudent = () => {
             placeholder="Email del estudiante"
             onChange={(e) => setText(e.target.value)}
           />
-          <button type="submit">Enviar Invitación</button>
+          <button type="submit" disabled={!text}>
+            Enviar Invitación
+          </button>
         </form>
       </Modal>
     </>
