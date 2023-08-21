@@ -162,13 +162,14 @@ export async function DELETE(req, { params }) {
     }
 
     await Reminder.deleteMany({ courseId: courseId });
-    const deletedCards = await Card.deleteMany({ courseId: courseId });
-    const deletedDeck = await Deck.deleteMany({ courseId: courseId });
+    await Invitation.deleteMany({ courseId: courseId });
+    await Card.deleteMany({ courseId: courseId });
+    await Deck.deleteMany({ courseId: courseId });
     const deletedCourse = await Course.findOneAndDelete({
       _id: courseId,
     }).lean();
 
-    return NextResponse.json({ deletedCourse, deletedDeck, deletedCards });
+    return NextResponse.json({ deletedCourse });
   } catch (err) {
     console.log(err);
   }
