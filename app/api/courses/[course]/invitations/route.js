@@ -44,6 +44,16 @@ export async function POST(req, { params }) {
       return NextResponse.json({ error: "Enroled" });
     }
 
+    // Check an invitation doesn't already exists.
+    const existingInvitation = await Invitation.findOne({
+      courseId: courseId,
+      userId: userId,
+    }).lean();
+    if (existingInvitation) {
+      return NextResponse.json({ error: "Invited" });
+    }
+
+    // We create the invitation
     const invitation = await Invitation.create({
       courseId: courseId,
       userId: userId,
