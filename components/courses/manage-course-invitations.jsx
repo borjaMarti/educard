@@ -35,7 +35,11 @@ const ManageCourseInvitations = ({ invitationsArray }) => {
       >
         <FaEnvelope />
       </button>
-      <Modal title="Ajustes de Curso" onClose={closeModal} open={isModalOpen}>
+      <Modal
+        title="Invitaciones enviadas"
+        onClose={closeModal}
+        open={isModalOpen}
+      >
         <ul>
           {invitations.map((invitation) => (
             <li key={invitation.invitationId}>

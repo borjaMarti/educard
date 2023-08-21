@@ -1,15 +1,19 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { FaCheck, FaXmark } from "react-icons/fa6";
+import { FaEnvelope, FaCheck, FaXmark } from "react-icons/fa6";
+import Modal from "@/components/ui/modal";
 
 const ManageStudentInvitations = ({ invitationsArray }) => {
-  const [invitations, setInvitations] = useState(invitationsArray);
-  const [showInvitations, setShowInvitations] = useState(false);
   const router = useRouter();
+  const [invitations, setInvitations] = useState(invitationsArray);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleToggleInvitations = () => {
-    setShowInvitations(!showInvitations);
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
   const handleDelete = async (id) => {
@@ -18,6 +22,7 @@ const ManageStudentInvitations = ({ invitationsArray }) => {
     });
     const newInvitations = invitations.filter((inv) => inv.invitationId !== id);
     setInvitations(newInvitations);
+    if (!newInvitations[0]) router.refresh();
   };
 
   const handleAccept = async (inv) => {
@@ -35,7 +40,6 @@ const ManageStudentInvitations = ({ invitationsArray }) => {
       });
 
       await handleDelete(invitationId);
-      router.refresh();
     } catch (err) {
       console.log(err);
     }
@@ -43,8 +47,18 @@ const ManageStudentInvitations = ({ invitationsArray }) => {
 
   return (
     <>
-      <h4 onClick={handleToggleInvitations}>Invitaciones</h4>
-      {showInvitations && (
+      <button
+        onClick={openModal}
+        aria-label="Invitaciones recibidas"
+        title="Invitaciones recibidas"
+      >
+        <FaEnvelope /> Invitaciones
+      </button>
+      <Modal
+        title="Invitaciones recibidas"
+        onClose={closeModal}
+        open={isModalOpen}
+      >
         <ul>
           {invitations.map((invitation) => (
             <li key={invitation.invitationId}>
@@ -70,7 +84,7 @@ const ManageStudentInvitations = ({ invitationsArray }) => {
             </li>
           ))}
         </ul>
-      )}
+      </Modal>
     </>
   );
 };
