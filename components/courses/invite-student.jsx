@@ -1,11 +1,12 @@
 "use client";
 import { useState } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { FaPlus } from "react-icons/fa6";
 import Modal from "@/components/ui/modal";
 
 const InviteStudent = () => {
   const params = useParams();
+  const router = useRouter();
   const [text, setText] = useState("");
   const [sentInvitation, setSentInvitation] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -37,12 +38,15 @@ const InviteStudent = () => {
       );
     } else if (data?.error === "Enroled") {
       setSentInvitation(`${text} ya es parte del curso.`);
+      setText("");
     } else if (data?.error === "Invited") {
       setSentInvitation(`Ya se ha invitado a ${text} anteriormente.`);
+      setText("");
     } else {
       setSentInvitation(`Invitación enviada a ${text}`);
+      setText("");
+      router.refresh();
     }
-    setText("");
   };
 
   return (
