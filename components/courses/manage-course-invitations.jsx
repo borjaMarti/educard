@@ -1,10 +1,11 @@
 "use client";
 import { useState } from "react";
 import { FaXmark } from "react-icons/fa6";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 
 const ManageCourseInvitations = ({ invitationsArray }) => {
   const params = useParams();
+  const router = useRouter();
   const [invitations, setInvitations] = useState(invitationsArray);
   const [showInvitations, setShowInvitations] = useState(false);
 
@@ -18,6 +19,7 @@ const ManageCourseInvitations = ({ invitationsArray }) => {
     });
     const newInvitations = invitations.filter((inv) => inv.invitationId !== id);
     setInvitations(newInvitations);
+    if (!newInvitations[0]) router.refresh();
   };
 
   return (
