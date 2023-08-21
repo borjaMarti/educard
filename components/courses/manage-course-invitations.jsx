@@ -1,16 +1,20 @@
 "use client";
 import { useState } from "react";
-import { FaXmark } from "react-icons/fa6";
+import { FaEnvelope, FaXmark } from "react-icons/fa6";
 import { useParams, useRouter } from "next/navigation";
+import Modal from "@/components/ui/modal";
 
 const ManageCourseInvitations = ({ invitationsArray }) => {
   const params = useParams();
   const router = useRouter();
   const [invitations, setInvitations] = useState(invitationsArray);
-  const [showInvitations, setShowInvitations] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleToggleInvitations = () => {
-    setShowInvitations(!showInvitations);
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
   const handleDelete = async (id) => {
@@ -24,8 +28,14 @@ const ManageCourseInvitations = ({ invitationsArray }) => {
 
   return (
     <>
-      <h4 onClick={handleToggleInvitations}>Invitaciones</h4>
-      {showInvitations && (
+      <button
+        onClick={openModal}
+        aria-label="Invitaciones enviadas"
+        title="Invitaciones enviadas"
+      >
+        <FaEnvelope />
+      </button>
+      <Modal title="Ajustes de Curso" onClose={closeModal} open={isModalOpen}>
         <ul>
           {invitations.map((invitation) => (
             <li key={invitation.invitationId}>
@@ -41,7 +51,7 @@ const ManageCourseInvitations = ({ invitationsArray }) => {
             </li>
           ))}
         </ul>
-      )}
+      </Modal>
     </>
   );
 };
