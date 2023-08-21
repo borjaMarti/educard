@@ -32,8 +32,8 @@ const Modal = ({ open, onClose, children, title }) => {
           <h1>{title}</h1>
           <button
             onClick={onClose}
-            title="Cerrar ventana"
-            aria-label="Cerrar ventana"
+            title="Volver atrás"
+            aria-label="Volver atrás"
           >
             <FaXmark />
           </button>
