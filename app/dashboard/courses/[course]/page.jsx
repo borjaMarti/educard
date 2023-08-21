@@ -63,9 +63,9 @@ const CoursePage = async ({ params }) => {
             <h2>{course.courseName}</h2>
           </Link>
 
-          <span>{course.activeReminders}</span>
-
           <CourseInfo course={course} />
+
+          <span>{course.activeReminders}</span>
 
           <ul>
             {decks.map((deck) =>

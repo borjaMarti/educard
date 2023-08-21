@@ -33,11 +33,11 @@ const RemoveStudent = ({ studentId, studentEmail }) => {
 
   return (
     <>
-      <button onClick={openConfirm}>
+      <button onClick={openConfirm} aria-label="Echar al Estudiante">
         <FaUserXmark />
       </button>
       <Confirm
-        title="Echar Estudiante"
+        title="Echar al Estudiante"
         onClose={closeConfirm}
         onConfirm={handleRemoveStudent}
         open={isConfirmOpen}
