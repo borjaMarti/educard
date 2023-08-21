@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useParams, useRouter } from "next/navigation";
-import { FaPlus } from "react-icons/fa6";
+import { FaUserPlus } from "react-icons/fa6";
 import Modal from "@/components/ui/modal";
 
 const InviteStudent = () => {
@@ -52,7 +52,7 @@ const InviteStudent = () => {
   return (
     <>
       <button onClick={openModal}>
-        <FaPlus /> Invitar Estudiante
+        <FaUserPlus /> Invitar Estudiante
       </button>
       <Modal
         title="Invitar Estudiantes"

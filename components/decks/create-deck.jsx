@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useParams, useRouter } from "next/navigation";
+import { FaPlus } from "react-icons/fa6";
 import Modal from "@/components/ui/modal";
 
 const CreateDeck = () => {
@@ -34,7 +35,9 @@ const CreateDeck = () => {
 
   return (
     <>
-      <button onClick={openModal}>Crear Mazo</button>
+      <button onClick={openModal}>
+        <FaPlus /> Crear Mazo
+      </button>
       <Modal title="Crear Mazo" onClose={closeModal} open={isModalOpen}>
         <form onSubmit={handleSubmit}>
           <label htmlFor="deck-name">Nombre del Mazo</label>

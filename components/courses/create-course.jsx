@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { FaPlus } from "react-icons/fa6";
 import Modal from "../ui/modal";
 
 const CreateCourse = () => {
@@ -33,7 +34,9 @@ const CreateCourse = () => {
 
   return (
     <>
-      <button onClick={openModal}>Crear Curso</button>
+      <button onClick={openModal}>
+        <FaPlus /> Crear Curso
+      </button>
       <Modal title="Crear Curso" onClose={closeModal} open={isModalOpen}>
         <form onSubmit={handleSubmit}>
           <label htmlFor="course-name">Nombre del Curso</label>

@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useParams, useRouter } from "next/navigation";
+import { FaPlus } from "react-icons/fa6";
 import Modal from "@/components/ui/modal";
 
 const CreateCard = () => {
@@ -40,7 +41,9 @@ const CreateCard = () => {
 
   return (
     <>
-      <button onClick={openModal}>Crear Carta</button>
+      <button onClick={openModal}>
+        <FaPlus /> Crear Carta
+      </button>
       <Modal title="Crear Carta" onClose={closeModal} open={isModalOpen}>
         <form onSubmit={handleSubmit}>
           <label htmlFor="card-front">Anverso</label>
