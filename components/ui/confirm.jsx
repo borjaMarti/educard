@@ -14,13 +14,13 @@ const Confirm = ({ open, onClose, onConfirm, children, title }) => {
   }, [open]);
 
   return (
-    <dialog className="alert" ref={confirmRef} onClose={onClose}>
+    <dialog className="dialog" ref={confirmRef} onClose={onClose}>
       <div className="dialog__container">
         <div className="dialog__header">
           <h1>{title}</h1>
         </div>
         <div>{children}</div>
-        <div className="dialog__alert-controls">
+        <div className="dialog__confirm-controls">
           <button onClick={onConfirm} aria-label="Confirmar">
             Confirmar
           </button>
