@@ -36,10 +36,11 @@ const ManageDeckPage = async ({ params }) => {
       <Breadcrumbs>
         <Link href="/dashboard">Mis Cursos</Link>
         <Link href={`/dashboard/manage/courses/${params.course}`}>
-          {deckInfo.courseName}
+          Gestionar {deckInfo.courseName}
         </Link>
         <span
           href={`/dashboard/manage/courses/${params.course}/decks/${params.deck}`}
+          aria-current="page"
         >
           Gestionar {deckInfo.deckName}
         </span>

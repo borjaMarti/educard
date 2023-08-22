@@ -35,7 +35,10 @@ const DeckPage = async ({ params }) => {
         <Link href={`/dashboard/courses/${params.course}`}>
           {deckInfo.courseName}
         </Link>
-        <span href={`/dashboard/courses/${params.course}/decks/${params.deck}`}>
+        <span
+          href={`/dashboard/courses/${params.course}/decks/${params.deck}`}
+          aria-current="page"
+        >
           {deckInfo.deckName}
         </span>
       </Breadcrumbs>

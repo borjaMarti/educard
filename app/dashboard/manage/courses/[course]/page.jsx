@@ -50,7 +50,7 @@ const ManageCoursePage = async ({ params }) => {
     <>
       <Breadcrumbs>
         <Link href="/dashboard">Mis Cursos</Link>
-        <span href={`/dashboard/courses/${params.course}`}>
+        <span href={`/dashboard/courses/${params.course}`} aria-current="page">
           Gestionar {courseName}
         </span>
       </Breadcrumbs>
