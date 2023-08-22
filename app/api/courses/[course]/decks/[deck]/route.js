@@ -6,17 +6,22 @@ import Deck from "@/models/deck";
 import Card from "@/models/card";
 import Reminder from "@/models/reminder";
 
-// @desc Fetch deck name.
+// @desc Fetch deck (and course) name.
 // @route GET /api/courses/[course]/decks/[deck]
 export async function GET(req, { params }) {
   await dbConnect();
 
   try {
+    const courseId = params.course;
     const deckId = params.deck;
+
+    const course = await Course.findOne({ _id: courseId }).lean();
     const deck = await Deck.findOne({ _id: deckId }).select("deckName").lean();
+
+    const { courseName } = course;
     const { deckName } = deck;
 
-    return NextResponse.json({ deckName });
+    return NextResponse.json({ deckName, courseName });
   } catch (err) {
     console.log(err);
   }
