@@ -1,7 +1,8 @@
 import { auth } from "@clerk/nextjs";
-import { FaFolderOpen, FaGear } from "react-icons/fa";
+import { FaFolderOpen } from "react-icons/fa";
 import Link from "next/link";
 import CourseInfo from "@/components/users/course-info";
+import Breadcrumbs from "@/components/ui/breadcrumbs";
 
 async function fetchDecks(params) {
   const authResponse = auth();
@@ -57,6 +58,12 @@ const CoursePage = async ({ params }) => {
 
   return (
     <>
+      <Breadcrumbs>
+        <Link href="/dashboard">Mis Cursos</Link>
+        <span href={`/dashboard/courses/${params.course}`}>
+          {course.courseName}
+        </span>
+      </Breadcrumbs>
       {course.activeReminders ? (
         <>
           <Link href={`/study/focus/courses/${params.course}`}>

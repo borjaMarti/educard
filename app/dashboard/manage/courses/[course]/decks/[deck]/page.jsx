@@ -1,8 +1,9 @@
 import { auth } from "@clerk/nextjs";
-import { FaGear } from "react-icons/fa";
+import Link from "next/link";
 import CreateCard from "@/components/cards/create-card";
 import ManageDeck from "@/components/decks/manage-deck";
 import ManageCard from "@/components/cards/manage-card";
+import Breadcrumbs from "@/components/ui/breadcrumbs";
 
 async function fetchCards(params) {
   const authResponse = auth();
@@ -15,28 +16,39 @@ async function fetchCards(params) {
   return cards;
 }
 
-async function fetchDeckName(params) {
+async function fetchDeckInfo(params) {
   const authResponse = auth();
   const bearerToken = await authResponse.getToken({});
   const response = await fetch(
     `http://localhost:3000/api/courses/${params.course}/decks/${params.deck}`,
     { headers: { Authorization: `Bearer ${bearerToken}` } },
   );
-  const { deckName } = await response.json();
-  return deckName;
+  const { deckName, courseName } = await response.json();
+  return { deckName, courseName };
 }
 
 const ManageDeckPage = async ({ params }) => {
   const cards = await fetchCards(params);
-  const deckName = await fetchDeckName(params);
+  const deckInfo = await fetchDeckInfo(params);
 
   return (
     <>
-      <h2>{deckName}</h2>
+      <Breadcrumbs>
+        <Link href="/dashboard">Mis Cursos</Link>
+        <Link href={`/dashboard/manage/courses/${params.course}`}>
+          {deckInfo.courseName}
+        </Link>
+        <span
+          href={`/dashboard/manage/courses/${params.course}/decks/${params.deck}`}
+        >
+          Gestionar {deckInfo.deckName}
+        </span>
+      </Breadcrumbs>
+      <h2>{deckInfo.deckName}</h2>
       <ManageDeck
         courseId={params.course}
         deckId={params.deck}
-        deckName={deckName}
+        deckName={deckInfo.deckName}
       />
       <ul>
         {cards.map((card) => (

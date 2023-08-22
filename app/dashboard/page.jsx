@@ -4,6 +4,7 @@ import Link from "next/link";
 import CreateCourse from "@/components/courses/create-course";
 import ManageStudentInvitations from "@/components/users/manage-student-invitations";
 import ManageCourse from "@/components/courses/manage-course";
+import Breadcrumbs from "@/components/ui/breadcrumbs";
 
 async function fetchCourses() {
   const authResponse = auth();
@@ -32,7 +33,10 @@ const DashboardPage = async () => {
 
   return (
     <>
-      <h2>Study</h2>
+      <Breadcrumbs>
+        <span href="/dashboard">Mis Cursos</span>
+      </Breadcrumbs>
+      <h2>Estudiar</h2>
       <ul>
         {studentCourses.map((course) => (
           <li key={course._id}>
@@ -48,7 +52,7 @@ const DashboardPage = async () => {
           ""
         )}
       </ul>
-      <h2>Your Classes</h2>
+      <h2>Mis Cursos</h2>
       <ul>
         {ownedCourses.map((course) => (
           <li key={course._id}>

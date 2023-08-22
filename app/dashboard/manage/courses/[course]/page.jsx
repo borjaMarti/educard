@@ -1,6 +1,4 @@
 import { auth } from "@clerk/nextjs";
-// import { notFound } from 'next/navigation'
-import { FaGear, FaEnvelope, FaUserXmark } from "react-icons/fa";
 import Link from "next/link";
 import CreateDeck from "@/components/decks/create-deck";
 import InviteStudent from "@/components/courses/invite-student";
@@ -8,6 +6,7 @@ import ManageCourseInvitations from "@/components/courses/manage-course-invitati
 import ManageCourse from "@/components/courses/manage-course";
 import ManageDeck from "@/components/decks/manage-deck";
 import RemoveStudent from "@/components/courses/remove-student";
+import Breadcrumbs from "@/components/ui/breadcrumbs";
 
 async function fetchDecks(params) {
   const authResponse = auth();
@@ -49,6 +48,12 @@ const ManageCoursePage = async ({ params }) => {
 
   return (
     <>
+      <Breadcrumbs>
+        <Link href="/dashboard">Mis Cursos</Link>
+        <span href={`/dashboard/courses/${params.course}`}>
+          Gestionar {courseName}
+        </span>
+      </Breadcrumbs>
       <h2>{courseName}</h2>
       <ManageCourse courseId={params.course} />
       <ul>

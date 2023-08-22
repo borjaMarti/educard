@@ -1,4 +1,6 @@
 import { auth } from "@clerk/nextjs";
+import Link from "next/link";
+import Breadcrumbs from "@/components/ui/breadcrumbs";
 
 async function fetchCards(params) {
   const authResponse = auth();
@@ -11,24 +13,33 @@ async function fetchCards(params) {
   return cards;
 }
 
-async function fetchDeckName(params) {
+async function fetchDeckInfo(params) {
   const authResponse = auth();
   const bearerToken = await authResponse.getToken({});
   const response = await fetch(
     `http://localhost:3000/api/courses/${params.course}/decks/${params.deck}`,
     { headers: { Authorization: `Bearer ${bearerToken}` } },
   );
-  const { deckName } = await response.json();
-  return deckName;
+  const { deckName, courseName } = await response.json();
+  return { deckName, courseName };
 }
 
 const DeckPage = async ({ params }) => {
   const cards = await fetchCards(params);
-  const deckName = await fetchDeckName(params);
+  const deckInfo = await fetchDeckInfo(params);
 
   return (
     <>
-      <h2>{deckName}</h2>
+      <Breadcrumbs>
+        <Link href="/dashboard">Mis Cursos</Link>
+        <Link href={`/dashboard/courses/${params.course}`}>
+          {deckInfo.courseName}
+        </Link>
+        <span href={`/dashboard/courses/${params.course}/decks/${params.deck}`}>
+          {deckInfo.deckName}
+        </span>
+      </Breadcrumbs>
+      <h2>{deckInfo.deckName}</h2>
       <ul>
         {cards.map((card) => (
           <li key={card._id}>
