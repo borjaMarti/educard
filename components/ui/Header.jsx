@@ -11,9 +11,11 @@ import Link from "next/link";
 const Header = () => {
   return (
     <header>
-      <h1>EduCard</h1>
+      <Link href="/">
+        <h1>EduCard</h1>
+      </Link>
       <SignedIn>
-        <Link href="/dashboard">Dashboard</Link>
+        <Link href="/dashboard">Mi EduCard</Link>
         <UserButton afterSignOutUrl="/" />
       </SignedIn>
       <SignedOut>

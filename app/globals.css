@@ -427,3 +427,9 @@ a:visited {
   display: flex;
   justify-content: space-evenly;
 }
+
+/* Clerk's sign modal, mutes the bright blue 'Secured by Clerk' sign. */
+.cl-internal-b3fm6y {
+  background-color: white;
+  color: rgba(0, 0, 0, 0.16);
+}
