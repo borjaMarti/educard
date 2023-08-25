@@ -14,7 +14,7 @@
 
 # production
 /build
-/.dev-assets
+/dev-assets
 .prettierignore
 .prettierrc.json
 
