@@ -66,15 +66,17 @@ const CoursePage = async ({ params }) => {
       </Breadcrumbs>
       {course.activeReminders ? (
         <>
-          <Link href={`/study/focus/courses/${params.course}`}>
-            <h2>{course.courseName}</h2>
-          </Link>
+          <h2>Estudiar {course.courseName}</h2>
 
           <CourseInfo course={course} />
 
-          <span>{course.activeReminders}</span>
-
           <ul>
+            <li>
+              <Link href={`/study/focus/courses/${params.course}`}>
+                <h3>{course.courseName} (todos los mazos)</h3>
+              </Link>
+              <span>{course.activeReminders}</span>
+            </li>
             {decks.map((deck) =>
               deck.activeReminders ? (
                 <li key={deck._id}>
@@ -93,10 +95,10 @@ const CoursePage = async ({ params }) => {
         </>
       ) : (
         <>
-          <h2>{course.courseName}</h2>
+          <h2>Estudiar {course.courseName}</h2>
           <CourseInfo course={course} />
           {check ? (
-            <span>¡No hay cartas por repasar!</span>
+            <span>¡No hay cartas por estudiar!</span>
           ) : (
             <span>Este curso todavía no tiene cartas.</span>
           )}
@@ -105,11 +107,17 @@ const CoursePage = async ({ params }) => {
 
       {check ? (
         <>
-          <Link href={`/study/free/courses/${params.course}`}>
-            <h2>Estudio Libre</h2>
-          </Link>
-
+          <h2>Repaso Libre</h2>
+          <span>
+            Este modo de estudio te permite repasar todas las cartas de un mazo
+            sin afectar a su fecha de estudio.
+          </span>
           <ul>
+            <li>
+              <Link href={`/study/free/courses/${params.course}`}>
+                <h3>{course.courseName} (todos los mazos)</h3>
+              </Link>
+            </li>
             {decks.map((deck) =>
               deck.check ? (
                 <li key={deck._id}>

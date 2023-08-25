@@ -487,10 +487,21 @@ a:visited {
   justify-content: center;
 }
 
+/**
+ * Spinner Loading Animation
+ * Author: Temani Afif
+ * Source: https://css-tricks.com/single-element-loaders-the-spinner/
+ * Notes:
+ *
+ * 1. Spinner size.
+ * 2. Border thickness.
+ * 3. Spinner color.
+ */
+
 .spinner {
-  width: 2rem; /* the size */
-  padding: 0.25rem; /* the border thickness */
-  background: #7e7e7e; /* the color */
+  width: 2rem; /* 1 */
+  padding: 0.25rem; /* 2 */
+  background: #7e7e7e; /* 3 */
 
   aspect-ratio: 1;
   border-radius: 50%;
@@ -500,10 +511,10 @@ a:visited {
   -webkit-mask-composite: source-out;
   mask-composite: subtract;
   box-sizing: border-box;
-  animation: load 1s linear infinite;
+  animation: spinner__load 1s linear infinite;
 }
 
-@keyframes load {
+@keyframes spinner__load {
   to {
     transform: rotate(1turn);
   }
