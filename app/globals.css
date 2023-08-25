@@ -13,6 +13,7 @@
  * Headings.............H1–H6 styles.
  *
  * COMPONENTS
+ * Logo.................The app logo, including icon and title.
  * Page-head............The main page header.
  * Page-foot............The main page footer.
  * Buttons..............Button elements.
@@ -189,7 +190,7 @@ select,
 textarea {
   font-family: inherit; /* 1 */
   font-size: 100%; /* 1 */
-  line-height: 1.15; /* 1 */
+  line-height: 1.25; /* 1 */
   margin: 0; /* 2 */
 }
 
@@ -379,6 +380,11 @@ template {
   #GENERIC
 \*------------------------------------*/
 
+html {
+  line-height: 1.25;
+  color: #21242c;
+}
+
 body {
   box-sizing: border-box;
 }
@@ -399,13 +405,48 @@ a:visited {
   #BASE
 \*------------------------------------*/
 
-.whatever {
-  color: black;
+.site-header {
+  border-top: 1px solid rgba(33, 36, 44, 0.16);
+  border-bottom: 1px solid rgba(33, 36, 44, 0.16);
+  height: 4rem;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  max-width: 75rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.main-nav__log-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 /*------------------------------------*\
   #COMPONENTS
 \*------------------------------------*/
+
+.logo {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+.logo__title {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #21242c;
+}
+
+.logo__icon {
+  font-size: 2rem;
+  color: coral;
+}
 
 .dialog {
   border: 0;
@@ -428,8 +469,42 @@ a:visited {
   justify-content: space-evenly;
 }
 
+.log-container {
+  padding: 4rem 0 4rem;
+  display: flex;
+  justify-content: center;
+}
+
 /* Clerk's sign modal, mutes the bright blue 'Secured by Clerk' sign. */
 .cl-internal-b3fm6y {
   background-color: white;
   color: rgba(0, 0, 0, 0.16);
+}
+
+.loading-block {
+  padding: 4rem 0 4rem;
+  display: flex;
+  justify-content: center;
+}
+
+.spinner {
+  width: 2rem; /* the size */
+  padding: 0.25rem; /* the border thickness */
+  background: #7e7e7e; /* the color */
+
+  aspect-ratio: 1;
+  border-radius: 50%;
+  --_m: conic-gradient(#0000, #000), linear-gradient(#000 0 0) content-box;
+  -webkit-mask: var(--_m);
+  mask: var(--_m);
+  -webkit-mask-composite: source-out;
+  mask-composite: subtract;
+  box-sizing: border-box;
+  animation: load 1s linear infinite;
+}
+
+@keyframes load {
+  to {
+    transform: rotate(1turn);
+  }
 }

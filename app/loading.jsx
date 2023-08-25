@@ -1,8 +1,8 @@
 const LoadingPage = () => {
   return (
-    <>
-      <span>Cargando . . .</span>
-    </>
+    <div className="loading-block">
+      <div className="spinner"></div>
+    </div>
   );
 };
 
