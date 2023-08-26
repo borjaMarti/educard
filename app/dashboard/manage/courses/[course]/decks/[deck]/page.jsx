@@ -34,15 +34,21 @@ const ManageDeckPage = async ({ params }) => {
   return (
     <>
       <Breadcrumbs>
-        <Link href="/dashboard">Mis Cursos</Link>
-        <Link href={`/dashboard/manage/courses/${params.course}`}>
-          Gestionar {deckInfo.courseName}
+        <Link href="/dashboard" className="link">
+          Mis Cursos
+        </Link>
+        <Link
+          href={`/dashboard/manage/courses/${params.course}`}
+          className="link"
+        >
+          Gestionar: {deckInfo.courseName}
         </Link>
         <span
           href={`/dashboard/manage/courses/${params.course}/decks/${params.deck}`}
           aria-current="page"
+          className="breadcrumb__element--current"
         >
-          Gestionar {deckInfo.deckName}
+          Mazo: {deckInfo.deckName}
         </span>
       </Breadcrumbs>
       <h2>{deckInfo.deckName}</h2>

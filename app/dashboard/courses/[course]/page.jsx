@@ -59,9 +59,15 @@ const CoursePage = async ({ params }) => {
   return (
     <>
       <Breadcrumbs>
-        <Link href="/dashboard">Mis Cursos</Link>
-        <span href={`/dashboard/courses/${params.course}`} aria-current="page">
-          {course.courseName}
+        <Link href="/dashboard" className="link">
+          Mis Cursos
+        </Link>
+        <span
+          href={`/dashboard/courses/${params.course}`}
+          aria-current="page"
+          className="breadcrumb__element--current"
+        >
+          Estudiar: {course.courseName}
         </span>
       </Breadcrumbs>
       {course.activeReminders ? (

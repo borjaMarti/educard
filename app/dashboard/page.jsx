@@ -34,7 +34,11 @@ const DashboardPage = async () => {
   return (
     <>
       <Breadcrumbs>
-        <span href="/dashboard" aria-current="page">
+        <span
+          href="/dashboard"
+          aria-current="page"
+          className="breadcrumb__element--current"
+        >
           Mis Cursos
         </span>
       </Breadcrumbs>

@@ -3,21 +3,25 @@ const Breadcrumbs = ({ children }) => {
 
   return (
     <nav aria-label="Breadcrumb">
-      <ol>
+      <ol className="breadcrumb">
         {multiple ? (
           children.map((child, index) => {
             if (index === children.length - 1) {
               return <li key={child.props["href"]}>{child}</li>;
             } else
               return (
-                <li key={child.props["href"]}>
+                <li key={child.props["href"]} className="breadcrumb__element">
                   {child}
-                  <span aria-hidden="true">/</span>
+                  <span aria-hidden="true" className="breadcrumb__separator">
+                    /
+                  </span>
                 </li>
               );
           })
         ) : (
-          <li key={children.props["href"]}>{children}</li>
+          <li key={children.props["href"]} className="breadcrumb__element">
+            {children}
+          </li>
         )}
       </ol>
     </nav>

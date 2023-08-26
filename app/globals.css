@@ -397,10 +397,6 @@ a {
   text-decoration: none;
 }
 
-a:visited {
-  color: LinkText;
-}
-
 /*------------------------------------*\
   #BASE
 \*------------------------------------*/
@@ -431,6 +427,8 @@ a:visited {
   #COMPONENTS
 \*------------------------------------*/
 
+/* LOGO */
+
 .logo {
   display: flex;
   gap: 0.25rem;
@@ -447,6 +445,8 @@ a:visited {
   font-size: 2rem;
   color: coral;
 }
+
+/* DIALOGS */
 
 .dialog {
   border: 0;
@@ -469,6 +469,8 @@ a:visited {
   justify-content: space-evenly;
 }
 
+/* LOG PAGE */
+
 .log-container {
   padding: 4rem 0 4rem;
   display: flex;
@@ -480,6 +482,8 @@ a:visited {
   background-color: white;
   color: rgba(0, 0, 0, 0.16);
 }
+
+/* LOADING PAGE */
 
 .loading-block {
   padding: 4rem 0 4rem;
@@ -518,4 +522,60 @@ a:visited {
   to {
     transform: rotate(1turn);
   }
+}
+
+/* BUTTONS */
+
+.button {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+.button--danger {
+  color: red;
+  border-color: red;
+  background-color: transparent;
+}
+
+/* LINKS */
+
+.link {
+  color: #2694ab;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: all 0.3s ease-in-out;
+}
+
+.link:visited {
+  color: #2694ab;
+}
+
+.link:hover {
+  color: #2694ab;
+  text-decoration-color: #2694ab;
+}
+
+/* BREADCRUMB */
+
+.breadcrumb {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumb__element {
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumb__element--current {
+  color: #405a61;
+  font-weight: bold;
+}
+
+.breadcrumb__separator {
+  margin: 0 0.5rem;
 }

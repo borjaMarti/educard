@@ -31,15 +31,18 @@ const DeckPage = async ({ params }) => {
   return (
     <>
       <Breadcrumbs>
-        <Link href="/dashboard">Mis Cursos</Link>
-        <Link href={`/dashboard/courses/${params.course}`}>
-          {deckInfo.courseName}
+        <Link href="/dashboard" className="link">
+          Mis Cursos
+        </Link>
+        <Link href={`/dashboard/courses/${params.course}`} className="link">
+          Estudiar: {deckInfo.courseName}
         </Link>
         <span
           href={`/dashboard/courses/${params.course}/decks/${params.deck}`}
           aria-current="page"
+          className="breadcrumb__element--current"
         >
-          {deckInfo.deckName}
+          Mazo: {deckInfo.deckName}
         </span>
       </Breadcrumbs>
       <h2>{deckInfo.deckName}</h2>
