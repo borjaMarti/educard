@@ -29,18 +29,21 @@ const DeckPage = async ({ params }) => {
   const deckInfo = await fetchDeckInfo(params);
 
   return (
-    <>
+    <main className="dashboard-main">
       <Breadcrumbs>
         <Link href="/dashboard" className="link">
           Mis Cursos
         </Link>
-        <Link href={`/dashboard/courses/${params.course}`} className="link">
+        <Link
+          href={`/dashboard/courses/${params.course}`}
+          className="link breadcrumb__link"
+        >
           Estudiar: {deckInfo.courseName}
         </Link>
         <span
           href={`/dashboard/courses/${params.course}/decks/${params.deck}`}
           aria-current="page"
-          className="breadcrumb__element--current"
+          className="breadcrumb__element breadcrumb__element--current"
         >
           Mazo: {deckInfo.deckName}
         </span>
@@ -54,7 +57,7 @@ const DeckPage = async ({ params }) => {
           </li>
         ))}
       </ul>
-    </>
+    </main>
   );
 };
 

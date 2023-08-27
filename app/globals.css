@@ -636,6 +636,10 @@ a:visited {
 
 /* BREADCRUMB */
 
+.breadcrumb {
+  margin: 0 auto;
+}
+
 .breadcrumb__container {
   list-style: none;
   padding: 0;
@@ -647,6 +651,7 @@ a:visited {
 .breadcrumb__element {
   display: flex;
   align-items: center;
+  text-align: center;
 }
 
 .breadcrumb__element--current {

@@ -47,15 +47,15 @@ const ManageCoursePage = async ({ params }) => {
   const invitations = await fetchCourseInvitations(params);
 
   return (
-    <>
+    <main className="dashboard-main">
       <Breadcrumbs>
-        <Link href="/dashboard" className="link">
+        <Link href="/dashboard" className="link breadcrumb__link">
           Mis Cursos
         </Link>
         <span
           href={`/dashboard/courses/${params.course}`}
           aria-current="page"
-          className="breadcrumb__element--current"
+          className="breadcrumb__element breadcrumb__element--current"
         >
           Gestionar: {courseName}
         </span>
@@ -94,7 +94,7 @@ const ManageCoursePage = async ({ params }) => {
         ))}
         <InviteStudent />
       </ul>
-    </>
+    </main>
   );
 };
 

@@ -23,7 +23,11 @@ const FocusStudyCoursePage = async ({ params }) => {
   const cards = await fetchCards(params);
   shuffleCards(cards);
 
-  return <StudyApp cards={cards} focus={true} />;
+  return (
+    <main className="study-main">
+      <StudyApp cards={cards} focus={true} />
+    </main>
+  );
 };
 
 export default FocusStudyCoursePage;

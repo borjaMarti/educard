@@ -57,15 +57,15 @@ const CoursePage = async ({ params }) => {
   }
 
   return (
-    <>
+    <main className="dashboard-main">
       <Breadcrumbs>
-        <Link href="/dashboard" className="link">
+        <Link href="/dashboard" className="link breadcrumb__link">
           Mis Cursos
         </Link>
         <span
           href={`/dashboard/courses/${params.course}`}
           aria-current="page"
-          className="breadcrumb__element--current"
+          className="breadcrumb__element breadcrumb__element--current"
         >
           Estudiar: {course.courseName}
         </span>
@@ -147,7 +147,7 @@ const CoursePage = async ({ params }) => {
       ) : (
         ""
       )}
-    </>
+    </main>
   );
 };
 

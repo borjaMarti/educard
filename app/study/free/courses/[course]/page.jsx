@@ -23,7 +23,11 @@ const FreeStudyCoursePage = async ({ params }) => {
   const cards = await fetchCards(params);
   shuffleCards(cards);
 
-  return <StudyApp key={Date.now()} cards={cards} focus={false} />;
+  return (
+    <main className="study-main">
+      <StudyApp key={Date.now()} cards={cards} focus={false} />
+    </main>
+  );
 };
 
 export default FreeStudyCoursePage;

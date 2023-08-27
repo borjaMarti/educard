@@ -23,7 +23,11 @@ const FreeStudyDeckPage = async ({ params }) => {
   const cards = await fetchCards(params);
   shuffleCards(cards);
 
-  return <StudyApp cards={cards} focus={false} />;
+  return (
+    <main className="study-main">
+      <StudyApp cards={cards} focus={false} />
+    </main>
+  );
 };
 
 export default FreeStudyDeckPage;

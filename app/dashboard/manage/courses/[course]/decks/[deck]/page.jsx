@@ -32,21 +32,21 @@ const ManageDeckPage = async ({ params }) => {
   const deckInfo = await fetchDeckInfo(params);
 
   return (
-    <>
+    <main className="dashboard-main">
       <Breadcrumbs>
-        <Link href="/dashboard" className="link">
+        <Link href="/dashboard" className="link breadcrumb__link">
           Mis Cursos
         </Link>
         <Link
           href={`/dashboard/manage/courses/${params.course}`}
-          className="link"
+          className="link breadcrumb__link"
         >
           Gestionar: {deckInfo.courseName}
         </Link>
         <span
           href={`/dashboard/manage/courses/${params.course}/decks/${params.deck}`}
           aria-current="page"
-          className="breadcrumb__element--current"
+          className="breadcrumb__element breadcrumb__element--current"
         >
           Mazo: {deckInfo.deckName}
         </span>
@@ -71,7 +71,7 @@ const ManageDeckPage = async ({ params }) => {
         ))}
         <CreateCard />
       </ul>
-    </>
+    </main>
   );
 };
 
