@@ -413,10 +413,6 @@ a:visited {
   #BASE
 \*------------------------------------*/
 
-.site-header {
-  margin-bottom: 4rem;
-}
-
 .site-header--in {
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.1);
 }
@@ -468,6 +464,41 @@ a:visited {
   .site-header__link {
     font-size: 1rem;
     padding: 0.75rem 1.75rem;
+  }
+}
+
+.home-main {
+  max-width: 70rem;
+  margin: 1rem auto;
+  padding: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .home-main {
+    margin: 4rem auto;
+  }
+}
+
+.dashboard-main {
+  max-width: 60rem;
+  margin: 0.5rem auto;
+  padding: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .dashboard-main {
+    margin: 1rem auto;
+  }
+}
+
+.study-main {
+  max-width: 50rem;
+  margin: 1rem auto;
+}
+
+@media (min-width: 768px) {
+  .study-main {
+    margin: 2rem auto;
   }
 }
 
@@ -638,6 +669,13 @@ a:visited {
 
 .breadcrumb {
   margin: 0 auto;
+  font-size: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .breadcrumb {
+    font-size: 1rem;
+  }
 }
 
 .breadcrumb__container {
@@ -663,15 +701,36 @@ a:visited {
   margin: 0 0.5rem;
 }
 
-/* CARD */
+/* STUDY APP */
+
+.study-app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+}
+
+.study-app__count {
+  align-self: flex-end;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+}
 
 .card {
-  width: 15rem; /* Adjust the width as needed */
-  height: 15rem; /* Set the same height as the width to make it square */
-  border-radius: 10px;
+  width: 100%;
+  min-height: 18rem;
+  border-radius: 0.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 1.5rem;
+}
+
+.card__container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
   flex-direction: column;
 }
 
@@ -708,4 +767,12 @@ a:visited {
   margin: 0;
   padding: 1rem;
   color: white;
+}
+
+.card__separator {
+  color: #eee;
+  background-color: #e1e1e1;
+  height: 1px;
+  width: 100%;
+  border: 0;
 }
