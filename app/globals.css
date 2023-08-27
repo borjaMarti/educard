@@ -422,10 +422,27 @@ a:visited {
   margin-right: auto;
 }
 
-.main-nav__log-button {
+.main-nav__button {
   background-color: transparent;
   border: none;
   cursor: pointer;
+}
+
+.main-nav__link {
+  color: #21242c;
+  text-decoration: none;
+  padding: 0.25rem 0 0.25rem 0;
+  border-bottom: 0.25rem solid transparent;
+  transition: all 0.3s ease-in-out;
+}
+
+.main-nav__link:visited {
+  color: #21242c;
+}
+
+.main-nav__link:hover {
+  color: #21242c;
+  border-bottom: 0.25rem solid #ea7070;
 }
 
 /*------------------------------------*\
@@ -443,11 +460,16 @@ a:visited {
 .logo__title {
   margin: 0;
   font-size: 1.5rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.logo__title:hover {
+  color: #ea7070;
 }
 
 .logo__icon {
   font-size: 2rem;
-  color: coral;
+  color: #ea7070;
 }
 
 /* DIALOGS */
@@ -483,8 +505,8 @@ a:visited {
 
 /* Clerk's sign modal, mutes the bright blue 'Secured by Clerk' sign. */
 .cl-internal-b3fm6y {
-  background-color: white;
-  color: rgba(0, 0, 0, 0.16);
+  color: white;
+  background-color: #ea7070;
 }
 
 /* LOADING PAGE */
@@ -558,20 +580,6 @@ a:visited {
 .link:hover {
   color: #2694ab;
   text-decoration-color: #2694ab;
-}
-
-.link--header {
-  color: #21242c;
-  text-decoration-thickness: 0.25rem;
-}
-
-.link--header:visited {
-  color: #21242c;
-}
-
-.link--header:hover {
-  color: #21242c;
-  text-decoration-color: #ea7070;
 }
 
 /* BREADCRUMB */

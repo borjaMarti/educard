@@ -26,7 +26,7 @@ const Header = () => {
           <h1 className="logo__title">EduCard</h1>
         </Link>
         <button
-          className="main-nav__control"
+          className="main-nav__button"
           aria-expanded={isOpen}
           aria-label={isOpen ? "Cerrar navegación" : "Abrir navegación"}
           onClick={handleToggleMenu}
@@ -34,19 +34,19 @@ const Header = () => {
           {isOpen ? <FaXmark /> : <FaBars />}
         </button>
         <SignedIn>
-          <Link href="/dashboard" className="link link--header">
+          <Link href="/dashboard" className="main-nav__link">
             Mi EduCard
           </Link>
           <UserButton afterSignOutUrl="/" />
         </SignedIn>
         <SignedOut>
           <SignInButton>
-            <button className="main-nav__log-button link link--header">
+            <button className="main-nav__button main-nav__link">
               Iniciar Sesión
             </button>
           </SignInButton>
           <SignUpButton>
-            <button className="main-nav__log-button link link--header">
+            <button className="main-nav__button main-nav__link">
               Registrarse
             </button>
           </SignUpButton>
