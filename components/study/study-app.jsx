@@ -82,14 +82,25 @@ const StudyApp = ({ cards, focus }) => {
           </span>
           {front && (
             <>
-              <h2>{currentCard.front}</h2>
+              <div className="card card--front">
+                <h2 className="card__text card__text--front">
+                  {currentCard.front}
+                </h2>
+              </div>
               <button onClick={handleToggleFront}>Mostrar Respuesta</button>
             </>
           )}
 
           {!front && (
             <>
-              <h2>{currentCard.back}</h2>
+              <div className="card card--back">
+                <h2 className="card__text card__text--front">
+                  {currentCard.front}
+                </h2>
+                <h3 className="card__text card__text--back">
+                  {currentCard.back}
+                </h3>
+              </div>
               <button onClick={() => handleRepeat(currentCard._id)}>
                 Repetir
               </button>

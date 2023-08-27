@@ -395,6 +395,11 @@ li {
 
 a {
   text-decoration: none;
+  color: #21242c;
+}
+
+a:visited {
+  color: #21242c;
 }
 
 /*------------------------------------*\
@@ -438,7 +443,6 @@ a {
 .logo__title {
   margin: 0;
   font-size: 1.5rem;
-  color: #21242c;
 }
 
 .logo__icon {
@@ -556,6 +560,20 @@ a {
   text-decoration-color: #2694ab;
 }
 
+.link--header {
+  color: #21242c;
+  text-decoration-thickness: 0.25rem;
+}
+
+.link--header:visited {
+  color: #21242c;
+}
+
+.link--header:hover {
+  color: #21242c;
+  text-decoration-color: #ea7070;
+}
+
 /* BREADCRUMB */
 
 .breadcrumb {
@@ -578,4 +596,51 @@ a {
 
 .breadcrumb__separator {
   margin: 0 0.5rem;
+}
+
+/* CARD */
+
+.card {
+  width: 15rem; /* Adjust the width as needed */
+  height: 15rem; /* Set the same height as the width to make it square */
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/*
+  .card--front
+  .card--back
+  .card__text
+  .card__text--front
+  .card__text--back
+*/
+
+.card--front {
+  background: radial-gradient(
+    circle at 10% -20%,
+    #ea7070,
+    #ea7396,
+    #dd7eb9,
+    #c48dd6
+  );
+}
+
+.card--back {
+  background: radial-gradient(
+    circle at 10% -20%,
+    #a29de8,
+    #7dabef,
+    #5cb6eb,
+    #4dbedf
+  );
+}
+
+.card__text {
+  text-align: center;
+  margin: 0;
+  padding: 1rem;
+  color: white;
 }

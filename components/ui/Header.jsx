@@ -34,15 +34,21 @@ const Header = () => {
           {isOpen ? <FaXmark /> : <FaBars />}
         </button>
         <SignedIn>
-          <Link href="/dashboard">Mi EduCard</Link>
+          <Link href="/dashboard" className="link link--header">
+            Mi EduCard
+          </Link>
           <UserButton afterSignOutUrl="/" />
         </SignedIn>
         <SignedOut>
           <SignInButton>
-            <button className="main-nav__log-button">Iniciar Sesión</button>
+            <button className="main-nav__log-button link link--header">
+              Iniciar Sesión
+            </button>
           </SignInButton>
           <SignUpButton>
-            <button className="main-nav__log-button">Registrarse</button>
+            <button className="main-nav__log-button link link--header">
+              Registrarse
+            </button>
           </SignUpButton>
         </SignedOut>
       </nav>
