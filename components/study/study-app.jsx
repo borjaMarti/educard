@@ -87,7 +87,12 @@ const StudyApp = ({ cards, focus }) => {
                   {currentCard.front}
                 </span>
               </div>
-              <button onClick={handleToggleFront}>Mostrar Respuesta</button>
+              <button
+                onClick={handleToggleFront}
+                className="study-app__button study-app__button--front"
+              >
+                Mostrar Respuesta
+              </button>
             </>
           )}
 
@@ -104,14 +109,24 @@ const StudyApp = ({ cards, focus }) => {
                   </span>
                 </div>
               </div>
-              <button onClick={() => handleRepeat(currentCard._id)}>
-                Repetir
-              </button>
-              <button onClick={() => handleGood(currentCard._id)}>Bien</button>
+              <div className="study-app__container">
+                <button
+                  onClick={() => handleRepeat(currentCard._id)}
+                  className="study-app__button study-app__button--back"
+                >
+                  Repetir
+                </button>
+                <button
+                  onClick={() => handleGood(currentCard._id)}
+                  className="study-app__button study-app__button--back"
+                >
+                  Bien
+                </button>
+              </div>
             </>
           )}
         </>
-      )) || <span>¡Terminaste!</span>}
+      )) || <span>¡Terminaste! :&#41;</span>}
     </section>
   );
 };
