@@ -1,5 +1,4 @@
 import { auth } from "@clerk/nextjs";
-import { FaBookmark, FaEnvelope, FaGear } from "react-icons/fa6";
 import Link from "next/link";
 import CreateCourse from "@/components/courses/create-course";
 import ManageStudentInvitations from "@/components/users/manage-student-invitations";
@@ -32,7 +31,7 @@ const DashboardPage = async () => {
   const { ownedCourses, studentCourses } = courses;
 
   return (
-    <>
+    <main className="dashboard-main">
       <Breadcrumbs>
         <span
           href="/dashboard"
@@ -73,7 +72,7 @@ const DashboardPage = async () => {
         ))}
         <CreateCourse />
       </ul>
-    </>
+    </main>
   );
 };
 
