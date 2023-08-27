@@ -74,18 +74,18 @@ const StudyApp = ({ cards, focus }) => {
   };
 
   return (
-    <>
+    <section className="study-app">
       {(blinds && (
         <>
-          <span>
+          <span className="study-app__count">
             {totalCards - studyCards.length + 1} / {totalCards}
           </span>
           {front && (
             <>
               <div className="card card--front">
-                <h2 className="card__text card__text--front">
+                <span className="card__text card__text--front">
                   {currentCard.front}
-                </h2>
+                </span>
               </div>
               <button onClick={handleToggleFront}>Mostrar Respuesta</button>
             </>
@@ -94,12 +94,15 @@ const StudyApp = ({ cards, focus }) => {
           {!front && (
             <>
               <div className="card card--back">
-                <h2 className="card__text card__text--front">
-                  {currentCard.front}
-                </h2>
-                <h3 className="card__text card__text--back">
-                  {currentCard.back}
-                </h3>
+                <div className="card__container">
+                  <span className="card__text card__text--front">
+                    {currentCard.front}
+                  </span>
+                  <hr className="card__separator" />
+                  <span className="card__text card__text--back">
+                    {currentCard.back}
+                  </span>
+                </div>
               </div>
               <button onClick={() => handleRepeat(currentCard._id)}>
                 Repetir
@@ -109,7 +112,7 @@ const StudyApp = ({ cards, focus }) => {
           )}
         </>
       )) || <span>¡Terminaste!</span>}
-    </>
+    </section>
   );
 };
 
