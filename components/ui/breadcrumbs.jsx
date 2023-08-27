@@ -2,8 +2,8 @@ const Breadcrumbs = ({ children }) => {
   let multiple = Array.isArray(children);
 
   return (
-    <nav aria-label="Breadcrumb">
-      <ol className="breadcrumb">
+    <nav className="breadcrumb" aria-label="Breadcrumb">
+      <ol className="breadcrumb__container">
         {multiple ? (
           children.map((child, index) => {
             if (index === children.length - 1) {

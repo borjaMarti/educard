@@ -1,55 +1,43 @@
 "use client";
-import {
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  SignUpButton,
-  UserButton,
-} from "@clerk/nextjs";
-import { useState } from "react";
 import Link from "next/link";
-import { FaBars, FaXmark } from "react-icons/fa6";
+import { usePathname } from "next/navigation";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import { TbCards } from "react-icons/tb";
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+  const firstPartIndex = pathname.indexOf("/", 1);
+  const location = pathname.slice(
+    0,
+    firstPartIndex === -1 ? pathname.length : firstPartIndex,
+  );
+  let headerClass = "";
+  let navClass = "";
 
-  const handleToggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  if (location === "/dashboard") {
+    navClass = "site-header__nav--dashboard";
+    headerClass = "site-header--in";
+  }
+
+  if (location === "/study") {
+    navClass = "site-header__nav--study";
+    headerClass = "site-header--in";
+  }
 
   return (
-    <header className="site-header">
-      <nav className="main-nav">
+    <header className={`site-header ${headerClass}`}>
+      <nav className={`site-header__nav ${navClass}`}>
         <Link href="/" className="logo">
           <TbCards className="logo__icon" />
           <h1 className="logo__title">EduCard</h1>
         </Link>
-        <button
-          className="main-nav__button"
-          aria-expanded={isOpen}
-          aria-label={isOpen ? "Cerrar navegación" : "Abrir navegación"}
-          onClick={handleToggleMenu}
-        >
-          {isOpen ? <FaXmark /> : <FaBars />}
-        </button>
         <SignedIn>
-          <Link href="/dashboard" className="main-nav__link">
-            Mi EduCard
-          </Link>
-          <UserButton afterSignOutUrl="/" />
+          {location !== "/study" && <UserButton afterSignOutUrl="/" />}
         </SignedIn>
         <SignedOut>
           <SignInButton>
-            <button className="main-nav__button main-nav__link">
-              Iniciar Sesión
-            </button>
+            <button className="site-header__link">Iniciar Sesión</button>
           </SignInButton>
-          <SignUpButton>
-            <button className="main-nav__button main-nav__link">
-              Registrarse
-            </button>
-          </SignUpButton>
         </SignedOut>
       </nav>
     </header>
