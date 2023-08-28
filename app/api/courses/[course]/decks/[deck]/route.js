@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server";
 import { getAuth } from "@clerk/nextjs/server";
 import dbConnect from "@/lib/db-connect.js";
-import Course from "@/models/course.js";
-import Deck from "@/models/deck.js";
-import Card from "@/models/card.js";
-import Reminder from "@/models/reminder.js";
+import Course from "@/models/Course.js";
+import Deck from "@/models/Deck.js";
+import Card from "@/models/Card.js";
+import Reminder from "@/models/Reminder.js";
 
 // @desc Fetch deck (and course) name.
 // @route GET /api/courses/[course]/decks/[deck]

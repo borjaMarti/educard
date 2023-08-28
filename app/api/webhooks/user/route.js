@@ -2,11 +2,11 @@ import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import { Webhook } from "svix";
 import dbConnect from "@/lib/db-connect.js";
-import Course from "@/models/course.js";
-import Deck from "@/models/deck.js";
-import Card from "@/models/card.js";
-import Reminder from "@/models/reminder.js";
-import User from "@/models/user.js";
+import Course from "@/models/Course.js";
+import Deck from "@/models/Deck.js";
+import Card from "@/models/Card.js";
+import Reminder from "@/models/Reminder.js";
+import User from "@/models/User.js";
 
 const webhookSecret = process.env.WEBHOOK_SECRET;
 
