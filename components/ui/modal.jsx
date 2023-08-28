@@ -29,11 +29,12 @@ const Modal = ({ open, onClose, children, title }) => {
     >
       <div className="dialog__container">
         <div className="dialog__header">
-          <h1>{title}</h1>
+          <h1 className="dialog__title">{title}</h1>
           <button
             onClick={onClose}
             title="Volver atrás"
             aria-label="Volver atrás"
+            className="button button--close"
           >
             <FaXmark />
           </button>

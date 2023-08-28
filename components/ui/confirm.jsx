@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { FaCheck, FaXmark } from "react-icons/fa6";
 
 const Confirm = ({ open, onClose, onConfirm, children, title }) => {
   const confirmRef = useRef(null);
@@ -17,14 +18,25 @@ const Confirm = ({ open, onClose, onConfirm, children, title }) => {
     <dialog className="dialog" ref={confirmRef} onClose={onClose}>
       <div className="dialog__container">
         <div className="dialog__header">
-          <h1>{title}</h1>
+          <h1 className="dialog__title">{title}</h1>
         </div>
-        <div>{children}</div>
-        <div className="dialog__confirm-controls">
-          <button onClick={onConfirm} aria-label="Confirmar">
+        <p className="dialog__text">{children}</p>
+        <div className="dialog__controls">
+          <button
+            onClick={onConfirm}
+            aria-label="Confirmar"
+            className="dialog__button dialog__button--alert"
+          >
+            <FaCheck />
             Confirmar
           </button>
-          <button onClick={onClose} aria-label="Cancelar" ref={cancelRef}>
+          <button
+            onClick={onClose}
+            aria-label="Cancelar"
+            ref={cancelRef}
+            className="dialog__button"
+          >
+            <FaXmark />
             Cancelar
           </button>
         </div>
