@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useRef } from "react";
 import { FaCheck, FaXmark } from "react-icons/fa6";
 
@@ -20,7 +21,7 @@ const Confirm = ({ open, onClose, onConfirm, children, title }) => {
         <div className="dialog__header">
           <h1 className="dialog__title">{title}</h1>
         </div>
-        <p className="dialog__text">{children}</p>
+        {children}
         <div className="dialog__controls">
           <button
             onClick={onConfirm}

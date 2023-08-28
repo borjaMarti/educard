@@ -1,3 +1,4 @@
+"use client";
 import { useCallback, useEffect, useRef } from "react";
 import { FaXmark } from "react-icons/fa6";
 
@@ -39,7 +40,7 @@ const Modal = ({ open, onClose, children, title }) => {
             <FaXmark />
           </button>
         </div>
-        <div>{children}</div>
+        {children}
       </div>
     </dialog>
   );

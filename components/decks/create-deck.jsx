@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useParams, useRouter } from "next/navigation";
-import { FaPlus } from "react-icons/fa6";
+import { FaPlus, FaFloppyDisk } from "react-icons/fa6";
 import Modal from "@/components/ui/modal";
 
 const CreateDeck = () => {
@@ -35,24 +35,32 @@ const CreateDeck = () => {
 
   return (
     <>
-      <button onClick={openModal}>
+      <button onClick={openModal} className="button button--link">
         <FaPlus /> Crear Mazo
       </button>
       <Modal title="Crear Mazo" onClose={closeModal} open={isModalOpen}>
-        <form onSubmit={handleSubmit}>
+        <form className="dialog__form">
           <label htmlFor="deck-name">Nombre del Mazo</label>
           <input
             id="deck-name"
             type="text"
             value={text}
-            placeholder="Nombre del Mazo"
+            placeholder="Escribe aquí"
             onChange={(e) => setText(e.target.value)}
             disabled={isSubmitted}
+            className="dialog__input"
           />
-          <button type="submit" disabled={isSubmitted}>
+        </form>
+        <div className="dialog__controls">
+          <button
+            onClick={handleSubmit}
+            disabled={isSubmitted}
+            className="dialog__button"
+          >
+            <FaFloppyDisk />
             Crear Mazo
           </button>
-        </form>
+        </div>
       </Modal>
     </>
   );

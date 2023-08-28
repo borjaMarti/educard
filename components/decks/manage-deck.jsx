@@ -56,11 +56,11 @@ const ManageDeck = ({ courseId, deckId, deckName }) => {
 
   return (
     <>
-      <button onClick={openModal}>
+      <button onClick={openModal} className="button">
         <FaGear />
       </button>
       <Modal title="Ajustes de Mazo" onClose={closeModal} open={isModalOpen}>
-        <form onSubmit={handleEditDeck}>
+        <form className="dialog__form">
           <label htmlFor="deck-name">Nombre del mazo</label>
           <input
             id="deck-name"
@@ -69,21 +69,33 @@ const ManageDeck = ({ courseId, deckId, deckName }) => {
             placeholder={deckName}
             onChange={(e) => setText(e.target.value)}
             disabled={isSubmitted}
+            className="dialog__input"
           />
-          <button type="submit" disabled={isSubmitted}>
+        </form>
+        <div className="dialog__controls">
+          <button
+            onClick={handleEditDeck}
+            disabled={isSubmitted}
+            className="dialog__button"
+          >
             <FaRegPenToSquare /> Editar Nombre
           </button>
-        </form>
-        <button onClick={openConfirm}>
-          <FaTrashCan /> Eliminar Mazo
-        </button>
+          <button
+            onClick={openConfirm}
+            className="dialog__button dialog__button--alert"
+          >
+            <FaTrashCan /> Eliminar Mazo
+          </button>
+        </div>
         <Confirm
           title="Eliminar Mazo"
           onClose={closeConfirm}
           onConfirm={handleDeleteDeck}
           open={isConfirmOpen}
         >
-          <p>¿Seguro que quieres eliminar {deckName}? No podrás recuperarlo.</p>
+          <p className="dialog__text">
+            ¿Seguro que quieres eliminar {deckName}? No podrás recuperarlo.{" "}
+          </p>
         </Confirm>
       </Modal>
     </>
