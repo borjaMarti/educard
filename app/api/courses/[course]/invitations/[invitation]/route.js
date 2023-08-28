@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 import { getAuth } from "@clerk/nextjs/server";
 import dbConnect from "@/lib/db-connect";
-import Course from "@/models/course";
-import Invitation from "@/models/invitation";
+import Course from "@/models/Course";
+import Invitation from "@/models/Invitation";
 
 // @desc Delete invitation.
 // @route DELETE /api/courses/[course]/invitations/[invitation]

@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 import { getAuth } from "@clerk/nextjs/server";
 import dbConnect from "@/lib/db-connect";
-import Card from "@/models/card";
-import Reminder from "@/models/reminder";
+import Card from "@/models/Card";
+import Reminder from "@/models/Reminder";
 
 // @desc Fetch all of the courses's active cards.
 // @route GET /api/study/focus/courses/[course]

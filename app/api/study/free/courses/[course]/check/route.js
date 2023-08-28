@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import dbConnect from "@/lib/db-connect";
-import Card from "@/models/card";
+import Card from "@/models/Card";
 
 // @desc Attempt to fetch one card from course and return result.
 // @route GET /api/study/free/courses/[course]/check
