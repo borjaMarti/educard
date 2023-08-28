@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { FaUserPlus, FaEnvelope } from "react-icons/fa6";
-import Modal from "@/components/ui/modal";
+import Modal from "@/components/ui/Modal";
 
 const InviteStudent = () => {
   const params = useParams();

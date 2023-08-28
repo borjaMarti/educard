@@ -2,8 +2,8 @@
 import { useState } from "react";
 import { useRouter, useParams } from "next/navigation";
 import { FaCircleInfo, FaArrowRightFromBracket } from "react-icons/fa6";
-import Modal from "@/components/ui/modal";
-import Confirm from "@/components/ui/confirm";
+import Modal from "@/components/ui/Modal";
+import Confirm from "@/components/ui/Confirm";
 
 const CourseInfo = ({ course }) => {
   const router = useRouter();

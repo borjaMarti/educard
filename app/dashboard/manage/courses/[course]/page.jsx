@@ -6,7 +6,7 @@ import ManageCourseInvitations from "@/components/courses/manage-course-invitati
 import ManageCourse from "@/components/courses/manage-course";
 import ManageDeck from "@/components/decks/manage-deck";
 import RemoveStudent from "@/components/courses/remove-student";
-import Breadcrumbs from "@/components/ui/breadcrumbs";
+import Breadcrumbs from "@/components/ui/Breadcrumbs";
 
 async function fetchDecks(params) {
   const authResponse = auth();

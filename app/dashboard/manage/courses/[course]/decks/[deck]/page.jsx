@@ -3,7 +3,7 @@ import Link from "next/link";
 import CreateCard from "@/components/cards/create-card";
 import ManageDeck from "@/components/decks/manage-deck";
 import ManageCard from "@/components/cards/manage-card";
-import Breadcrumbs from "@/components/ui/breadcrumbs";
+import Breadcrumbs from "@/components/ui/Breadcrumbs";
 
 async function fetchCards(params) {
   const authResponse = auth();

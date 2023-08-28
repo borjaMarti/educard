@@ -3,7 +3,7 @@ import Link from "next/link";
 import CreateCourse from "@/components/courses/create-course";
 import ManageStudentInvitations from "@/components/users/manage-student-invitations";
 import ManageCourse from "@/components/courses/manage-course";
-import Breadcrumbs from "@/components/ui/breadcrumbs";
+import Breadcrumbs from "@/components/ui/Breadcrumbs";
 
 async function fetchCourses() {
   const authResponse = auth();

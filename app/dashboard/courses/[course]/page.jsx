@@ -2,7 +2,7 @@ import { auth } from "@clerk/nextjs";
 import { FaFolderOpen } from "react-icons/fa";
 import Link from "next/link";
 import CourseInfo from "@/components/users/course-info";
-import Breadcrumbs from "@/components/ui/breadcrumbs";
+import Breadcrumbs from "@/components/ui/Breadcrumbs";
 
 async function fetchDecks(params) {
   const authResponse = auth();

@@ -2,8 +2,8 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { FaGear, FaRegPenToSquare, FaTrashCan } from "react-icons/fa6";
-import Modal from "@/components/ui/modal";
-import Confirm from "@/components/ui/confirm";
+import Modal from "@/components/ui/Modal";
+import Confirm from "@/components/ui/Confirm";
 
 const ManageCourse = ({ courseId, courseName }) => {
   const [text, setText] = useState(courseName);

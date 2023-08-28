@@ -2,7 +2,7 @@
 import { FaUserXmark } from "react-icons/fa6";
 import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
-import Confirm from "@/components/ui/confirm";
+import Confirm from "@/components/ui/Confirm";
 
 const RemoveStudent = ({ studentId, studentEmail }) => {
   const params = useParams();
