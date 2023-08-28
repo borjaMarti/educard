@@ -563,9 +563,44 @@ button:focus-visible {
   justify-content: space-between;
 }
 
-.dialog__alert-controls {
+.dialog__controls {
   display: flex;
   justify-content: space-evenly;
+}
+
+.dialog__button {
+  cursor: pointer;
+  border: none;
+  color: white;
+  background-color: #4788e9;
+}
+
+.dialog__button:hover {
+  background-color: #186ae6;
+}
+
+.site-header__link {
+  background-color: transparent;
+  border: none;
+  border: 0.15rem solid #ea7070;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  color: #21242c;
+  text-decoration: none;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+}
+
+.site-header__link:visited {
+  color: #21242c;
+}
+
+.site-header__link:hover,
+.site-header__link:active {
+  color: #21242c;
+  background-color: #fdc4b6;
 }
 
 /* LOG PAGE */
@@ -654,19 +689,18 @@ button:focus-visible {
 /* LINKS */
 
 .link {
-  color: #2694ab;
+  color: #186ae6;
   text-decoration: underline;
   text-decoration-color: transparent;
   transition: all 0.3s ease-in-out;
 }
 
 .link:visited {
-  color: #2694ab;
+  color: #186ae6;
 }
 
 .link:hover {
-  color: #2694ab;
-  text-decoration-color: #2694ab;
+  text-decoration-color: #186ae6;
 }
 
 /* BREADCRUMB */
@@ -697,7 +731,7 @@ button:focus-visible {
 }
 
 .breadcrumb__element--current {
-  color: #405a61;
+  color: #4788e9;
   font-weight: bold;
 }
 
@@ -742,7 +776,7 @@ button:focus-visible {
   border-radius: 0.25rem;
   cursor: pointer;
   color: white;
-  padding: 1rem 1.5rem;
+  padding: 1rem 1.6rem;
   font-size: 1rem;
   transition: background-color 0.3s ease-in-out;
   min-width: 7rem;
@@ -750,8 +784,8 @@ button:focus-visible {
 
 @media (min-width: 768px) {
   .study-app__button {
-    font-size: 1.75rem;
-    padding: 2 2.75rem;
+    font-size: 1.5rem;
+    padding: 1.25 2rem;
     min-width: 10rem;
   }
 }
@@ -786,7 +820,7 @@ button:focus-visible {
 
 @media (min-width: 768px) {
   .card {
-    font-size: 2rem;
+    font-size: 1.875rem;
   }
 }
 

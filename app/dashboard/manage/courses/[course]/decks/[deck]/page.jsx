@@ -51,7 +51,7 @@ const ManageDeckPage = async ({ params }) => {
           Mazo: {deckInfo.deckName}
         </span>
       </Breadcrumbs>
-      <h2>{deckInfo.deckName}</h2>
+      <h2>Mazo: {deckInfo.deckName}</h2>
       <ManageDeck
         courseId={params.course}
         deckId={params.deck}

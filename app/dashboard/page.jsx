@@ -45,7 +45,7 @@ const DashboardPage = async () => {
       <ul>
         {studentCourses.map((course) => (
           <li key={course._id}>
-            <Link href={`/dashboard/courses/${course._id}`}>
+            <Link href={`/dashboard/courses/${course._id}`} className="link">
               <h3>{course.courseName}</h3>
             </Link>
             <span>{course.activeReminders}</span>
@@ -57,11 +57,14 @@ const DashboardPage = async () => {
           ""
         )}
       </ul>
-      <h2>Mis Cursos</h2>
+      <h2>Gestionar mis Cursos</h2>
       <ul>
         {ownedCourses.map((course) => (
           <li key={course._id}>
-            <Link href={`/dashboard/manage/courses/${course._id}`}>
+            <Link
+              href={`/dashboard/manage/courses/${course._id}`}
+              className="link"
+            >
               <h3>{course.courseName}</h3>
             </Link>
             <ManageCourse

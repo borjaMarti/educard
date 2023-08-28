@@ -60,13 +60,14 @@ const ManageCoursePage = async ({ params }) => {
           Gestionar: {courseName}
         </span>
       </Breadcrumbs>
-      <h2>{courseName}</h2>
+      <h2>Gestionar: {courseName}</h2>
       <ManageCourse courseId={params.course} />
       <ul>
         {decks.map((deck) => (
           <li key={deck._id}>
             <Link
               href={`/dashboard/manage/courses/${params.course}/decks/${deck._id}`}
+              className="link"
             >
               <h3>{deck.deckName}</h3>
             </Link>

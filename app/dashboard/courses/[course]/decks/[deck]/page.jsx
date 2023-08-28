@@ -48,7 +48,7 @@ const DeckPage = async ({ params }) => {
           Mazo: {deckInfo.deckName}
         </span>
       </Breadcrumbs>
-      <h2>{deckInfo.deckName}</h2>
+      <h2>Mazo: {deckInfo.deckName}</h2>
       <ul>
         {cards.map((card) => (
           <li key={card._id}>

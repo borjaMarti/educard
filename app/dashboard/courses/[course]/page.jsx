@@ -88,6 +88,7 @@ const CoursePage = async ({ params }) => {
                 <li key={deck._id}>
                   <Link
                     href={`/study/focus/courses/${params.course}/decks/${deck._id}`}
+                    className="link"
                   >
                     <h3>{deck.deckName}</h3>
                   </Link>
@@ -120,7 +121,10 @@ const CoursePage = async ({ params }) => {
           </span>
           <ul>
             <li>
-              <Link href={`/study/free/courses/${params.course}`}>
+              <Link
+                href={`/study/free/courses/${params.course}`}
+                className="link"
+              >
                 <h3>{course.courseName} (todos los mazos)</h3>
               </Link>
             </li>
@@ -129,6 +133,7 @@ const CoursePage = async ({ params }) => {
                 <li key={deck._id}>
                   <Link
                     href={`/study/free/courses/${params.course}/decks/${deck._id}`}
+                    className="link"
                   >
                     <h3>{deck.deckName}</h3>
                   </Link>
