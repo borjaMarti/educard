@@ -572,55 +572,114 @@ kbd {
   border-radius: 0.25rem;
   box-shadow: 0px 25px 50px -12px rgba(0, 0, 0, 0.25);
   padding: 0;
+  font-size: 0.875rem;
 }
 
 .dialog__container {
+  display: flex;
+  flex-direction: column;
   padding: 2rem;
+  gap: 2rem;
 }
 
 .dialog__header {
   display: flex;
   justify-content: space-between;
+  gap: 2rem;
+}
+
+.dialog__title {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .dialog {
+    font-size: 1rem;
+  }
+
+  .dialog__container {
+    padding: 3rem;
+    gap: 2rem;
+  }
+
+  .dialog__header {
+    gap: 5rem;
+  }
+
+  .dialog__title {
+    font-size: 1.75rem;
+  }
+}
+
+.dialog__text {
+  margin: 0;
+  text-align: center;
 }
 
 .dialog__controls {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .dialog__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   cursor: pointer;
-  border: none;
+  border: 2px solid #4788e9;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
   color: white;
   background-color: #4788e9;
+  padding: 0.5rem 0.75rem;
+  min-width: 6.5rem;
+  transition: background-color 0.3s ease-in-out;
 }
 
-.dialog__button:hover {
+.dialog__button:hover,
+.dialog__button:active,
+.dialog__button:focus {
   background-color: #186ae6;
 }
 
-.site-header__link {
+@media (min-width: 768px) {
+  .dialog__button {
+    padding: 0.75rem 0.875rem;
+    min-width: 7.5rem;
+    font-size: 0.875rem;
+  }
+
+  .dialog__controls {
+    gap: 2rem;
+  }
+}
+
+.dialog__button--alert {
+  border: 2px solid red;
   background-color: transparent;
-  border: none;
-  border: 0.15rem solid #ea7070;
-  border-radius: 0.25rem;
-  cursor: pointer;
-  color: #21242c;
-  text-decoration: none;
-  padding: 0.5rem 0.75rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  transition: all 0.3s ease-in-out;
+  color: red;
 }
 
-.site-header__link:visited {
-  color: #21242c;
+.dialog__button--alert:hover,
+.dialog__button--alert:active,
+.dialog__button--alert:focus {
+  color: white;
+  background-color: red;
 }
 
-.site-header__link:hover,
-.site-header__link:active {
-  color: #21242c;
-  background-color: #fdc4b6;
+.dialog__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.dialog__input {
+  padding: 0.25rem;
 }
 
 /* LOG PAGE */
@@ -698,12 +757,53 @@ kbd {
   cursor: pointer;
   background-color: transparent;
   border: none;
+  font-size: 1rem;
+  transition: color 0.3s ease-in-out;
 }
 
-.button--danger {
+.button:hover,
+.button:active,
+.button:focus {
+  color: #e94d4d;
+}
+
+@media (min-width: 768px) {
+  .button {
+    font-size: 1.25rem;
+  }
+}
+
+.button--close {
+  font-size: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .button--close {
+    font-size: 2rem;
+  }
+}
+
+.button--alert {
+  color: #e94d4d;
+}
+
+.button--danger:hover,
+.button--danger:active,
+.button--danger:focus {
   color: red;
-  border-color: red;
-  background-color: transparent;
+}
+
+.button--link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0;
+}
+
+@media (min-width: 768px) {
+  .button--link {
+    font-size: 1.125rem;
+  }
 }
 
 /* LINKS */
@@ -813,7 +913,7 @@ kbd {
 
 @media (min-width: 768px) {
   .study-app__button {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     padding: 1.25 2rem;
     min-width: 10rem;
   }
