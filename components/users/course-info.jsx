@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter, useParams } from "next/navigation";
-import { FaGear, FaArrowRightFromBracket } from "react-icons/fa6";
+import { FaCircleInfo, FaArrowRightFromBracket } from "react-icons/fa6";
 import Modal from "@/components/ui/modal";
 import Confirm from "@/components/ui/confirm";
 
@@ -42,16 +42,26 @@ const CourseInfo = ({ course }) => {
     <>
       <button
         onClick={openModal}
-        aria-label={`Ajustes de ${course.courseName}`}
-        title={`Ajustes de ${course.courseName}`}
+        aria-label={`Información de ${course.courseName}`}
+        title={`Información de ${course.courseName}`}
         className="button"
       >
-        <FaGear />
+        <FaCircleInfo />
       </button>
-      <Modal title="Ajustes del curso" onClose={closeModal} open={isModalOpen}>
-        <div className="dialog__course-info">
-          <span>Profesor: {course.owner.name}</span>
-          <span>Email: {course.owner.email}</span>
+      <Modal
+        title="Información del curso"
+        onClose={closeModal}
+        open={isModalOpen}
+      >
+        <div className="invitations__info invitations__info--separate">
+          <span className="invitations__info">
+            <span className="invitations__label">Profesor:</span>
+            <span>{course.owner.name}</span>
+          </span>
+          <span className="invitations__info">
+            <span className="invitations__label">Email:</span>
+            <span>{course.owner.email}</span>
+          </span>
         </div>
         <div className="dialog__controls">
           <button
