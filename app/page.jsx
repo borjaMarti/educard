@@ -11,7 +11,7 @@ const HomePage = async () => {
           width={0}
           style={{ width: "100%", height: "auto", maxWidth: "30rem" }}
         />
-        <h1>Welcome to Educard!</h1>
+        <h1>Welcome to Educard! ~</h1>
       </section>
     </main>
   );
