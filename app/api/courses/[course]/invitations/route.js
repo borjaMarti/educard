@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
 import { getAuth } from "@clerk/nextjs/server";
-import dbConnect from "@/lib/db-connect";
-import Course from "@/models/Course";
-import User from "@/models/User";
-import Invitation from "@/models/Invitation";
+import dbConnect from "@/lib/db-connect.js";
+import Course from "@/models/course.js";
+import User from "@/models/user.js";
+import Invitation from "@/models/invitation.js";
 
 // @desc Create student invitation.
 // @route POST /api/courses/[course]/invitations

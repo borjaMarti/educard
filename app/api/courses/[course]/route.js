@@ -1,12 +1,12 @@
 import { NextResponse } from "next/server";
 import { getAuth } from "@clerk/nextjs/server";
-import dbConnect from "@/lib/db-connect";
-import Course from "@/models/Course";
-import Deck from "@/models/Deck";
-import Card from "@/models/Card";
-import Reminder from "@/models/Reminder";
-import User from "@/models/User";
-import Invitation from "@/models/Invitation";
+import dbConnect from "@/lib/db-connect.js";
+import Course from "@/models/course.js";
+import Deck from "@/models/deck.js";
+import Card from "@/models/card.js";
+import Reminder from "@/models/reminder.js";
+import User from "@/models/user.js";
+import Invitation from "@/models/invitation.js";
 
 // @desc Update course (change name, add/remove students).
 // @route PUT /api/courses/[course]

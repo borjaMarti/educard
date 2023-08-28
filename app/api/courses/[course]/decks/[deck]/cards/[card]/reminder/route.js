@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { getAuth } from "@clerk/nextjs/server";
 import dbConnect from "@/lib/db-connect";
-import Reminder from "@/models/Reminder";
+import Reminder from "@/models/reminder.js";
 
 // @desc Update reminder (modify phase and date based on study result)
 // @route PUT /api/user/reminders/cards/[card]

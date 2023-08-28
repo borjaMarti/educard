@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
 import { getAuth } from "@clerk/nextjs/server";
-import dbConnect from "@/lib/db-connect";
-import Course from "@/models/Course";
-import Card from "@/models/Card";
-import Reminder from "@/models/Reminder";
+import dbConnect from "@/lib/db-connect.js";
+import Course from "@/models/course.js";
+import Card from "@/models/card.js";
+import Reminder from "@/models/reminder.js";
 
 // @desc Update card (change front and/or back)
 // @route PUT /api/courses/[course]/decks/[deck]/cards/[card]

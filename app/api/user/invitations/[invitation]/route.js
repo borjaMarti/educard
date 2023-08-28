@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { getAuth } from "@clerk/nextjs/server";
-import dbConnect from "@/lib/db-connect";
-import Invitation from "@/models/Invitation";
+import dbConnect from "@/lib/db-connect.js";
+import Invitation from "@/models/invitation.js";
 
 // @desc Delete invitation.
 // @route DELETE /api/user/invitations/[invitation]

@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server";
 import { getAuth } from "@clerk/nextjs/server";
-import dbConnect from "@/lib/db-connect";
-import Course from "@/models/Course";
-import Deck from "@/models/Deck";
-import Card from "@/models/Card";
-import Reminder from "@/models/Reminder";
+import dbConnect from "@/lib/db-connect.js";
+import Course from "@/models/course.js";
+import Deck from "@/models/deck.js";
+import Card from "@/models/card.js";
+import Reminder from "@/models/reminder.js";
 
 // @desc Create new card (includes creating reminders for all students).
 // @route POST /api/courses/[course]/decks/[deck]/cards
