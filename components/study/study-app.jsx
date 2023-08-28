@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 
 const StudyApp = ({ cards, focus }) => {
@@ -73,6 +73,24 @@ const StudyApp = ({ cards, focus }) => {
     setFront(!front);
   };
 
+  useEffect(() => {
+    const handleKeyPress = (event) => {
+      if (event.key === " ") {
+        handleToggleFront();
+      } else if (event.key === "1") {
+        handleRepeat(currentCard._id);
+      } else if (event.key === "2") {
+        handleGood(currentCard._id);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyPress);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyPress);
+    };
+  }, [currentCard, handleToggleFront, handleRepeat, handleGood]);
+
   return (
     <section className="study-app">
       {(blinds && (
@@ -87,12 +105,17 @@ const StudyApp = ({ cards, focus }) => {
                   {currentCard.front}
                 </span>
               </div>
-              <button
-                onClick={handleToggleFront}
-                className="study-app__button study-app__button--front"
-              >
-                Mostrar Respuesta
-              </button>
+              <div className="study-app__tooltip-container">
+                <button
+                  onClick={handleToggleFront}
+                  className="study-app__button study-app__button--front"
+                >
+                  Mostrar Respuesta
+                </button>
+                <div>
+                  <kbd>Espacio</kbd>
+                </div>
+              </div>
             </>
           )}
 
@@ -109,19 +132,29 @@ const StudyApp = ({ cards, focus }) => {
                   </span>
                 </div>
               </div>
-              <div className="study-app__container">
-                <button
-                  onClick={() => handleRepeat(currentCard._id)}
-                  className="study-app__button study-app__button--back"
-                >
-                  Repetir
-                </button>
-                <button
-                  onClick={() => handleGood(currentCard._id)}
-                  className="study-app__button study-app__button--back"
-                >
-                  Bien
-                </button>
+              <div className="study-app__buttons-container">
+                <div className="study-app__tooltip-container">
+                  <button
+                    onClick={() => handleRepeat(currentCard._id)}
+                    className="study-app__button study-app__button--back"
+                  >
+                    Repetir
+                  </button>
+                  <div>
+                    <kbd>1</kbd>
+                  </div>
+                </div>
+                <div className="study-app__tooltip-container">
+                  <button
+                    onClick={() => handleGood(currentCard._id)}
+                    className="study-app__button study-app__button--back"
+                  >
+                    Bien
+                  </button>
+                  <div>
+                    <kbd>2</kbd>
+                  </div>
+                </div>
               </div>
             </>
           )}

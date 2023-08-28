@@ -38,7 +38,7 @@ const DashboardPage = async () => {
           aria-current="page"
           className="breadcrumb__element--current"
         >
-          Mis Cursos
+          Inicio
         </span>
       </Breadcrumbs>
       <h2>Estudiar</h2>
@@ -57,7 +57,7 @@ const DashboardPage = async () => {
           ""
         )}
       </ul>
-      <h2>Gestionar mis Cursos</h2>
+      <h2>Gestionar Mis Cursos</h2>
       <ul>
         {ownedCourses.map((course) => (
           <li key={course._id}>

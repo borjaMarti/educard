@@ -32,7 +32,7 @@ const DeckPage = async ({ params }) => {
     <main className="dashboard-main">
       <Breadcrumbs>
         <Link href="/dashboard" className="link">
-          Mis Cursos
+          Inicio
         </Link>
         <Link
           href={`/dashboard/courses/${params.course}`}

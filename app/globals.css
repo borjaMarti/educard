@@ -413,6 +413,24 @@ button:focus-visible {
   outline: 2px solid #1f73e3;
 }
 
+/* KEYBOARD TOOLTIP */
+
+kbd {
+  background-color: #eee;
+  border-radius: 3px;
+  border: 1px solid #b4b4b4;
+  box-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.2),
+    0 2px 0 0 rgba(255, 255, 255, 0.7) inset;
+  color: #333;
+  display: inline-block;
+  font-size: 0.85em;
+  font-weight: 700;
+  line-height: 1;
+  padding: 2px 4px;
+  white-space: nowrap;
+}
+
 /*------------------------------------*\
   #BASE
 \*------------------------------------*/
@@ -760,15 +778,22 @@ button:focus-visible {
   margin-right: 1rem;
 }
 
-.study-app__container {
+.study-app__buttons-container {
   display: flex;
   gap: 1rem;
 }
 
 @media (min-width: 768px) {
-  .study-app__container {
+  .study-app__buttons-container {
     gap: 2rem;
   }
+}
+
+.study-app__tooltip-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 
 .study-app__button {

@@ -60,7 +60,7 @@ const CoursePage = async ({ params }) => {
     <main className="dashboard-main">
       <Breadcrumbs>
         <Link href="/dashboard" className="link breadcrumb__link">
-          Mis Cursos
+          Inicio
         </Link>
         <span
           href={`/dashboard/courses/${params.course}`}

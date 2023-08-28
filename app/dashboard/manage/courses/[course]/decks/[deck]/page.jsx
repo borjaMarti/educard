@@ -35,7 +35,7 @@ const ManageDeckPage = async ({ params }) => {
     <main className="dashboard-main">
       <Breadcrumbs>
         <Link href="/dashboard" className="link breadcrumb__link">
-          Mis Cursos
+          Inicio
         </Link>
         <Link
           href={`/dashboard/manage/courses/${params.course}`}
