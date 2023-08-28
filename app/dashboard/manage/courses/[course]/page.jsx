@@ -61,7 +61,7 @@ const ManageCoursePage = async ({ params }) => {
         </span>
       </Breadcrumbs>
       <h2>Gestionar: {courseName}</h2>
-      <ManageCourse courseId={params.course} />
+      <ManageCourse courseId={params.course} courseName={courseName} />
       <ul>
         {decks.map((deck) => (
           <li key={deck._id}>

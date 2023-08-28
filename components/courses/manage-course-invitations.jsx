@@ -32,6 +32,7 @@ const ManageCourseInvitations = ({ invitationsArray }) => {
         onClick={openModal}
         aria-label="Invitaciones enviadas"
         title="Invitaciones enviadas"
+        className="button"
       >
         <FaEnvelope />
       </button>
@@ -40,15 +41,24 @@ const ManageCourseInvitations = ({ invitationsArray }) => {
         onClose={closeModal}
         open={isModalOpen}
       >
-        <ul>
+        <ul className="invitations">
           {invitations.map((invitation) => (
-            <li key={invitation.invitationId}>
-              <div>
-                <span>Nombre: {invitation.userName}</span>
-                <span>Email: {invitation.userEmail}</span>
+            <li key={invitation.invitationId} className="invitations__element">
+              <div className="invitations__info invitations__info--separate">
+                <span className="invitations__info">
+                  <span className="invitations__label">Nombre: </span>
+                  <span>{invitation.userName}</span>
+                </span>
+                <span className="invitations__info">
+                  <span className="invitations__label">Email: </span>
+                  <span>{invitation.userEmail}</span>
+                </span>
               </div>
-              <div>
-                <button onClick={() => handleDelete(invitation.invitationId)}>
+              <div className="invitations__control">
+                <button
+                  onClick={() => handleDelete(invitation.invitationId)}
+                  className="button button--reject button--close"
+                >
                   <FaXmark />
                 </button>
               </div>

@@ -51,7 +51,7 @@ const CreateCard = () => {
         <FaPlus /> Crear Carta
       </button>
       <Modal title="Crear Carta" onClose={closeModal} open={isModalOpen}>
-        <form className="dialog__form">
+        <form id="create-card" onSubmit={handleSubmit} className="dialog__form">
           <label htmlFor="card-front">Anverso</label>
           <textarea
             id="card-front"
@@ -75,7 +75,7 @@ const CreateCard = () => {
           ></textarea>
           <div className="dialog__controls">
             <button
-              onClick={handleSubmit}
+              form="create-card"
               disabled={isSubmitted}
               className="dialog__button"
             >

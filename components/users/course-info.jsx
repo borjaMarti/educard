@@ -42,8 +42,8 @@ const CourseInfo = ({ course }) => {
     <>
       <button
         onClick={openModal}
-        aria-label="Ajustes del curso"
-        title="Ajustes del curso"
+        aria-label={`Ajustes de ${course.courseName}`}
+        title={`Ajustes de ${course.courseName}`}
         className="button"
       >
         <FaGear />

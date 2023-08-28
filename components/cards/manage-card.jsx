@@ -60,11 +60,16 @@ const ManageCard = ({ cardId, cardFront, cardBack }) => {
 
   return (
     <>
-      <button onClick={openModal} className="button">
+      <button
+        onClick={openModal}
+        aria-label={`Editar carta`}
+        title={`Editar carta`}
+        className="button"
+      >
         <FaGear />
       </button>
       <Modal title="Editar carta" onClose={closeModal} open={isModalOpen}>
-        <form className="dialog__form">
+        <form id={cardId} onSubmit={handleEditCard} className="dialog__form">
           <label htmlFor="card-front">Anverso</label>
           <textarea
             id="card-front"
@@ -88,7 +93,7 @@ const ManageCard = ({ cardId, cardFront, cardBack }) => {
         </form>
         <div className="dialog__controls">
           <button
-            onClick={handleEditCard}
+            form={cardId}
             disabled={isSubmitted}
             className="dialog__button"
           >

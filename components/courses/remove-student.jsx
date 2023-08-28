@@ -33,16 +33,21 @@ const RemoveStudent = ({ studentId, studentEmail }) => {
 
   return (
     <>
-      <button onClick={openConfirm} aria-label="Echar al Estudiante">
+      <button
+        onClick={openConfirm}
+        aria-label={`Echar a ${studentEmail}`}
+        title={`Echar a ${studentEmail}`}
+        className="button button--danger"
+      >
         <FaUserXmark />
       </button>
       <Confirm
-        title="Echar al Estudiante"
+        title="Echar Estudiante"
         onClose={closeConfirm}
         onConfirm={handleRemoveStudent}
         open={isConfirmOpen}
       >
-        <p>¿Seguro que quieres echar a {studentEmail}?</p>
+        ¿Seguro que quieres echar a {studentEmail}?
       </Confirm>
     </>
   );

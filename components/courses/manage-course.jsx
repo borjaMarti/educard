@@ -56,11 +56,20 @@ const ManageCourse = ({ courseId, courseName }) => {
 
   return (
     <>
-      <button onClick={openModal}>
+      <button
+        onClick={openModal}
+        aria-label={`Gestionar ${courseName}`}
+        title={`Gestionar ${courseName}`}
+        className="button"
+      >
         <FaGear />
       </button>
       <Modal title="Ajustes de Curso" onClose={closeModal} open={isModalOpen}>
-        <form onSubmit={handleEditCourse}>
+        <form
+          id={courseId}
+          onSubmit={handleEditCourse}
+          className="dialog__form"
+        >
           <label htmlFor="course-name">Nombre del curso</label>
           <input
             id="course-name"
@@ -69,14 +78,24 @@ const ManageCourse = ({ courseId, courseName }) => {
             placeholder={courseName}
             onChange={(e) => setText(e.target.value)}
             disabled={isSubmitted}
+            className="dialog__input"
           />
-          <button type="submit" disabled={isSubmitted}>
+        </form>
+        <div className="dialog__controls">
+          <button
+            form={courseId}
+            disabled={isSubmitted}
+            className="dialog__button"
+          >
             <FaRegPenToSquare /> Editar Nombre
           </button>
-        </form>
-        <button onClick={openConfirm}>
-          <FaTrashCan /> Eliminar Curso
-        </button>
+          <button
+            onClick={openConfirm}
+            className="dialog__button dialog__button--alert"
+          >
+            <FaTrashCan /> Eliminar Curso
+          </button>
+        </div>
         <Confirm
           title="Eliminar Curso"
           onClose={closeConfirm}

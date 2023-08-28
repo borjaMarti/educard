@@ -56,11 +56,16 @@ const ManageDeck = ({ courseId, deckId, deckName }) => {
 
   return (
     <>
-      <button onClick={openModal} className="button">
+      <button
+        onClick={openModal}
+        aria-label={`Gestionar ${deckName}`}
+        title={`Gestionar ${deckName}`}
+        className="button"
+      >
         <FaGear />
       </button>
       <Modal title="Ajustes de Mazo" onClose={closeModal} open={isModalOpen}>
-        <form className="dialog__form">
+        <form id={deckId} onSubmit={handleEditDeck} className="dialog__form">
           <label htmlFor="deck-name">Nombre del mazo</label>
           <input
             id="deck-name"
@@ -74,7 +79,7 @@ const ManageDeck = ({ courseId, deckId, deckName }) => {
         </form>
         <div className="dialog__controls">
           <button
-            onClick={handleEditDeck}
+            form={deckId}
             disabled={isSubmitted}
             className="dialog__button"
           >

@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { FaPlus } from "react-icons/fa6";
+import { FaPlus, FaFloppyDisk } from "react-icons/fa6";
 import Modal from "../ui/modal";
 
 const CreateCourse = () => {
@@ -34,24 +34,36 @@ const CreateCourse = () => {
 
   return (
     <>
-      <button onClick={openModal}>
+      <button onClick={openModal} className="button button--link">
         <FaPlus /> Crear Curso
       </button>
       <Modal title="Crear Curso" onClose={closeModal} open={isModalOpen}>
-        <form onSubmit={handleSubmit}>
+        <form
+          id="create-course"
+          onSubmit={handleSubmit}
+          className="dialog__form"
+        >
           <label htmlFor="course-name">Nombre del Curso</label>
           <input
             id="course-name"
             type="text"
             value={text}
-            placeholder="Nombre del Curso"
+            placeholder="Escribe aquí"
             onChange={(e) => setText(e.target.value)}
             disabled={isSubmitted}
+            className="dialog__input"
           />
-          <button type="submit" disabled={isSubmitted}>
+        </form>
+        <div className="dialog__controls">
+          <button
+            form="create-course"
+            disabled={isSubmitted}
+            className="dialog__button"
+          >
+            <FaFloppyDisk />
             Crear Curso
           </button>
-        </form>
+        </div>
       </Modal>
     </>
   );

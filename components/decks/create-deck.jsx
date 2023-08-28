@@ -39,7 +39,7 @@ const CreateDeck = () => {
         <FaPlus /> Crear Mazo
       </button>
       <Modal title="Crear Mazo" onClose={closeModal} open={isModalOpen}>
-        <form className="dialog__form">
+        <form id="create-deck" onSubmit={handleSubmit} className="dialog__form">
           <label htmlFor="deck-name">Nombre del Mazo</label>
           <input
             id="deck-name"
@@ -53,7 +53,7 @@ const CreateDeck = () => {
         </form>
         <div className="dialog__controls">
           <button
-            onClick={handleSubmit}
+            form="create-deck"
             disabled={isSubmitted}
             className="dialog__button"
           >

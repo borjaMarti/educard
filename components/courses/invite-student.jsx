@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useParams, useRouter } from "next/navigation";
-import { FaUserPlus } from "react-icons/fa6";
+import { FaUserPlus, FaEnvelope } from "react-icons/fa6";
 import Modal from "@/components/ui/modal";
 
 const InviteStudent = () => {
@@ -51,7 +51,7 @@ const InviteStudent = () => {
 
   return (
     <>
-      <button onClick={openModal}>
+      <button onClick={openModal} className="button">
         <FaUserPlus /> Invitar Estudiante
       </button>
       <Modal
@@ -59,20 +59,31 @@ const InviteStudent = () => {
         onClose={closeModal}
         open={isModalOpen}
       >
-        <span>{sentInvitation}</span>
-        <form onSubmit={handleSubmit}>
+        {sentInvitation && <span>{sentInvitation}</span>}
+        <form
+          id="invite-student"
+          onSubmit={handleSubmit}
+          className="dialog__form"
+        >
           <label htmlFor="student-email">Email del estudiante</label>
           <input
             id="student-email"
             type="text"
             value={text}
-            placeholder="Email del estudiante"
+            placeholder="Escribe aquí"
             onChange={(e) => setText(e.target.value)}
+            className="dialog__input"
           />
-          <button type="submit" disabled={!text}>
-            Enviar Invitación
-          </button>
         </form>
+        <div className="dialog__controls">
+          <button
+            form="invite-student"
+            disabled={!text}
+            className="dialog__button"
+          >
+            <FaEnvelope /> Enviar Invitación
+          </button>
+        </div>
       </Modal>
     </>
   );
