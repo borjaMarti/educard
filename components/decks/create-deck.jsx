@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { FaPlus, FaFloppyDisk } from "react-icons/fa6";
-import Modal from "@/components/ui/Modal";
+import Modal from "@/components/ui/modal-compo";
 
 const CreateDeck = () => {
   const params = useParams();
