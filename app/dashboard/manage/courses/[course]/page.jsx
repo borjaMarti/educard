@@ -71,7 +71,11 @@ const ManageCoursePage = async ({ params }) => {
             >
               <h3>{deck.deckName}</h3>
             </Link>
-            <ManageDeck courseId={params.course} deckId={deck._id} />
+            <ManageDeck
+              courseId={params.course}
+              deckId={deck._id}
+              deckName={deck.deckName}
+            />
           </li>
         ))}
         <CreateDeck />

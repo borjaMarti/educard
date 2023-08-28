@@ -78,7 +78,10 @@ const CoursePage = async ({ params }) => {
 
           <ul>
             <li>
-              <Link href={`/study/focus/courses/${params.course}`}>
+              <Link
+                href={`/study/focus/courses/${params.course}`}
+                className="link"
+              >
                 <h3>{course.courseName} (todos los mazos)</h3>
               </Link>
               <span>{course.activeReminders}</span>
