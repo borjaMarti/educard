@@ -60,36 +60,47 @@ const ManageCard = ({ cardId, cardFront, cardBack }) => {
 
   return (
     <>
-      <button onClick={openModal}>
+      <button onClick={openModal} className="button">
         <FaGear />
       </button>
-      <Modal title="Ajustes de Mazo" onClose={closeModal} open={isModalOpen}>
-        <form onSubmit={handleEditCard}>
+      <Modal title="Editar carta" onClose={closeModal} open={isModalOpen}>
+        <form className="dialog__form">
           <label htmlFor="card-front">Anverso</label>
-          <input
+          <textarea
             id="card-front"
             type="text"
             value={front}
             placeholder="Anverso de la carta"
             onChange={(e) => setFront(e.target.value)}
             disabled={isSubmitted}
-          />
+            className="dialog__input dialog__input--textarea"
+          ></textarea>
           <label htmlFor="card-back">Reverso</label>
-          <input
+          <textarea
             id="card-back"
             type="text"
             value={back}
             placeholder="Reverso de la carta"
             onChange={(e) => setBack(e.target.value)}
             disabled={isSubmitted}
-          />
-          <button type="submit" disabled={isSubmitted}>
+            className="dialog__input dialog__input--textarea"
+          ></textarea>
+        </form>
+        <div className="dialog__controls">
+          <button
+            onClick={handleEditCard}
+            disabled={isSubmitted}
+            className="dialog__button"
+          >
             <FaRegPenToSquare /> Editar Carta
           </button>
-        </form>
-        <button onClick={openConfirm}>
-          <FaTrashCan /> Eliminar Carta
-        </button>
+          <button
+            onClick={openConfirm}
+            className="dialog__button dialog__button--alert"
+          >
+            <FaTrashCan /> Eliminar Carta
+          </button>
+        </div>
         <Confirm
           title="Eliminar Carta"
           onClose={closeConfirm}
