@@ -477,7 +477,8 @@ kbd {
 }
 
 .site-header__link:hover,
-.site-header__link:active {
+.site-header__link:active,
+.site-header__link:focus {
   color: #21242c;
   background-color: #fdc4b6;
 }
@@ -536,16 +537,17 @@ kbd {
   align-items: center;
 }
 
+.logo:hover,
+.logo:active,
+.logo:focus {
+  color: #ea7070;
+}
+
 .logo__title {
   margin: 0;
   font-size: 1.75rem;
   transition: all 0.3s ease-in-out;
   user-select: none;
-}
-
-.logo__title:hover,
-.logo__title:active {
-  color: #ea7070;
 }
 
 .logo__icon {
@@ -717,7 +719,9 @@ kbd {
   color: #186ae6;
 }
 
-.link:hover {
+.link:hover,
+.link:active,
+.link:focus {
   text-decoration-color: #186ae6;
 }
 
@@ -820,7 +824,8 @@ kbd {
 }
 
 .study-app__button--front:hover,
-.study-app__button--front:active {
+.study-app__button--front:active,
+.study-app__button--front:focus {
   background-color: #e00748;
 }
 
@@ -829,7 +834,8 @@ kbd {
 }
 
 .study-app__button--back:hover,
-.study-app__button--back:active {
+.study-app__button--back:active,
+.study-app__button--back:focus {
   background-color: #186ae6;
 }
 
