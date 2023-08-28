@@ -1,6 +1,6 @@
 import { auth } from "@clerk/nextjs";
 import Link from "next/link";
-import Breadcrumbs from "@/components/ui/Breadcrumbs";
+import Breadcrumbs from "@/components/ui/breadcrumbs-comp";
 
 async function fetchCards(params) {
   const authResponse = auth();

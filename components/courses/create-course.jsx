@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { FaPlus, FaFloppyDisk } from "react-icons/fa6";
-import Modal from "../ui/modal-compo";
+import Modal from "../ui/modal-comp";
 
 const CreateCourse = () => {
   const [text, setText] = useState("");

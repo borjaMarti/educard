@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { FaEnvelope, FaCheck, FaXmark } from "react-icons/fa6";
-import Modal from "@/components/ui/modal-compo";
+import Modal from "@/components/ui/modal-comp";
 
 const ManageStudentInvitations = ({ invitationsArray }) => {
   const router = useRouter();
