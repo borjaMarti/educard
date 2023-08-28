@@ -44,22 +44,30 @@ const CourseInfo = ({ course }) => {
         onClick={openModal}
         aria-label="Ajustes del curso"
         title="Ajustes del curso"
+        className="button"
       >
         <FaGear />
       </button>
       <Modal title="Ajustes del curso" onClose={closeModal} open={isModalOpen}>
-        <span>Profesor: {course.owner.name}</span>
-        <span>Email: {course.owner.email}</span>
-        <button onClick={openConfirm}>
-          <FaArrowRightFromBracket /> Abandonar el Curso
-        </button>
+        <div className="dialog__course-info">
+          <span>Profesor: {course.owner.name}</span>
+          <span>Email: {course.owner.email}</span>
+        </div>
+        <div className="dialog__controls">
+          <button
+            onClick={openConfirm}
+            className="dialog__button dialog__button--alert"
+          >
+            <FaArrowRightFromBracket /> Abandonar el Curso
+          </button>
+        </div>
         <Confirm
           title="Abandonar el Curso"
           onClose={closeConfirm}
           onConfirm={handleLeaveCourse}
           open={isConfirmOpen}
         >
-          <p>
+          <p className="dialog__text">
             ¿Seguro que quieres abandonar {course.courseName}? No podrás volver
             hasta que el creador vuelva a invitarte.
           </p>

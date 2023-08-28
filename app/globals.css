@@ -591,6 +591,7 @@ kbd {
 .dialog__title {
   margin: 0;
   font-size: 1.25rem;
+  font-weight: normal;
 }
 
 @media (min-width: 768px) {
@@ -680,6 +681,67 @@ kbd {
 
 .dialog__input {
   padding: 0.25rem;
+}
+
+.dialog__input--textarea {
+  height: 5rem;
+  resize: vertical;
+  max-width: 70rem;
+}
+
+@media (min-width: 768px) {
+  .dialog__input--textarea {
+    padding: 0.75rem 0.875rem;
+    min-width: 7.5rem;
+    font-size: 0.875rem;
+  }
+}
+
+.dialog__course-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* INVITATIONS LIST */
+
+.invitations {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0;
+}
+
+.invitations__element {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.invitations__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.invitations__info--separate {
+  gap: 0.75rem;
+}
+
+.invitations__control {
+  display: flex;
+  gap: 0.25rem;
+}
+
+@media (min-width: 768px) {
+  .invitations__control {
+    gap: 1rem;
+  }
+}
+
+.invitations__label {
+  font-weight: bold;
 }
 
 /* LOG PAGE */
@@ -784,7 +846,7 @@ kbd {
 }
 
 .button--alert {
-  color: #e94d4d;
+  color: orangered;
 }
 
 .button--danger:hover,
@@ -803,6 +865,38 @@ kbd {
 @media (min-width: 768px) {
   .button--link {
     font-size: 1.125rem;
+  }
+}
+
+.button--accept {
+  color: green;
+}
+
+.button--accept:hover,
+.button--accept:active,
+.button--accept:focus {
+  color: green;
+}
+
+.button--reject {
+  color: red;
+}
+
+.button--reject:hover,
+.button--reject:active,
+.button--reject:focus {
+  color: red;
+}
+
+.button--accept,
+.button--reject {
+  font-size: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .button--accept,
+  .button--reject {
+    font-size: 1.5rem;
   }
 }
 
