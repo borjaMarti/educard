@@ -8,7 +8,7 @@ async function fetchDecks(params) {
   const authResponse = auth();
   const bearerToken = await authResponse.getToken({});
   const response = await fetch(
-    `http://localhost:3000/api/courses/${params.course}/decks`,
+    `${process.env.NEXT_PUBLIC_APP_URL}/api/courses/${params.course}/decks`,
     { headers: { Authorization: `Bearer ${bearerToken}` } },
   );
   const decks = await response.json();
@@ -19,7 +19,7 @@ async function fetchCourse(params) {
   const authResponse = auth();
   const bearerToken = await authResponse.getToken({});
   const response = await fetch(
-    `http://localhost:3000/api/courses/${params.course}`,
+    `${process.env.NEXT_PUBLIC_APP_URL}/api/courses/${params.course}`,
     { headers: { Authorization: `Bearer ${bearerToken}` } },
   );
   const course = await response.json();
@@ -30,7 +30,7 @@ async function fetchCourseCheck(params) {
   const authResponse = auth();
   const bearerToken = await authResponse.getToken({});
   const response = await fetch(
-    `http://localhost:3000/api/study/free/courses/${params.course}/check`,
+    `${process.env.NEXT_PUBLIC_APP_URL}/api/study/free/courses/${params.course}/check`,
     { headers: { Authorization: `Bearer ${bearerToken}` } },
   );
   const check = await response.json();
@@ -41,7 +41,7 @@ async function fetchDeckCheck(courseId, deckId) {
   const authResponse = auth();
   const bearerToken = await authResponse.getToken({});
   const response = await fetch(
-    `http://localhost:3000/api/study/free/courses/${courseId}/decks/${deckId}/check`,
+    `${process.env.NEXT_PUBLIC_APP_URL}/api/study/free/courses/${courseId}/decks/${deckId}/check`,
     { headers: { Authorization: `Bearer ${bearerToken}` } },
   );
   const check = await response.json();

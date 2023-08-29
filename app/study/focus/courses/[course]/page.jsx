@@ -12,7 +12,7 @@ async function fetchCards(params) {
   const authResponse = auth();
   const bearerToken = await authResponse.getToken({});
   const response = await fetch(
-    `http://localhost:3000/api/study/focus/courses/${params.course}`,
+    `${process.env.NEXT_PUBLIC_APP_URL}/api/study/focus/courses/${params.course}`,
     { headers: { Authorization: `Bearer ${bearerToken}` } },
   );
   const cards = await response.json();
