@@ -673,6 +673,21 @@ kbd {
   background-color: red;
 }
 
+.dialog__button--submitted {
+  border-color: #646464;
+  background-color: white;
+  color: #646464;
+  cursor: wait;
+}
+
+.dialog__button--submitted:hover,
+.dialog__button--submitted:active,
+.dialog__button--submitted:focus {
+  border-color: #646464;
+  background-color: white;
+  color: #646464;
+}
+
 .dialog__form {
   display: flex;
   flex-direction: column;

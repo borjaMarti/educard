@@ -55,7 +55,10 @@ const CreateDeck = () => {
           <button
             form="create-deck"
             disabled={isSubmitted}
-            className="dialog__button"
+            className={
+              "dialog__button" +
+              (isSubmitted ? " dialog__button--submitted" : "")
+            }
           >
             <FaFloppyDisk />
             Crear Mazo

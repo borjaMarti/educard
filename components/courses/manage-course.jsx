@@ -85,7 +85,10 @@ const ManageCourse = ({ courseId, courseName }) => {
           <button
             form={courseId}
             disabled={isSubmitted}
-            className="dialog__button"
+            className={
+              "dialog__button" +
+              (isSubmitted ? " dialog__button--submitted" : "")
+            }
           >
             <FaRegPenToSquare /> Editar Nombre
           </button>

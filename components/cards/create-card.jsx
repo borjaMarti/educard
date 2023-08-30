@@ -77,7 +77,10 @@ const CreateCard = () => {
             <button
               form="create-card"
               disabled={isSubmitted}
-              className="dialog__button"
+              className={
+                "dialog__button" +
+                (isSubmitted ? " dialog__button--submitted" : "")
+              }
             >
               <FaFloppyDisk /> Crear Carta
             </button>
