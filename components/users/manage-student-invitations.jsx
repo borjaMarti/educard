@@ -22,7 +22,10 @@ const ManageStudentInvitations = ({ invitationsArray }) => {
     });
     const newInvitations = invitations.filter((inv) => inv.invitationId !== id);
     setInvitations(newInvitations);
-    if (!newInvitations[0]) router.refresh();
+    if (!newInvitations[0]) {
+      closeModal();
+      router.refresh();
+    }
   };
 
   const handleAccept = async (inv) => {
