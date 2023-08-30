@@ -537,6 +537,14 @@ kbd {
   margin: 1.125rem 0;
 }
 
+.section--error {
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 0;
+  text-align: center;
+}
+
 .section__title {
   font-size: 1rem;
   margin: 0;
@@ -545,6 +553,11 @@ kbd {
 @media (min-width: 768px) {
   .section {
     margin: 1.25rem 0;
+  }
+
+  .section--error {
+    margin: 0;
+    gap: 1.5rem;
   }
 
   .section__title {
