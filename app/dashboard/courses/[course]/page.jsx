@@ -107,9 +107,11 @@ const CoursePage = async ({ params }) => {
         ) : (
           <>
             {check ? (
-              <span className="list__text">¡No hay cartas por estudiar!</span>
+              <span className="list__text list__text--explanation">
+                ¡No hay cartas por estudiar!
+              </span>
             ) : (
-              <span className="list__text">
+              <span className="list__text list__text--explanation">
                 Este curso todavía no tiene cartas.
               </span>
             )}
