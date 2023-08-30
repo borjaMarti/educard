@@ -95,7 +95,10 @@ const ManageCard = ({ cardId, cardFront, cardBack }) => {
           <button
             form={cardId}
             disabled={isSubmitted}
-            className="dialog__button"
+            className={
+              "dialog__button" +
+              (isSubmitted ? " dialog__button--submitted" : "")
+            }
           >
             <FaRegPenToSquare /> Editar Carta
           </button>

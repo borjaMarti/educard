@@ -81,7 +81,10 @@ const ManageDeck = ({ courseId, deckId, deckName }) => {
           <button
             form={deckId}
             disabled={isSubmitted}
-            className="dialog__button"
+            className={
+              "dialog__button" +
+              (isSubmitted ? " dialog__button--submitted" : "")
+            }
           >
             <FaRegPenToSquare /> Editar Nombre
           </button>

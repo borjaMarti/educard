@@ -6,6 +6,7 @@ import Course from "@/models/Course.js";
 import Deck from "@/models/Deck.js";
 import Card from "@/models/Card.js";
 import Reminder from "@/models/Reminder.js";
+import Invitation from "@/models/Invitation.js";
 import User from "@/models/User.js";
 
 const webhookSecret = process.env.WEBHOOK_SECRET;
@@ -87,6 +88,7 @@ export async function POST(req) {
 
       for (let course of courses) {
         await Reminder.deleteMany({ courseId: course._id });
+        await Invitation.deleteMany({ courseId: courseId });
         await Card.deleteMany({ courseId: course._id });
         await Deck.deleteMany({ courseId: course._id });
         await Course.deleteOne({ _id: course._id });

@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter, useParams } from "next/navigation";
-import { FaCircleInfo, FaArrowRightFromBracket } from "react-icons/fa6";
+import { FaGear, FaArrowRightFromBracket } from "react-icons/fa6";
 import Modal from "@/components/ui/modal-comp";
 import Confirm from "@/components/ui/confirm-comp";
 
@@ -46,20 +46,20 @@ const CourseInfo = ({ course }) => {
         title={`Información de ${course.courseName}`}
         className="button"
       >
-        <FaCircleInfo />
+        <FaGear />
       </button>
       <Modal
         title="Información del curso"
         onClose={closeModal}
         open={isModalOpen}
       >
-        <div className="invitations__info invitations__info--separate">
-          <span className="invitations__info">
-            <span className="invitations__label">Profesor:</span>
+        <div className="list__info list__info--separate">
+          <span className="list__info">
+            <span className="list__label">Profesor:</span>
             <span>{course.owner.name}</span>
           </span>
-          <span className="invitations__info">
-            <span className="invitations__label">Email:</span>
+          <span className="list__info">
+            <span className="list__label">Email:</span>
             <span>{course.owner.email}</span>
           </span>
         </div>

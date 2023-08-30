@@ -451,7 +451,7 @@ kbd {
 }
 
 .site-header__nav--dashboard {
-  max-width: 30rem;
+  max-width: 50rem;
 }
 
 .site-header__nav--study {
@@ -503,7 +503,7 @@ kbd {
 }
 
 .dashboard-main {
-  max-width: 60rem;
+  max-width: 50rem;
   margin: 0.5rem auto;
   padding: 1.5rem;
 }
@@ -528,6 +528,110 @@ kbd {
 /*------------------------------------*\
   #COMPONENTS
 \*------------------------------------*/
+
+/* SECTION */
+
+.section {
+  display: flex;
+  flex-direction: column;
+  margin: 1.125rem 0;
+}
+
+.section__title {
+  font-size: 1rem;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .section {
+    margin: 1.25rem 0;
+  }
+
+  .section__title {
+    font-size: 1.125rem;
+  }
+}
+
+/* LIST */
+
+.list {
+  margin: 0.5rem 0;
+  padding: 0 0 0 1rem;
+}
+
+.list--invitation {
+  padding: 0;
+}
+
+.list__title {
+  font-size: 0.875rem;
+  margin: 0;
+  font-weight: normal;
+}
+
+.list__item {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 0;
+}
+
+.list__item--invitation:only-child {
+  border-bottom: none;
+}
+
+.list__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.list__reminder {
+  font-size: 0.875rem;
+  color: green;
+  font-weight: bold;
+}
+
+.list__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.list__info--separate {
+  gap: 0.75rem;
+}
+
+.list__label {
+  font-weight: 600;
+}
+
+.list__control {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.list__text {
+  margin: 0;
+  font-size: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .list__title {
+    font-size: 1rem;
+  }
+
+  .list-reminder {
+    font-size: 1rem;
+  }
+
+  .list__control {
+    gap: 1rem;
+  }
+
+  .list__text {
+    font-size: 0.875rem;
+  }
+}
 
 /* LOGO */
 
@@ -673,6 +777,21 @@ kbd {
   background-color: red;
 }
 
+.dialog__button--submitted {
+  border-color: #646464;
+  background-color: white;
+  color: #646464;
+  cursor: wait;
+}
+
+.dialog__button--submitted:hover,
+.dialog__button--submitted:active,
+.dialog__button--submitted:focus {
+  border-color: #646464;
+  background-color: white;
+  color: #646464;
+}
+
 .dialog__form {
   display: flex;
   flex-direction: column;
@@ -703,47 +822,6 @@ kbd {
   gap: 1rem;
 }
 
-/* INVITATIONS LIST */
-
-.invitations {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  padding: 0;
-}
-
-.invitations__element {
-  display: flex;
-  gap: 1rem;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.invitations__info {
-  display: flex;
-  flex-direction: column;
-  gap: 0.125rem;
-}
-
-.invitations__info--separate {
-  gap: 0.75rem;
-}
-
-.invitations__control {
-  display: flex;
-  gap: 0.25rem;
-}
-
-@media (min-width: 768px) {
-  .invitations__control {
-    gap: 1rem;
-  }
-}
-
-.invitations__label {
-  font-weight: bold;
-}
-
 /* LOG PAGE */
 
 .log-container {
@@ -760,10 +838,7 @@ kbd {
   background-color: #ea7070;
 }
 
-/* Clerk's user button, adjusts size and position. */
-.cl-rootBox {
-  padding-right: 2rem;
-}
+/* Clerk's user button, adjusts size. */
 
 @media (min-width: 768px) {
   .cl-avatarBox {
@@ -821,6 +896,7 @@ kbd {
   border: none;
   font-size: 1rem;
   transition: color 0.3s ease-in-out;
+  padding: 0;
 }
 
 .button:hover,
@@ -856,15 +932,17 @@ kbd {
 }
 
 .button--link {
+  font-size: 0.875rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0;
+  margin-top: 0.75rem;
 }
 
 @media (min-width: 768px) {
   .button--link {
-    font-size: 1.125rem;
+    font-size: 1rem;
   }
 }
 
@@ -922,13 +1000,14 @@ kbd {
 /* BREADCRUMB */
 
 .breadcrumb {
-  margin: 0 auto;
+  display: flex;
+  justify-content: center;
   font-size: 0.75rem;
 }
 
 @media (min-width: 768px) {
   .breadcrumb {
-    font-size: 1rem;
+    font-size: 0.875rem;
   }
 }
 

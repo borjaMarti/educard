@@ -51,26 +51,38 @@ const ManageDeckPage = async ({ params }) => {
           Mazo: {deckInfo.deckName}
         </span>
       </Breadcrumbs>
-      <h2>Mazo: {deckInfo.deckName}</h2>
-      <ManageDeck
-        courseId={params.course}
-        deckId={params.deck}
-        deckName={deckInfo.deckName}
-      />
-      <ul>
-        {cards.map((card) => (
-          <li key={card._id}>
-            <p>Anverso: {card.front}</p>
-            <p>Reverso: {card.back}</p>
-            <ManageCard
-              cardId={card._id}
-              cardFront={card.front}
-              cardBack={card.back}
-            />
-          </li>
-        ))}
-        <CreateCard />
-      </ul>
+      <section className="section">
+        <div className="list__row">
+          <h2 className="section__title">Mazo: {deckInfo.deckName}</h2>
+          <ManageDeck
+            courseId={params.course}
+            deckId={params.deck}
+            deckName={deckInfo.deckName}
+          />
+        </div>
+        <ul className="list">
+          {cards.map((card) => (
+            <li key={card._id} className="list__item list__row">
+              <div className="list__info">
+                <p className="list__text">
+                  <span className="list__label">Anverso: </span>
+                  {card.front}
+                </p>
+                <p className="list__text">
+                  <span className="list__label">Reverso: </span>
+                  {card.back}
+                </p>
+              </div>
+              <ManageCard
+                cardId={card._id}
+                cardFront={card.front}
+                cardBack={card.back}
+              />
+            </li>
+          ))}
+          <CreateCard />
+        </ul>
+      </section>
     </main>
   );
 };

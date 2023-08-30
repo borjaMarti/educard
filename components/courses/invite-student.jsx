@@ -51,7 +51,7 @@ const InviteStudent = () => {
 
   return (
     <>
-      <button onClick={openModal} className="button">
+      <button onClick={openModal} className="button button--link">
         <FaUserPlus /> Invitar Estudiante
       </button>
       <Modal
