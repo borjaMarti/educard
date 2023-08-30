@@ -901,6 +901,7 @@ kbd {
   font-size: 1rem;
   transition: color 0.3s ease-in-out;
   padding: 0;
+  line-height: 0;
 }
 
 .button:hover,
