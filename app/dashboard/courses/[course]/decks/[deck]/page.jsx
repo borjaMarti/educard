@@ -48,15 +48,25 @@ const DeckPage = async ({ params }) => {
           Mazo: {deckInfo.deckName}
         </span>
       </Breadcrumbs>
-      <h2>Mazo: {deckInfo.deckName}</h2>
-      <ul>
-        {cards.map((card) => (
-          <li key={card._id}>
-            <p>Anverso: {card.front}</p>
-            <p>Reverso: {card.back}</p>
-          </li>
-        ))}
-      </ul>
+      <section className="section">
+        <h2 className="section__title">Mazo: {deckInfo.deckName}</h2>
+        <ul className="list">
+          {cards.map((card) => (
+            <li key={card._id} className="list__item list__row">
+              <div className="list__info">
+                <p className="list__text">
+                  <span className="list__label">Anverso: </span>
+                  {card.front}
+                </p>
+                <p className="list__text">
+                  <span className="list__label">Reverso: </span>
+                  {card.back}
+                </p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </section>
     </main>
   );
 };

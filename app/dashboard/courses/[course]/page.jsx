@@ -70,75 +70,74 @@ const CoursePage = async ({ params }) => {
           Estudiar: {course.courseName}
         </span>
       </Breadcrumbs>
-      {course.activeReminders ? (
-        <>
-          <h2>Estudiar {course.courseName}</h2>
-
+      <section className="section">
+        <div className="list__row">
+          <h2 className="section__title">Estudiar {course.courseName}</h2>
           <CourseInfo course={course} />
-
-          <ul>
-            <li>
+        </div>
+        {course.activeReminders ? (
+          <ul className="list">
+            <li className="list__item list__row">
               <Link
                 href={`/study/focus/courses/${params.course}`}
                 className="link"
               >
-                <h3>{course.courseName} (todos los mazos)</h3>
+                <h3 className="list__title">
+                  {course.courseName} (todos los mazos)
+                </h3>
               </Link>
-              <span>{course.activeReminders}</span>
+              <span className="list__reminder">{course.activeReminders}</span>
             </li>
             {decks.map((deck) =>
               deck.activeReminders ? (
-                <li key={deck._id}>
+                <li key={deck._id} className="list__item list__row">
                   <Link
                     href={`/study/focus/courses/${params.course}/decks/${deck._id}`}
                     className="link"
                   >
-                    <h3>{deck.deckName}</h3>
+                    <h3 className="list__title">{deck.deckName}</h3>
                   </Link>
-                  <span>{deck.activeReminders}</span>
+                  <span className="list__reminder">{deck.activeReminders}</span>
                 </li>
               ) : (
                 ""
               ),
             )}
           </ul>
-        </>
-      ) : (
-        <>
-          <h2>Estudiar {course.courseName}</h2>
-          <CourseInfo course={course} />
-          {check ? (
-            <span>¡No hay cartas por estudiar!</span>
-          ) : (
-            <span>Este curso todavía no tiene cartas.</span>
-          )}
-        </>
-      )}
-
+        ) : (
+          <>
+            {check ? (
+              <span className="list__text">¡No hay cartas por estudiar!</span>
+            ) : (
+              <span className="list__text">
+                Este curso todavía no tiene cartas.
+              </span>
+            )}
+          </>
+        )}
+      </section>
       {check ? (
-        <>
-          <h2>Repaso Libre</h2>
-          <span>
-            Este modo de estudio te permite repasar todas las cartas de un mazo
-            sin afectar a su fecha de estudio.
-          </span>
-          <ul>
-            <li>
+        <section className="section">
+          <h2 className="section__title">Repaso Libre</h2>
+          <ul className="list">
+            <li className="list__item list__row">
               <Link
                 href={`/study/free/courses/${params.course}`}
                 className="link"
               >
-                <h3>{course.courseName} (todos los mazos)</h3>
+                <h3 className="list__title">
+                  {course.courseName} (todos los mazos)
+                </h3>
               </Link>
             </li>
             {decks.map((deck) =>
               deck.check ? (
-                <li key={deck._id}>
+                <li key={deck._id} className="list__item list__row">
                   <Link
                     href={`/study/free/courses/${params.course}/decks/${deck._id}`}
                     className="link"
                   >
-                    <h3>{deck.deckName}</h3>
+                    <h3 className="list__title">{deck.deckName}</h3>
                   </Link>
                   <Link
                     href={`/dashboard/courses/${params.course}/decks/${deck._id}`}
@@ -151,7 +150,7 @@ const CoursePage = async ({ params }) => {
               ),
             )}
           </ul>
-        </>
+        </section>
       ) : (
         ""
       )}

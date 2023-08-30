@@ -60,45 +60,65 @@ const ManageCoursePage = async ({ params }) => {
           Gestionar: {courseName}
         </span>
       </Breadcrumbs>
-      <h2>Gestionar: {courseName}</h2>
-      <ManageCourse courseId={params.course} courseName={courseName} />
-      <ul>
-        {decks.map((deck) => (
-          <li key={deck._id}>
-            <Link
-              href={`/dashboard/manage/courses/${params.course}/decks/${deck._id}`}
-              className="link"
-            >
-              <h3>{deck.deckName}</h3>
-            </Link>
-            <ManageDeck
-              courseId={params.course}
-              deckId={deck._id}
-              deckName={deck.deckName}
-            />
-          </li>
-        ))}
-        <CreateDeck />
-      </ul>
-      <h2>Alumnos</h2>
-      {invitations[0] ? (
-        <ManageCourseInvitations invitationsArray={invitations} />
-      ) : (
-        ""
-      )}
-      <ul>
-        {students.map((student) => (
-          <li key={student.studentId}>
-            <h3>{student.name}</h3>
-            <h3>{student.email}</h3>
-            <RemoveStudent
-              studentId={student.studentId}
-              studentEmail={student.email}
-            />
-          </li>
-        ))}
-        <InviteStudent />
-      </ul>
+      <section className="section">
+        <div className="list__row">
+          <h2 className="section__title">Gestionar: {courseName}</h2>
+          <ManageCourse courseId={params.course} courseName={courseName} />
+        </div>
+        <ul className="list">
+          {decks.map((deck) => (
+            <li key={deck._id} className="list__item list__row">
+              <Link
+                href={`/dashboard/manage/courses/${params.course}/decks/${deck._id}`}
+                className="link"
+              >
+                <h3 className="list__title">{deck.deckName}</h3>
+              </Link>
+              <ManageDeck
+                courseId={params.course}
+                deckId={deck._id}
+                deckName={deck.deckName}
+              />
+            </li>
+          ))}
+          <CreateDeck />
+        </ul>
+      </section>
+      <section className="section">
+        <div className="list__row">
+          <h2 className="section__title">Alumnos</h2>
+          {invitations[0] ? (
+            <ManageCourseInvitations invitationsArray={invitations} />
+          ) : (
+            ""
+          )}
+        </div>
+        <ul className="list">
+          {students.map((student) => (
+            <li key={student.studentId} className="list__item list__row">
+              <div className="list__info list__info--separate">
+                <span className="list__info">
+                  <h3 className="list__title">
+                    <span className="list__label">Nombre: </span>
+                    <span>{student.name}</span>
+                  </h3>
+                </span>
+                <span className="list__info">
+                  <h3 className="list__title">
+                    <span className="list__label">Email: </span>
+                    <span>{student.email}</span>
+                  </h3>
+                </span>
+              </div>
+              <RemoveStudent
+                studentId={student.studentId}
+                studentEmail={student.email}
+              />
+            </li>
+          ))}
+          <InviteStudent />
+        </ul>
+      </section>
     </main>
   );
 };

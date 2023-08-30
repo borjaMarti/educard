@@ -47,40 +47,44 @@ const DashboardPage = async () => {
           Inicio
         </span>
       </Breadcrumbs>
-      <h2>Estudiar</h2>
-      <ul>
-        {studentCourses.map((course) => (
-          <li key={course._id}>
-            <Link href={`/dashboard/courses/${course._id}`} className="link">
-              <h3>{course.courseName}</h3>
-            </Link>
-            <span>{course.activeReminders}</span>
-          </li>
-        ))}
-        {invitations[0] ? (
-          <ManageStudentInvitations invitationsArray={invitations} />
-        ) : (
-          ""
-        )}
-      </ul>
-      <h2>Gestionar Mis Cursos</h2>
-      <ul>
-        {ownedCourses.map((course) => (
-          <li key={course._id}>
-            <Link
-              href={`/dashboard/manage/courses/${course._id}`}
-              className="link"
-            >
-              <h3>{course.courseName}</h3>
-            </Link>
-            <ManageCourse
-              courseId={course._id}
-              courseName={course.courseName}
-            />
-          </li>
-        ))}
-        <CreateCourse />
-      </ul>
+      <section className="section">
+        <h2 className="section__title">Estudiar</h2>
+        <ul className="list">
+          {studentCourses.map((course) => (
+            <li key={course._id} className="list__item list__row">
+              <Link href={`/dashboard/courses/${course._id}`} className="link">
+                <h3 className="list__title">{course.courseName}</h3>
+              </Link>
+              <span className="list__reminder">{course.activeReminders}</span>
+            </li>
+          ))}
+          {invitations[0] ? (
+            <ManageStudentInvitations invitationsArray={invitations} />
+          ) : (
+            ""
+          )}
+        </ul>
+      </section>
+      <section className="section">
+        <h2 className="section__title">Gestionar Mis Cursos</h2>
+        <ul className="list">
+          {ownedCourses.map((course) => (
+            <li key={course._id} className="list__item list__row">
+              <Link
+                href={`/dashboard/manage/courses/${course._id}`}
+                className="link"
+              >
+                <h3 className="list__title">{course.courseName}</h3>
+              </Link>
+              <ManageCourse
+                courseId={course._id}
+                courseName={course.courseName}
+              />
+            </li>
+          ))}
+          <CreateCourse />
+        </ul>
+      </section>
     </main>
   );
 };
