@@ -43,6 +43,8 @@ const ManageStudentInvitations = ({ invitationsArray }) => {
       });
 
       await handleDelete(invitationId);
+
+      router.refresh();
     } catch (err) {
       console.log(err);
     }
@@ -63,24 +65,27 @@ const ManageStudentInvitations = ({ invitationsArray }) => {
         onClose={closeModal}
         open={isModalOpen}
       >
-        <ul className="invitations">
+        <ul className="list list--invitation">
           {invitations.map((invitation) => (
-            <li key={invitation.invitationId} className="invitations__element">
-              <div className="invitations__info invitations__info--separate">
-                <span className="invitations__info">
-                  <span className="invitations__label">Curso:</span>
+            <li
+              key={invitation.invitationId}
+              className="list__item list__item--invitation list__row"
+            >
+              <div className="list__info list__info--separate">
+                <span className="list__info">
+                  <span className="list__label">Curso:</span>
                   <span>{invitation.courseName}</span>
                 </span>
-                <span className="invitations__info">
-                  <span className="invitations__label">Profesor: </span>
+                <span className="list__info">
+                  <span className="list__label">Profesor: </span>
                   <span>{invitation.ownerName}</span>
                 </span>
-                <span className="invitations__info">
-                  <span className="invitations__label">Email: </span>
+                <span className="list__info">
+                  <span className="list__label">Email: </span>
                   <span>{invitation.ownerEmail}</span>
                 </span>
               </div>
-              <div className="invitations__control">
+              <div className="list__control">
                 <div>
                   <button
                     onClick={() => handleAccept(invitation)}

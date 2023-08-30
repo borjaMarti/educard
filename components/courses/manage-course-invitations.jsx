@@ -41,20 +41,23 @@ const ManageCourseInvitations = ({ invitationsArray }) => {
         onClose={closeModal}
         open={isModalOpen}
       >
-        <ul className="invitations">
+        <ul className="list list--invitation">
           {invitations.map((invitation) => (
-            <li key={invitation.invitationId} className="invitations__element">
-              <div className="invitations__info invitations__info--separate">
-                <span className="invitations__info">
-                  <span className="invitations__label">Nombre: </span>
+            <li
+              key={invitation.invitationId}
+              className="list__item list__item--invitation list__row"
+            >
+              <div className="list__info list__info--separate">
+                <span className="list__info">
+                  <span className="list__label">Nombre: </span>
                   <span>{invitation.userName}</span>
                 </span>
-                <span className="invitations__info">
-                  <span className="invitations__label">Email: </span>
+                <span className="list__info">
+                  <span className="list__label">Email: </span>
                   <span>{invitation.userEmail}</span>
                 </span>
               </div>
-              <div className="invitations__control">
+              <div className="list__control">
                 <button
                   onClick={() => handleDelete(invitation.invitationId)}
                   className="button button--reject button--close"
