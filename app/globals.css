@@ -542,9 +542,6 @@ kbd {
   margin: 0;
 }
 
-.section__explanation {
-}
-
 @media (min-width: 768px) {
   .section {
     margin: 1.25rem 0;
