@@ -5,13 +5,13 @@ const HomePage = async () => {
   return (
     <main className="home-main">
       <section className="hero">
-        <div className="hero__image">
+        <div className="hero__picture">
           <Image
             src="/hero.svg"
             alt="Chica estudiando."
             height={0}
             width={0}
-            style={{ width: "100%", height: "auto", maxWidth: "30rem" }}
+            className="hero__image"
           />
         </div>
         <div className="hero__words">
@@ -38,7 +38,7 @@ const HomePage = async () => {
               alt="Dibujo de un test."
               height={0}
               width={0}
-              style={{ width: "100%", height: "auto", maxWidth: "6rem" }}
+              className="feature__image"
             />
             <h3 className="feature__header">Recuerdo Activo</h3>
             <span className="feature__text">
@@ -52,7 +52,7 @@ const HomePage = async () => {
               alt="Dibujo de un calendario."
               height={0}
               width={0}
-              style={{ width: "100%", height: "auto", maxWidth: "6rem" }}
+              className="feature__image"
             />
             <h3 className="feature__header">Repetición Espaciada</h3>
             <span className="feature__text">

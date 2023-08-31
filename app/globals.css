@@ -538,10 +538,16 @@ kbd {
   margin-bottom: 2rem;
 }
 
-.hero__image {
+.hero__picture {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.hero__image {
+  width: 100%;
+  height: auto;
+  max-width: 30rem;
 }
 
 .hero__words {
@@ -643,6 +649,12 @@ kbd {
   gap: 1.5rem;
 }
 
+.feature__image {
+  width: 4rem;
+  height: auto;
+  max-width: 6rem;
+}
+
 .feature__header {
   margin: 0;
   font-size: 1.125rem;
@@ -670,6 +682,10 @@ kbd {
 
   .feature__header {
     font-size: 1.5rem;
+  }
+
+  .feature__image {
+    width: 6rem;
   }
 
   .feature__text {
