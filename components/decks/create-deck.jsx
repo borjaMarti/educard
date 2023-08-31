@@ -39,31 +39,43 @@ const CreateDeck = () => {
         <FaPlus /> Crear Mazo
       </button>
       <Modal title="Crear Mazo" onClose={closeModal} open={isModalOpen}>
-        <form id="create-deck" onSubmit={handleSubmit} className="dialog__form">
-          <label htmlFor="deck-name">Nombre del Mazo</label>
-          <input
-            id="deck-name"
-            type="text"
-            value={text}
-            placeholder="Escribe aquí"
-            onChange={(e) => setText(e.target.value)}
-            disabled={isSubmitted}
-            className="dialog__input"
-          />
-        </form>
-        <div className="dialog__controls">
-          <button
-            form="create-deck"
-            disabled={isSubmitted}
-            className={
-              "dialog__button" +
-              (isSubmitted ? " dialog__button--submitted" : "")
-            }
-          >
-            <FaFloppyDisk />
-            Crear Mazo
-          </button>
-        </div>
+        {isSubmitted ? (
+          <div className="loading-block">
+            <div className="spinner"></div>
+          </div>
+        ) : (
+          <>
+            <form
+              id="create-deck"
+              onSubmit={handleSubmit}
+              className="dialog__form"
+            >
+              <label htmlFor="deck-name">Nombre del Mazo</label>
+              <input
+                id="deck-name"
+                type="text"
+                value={text}
+                placeholder="Escribe aquí"
+                onChange={(e) => setText(e.target.value)}
+                disabled={isSubmitted}
+                className="dialog__input"
+              />
+            </form>
+            <div className="dialog__controls">
+              <button
+                form="create-deck"
+                disabled={isSubmitted}
+                className={
+                  "dialog__button" +
+                  (isSubmitted ? " dialog__button--submitted" : "")
+                }
+              >
+                <FaFloppyDisk />
+                Crear Mazo
+              </button>
+            </div>
+          </>
+        )}
       </Modal>
     </>
   );

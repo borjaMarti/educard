@@ -25,7 +25,7 @@ const Header = () => {
   }
 
   return (
-    <header className={`site-header ${headerClass}`}>
+    <header className={`site-header ${headerClass}`} id="head">
       <nav className={`site-header__nav ${navClass}`}>
         <Link href="/" className="logo">
           <TbCards className="logo__icon" />

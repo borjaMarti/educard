@@ -36,20 +36,19 @@ const ManageDeck = ({ courseId, deckId, deckName }) => {
       },
       body: JSON.stringify({ content: text }),
     });
-
     setIsSubmitted(false);
     closeModal();
     router.refresh();
   };
 
   const handleDeleteDeck = async () => {
+    setIsSubmitted(true);
     const submit = await fetch(`/api/courses/${courseId}/decks/${deckId}`, {
       method: "DELETE",
       headers: {
         "Content-type": "application/json",
       },
     });
-
     router.replace(`/dashboard/manage/courses/${courseId}`);
     router.refresh();
   };
@@ -100,6 +99,7 @@ const ManageDeck = ({ courseId, deckId, deckName }) => {
           onClose={closeConfirm}
           onConfirm={handleDeleteDeck}
           open={isConfirmOpen}
+          loading={isSubmitted}
         >
           <p className="dialog__text">
             ¿Seguro que quieres eliminar {deckName}? No podrás recuperarlo.{" "}

@@ -43,13 +43,13 @@ const ManageCourse = ({ courseId, courseName }) => {
   };
 
   const handleDeleteCourse = async () => {
+    setIsSubmitted(true);
     const submit = await fetch(`/api/courses/${courseId}`, {
       method: "DELETE",
       headers: {
         "Content-type": "application/json",
       },
     });
-
     router.replace(`/dashboard`);
     router.refresh();
   };
@@ -104,6 +104,7 @@ const ManageCourse = ({ courseId, courseName }) => {
           onClose={closeConfirm}
           onConfirm={handleDeleteCourse}
           open={isConfirmOpen}
+          loading={isSubmitted}
         >
           <p>
             ¿Seguro que quieres eliminar {courseName}? No podrás recuperarlo.

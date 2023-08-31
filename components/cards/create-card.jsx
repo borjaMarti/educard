@@ -40,9 +40,8 @@ const CreateCard = () => {
 
     setFront("");
     setBack("");
-
-    router.refresh();
     setIsSubmitted(false);
+    router.refresh();
   };
 
   return (

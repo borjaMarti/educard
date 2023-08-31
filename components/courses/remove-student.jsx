@@ -8,6 +8,7 @@ const RemoveStudent = ({ studentId, studentEmail }) => {
   const params = useParams();
   const router = useRouter();
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const openConfirm = () => {
     setIsConfirmOpen(true);
@@ -17,6 +18,7 @@ const RemoveStudent = ({ studentId, studentEmail }) => {
   };
 
   const handleRemoveStudent = async () => {
+    setIsSubmitted(true);
     const submit = await fetch(`/api/courses/${params.course}`, {
       method: "PUT",
       headers: {
@@ -27,7 +29,6 @@ const RemoveStudent = ({ studentId, studentEmail }) => {
         studentId: studentId,
       }),
     });
-
     router.refresh();
   };
 
@@ -46,6 +47,7 @@ const RemoveStudent = ({ studentId, studentEmail }) => {
         onClose={closeConfirm}
         onConfirm={handleRemoveStudent}
         open={isConfirmOpen}
+        loading={isSubmitted}
       >
         ¿Seguro que quieres echar a {studentEmail}?
       </Confirm>

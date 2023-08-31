@@ -10,6 +10,7 @@ const InviteStudent = () => {
   const [text, setText] = useState("");
   const [sentInvitation, setSentInvitation] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -21,6 +22,7 @@ const InviteStudent = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitted(true);
     const submit = await fetch(`/api/courses/${params.course}/invitations`, {
       method: "POST",
       headers: {
@@ -30,7 +32,7 @@ const InviteStudent = () => {
     });
     const data = await submit.json();
 
-    // TODO: Handle already existing invitation
+    setIsSubmitted(false);
 
     if (data?.error === "Inexistent") {
       setSentInvitation(
@@ -72,14 +74,18 @@ const InviteStudent = () => {
             value={text}
             placeholder="Escribe aquí"
             onChange={(e) => setText(e.target.value)}
+            disabled={isSubmitted}
             className="dialog__input"
           />
         </form>
         <div className="dialog__controls">
           <button
             form="invite-student"
-            disabled={!text}
-            className="dialog__button"
+            disabled={!text || isSubmitted}
+            className={
+              "dialog__button" +
+              (isSubmitted ? " dialog__button--submitted" : "")
+            }
           >
             <FaEnvelope /> Enviar Invitación
           </button>

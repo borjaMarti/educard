@@ -48,13 +48,13 @@ const ManageCard = ({ cardId, cardFront, cardBack }) => {
   };
 
   const handleDeleteCard = async (e) => {
+    setIsSubmitted(true);
     const submit = await fetch(
       `/api/courses/${params.course}/decks/${params.deck}/cards/${cardId}`,
       {
         method: "DELETE",
       },
     );
-
     router.refresh();
   };
 
@@ -114,6 +114,7 @@ const ManageCard = ({ cardId, cardFront, cardBack }) => {
           onClose={closeConfirm}
           onConfirm={handleDeleteCard}
           open={isConfirmOpen}
+          loading={isSubmitted}
         >
           <p>¿Seguro que quieres eliminar esta carta? No podrás recuperarla.</p>
         </Confirm>

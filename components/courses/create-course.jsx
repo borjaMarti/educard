@@ -38,35 +38,43 @@ const CreateCourse = () => {
         <FaPlus /> Crear Curso
       </button>
       <Modal title="Crear Curso" onClose={closeModal} open={isModalOpen}>
-        <form
-          id="create-course"
-          onSubmit={handleSubmit}
-          className="dialog__form"
-        >
-          <label htmlFor="course-name">Nombre del Curso</label>
-          <input
-            id="course-name"
-            type="text"
-            value={text}
-            placeholder="Escribe aquí"
-            onChange={(e) => setText(e.target.value)}
-            disabled={isSubmitted}
-            className="dialog__input"
-          />
-        </form>
-        <div className="dialog__controls">
-          <button
-            form="create-course"
-            disabled={isSubmitted}
-            className={
-              "dialog__button" +
-              (isSubmitted ? " dialog__button--submitted" : "")
-            }
-          >
-            <FaFloppyDisk />
-            Crear Curso
-          </button>
-        </div>
+        {isSubmitted ? (
+          <div className="loading-block">
+            <div className="spinner"></div>
+          </div>
+        ) : (
+          <>
+            <form
+              id="create-course"
+              onSubmit={handleSubmit}
+              className="dialog__form"
+            >
+              <label htmlFor="course-name">Nombre del Curso</label>
+              <input
+                id="course-name"
+                type="text"
+                value={text}
+                placeholder="Escribe aquí"
+                onChange={(e) => setText(e.target.value)}
+                disabled={isSubmitted}
+                className="dialog__input"
+              />
+            </form>
+            <div className="dialog__controls">
+              <button
+                form="create-course"
+                disabled={isSubmitted}
+                className={
+                  "dialog__button" +
+                  (isSubmitted ? " dialog__button--submitted" : "")
+                }
+              >
+                <FaFloppyDisk />
+                Crear Curso
+              </button>
+            </div>
+          </>
+        )}
       </Modal>
     </>
   );

@@ -10,6 +10,7 @@ const CourseInfo = ({ course }) => {
   const params = useParams();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -26,6 +27,7 @@ const CourseInfo = ({ course }) => {
   };
 
   const handleLeaveCourse = async () => {
+    setIsSubmitted(true);
     const submit = await fetch(`/api/courses/${params.course}`, {
       method: "PUT",
       headers: {
@@ -33,7 +35,6 @@ const CourseInfo = ({ course }) => {
       },
       body: JSON.stringify({ updateType: "removeStudent" }),
     });
-
     router.replace(`/dashboard`);
     router.refresh();
   };
@@ -76,6 +77,7 @@ const CourseInfo = ({ course }) => {
           onClose={closeConfirm}
           onConfirm={handleLeaveCourse}
           open={isConfirmOpen}
+          loading={isSubmitted}
         >
           <p className="dialog__text">
             ¿Seguro que quieres abandonar {course.courseName}? No podrás volver
