@@ -143,6 +143,7 @@ const CoursePage = async ({ params }) => {
                   </Link>
                   <Link
                     href={`/dashboard/courses/${params.course}/decks/${deck._id}`}
+                    className="button"
                   >
                     <FaFolderOpen />
                   </Link>
