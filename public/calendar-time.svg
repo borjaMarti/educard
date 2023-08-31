@@ -1,7 +1,52 @@
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
-<svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g id="SVGRepo_bgCarrier" stroke-width="0"/>
-<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
-<g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M7 1C6.44772 1 6 1.44772 6 2V3H5C3.34315 3 2 4.34315 2 6V20C2 21.6569 3.34315 23 5 23H13.101C12.5151 22.4259 12.0297 21.7496 11.6736 21H5C4.44772 21 4 20.5523 4 20V11H20V11.2899C20.7224 11.5049 21.396 11.8334 22 12.2547V6C22 4.34315 20.6569 3 19 3H18V2C18 1.44772 17.5523 1 17 1C16.4477 1 16 1.44772 16 2V3H8V2C8 1.44772 7.55228 1 7 1ZM16 6V5H8V6C8 6.55228 7.55228 7 7 7C6.44772 7 6 6.55228 6 6V5H5C4.44772 5 4 5.44772 4 6V9H20V6C20 5.44772 19.5523 5 19 5H18V6C18 6.55228 17.5523 7 17 7C16.4477 7 16 6.55228 16 6Z" fill="#ea7070"/> <path d="M17 16C17 15.4477 17.4477 15 18 15C18.5523 15 19 15.4477 19 16V17.703L19.8801 18.583C20.2706 18.9736 20.2706 19.6067 19.8801 19.9973C19.4896 20.3878 18.8564 20.3878 18.4659 19.9973L17.2929 18.8243C17.0828 18.6142 16.9857 18.3338 17.0017 18.0588C17.0006 18.0393 17 18.0197 17 18V16Z" fill="#ea7070"/> <path fill-rule="evenodd" clip-rule="evenodd" d="M24 18C24 21.3137 21.3137 24 18 24C14.6863 24 12 21.3137 12 18C12 14.6863 14.6863 12 18 12C21.3137 12 24 14.6863 24 18ZM13.9819 18C13.9819 20.2191 15.7809 22.0181 18 22.0181C20.2191 22.0181 22.0181 20.2191 22.0181 18C22.0181 15.7809 20.2191 13.9819 18 13.9819C15.7809 13.9819 13.9819 15.7809 13.9819 18Z" fill="#ea7070"/> </g>
-</svg>
+
+<svg
+   width="800"
+   height="800"
+   viewBox="0 0 24 24"
+   fill="none"
+   version="1.1"
+   id="svg11"
+   sodipodi:docname="calendar-time.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs15" />
+  <sodipodi:namedview
+     id="namedview13"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false">
+    <inkscape:grid
+       type="xygrid"
+       id="grid1355" />
+  </sodipodi:namedview>
+  <g
+     id="SVGRepo_iconCarrier"
+     transform="matrix(0.91304348,0,0,0.91304348,0.17391296,0.64627858)">
+    <path
+       fill-rule="evenodd"
+       clip-rule="evenodd"
+       d="M 7,1 C 6.44772,1 6,1.44772 6,2 V 3 H 5 C 3.34315,3 2,4.34315 2,6 v 14 c 0,1.6569 1.34315,3 3,3 h 8.101 C 12.5151,22.4259 12.0297,21.7496 11.6736,21 H 5 C 4.44772,21 4,20.5523 4,20 v -9 h 16 v 0.2899 c 0.7224,0.215 1.396,0.5435 2,0.9648 V 6 C 22,4.34315 20.6569,3 19,3 H 18 V 2 C 18,1.44772 17.5523,1 17,1 16.4477,1 16,1.44772 16,2 V 3 H 8 V 2 C 8,1.44772 7.55228,1 7,1 Z m 9,5 V 5 H 8 V 6 C 8,6.55228 7.55228,7 7,7 6.44772,7 6,6.55228 6,6 V 5 H 5 C 4.44772,5 4,5.44772 4,6 V 9 H 20 V 6 C 20,5.44772 19.5523,5 19,5 H 18 V 6 C 18,6.55228 17.5523,7 17,7 16.4477,7 16,6.55228 16,6 Z"
+       fill="#ea7070"
+       id="path4" />
+    <path
+       d="m 17,16 c 0,-0.5523 0.4477,-1 1,-1 0.5523,0 1,0.4477 1,1 v 1.703 l 0.8801,0.88 c 0.3905,0.3906 0.3905,1.0237 0,1.4143 -0.3905,0.3905 -1.0237,0.3905 -1.4142,0 l -1.173,-1.173 C 17.0828,18.6142 16.9857,18.3338 17.0017,18.0588 17.0006,18.0393 17,18.0197 17,18 Z"
+       fill="#ea7070"
+       id="path6" />
+    <path
+       fill-rule="evenodd"
+       clip-rule="evenodd"
+       d="m 24,18 c 0,3.3137 -2.6863,6 -6,6 -3.3137,0 -6,-2.6863 -6,-6 0,-3.3137 2.6863,-6 6,-6 3.3137,0 6,2.6863 6,6 z m -10.0181,0 c 0,2.2191 1.799,4.0181 4.0181,4.0181 2.2191,0 4.0181,-1.799 4.0181,-4.0181 0,-2.2191 -1.799,-4.0181 -4.0181,-4.0181 -2.2191,0 -4.0181,1.799 -4.0181,4.0181 z"
+       fill="#ea7070"
+       id="path8" />
+  </g>
+</svg>

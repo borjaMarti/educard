@@ -1,6 +1,6 @@
 "use client";
-import { FaArrowRotateRight } from "react-icons/fa6";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Error({ error, reset }) {
   return (
@@ -9,7 +9,7 @@ export default function Error({ error, reset }) {
         <h2 className="section__title">
           Ooops,
           <br />
-          parece que algo ha fallado.
+          parece que esta página no existe.
         </h2>
         <Image
           src="/error.svg"
@@ -18,18 +18,10 @@ export default function Error({ error, reset }) {
           width={0}
           style={{ width: "100%", height: "auto", maxWidth: "35rem" }}
         />
-        <span>¿Volvemos a intentarlo?</span>
-        <small>
-          Si el error persiste, espera un par de minutos.
-          <br />
-          De continuar,{" "}
-          <a href="mailto:borjamarti@outlook.com" className="link">
-            contacta conmigo por favor.
-          </a>
-        </small>
-        <button onClick={() => reset()} className="dialog__button">
-          <FaArrowRotateRight /> Recargar Página
-        </button>
+        <span>¿Volvemos a EduCard?</span>
+        <Link href={"/"}>
+          <button className="dialog__button">Volver a Educard</button>
+        </Link>
       </section>
     </main>
   );

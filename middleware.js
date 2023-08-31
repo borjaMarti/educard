@@ -4,7 +4,14 @@ import { NextResponse } from "next/server";
 // Test publicRoute regExp: /^\/api\/.*$/
 
 export default authMiddleware({
-  publicRoutes: ["/", "/about", "/api/webhooks/user"],
+  publicRoutes: [
+    "/",
+    "/about",
+    "/api/webhooks/user",
+    "/privacy",
+    "/tos",
+    "/tutorial",
+  ],
   afterAuth: (auth, req, evt) => {
     if (!auth.userId && !auth.isPublicRoute) {
       const signIn = new URL("/sign-in", req.url);
