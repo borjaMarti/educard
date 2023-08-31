@@ -533,16 +533,26 @@ kbd {
 
 .hero {
   display: grid;
+  column-gap: 2rem;
+  row-gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.hero__image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .hero__words {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
+  gap: 1.5rem;
 }
 
 .hero__title {
-  font-size: 3rem;
+  font-size: 1.5rem;
   margin: 0;
 }
 
@@ -551,7 +561,7 @@ kbd {
 }
 
 .hero__text {
-  font-size: 1rem;
+  font-size: 0.875rem;
   margin: 0;
 }
 
@@ -560,11 +570,11 @@ kbd {
   cursor: pointer;
   border: 2px solid #4788e9;
   border-radius: 0.25rem;
-  font-size: 1rem;
+  font-size: 0.875rem;
   font-weight: bold;
   color: white;
   background-color: #4788e9;
-  padding: 1.375rem 1.875rem;
+  padding: 0.75rem 1.625rem;
   width: fit-content;
   transition: background-color 0.3s ease-in-out;
 }
@@ -579,9 +589,25 @@ kbd {
   .hero {
     grid-auto-flow: column;
     grid-auto-columns: 1fr;
+    margin-bottom: 4rem;
+  }
+
+  .hero__words {
+    gap: 2.5rem;
+  }
+
+  .hero__title {
+    font-size: 2rem;
+    margin: 0;
+  }
+
+  .hero__text {
+    font-size: 1rem;
   }
 
   .hero__button {
+    font-size: 1rem;
+    padding: 0.875rem 1.75rem;
   }
 }
 
@@ -591,18 +617,68 @@ kbd {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
 }
 
-.feature__element {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.feature__title {
+  font-size: 1.375rem;
+  font-weight: 600;
+  margin-bottom: 3rem;
 }
 
 .feature__block {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
+  gap: 3rem;
+  margin-bottom: 4rem;
+}
+
+.feature__element {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 20rem;
+  gap: 1.5rem;
+}
+
+.feature__header {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.feature__text {
+  font-size: 0.875rem;
+}
+
+.feature__small {
+  font-size: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .feature__title {
+    font-size: 1.875rem;
+    margin-bottom: 5.5rem;
+  }
+
+  .feature__block {
+    gap: 5rem;
+    margin-bottom: 5rem;
+  }
+
+  .feature__header {
+    font-size: 1.5rem;
+  }
+
+  .feature__text {
+    font-size: 1rem;
+  }
+
+  .feature__small {
+    font-size: 0.875rem;
+  }
 }
 
 /* SECTION */

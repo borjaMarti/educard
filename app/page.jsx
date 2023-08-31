@@ -5,13 +5,15 @@ const HomePage = async () => {
   return (
     <main className="home-main">
       <section className="hero">
-        <Image
-          src="/hero.svg"
-          alt="Chica estudiando."
-          height={0}
-          width={0}
-          style={{ width: "100%", height: "auto", maxWidth: "40rem" }}
-        />
+        <div className="hero__image">
+          <Image
+            src="/hero.svg"
+            alt="Chica estudiando."
+            height={0}
+            width={0}
+            style={{ width: "100%", height: "auto", maxWidth: "30rem" }}
+          />
+        </div>
         <div className="hero__words">
           <h1 className="hero__title">
             Potencia el aprendizaje en el aula
@@ -28,9 +30,7 @@ const HomePage = async () => {
         </div>
       </section>
       <section className="feature">
-        <h2 className="feature__title">
-          Vence al olvido gracias a dos principios:
-        </h2>
+        <h2 className="feature__title">Por qué EduCard funciona</h2>
         <div className="feature__block">
           <div className="feature__element">
             <Image
@@ -40,8 +40,8 @@ const HomePage = async () => {
               width={0}
               style={{ width: "100%", height: "auto", maxWidth: "6rem" }}
             />
-            <h3>Recuerdo Activo</h3>
-            <span>
+            <h3 className="feature__header">Recuerdo Activo</h3>
+            <span className="feature__text">
               Promueve un estudio activo, fortaleciendo la memoria e indicando
               qué áreas necesitan más atención.
             </span>
@@ -54,13 +54,22 @@ const HomePage = async () => {
               width={0}
               style={{ width: "100%", height: "auto", maxWidth: "6rem" }}
             />
-            <h3>Repetición Espaciada</h3>
-            <span>
+            <h3 className="feature__header">Repetición Espaciada</h3>
+            <span className="feature__text">
               Optimiza el estudio. Refuerza la memoria de manera gradual para un
               aprendizaje duradero.
             </span>
           </div>
         </div>
+        <small className="feature__small">
+          ¿Quieres saber más acerca del recuerdo activo y la repeteción
+          espaciada y por qué son eficaces?
+          <br /> ¡Visita{" "}
+          <a href="https://ncase.me/remember/es.html" className="link">
+            este cómic interactivo
+          </a>
+          !
+        </small>
       </section>
     </main>
   );
