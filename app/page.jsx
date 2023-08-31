@@ -54,7 +54,7 @@ const HomePage = async () => {
               width={0}
               className="feature__image"
             />
-            <h3 className="feature__header">Repetición Espaciada</h3>
+            <h3 className="feature__header">Repaso Espaciado</h3>
             <span className="feature__text">
               Optimiza el estudio. Refuerza la memoria de manera gradual para un
               aprendizaje duradero.
