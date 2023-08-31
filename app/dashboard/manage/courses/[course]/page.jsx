@@ -96,19 +96,15 @@ const ManageCoursePage = async ({ params }) => {
         <ul className="list">
           {students.map((student) => (
             <li key={student.studentId} className="list__item list__row">
-              <div className="list__info list__info--separate">
-                <span className="list__info">
-                  <h3 className="list__title">
-                    <span className="list__label">Nombre: </span>
-                    <span>{student.name}</span>
-                  </h3>
-                </span>
-                <span className="list__info">
-                  <h3 className="list__title">
-                    <span className="list__label">Email: </span>
-                    <span>{student.email}</span>
-                  </h3>
-                </span>
+              <div className="list__info">
+                <p className="list__text">
+                  <span className="list__label">Nombre: </span>
+                  {student.name}
+                </p>
+                <p className="list__text">
+                  <span className="list__label">Email: </span>
+                  {student.email}
+                </p>
               </div>
               <RemoveStudent
                 studentId={student.studentId}
