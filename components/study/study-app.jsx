@@ -75,11 +75,11 @@ const StudyApp = ({ cards, focus }) => {
 
   useEffect(() => {
     const handleKeyPress = (event) => {
-      if (event.key === " ") {
+      if (front && event.key === " ") {
         handleToggleFront();
-      } else if (event.key === "1") {
+      } else if (!front && event.key === "1") {
         handleRepeat(currentCard._id);
-      } else if (event.key === "2") {
+      } else if (!front && event.key === "2") {
         handleGood(currentCard._id);
       }
     };
