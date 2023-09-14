@@ -1,0 +1,14 @@
+{
+  "short_name": "EduCard",
+  "name": "EduCard",
+  "icons": [
+    {
+      "src": "icon.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#fff;",
+  "theme_color": "#ea7070;"
+}
