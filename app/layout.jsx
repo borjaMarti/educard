@@ -7,7 +7,6 @@ import Header from "@/components/ui/header-comp";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  metadataBase: `https://${NEXT_PUBLIC_VERCEL_URL}`,
   title: "EduCard",
   description: "Potencia el aprendizaje en el aula y más allá.",
   keywords: ["Estudiar", "Educación", "Flashcard"],
@@ -28,7 +27,6 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
   },
-  manifest: "manifest.json",
 };
 
 export default function RootLayout({ children }) {
