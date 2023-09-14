@@ -29,7 +29,7 @@ const Footer = () => {
               made with ❤️ by{" "}
               <a
                 href="https://borjamarti.netlify.app/"
-                class="link link--footer"
+                className="link link--footer"
               >
                 borjaMartí
               </a>
