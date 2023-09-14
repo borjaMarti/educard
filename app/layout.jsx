@@ -7,7 +7,7 @@ import Header from "@/components/ui/header-comp";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  metadataBase: new URL("https://educard.es"),
+  metadataBase: `https://${NEXT_PUBLIC_VERCEL_URL}`,
   title: "EduCard",
   description: "Potencia el aprendizaje en el aula y más allá.",
   keywords: ["Estudiar", "Educación", "Flashcard"],
