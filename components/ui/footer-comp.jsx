@@ -5,6 +5,7 @@ import Link from "next/link";
 const Footer = () => {
   return (
     <footer className="site-footer">
+      <div className="site-footer__separator"></div>
       <nav className="site-footer__nav">
         <ul className="site-footer__list">
           <div>
