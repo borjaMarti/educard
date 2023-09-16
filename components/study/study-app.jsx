@@ -105,15 +105,17 @@ const StudyApp = ({ cards, focus }) => {
                   {currentCard.front}
                 </span>
               </div>
-              <div className="study-app__tooltip-container">
-                <button
-                  onClick={handleToggleFront}
-                  className="study-app__button study-app__button--front"
-                >
-                  Mostrar Respuesta
-                </button>
-                <div>
-                  <kbd>Espacio</kbd>
+              <div className="study-app__buttons-container">
+                <div className="study-app__tooltip-container">
+                  <button
+                    onClick={handleToggleFront}
+                    className="study-app__button study-app__button--front"
+                  >
+                    Mostrar Respuesta
+                  </button>
+                  <div>
+                    <kbd>Espacio</kbd>
+                  </div>
                 </div>
               </div>
             </>
