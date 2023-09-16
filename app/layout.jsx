@@ -7,6 +7,10 @@ import Header from "@/components/ui/header-comp";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
+  metadataBase:
+    process.env.NODE_ENV === "development"
+      ? `https://${process.env.VERCEL_URL}`
+      : `http://localhost:${process.env.PORT || 3000}`,
   title: "EduCard",
   description: "Potencia el aprendizaje en el aula y más allá.",
   keywords: ["Estudiar", "Educación", "Flashcard"],
