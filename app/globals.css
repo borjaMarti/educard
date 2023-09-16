@@ -574,6 +574,10 @@ kbd {
   font-size: 2rem;
 }
 
+.site-footer__madeby {
+  text-align: center;
+}
+
 @media (min-width: 768px) {
   .site-footer__separator {
     height: 8rem;

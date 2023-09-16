@@ -26,7 +26,7 @@ const Footer = () => {
             </li>
           </div>
           <div>
-            <li>
+            <li className="site-footer__madeby">
               made with ❤️ by{" "}
               <a
                 href="https://borjamarti.netlify.app/"
