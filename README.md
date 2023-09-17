@@ -1,18 +1,11 @@
 # EduCard
 
-\*\*Project description
-This is a ...
-
-Test Account:
-
-educardtest@proton.me
-edutesting123
+EduCard is a web application which helps teachers developr their students' active recall and spaced repetition habits through the use of flashcards.
 
 ## Table of contents
 
 - [Overview](#overview)
   - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
@@ -32,28 +25,25 @@ These are the reasons why, for my personal study, I use a flashcards app, [Anki]
 
 Enter [EduCard](https://educard.es).
 
-### Screenshot
+![EduCard Homepage](./public/readme/homepage.svg)
 
-![](./edugif.jpg)
-
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it.
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+EduCard's objective is to give teachers (and students) an easy-to-use tool that allows them to create decks of flashcards that can be easily shared with their students, with the ability to modify them on the fly without their students having to do anything. It serves as an introduction to the methodology of spaced repetition and active recall testing, which if
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site: [https://educard.es](https://educard.es)
+- GitHub Repository: [https://github.com/borjaMarti/educard](https://github.com/borjaMarti/educard)
+
+Note - If you don't want to create a new user to test the application, you can log using the following account:
+
+Email: educardtest@proton.me
+Password: edutesting123
 
 ## My process
 
 ### Built with
 
-- [Miro](https://miro.com/) for designing
+- [Miro](https://miro.com/) for web design
 - Mobile-first workflow
 - Semantic HTML5
 - Custom CSS following [BEM Methodology](https://getbem.com/)
@@ -65,7 +55,12 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 - [NodeJS](https://nodejs.org/) - Server environment
 - [Clerk](https://clerk.com/) - Authentication and user management
 - [Svix](https://www.svix.com/) - Webhooks platform
+- [Inkscape](https://inkscape.org/) for SVG editing
 - Server hosted on [Vercel](https://vercel.com/) and database on [MongoDB Atlas](https://www.mongodb.com/atlas/database)
+
+### How I did it
+
+[EduCard's Miro board](https://miro.com/app/board/uXjVMEoRV0k=/?share_link_id=891155910537)
 
 ### What I learned
 
@@ -126,4 +121,4 @@ These guidelines helped me improve the way I structure my HTML and CSS.
 
 ## Acknowledgments
 
-Thanks to [Leon Noel](https://twitter.com/leonnoel) and the [100Devs](https://leonnoel.com/100devs/) community for helping me get started on this journey.
+Thanks to [Leon Noel](https://twitter.com/leonnoel) and the [100Devs](https://leonnoel.com/100devs/) community for helping me get started on this journey!
