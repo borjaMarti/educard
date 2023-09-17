@@ -27,7 +27,7 @@ const Footer = () => {
           </div>
           <div>
             <li className="site-footer__madeby">
-              made with ❤️ by{" "}
+              hecho con ❤️ por{" "}
               <a
                 href="https://borjamarti.netlify.app/"
                 className="link link--footer"
