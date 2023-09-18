@@ -55,7 +55,15 @@ const DashboardPage = async () => {
               <Link href={`/dashboard/courses/${course._id}`} className="link">
                 <h3 className="list__title">{course.courseName}</h3>
               </Link>
-              <span className="list__reminder">{course.activeReminders}</span>
+              <span
+                className={
+                  course.activeReminders === 0
+                    ? "list__reminder list__reminder--zero"
+                    : "list__reminder"
+                }
+              >
+                {course.activeReminders}
+              </span>
             </li>
           ))}
           {invitations[0] ? (

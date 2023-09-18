@@ -839,6 +839,10 @@ kbd {
   font-weight: bold;
 }
 
+.list__reminder--zero {
+  color: inherit;
+}
+
 .list__info {
   display: flex;
   flex-direction: column;
