@@ -8,9 +8,9 @@
 
 EduCard is a web application that helps teachers develop their students' active recall and spaced repetition habits through the use of flashcards.
 
-As a teacher: Create courses and decks of flashcards and invite students.
+As a teacher: Create courses and decks of flashcards and share them with your students.
 
-As a student: Study the cards and get individual reminders to review them according to your performance.
+As a student: Study cards and get individual reminders to review them based on your recalling performance.
 
 https://github.com/borjaMarti/educard/assets/86715948/09b5c951-99cb-41b0-b125-37d6aaaf6f16
 
