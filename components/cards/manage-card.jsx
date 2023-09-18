@@ -79,6 +79,7 @@ const ManageCard = ({ cardId, cardFront, cardBack }) => {
             onChange={(e) => setFront(e.target.value)}
             disabled={isSubmitted}
             className="dialog__input dialog__input--textarea"
+            autoFocus
           ></textarea>
           <label htmlFor="card-back">Reverso</label>
           <textarea

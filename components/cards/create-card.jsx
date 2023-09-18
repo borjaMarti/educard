@@ -61,6 +61,7 @@ const CreateCard = () => {
             disabled={isSubmitted}
             className="dialog__input dialog__input--textarea"
             ref={inputRef}
+            autoFocus
           ></textarea>
           <label htmlFor="card-back">Reverso</label>
           <textarea
