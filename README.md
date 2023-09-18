@@ -12,7 +12,7 @@ As a teacher: Create courses and decks of flashcards and invite students.
 
 As a student: Study the cards and get individual reminders to review them according to your performance.
 
-![EduCard Showcase Video](./public/readme/educard-showcase.mov)
+https://github.com/borjaMarti/educard/assets/86715948/f6d13954-7a0f-4784-90d9-80bc910de2f6
 
 ## Table of contents
 
