@@ -29,6 +29,7 @@ https://github.com/borjaMarti/educard/assets/86715948/09b5c951-99cb-41b0-b125-37
 - [Installation](#installation)
   - [External dependencies](#external-dependencies)
   - [Environment variables](#environment-variables)
+  - [Running](#running)
 - [Author](#author)
 - [Acknowledgments](#acknowledgments)
 
@@ -189,6 +190,10 @@ To deploy the project, you'll need to provide these variables to the hosting ser
 
   - `MONGODB_URI=""`
     You'll get this value from MongoDB Atlas when configuring your database through the "Connect using drivers" option.
+
+### Running
+
+And finally, use `npm run dev` to start a local instance!
 
 ## Author
 
