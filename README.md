@@ -164,12 +164,19 @@ To deploy the project, you'll need to provide these variables to the hosting ser
   - `NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/dashboard`
   - `NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/dashboard`
   - `NEXT_PUBLIC_APP_URL="http://localhost:3000"`
+
     Subsitute 3000 with whatever port you use.
+
   - `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=""`
+
     You'll get this value from Clerk.
+
   - `CLERK_SECRET_KEY=""`
+
     You'll also get this value from Clerk.
+
   - `WEBHOOK_SECRET=""`
+
     You'll get this value enabling an endpoint through the Webhooks menu in Clerk.
 
     The webhook allows us to synchronize our Mongo database to Clerk's user database.
