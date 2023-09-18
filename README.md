@@ -12,6 +12,8 @@ As a teacher: Create courses and decks of flashcards and share them with your st
 
 As a student: Study cards and get individual reminders to review them based on your recalling performance.
 
+(Or do both!)
+
 https://github.com/borjaMarti/educard/assets/86715948/09b5c951-99cb-41b0-b125-37d6aaaf6f16
 
 ## Table of contents
@@ -24,6 +26,9 @@ https://github.com/borjaMarti/educard/assets/86715948/09b5c951-99cb-41b0-b125-37
   - [What I learned](#what-i-learned)
   - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
+- [Installation](#installation)
+  - [External dependencies](#external-dependencies)
+  - [Environment variables](#environment-variables)
 - [Author](#author)
 - [Acknowledgments](#acknowledgments)
 
@@ -48,14 +53,15 @@ EduCard's objective is to give teachers (and students) an easy-to-use tool that 
 
 Note - If you don't want to create a new user to test the application, you can log using the following account:
 
-Email: educardtest@proton.me
-Password: edutesting123
+Email: **educardtest@proton.me**
+
+Password: **edutesting123**
 
 ## My process
 
 ### Built with
 
-- [Miro](https://miro.com/) for web design
+- [Miro](https://miro.com/) for intial app design/use-flow sketches
 - Mobile-first workflow
 - Semantic HTML5
 - Custom CSS following [BEM Methodology](https://getbem.com/)
@@ -127,9 +133,59 @@ I'm super grateful for Traversy's channel. His tutorials for web development are
 
 These guidelines helped me improve the way I structure my HTML and CSS.
 
+## Installation
+
+If you want to make your own copy of EduCard, you'll first need configure a couple of things.
+
+Start by installing the dependencies:
+
+`npm install`
+
+### External dependencies
+
+As it's setup, EduCard makes use of [MongoDB Atlas](https://www.mongodb.com/atlas/database) for its documents database, and [Clerk](https://clerk.com/) for authentication and user management.
+
+You'll need to create accounts and projects for both. Follow their respective instructions for the project creation part. In the next section, you can find about what we'll need to get from them to setup the app.
+
+### Environment variables
+
+The following configuration is for development builds.
+
+To deploy the project, you'll need to provide these variables to the hosting service's environment.
+
+(Note 1: If you aren't using Vercel, you'll need to change `app/layout.jsx`'s metadata configuration)
+
+(Note 2: For deployment, Clerk needs you to use Production mode, which requires [further configuration](https://clerk.com/docs/deployments/overview))
+
+- Create a `.env.local` file in the main directory and add the following lines:
+
+  - `NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in`
+  - `NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up`
+  - `NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/dashboard`
+  - `NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/dashboard`
+  - `NEXT_PUBLIC_APP_URL="http://localhost:3000"`
+    Subsitute 3000 with whatever port you use.
+  - `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=""`
+    You'll get this value from Clerk.
+  - `CLERK_SECRET_KEY=""`
+    You'll also get this value from Clerk.
+  - `WEBHOOK_SECRET=""`
+    You'll get this value enabling an endpoint through the Webhooks menu in Clerk.
+
+    The webhook allows us to synchronize our Mongo database to Clerk's user database.
+
+    The endpoint should point to `(project.url)/api/webhooks/user`.
+
+    `project.url` will be the deploy link, or a proxy if you are using localhost. I recommend using [ngrok](https://ngrok.com/) to setup a proxy for local development.
+
+    For more info on how to configure Clerk Webhooks, visit [this link](https://clerk.com/docs/users/sync-data) (or ask [me](https://github.com/borjaMarti) about it!).
+
+  - `MONGODB_URI=""`
+    You'll get this value from MongoDB Atlas when configuring your database through the "Connect using drivers" option.
+
 ## Author
 
-- [Borja Martí](https://borjamarti.dev)
+- [Borja Martí](https://github.com/borjaMarti)
 
 ## Acknowledgments
 
