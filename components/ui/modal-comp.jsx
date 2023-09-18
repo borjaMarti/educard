@@ -17,8 +17,15 @@ const Modal = ({ open, onClose, children, title }) => {
   // Opens/closes modal depending on open state
   useEffect(() => {
     const { current: el } = modalRef;
-    if (open) el.showModal();
-    else el.close();
+    if (open) {
+      el.showModal();
+      setTimeout(() => {
+        const focus = el.querySelector(".focus");
+        if (focus) {
+          focus.focus();
+        }
+      });
+    } else el.close();
   }, [open]);
 
   return (

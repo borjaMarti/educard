@@ -57,8 +57,7 @@ const CreateCourse = () => {
                 placeholder="Escribe aquí"
                 onChange={(e) => setText(e.target.value)}
                 disabled={isSubmitted}
-                className="dialog__input"
-                autoFocus
+                className="dialog__input focus"
               />
             </form>
             <div className="dialog__controls">

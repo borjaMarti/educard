@@ -59,9 +59,8 @@ const CreateCard = () => {
             placeholder="Anverso de la carta"
             onChange={(e) => setFront(e.target.value)}
             disabled={isSubmitted}
-            className="dialog__input dialog__input--textarea"
+            className="dialog__input dialog__input--textarea focus"
             ref={inputRef}
-            autoFocus
           ></textarea>
           <label htmlFor="card-back">Reverso</label>
           <textarea
