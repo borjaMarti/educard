@@ -1,6 +1,6 @@
 <p align="center">
   <br>
-    <img src="./public/readme/educard-logo.svg" width="150"/>
+    <img src="./public/readme/educard-logo.svg" width="100"/>
   <br>
 </p>
 
