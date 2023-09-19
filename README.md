@@ -20,9 +20,11 @@ https://github.com/borjaMarti/educard/assets/86715948/09b5c951-99cb-41b0-b125-37
 
 - [Overview](#overview)
   - [The challenge](#the-challenge)
+  - [Features](#features)
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
+  - [How I did it](#how-i-did-it)
   - [What I learned](#what-i-learned)
   - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
@@ -39,13 +41,25 @@ https://github.com/borjaMarti/educard/assets/86715948/09b5c951-99cb-41b0-b125-37
 
 The two study methods [proven to be the most effective](https://scholar.google.es/scholar_url?url=https://bibliotecadigital.mineduc.cl/bitstream/handle/20.500.12365/17388/dunloskyimprovinglearning.pdf&hl=en&sa=X&ei=iyMEZd7_CNmDy9YPj-Ki8Ag&scisig=AFWwaeaysE_TSEk3SAVaAbKvAOTU&oi=scholarr) are active recall testing, which consists of actively trying to remember the content we want to memorize, for example, by asking ourselves questions about what we just read, and spaced repetition, done by studying continuously and progressively, as opposed to cramming everything the day before an exam. A very efficient way to combine these techniques is using flashcards. By following a system such as [Leitner's](https://en.wikipedia.org/wiki/Leitner_system), we can determine which cards need a higher frequency of repetition to consolidate, thus flattening the specific [forgetting curve](https://en.wikipedia.org/wiki/Forgetting_curve) of each one without wasting time reviewing the information we've already memorized.
 
+(If you want a more in-depth look into the topic, you can check out the following resources:<br>
+[How to study for exams - Evidence-based revision tips](https://www.youtube.com/watch?v=ukLnPbIffxE)<br>
+[How to Study for Exams - Spaced Repetition | Evidence-based revision tips](https://www.youtube.com/watch?v=Z-zNHHpXoMM))
+
 These are the reasons why, for my personal study, I use a flashcards app, [Anki](https://apps.ankiweb.net/). Anki allows users to create their own decks of flashcards, study them, and schedule the cards' next study session following an algorithm based on the difficulty they had recalling. While working as a teacher, I wanted to help my students develop their study habits and techniques through the use of a similar system. While Anki is a very powerful tool, it may prove too complex for younger students. It's also oriented towards personal learning, so it lacks features that allow users to interact with each other in direct ways (you can share decks, but only through exporting/importing files). When thinking about the use of flashcards with students, I felt I needed a more streamlined tool, which was easy to use, and allowed teachers to create and share decks with their students in a non-cumbersome way.
 
 Enter [EduCard](https://educard.es).
 
 ![EduCard Homepage](./public/readme/homepage.svg)
 
-EduCard's objective is to give teachers (and students) an easy-to-use tool that allows them to create decks of flashcards that can be easily shared with their students, with the ability to modify them on the fly without their students having to do anything. It serves as an introduction to the methodology of spaced repetition and active recall testing, which if
+EduCard's objective is to give teachers (and students) an easy-to-use tool that allows them to create decks of flashcards that can be easily shared with their students, with the ability to modify them on the fly without their students having to do anything. It serves as an introduction to the methodology of spaced repetition and active recall testing, which if nurtured will serve the students for their life-long learning journeys.
+
+As a teacher, you create courses and populate them with the subjects' flashcards, organized by decks which could represent learning units or discrete topics. Then, you can invite your students to give them access to your collection. The moment they are part of the course, EduCard creates a record for each of the cards and students which keeps track of when the student should review the card to keep it in memory, based on past performance reviewing it.
+
+### Features
+
+🗃️ Create courses, and organize your flashcards into decks<br>
+✉️ Invite your students to share the cards with them<br>
+📈 Practice active recall efficiently by following a spaced repetition algorithm<br>
 
 ### Links
 
@@ -54,8 +68,7 @@ EduCard's objective is to give teachers (and students) an easy-to-use tool that 
 
 Note - If you don't want to create a new user to test the application, you can log using the following account:
 
-Email: **educardtest@proton.me**
-
+Email: **educardtest@proton.me**<br>
 Password: **edutesting123**
 
 ## My process
@@ -144,9 +157,9 @@ Start by installing the dependencies:
 
 ### External dependencies
 
-As it's setup, EduCard makes use of [MongoDB Atlas](https://www.mongodb.com/atlas/database) for its documents database, and [Clerk](https://clerk.com/) for authentication and user management.
+EduCard makes use of [MongoDB Atlas](https://www.mongodb.com/atlas/database) for its documents database, and [Clerk](https://clerk.com/) for authentication and user management.
 
-You'll need to create accounts and projects for both. Follow their respective instructions for the project creation part. In the next section, you can find about what we'll need to get from them to setup the app.
+You'll need to create accounts and projects for both. Follow their respective instructions for the project creation part. In the next section, you can find about what you'll need to get from them to set up the app.
 
 ### Environment variables
 
@@ -154,7 +167,7 @@ The following configuration is for development builds.
 
 To deploy the project, you'll need to provide these variables to the hosting service's environment.
 
-(Note 1: If you aren't using Vercel, you'll need to change `app/layout.jsx`'s metadata configuration)
+(Note 1: If you aren't using Vercel, you'll need to change `app/layout.jsx`'s metadata configuration, since it's dependent on the VERCEL_URL env variable provided by Vercel)
 
 (Note 2: For deployment, Clerk needs you to use Production mode, which requires [further configuration](https://clerk.com/docs/deployments/overview))
 
@@ -184,7 +197,7 @@ To deploy the project, you'll need to provide these variables to the hosting ser
 
     The endpoint should point to `(project.url)/api/webhooks/user`.
 
-    `project.url` will be the deploy link, or a proxy if you are using localhost. I recommend using [ngrok](https://ngrok.com/) to setup a proxy for local development.
+    `project.url` will be the deploy link, or a proxy if you are using localhost. I recommend using [ngrok](https://ngrok.com/) to set up a proxy for local development.
 
     For more info on how to configure Clerk Webhooks, visit [this link](https://clerk.com/docs/users/sync-data) (or ask [me](https://github.com/borjaMarti) about it!).
 
