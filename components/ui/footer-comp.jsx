@@ -9,18 +9,13 @@ const Footer = () => {
         <ul className="site-footer__list">
           <div>
             <li>
-              <a href="#head" className="site-footer__link">
-                Volver arriba
-              </a>
+              <Link href="/tos" className="site-footer__link">
+                Condiciones
+              </Link>
             </li>
             <li>
               <Link href="/privacy" className="site-footer__link">
                 Privacidad
-              </Link>
-            </li>
-            <li>
-              <Link href="/tos" className="site-footer__link">
-                Condiciones
               </Link>
             </li>
           </div>

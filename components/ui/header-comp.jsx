@@ -1,7 +1,13 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  SignUpButton,
+  UserButton,
+} from "@clerk/nextjs";
 import { TbCards } from "react-icons/tb";
 
 const Header = () => {
@@ -39,10 +45,20 @@ const Header = () => {
           {location !== "/study" && <UserButton afterSignOutUrl="/" />}
         </SignedIn>
         <SignedOut>
-          {location !== "/sign-in" && location !== "/sign-up" && (
-            <SignInButton>
-              <button className="site-header__link">Iniciar Sesión</button>
-            </SignInButton>
+          {location !== "/sign-in" &&
+            location !== "/sign-up" &&
+            location !== "/tos" &&
+            location !== "/privacy" && (
+              <SignInButton>
+                <button className="site-header__link">Iniciar Sesión</button>
+              </SignInButton>
+            )}
+          {(location === "/tos" || location === "/privacy") && (
+            <SignUpButton>
+              <button className="site-header__link site-header__link--sign-up">
+                Registrarse
+              </button>
+            </SignUpButton>
           )}
         </SignedOut>
       </nav>
