@@ -41,9 +41,7 @@ https://github.com/borjaMarti/educard/assets/86715948/09b5c951-99cb-41b0-b125-37
 
 The two study methods [proven to be the most effective](https://scholar.google.es/scholar_url?url=https://bibliotecadigital.mineduc.cl/bitstream/handle/20.500.12365/17388/dunloskyimprovinglearning.pdf&hl=en&sa=X&ei=iyMEZd7_CNmDy9YPj-Ki8Ag&scisig=AFWwaeaysE_TSEk3SAVaAbKvAOTU&oi=scholarr) are active recall testing, which consists of actively trying to remember the content we want to memorize, for example, by asking ourselves questions about what we just read, and spaced repetition, done by studying continuously and progressively, as opposed to cramming everything the day before an exam. A very efficient way to combine these techniques is using flashcards. By following a system such as [Leitner's](https://en.wikipedia.org/wiki/Leitner_system), we can determine which cards need a higher frequency of repetition to consolidate, thus flattening the specific [forgetting curve](https://en.wikipedia.org/wiki/Forgetting_curve) of each one without wasting time reviewing the information we've already memorized.
 
-(If you want a more in-depth look into the topic, you can check out the following resources:<br>
-[How to study for exams - Evidence-based revision tips](https://www.youtube.com/watch?v=ukLnPbIffxE)<br>
-[How to Study for Exams - Spaced Repetition | Evidence-based revision tips](https://www.youtube.com/watch?v=Z-zNHHpXoMM))
+(If you want a more in-depth look into the topic, checkout the [Useful resources](#useful-resources) section)
 
 These are the reasons why, for my personal study, I use a flashcards app, [Anki](https://apps.ankiweb.net/). Anki allows users to create their own decks of flashcards, study them, and schedule the cards' next study session following an algorithm based on the difficulty they had recalling. While working as a teacher, I wanted to help my students develop their study habits and techniques through the use of a similar system. While Anki is a very powerful tool, it may prove too complex for younger students. It's also oriented towards personal learning, so it lacks features that allow users to interact with each other in direct ways (you can share decks, but only through exporting/importing files). When thinking about the use of flashcards with students, I felt I needed a more streamlined tool, which was easy to use, and allowed teachers to create and share decks with their students in a non-cumbersome way.
 
@@ -146,6 +144,10 @@ I'm super grateful for Traversy's channel. His tutorials for web development are
 - [CSS guidelines](https://cssguidelin.es/)
 
 These guidelines helped me improve the way I structure my HTML and CSS.
+
+- [How to Study for Exams - Evidence-based revision tips](https://www.youtube.com/watch?v=ukLnPbIffxE)
+
+- [How to Study for Exams - Spaced Repetition](https://www.youtube.com/watch?v=Z-zNHHpXoMM)
 
 ## Installation
 
