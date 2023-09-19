@@ -90,29 +90,31 @@ Password: **edutesting123**
 
 ### How I did it
 
+When I had a clear idea of what EduCard's purpose would be, I started thinking about which features would be needed for the minimal expression of the idea (that is to say, the Minimal Viable Product). To organize my thinking, I used Miro to make a mock-up of the application and the business logic of the database. You can check it out here, including the iterations I went over for the database structure:
+
 [EduCard's Miro board](https://miro.com/app/board/uXjVMEoRV0k=/?share_link_id=891155910537)
+
+Once I was happy with the design and structure, it was time to code it. I needed data persistence across devices as well as user authentication, which spelled full-stack application. I'd already been working with React for a while and knew it would fit the study part of the application well, so it seemed like a good option. I also needed a web framework to handle the routing. Next.js had just marked its new app directory [as stable](https://nextjs.org/blog/next-13-4), and I was intrigued by the features it offered - specifically, the distinction between client and server components, the way route handlers are structured, and data fetching from server components - so I decided to give it a shot and learn the most current techonolgy.
+
+For persistence, I had experience with MongoDB and Mongoose from previous projects, paired with the option to host the database at Mongo Atlas, I went with those (note that if I had to do it again I might have used a relational database - more info on the [Continued development](#continued-development) section).
+
+Why Clerk?
+
+Setting up webhooks
+
+Doing the backend
+
+Front end with React and custom CSS
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+Webhooks
 
-To see how you can add code snippets, see below:
+Next.js routing
 
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
+Dialogs
 
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
-
-```js
-const proudOfThisFunc = () => {
-  console.log("🎉");
-};
-```
+React context provider
 
 ### Continued development
 
@@ -120,6 +122,8 @@ Room for improvement:
 
 1- Server response handling
 2- Client state vs constant fetches
+3- Relational database
+4- CSS modularization
 
 ### Useful resources
 
