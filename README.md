@@ -263,9 +263,9 @@ Thanks to [Leon Noel](https://twitter.com/leonnoel) and the [100Devs](https://le
 [next.js-url]: https://nextjs.org/
 [mongodb-badge]: https://img.shields.io/badge/mongodb-001d29?style=for-the-badge&logo=mongodb&logoColor=47A248
 [mongodb-url]: https://www.mongodb.com/
-[mongoose-badge]: https://img.shields.io/badge/mongoose-white?style=for-the-badge&logo=mongoose&logoColor=880000
+[mongoose-badge]: https://img.shields.io/badge/mongoose-880000?style=for-the-badge&logo=mongoose&logoColor=white
 [mongoose-url]: https://mongoosejs.com/
-[node.js-badge]: https://img.shields.io/badge/nodedotjs-233056?style=for-the-badge&logo=node.js&logoColor=339933
+[node.js-badge]: https://img.shields.io/badge/node.js-233056?style=for-the-badge&logo=nodedotjs&logoColor=339933
 [node.js-url]: https://nodejs.org/
 [mongoose-badge]: https://img.shields.io/badge/mongoose-white?style=for-the-badge&logo=mongoose&logoColor=880000
 [mongoose-url]: https://mongoosejs.com/
