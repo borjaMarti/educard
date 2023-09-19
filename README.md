@@ -79,21 +79,21 @@ Password: **edutesting123**
 
 ### Built with
 
-[![HTML5][html5-badge]][html5-url] - Semantically rich HTML
-[![CSS3][css3-badge]][css3-url] - Custom CSS with mobile-first workflow
-[![BEM][bem-badge]][bem-url] - BEM Naming methodology for better structured CSS
-[![JavaScript][js-badge]][js-url] -
-[![React][react-badge]][react-url] - JavaScript UI library
-[![Next.js][next.js-badge]][next.js-url] - React web framework
-[![MongoDB][mongodb-badge]][mongodb-url] - Document-oriented database
-[![Mongoose][mongoose-badge]][mongoose-url] - JS Librarymongodb
-[![Node.js][node.js-badge]][node.js-url] - Runtime environment
-[![Clerk][clerk-badge]][clerk-url] - Authentication and user management
-[![Svix][svix-badge]][svix-url] - Webhooks platform
-[![Postman][postman-badge]][postman-url] - Endpoint testing
-[![Miro][miro-badge]][miro-url] - For intial app design/use-flow sketches
-[![Inkscape][inkscape-badge]][inkscape-url] - SVG editing
-[![Vercel][vercel-badge]][vercel-url] - Deployment service
+[![HTML5][html5-badge]][html5-url] - Semantically rich HTML<br>
+[![CSS3][css3-badge]][css3-url] - Custom CSS with mobile-first workflow<br>
+[![BEM][bem-badge]][bem-url] - BEM Naming methodology for better structured CSS<br>
+[![JavaScript][js-badge]][js-url]<br>
+[![React][react-badge]][react-url] - JavaScript UI library<br>
+[![Next.js][next.js-badge]][next.js-url] - React web framework<br>
+[![MongoDB][mongodb-badge]][mongodb-url] - Document-oriented database<br>
+[![Mongoose][mongoose-badge]][mongoose-url] - JS Librarymongodb<br>
+[![Node.js][node.js-badge]][node.js-url] - Runtime environment<br>
+[![Clerk][clerk-badge]][clerk-url] - Authentication and user management<br>
+[![Svix][svix-badge]][svix-url] - Webhooks platform<br>
+[![Postman][postman-badge]][postman-url] - Endpoint testing<br>
+[![Miro][miro-badge]][miro-url] - For intial app design/use-flow sketches<br>
+[![Inkscape][inkscape-badge]][inkscape-url] - SVG editing<br>
+[![Vercel][vercel-badge]][vercel-url] - Deployment service<br>
 [![Atlas][atlas-badge]][atlas-url] - Database hosting
 
 <!--
@@ -301,9 +301,9 @@ Thanks to [Leon Noel](https://twitter.com/leonnoel) and the [100Devs](https://le
 [postman-url]: https://www.postman.com/
 [miro-badge]: https://img.shields.io/badge/miro-ffd02f?style=for-the-badge&logo=miro&logoColor=050038
 [miro-url]: https://miro.com/
-[inkscape-badge]: https://img.shields.io/badge/postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white
+[inkscape-badge]: https://img.shields.io/badge/inkscape-white?style=for-the-badge&logo=inkscape&logoColor=black
 [inkscape-url]: https://www.postman.com/
-[vercel-badge]: https://img.shields.io/badge/postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white
+[vercel-badge]: https://img.shields.io/badge/vercel-black?style=for-the-badge&logo=vercel&logoColor=white
 [vercel-url]: https://vercel.com/
 [atlas-badge]: https://img.shields.io/badge/atlas-47A248?style=for-the-badge&logo=mongodb&logoColor=white
 [atlas-url]: https://www.mongodb.com/atlas/
