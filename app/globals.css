@@ -464,14 +464,14 @@ kbd {
 .site-header__link {
   background-color: transparent;
   border: none;
-  border: 0.15rem solid #ea7070;
-  border-radius: 0.25rem;
+  border: 0.15rem solid;
+  border-radius: 0.375rem;
   cursor: pointer;
   color: #21242c;
   text-decoration: none;
-  padding: 0.5rem 0.75rem;
+  padding: 0.875rem 1rem;
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: bold;
   transition: all 0.3s ease-in-out;
 }
 
@@ -480,16 +480,14 @@ kbd {
 }
 
 .site-header__link:hover,
-.site-header__link:active,
 .site-header__link:focus {
   color: #21242c;
-  background-color: #fdc4b6;
+  border-color: #ea7070;
 }
 
 @media (min-width: 768px) {
   .site-header__link {
     font-size: 1rem;
-    padding: 0.75rem 1.75rem;
   }
 }
 
@@ -598,7 +596,7 @@ kbd {
   display: grid;
   column-gap: 2rem;
   row-gap: 2rem;
-  margin: 1rem auto 2rem auto;
+  margin: 4rem auto 6rem auto;
   padding: 0 1.5rem;
   max-width: 77.5rem;
 }
@@ -640,7 +638,7 @@ kbd {
   gap: 0.5rem;
   cursor: pointer;
   border: 2px solid #4788e9;
-  border-radius: 0.25rem;
+  border-radius: 0.375rem;
   font-size: 0.875rem;
   font-weight: bold;
   color: white;
@@ -660,8 +658,8 @@ kbd {
   .hero {
     grid-auto-flow: column;
     grid-auto-columns: 1fr;
-    margin-bottom: 10rem;
-    margin-top: 9rem;
+    margin-bottom: 12rem;
+    margin-top: 10rem;
   }
 
   .hero__words {
@@ -929,7 +927,7 @@ kbd {
 
 .dialog {
   border: 0;
-  border-radius: 0.25rem;
+  border-radius: 0.375rem;
   box-shadow: 0px 25px 50px -12px rgba(0, 0, 0, 0.25);
   padding: 0;
   font-size: 0.875rem;
@@ -993,7 +991,7 @@ kbd {
   gap: 0.5rem;
   cursor: pointer;
   border: 2px solid #4788e9;
-  border-radius: 0.25rem;
+  border-radius: 0.375rem;
   font-size: 0.75rem;
   color: white;
   background-color: #4788e9;
@@ -1356,7 +1354,7 @@ kbd {
 
 .study-app__button {
   border: none;
-  border-radius: 0.25rem;
+  border-radius: 0.375rem;
   cursor: pointer;
   color: white;
   padding: 1rem 1.6rem;
@@ -1396,7 +1394,7 @@ kbd {
 .card {
   width: 100%;
   min-height: 62vh;
-  border-radius: 0.25rem;
+  border-radius: 0.375rem;
   display: flex;
   align-items: center;
   justify-content: center;
