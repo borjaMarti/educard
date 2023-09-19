@@ -76,15 +76,18 @@ Password: **edutesting123**
 
 ### Built with
 
+[![JavaScript][js-badge]][js-url]
+[![React][react-badge]][react-url]
+[![Next.js][next.js-badge]][next.js-url]
+[![MongoDB][mongodb-badge]][mongodb-url]
+[![Mongoose][mongoose-badge]][mongoose-url]
+[![Node.js][node.js-badge]][node.js-url]
+
+And also...
+
 - [HTML5](https://html.spec.whatwg.org/) - Semantically rich HTML
 - [CSS3](https://www.w3.org/Style/CSS/specs.en.html/) - Custom CSS with mobile-first workflow
-- [BEM Methodology](https://getbem.com/) - BEM Naming methodology for better structured CSS
-- [JavaScript](https://www.ecma-international.org/publications-and-standards/standards/ecma-262/)
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React web framework
-- [MongoDB](https://www.mongodb.com/) - Document-oriented database
-- [Mongoose](https://mongoosejs.com/) - MongoDB library
-- [Node.js](https://nodejs.org/) - Runtime environment
+- [BEM](https://getbem.com/) - BEM naming methodology for better structured CSS
 - [Clerk](https://clerk.com/) - Authentication and user management
 - [Svix](https://www.svix.com/) - Webhooks platform
 - [Postman](https://www.postman.com/) - Endpoint testing
@@ -249,3 +252,20 @@ And finally, use `npm run dev` to start a local instance!
 ## Acknowledgments
 
 Thanks to [Leon Noel](https://twitter.com/leonnoel) and the [100Devs](https://leonnoel.com/100devs/) community for helping me get started on this journey!
+
+<!-- Markdown Links -->
+
+[js-badge]: https://img.shields.io/badge/javascript-2e302c?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E
+[js-url]: https://www.ecma-international.org/publications-and-standards/standards/ecma-262/
+[react-badge]: https://img.shields.io/badge/react-23272f?style=for-the-badge&logo=react&logoColor=61DAFB
+[react-url]: https://reactjs.org/
+[next.js-badge]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
+[next.js-url]: https://nextjs.org/
+[mongodb-badge]: https://img.shields.io/badge/mongodb-001d29?style=for-the-badge&logo=mongodb&logoColor=47A248
+[mongodb-url]: https://www.mongodb.com/
+[mongoose-badge]: https://img.shields.io/badge/mongoose-white?style=for-the-badge&logo=mongoose&logoColor=880000
+[mongoose-url]: https://mongoosejs.com/
+[node.js-badge]: https://img.shields.io/badge/nodedotjs-233056?style=for-the-badge&logo=node.js&logoColor=339933
+[node.js-url]: https://nodejs.org/
+[mongoose-badge]: https://img.shields.io/badge/mongoose-white?style=for-the-badge&logo=mongoose&logoColor=880000
+[mongoose-url]: https://mongoosejs.com/
