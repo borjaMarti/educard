@@ -18,9 +18,6 @@ https://github.com/borjaMarti/educard/assets/86715948/09b5c951-99cb-41b0-b125-37
 
 <details>
 <summary>Table of contents</summary>
-https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB&label=REACT
-
-https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB&label=REACT
 
 - [Overview](#overview)
   - [The challenge](#the-challenge)
