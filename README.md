@@ -85,6 +85,7 @@ Password: **edutesting123**
 - [NodeJS](https://nodejs.org/) - Server environment
 - [Clerk](https://clerk.com/) - Authentication and user management
 - [Svix](https://www.svix.com/) - Webhooks platform
+- [Postman](https://www.postman.com/) - For testing endpoints
 - [Inkscape](https://inkscape.org/) for SVG editing
 - Server hosted on [Vercel](https://vercel.com/) and database on [MongoDB Atlas](https://www.mongodb.com/atlas/database)
 
@@ -98,13 +99,36 @@ Once I was happy with the design and structure, it was time to code it. I needed
 
 For persistence, I had experience with MongoDB and Mongoose from previous projects, paired with the option to host the database at Mongo Atlas, I went with those (note that if I had to do it again I might have used a relational database - more info on the [Continued development](#continued-development) section).
 
-Why Clerk?
+Next I had to decide how to go about the user authentication strategy. I had experience using [Passport.js](https://www.passportjs.org/), but that was using the [Express.js](https://expressjs.com/) framework, and, given how recent the new Next.js app router was, I had a hard time finding docs/examples of Passport.js integration. In my search, I came across [Clerk](https://clerk.com/), and looking through their docs I noticed they had already prepared for integration with Next.js's app router before its stable release. It offered all the functionality I needed, and I could connect their database to mine via webhooks through [Svix](https://www.svix.com/), so I went with them.
 
-Setting up webhooks
+Now that the stack was decided, I started setting up my backend in Next.js. Next.js uses a [file-system based router](https://nextjs.org/docs/app/building-your-application/routing), which means that folders are used to define routes, and files create the UI for a given route segment. For server-side API endpoints, [Route Handlers](https://nextjs.org/docs/app/building-your-application/routing/route-handlers) are used, and they are represented by `route.js` files. The root folder inside the project directory (`app` in my case) acts as the `/` endpoint, and new folders and sub-folders with `route.js` files inside them will represent the given endpoint. Inside `route.js` you write functions to handle each HTTP Request Method. The following is a function example from `app/api/courses` `route.js` (note that the endpoint would then be `domain.url/api/courses`):
 
-Doing the backend
+```js
+// @desc Create new course.
+// @route POST /api/courses
+export async function POST(req) {
+  await dbConnect();
+  const { userId } = getAuth(req);
+  const data = await req.json();
 
-Front end with React and custom CSS
+  try {
+    const course = await Course.create({
+      ownerId: userId,
+      courseName: data.name,
+    });
+
+    return NextResponse.json(course);
+  } catch (err) {
+    console.log(err);
+  }
+}
+```
+
+During the endpoint set-up process, I used [Postman](https://www.postman.com/) to test the functionality.
+
+Finally, with all the backend in place, it was time for the frontend. The client-side routing is also straight-forward with Next.js. Instead of `route.js` files, we use `page.jsx` files to define the UI for a given endpoint and make it publicly accessible. Inside our `page.jsx` files we export the functions just as we would for a React component. By default, all `page.jsx` files are [Server Components](https://nextjs.org/docs/app/building-your-application/rendering/server-components), meaning that are rendered (and cached) on the server, helping with Search Engine Optimization and allowing us to asynchronously fetch our data.
+
+Then, for any components that needed interactivity (or the usage of React's hooks), I created regular React components with a `"use client"` declaration, indicating to Next.js that these were [Client Components](https://nextjs.org/docs/app/building-your-application/rendering/client-components).
 
 ### What I learned
 
