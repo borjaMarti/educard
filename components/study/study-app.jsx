@@ -6,6 +6,7 @@ const StudyApp = ({ cards, focus }) => {
   const params = useParams();
   const router = useRouter();
 
+  // If URL is accessed without cards, return to course
   if (cards[0] === undefined) {
     return router.replace(`/dashboard/courses/${params.course}`);
   }
@@ -59,6 +60,7 @@ const StudyApp = ({ cards, focus }) => {
       );
     }
 
+    // When last card is marked as correct, return to course
     if (studyCards.length === 1) {
       setBlinds(false);
       router.replace(`/dashboard/courses/${params.course}`);
@@ -86,6 +88,7 @@ const StudyApp = ({ cards, focus }) => {
 
     window.addEventListener("keydown", handleKeyPress);
 
+    // Clean-up function for previous renders
     return () => {
       window.removeEventListener("keydown", handleKeyPress);
     };
