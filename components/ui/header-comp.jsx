@@ -19,7 +19,11 @@ const Header = () => {
     headerClass = "site-header--in";
   }
 
-  if (location === "/study") {
+  if (
+    location === "/study" ||
+    location === "/sign-in" ||
+    location === "/sign-up"
+  ) {
     navClass = "site-header__nav--study";
     headerClass = "site-header--in";
   }
@@ -35,9 +39,11 @@ const Header = () => {
           {location !== "/study" && <UserButton afterSignOutUrl="/" />}
         </SignedIn>
         <SignedOut>
-          <SignInButton>
-            <button className="site-header__link">Iniciar Sesión</button>
-          </SignInButton>
+          {location !== "/sign-in" && location !== "/sign-up" && (
+            <SignInButton>
+              <button className="site-header__link">Iniciar Sesión</button>
+            </SignInButton>
+          )}
         </SignedOut>
       </nav>
     </header>
