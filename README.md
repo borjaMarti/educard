@@ -14,7 +14,7 @@ As a student: Study cards and get individual reminders to review them based on y
 
 (Or do both!)
 
-https://github.com/borjaMarti/educard/assets/86715948/09b5c951-99cb-41b0-b125-37d6aaaf6f16
+https://github.com/borjaMarti/educard/assets/86715948/f9519bbd-e775-4091-b4d0-1e3cac34315f
 
 <details>
 <summary>Table of contents</summary>
