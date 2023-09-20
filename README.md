@@ -58,7 +58,7 @@ As a teacher, you create courses and populate them with the subjects' flashcards
 
 ### Features
 
-🗃️ Create courses, and organize your flashcards into decks<br>
+🗃️ Create courses and organize your flashcards into decks<br>
 ✉️ Invite your students to share the cards with them<br>
 📈 Practice active recall efficiently by following a spaced repetition algorithm<br>
 
@@ -100,9 +100,10 @@ And also...
 
 When I had a clear idea of what EduCard's purpose would be, I started thinking about which features would be needed for the minimal expression of the idea (that is to say, the Minimal Viable Product). To organize my thinking, I used Miro to make a mock-up of the application and the business logic of the database. You can check it out here, including the iterations I went over for the database structure:
 
-[Link to EduCard's Miro board](https://miro.com/app/board/uXjVMEoRV0k=/?share_link_id=891155910537).
-![EduCard App Miro Board](./public/readme/miro-app.png)
-![EduCard's Database Miro Board](./public/readme/miro-database.png)
+[EduCard's Miro Board](https://miro.com/app/board/uXjVMEoRV0k=/?share_link_id=891155910537)
+
+![EduCard App Miro](./public/readme/miro-app.png)
+![EduCard's Database Miro](./public/readme/miro-database.png)
 
 Once I was happy with the design and structure, it was time to code it. I needed data persistence across devices as well as user authentication, which spelled full-stack application. I'd already been working with React for a while and knew it would fit the study part of the application well, so it seemed like a good option. I also needed a web framework to handle the routing. Next.js had just marked its new app directory [as stable](https://nextjs.org/blog/next-13-4), and I was intrigued by the features it offered - specifically, the distinction between client and server components, the way route handlers are structured, and data fetching from server components - so I decided to give it a shot and learn the most current techonolgy.
 
