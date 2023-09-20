@@ -5,19 +5,34 @@
  * Normalize.css........Level playing field.
  *
  * GENERIC
+ * Html.................Default color, scroll behavior, line-height.
  * Body.................Border-box by default.
  * List elements........Do away with type.
  * Links................Default link styling.
+ * Focus................Show border on focusing all elements.
  *
  * BASE
- * Headings.............H1–H6 styles.
+ * Site Header..........Site header.
+ * Site Footer..........Site footer.
+ *
+ * PAGES
+ * Dashboard............Dashboard page related.
+ * Study app............Study app page related.
+ * Log page.............Log page related.
+ * Loading page.........Loading page related.
+ * Privacy - TOS........Privacy/TOS pages related.
  *
  * COMPONENTS
  * Logo.................The app logo, including icon and title.
- * Page-head............The main page header.
- * Page-foot............The main page footer.
- * Buttons..............Button elements.
- * Modals...............Modal-type dialogs.
+ * Hero.................Hero structure.
+ * Feature..............Feature display block.
+ * Section..............Flex section block.
+ * List.................Courses/decks/pages lists.
+ * Buttons..............Button components.
+ * Links................Link components.
+ * Breadcrumb...........Breadcrumb component.
+ * Dialogs..............Modals and confirmation dialogs.
+ * Clerk's components...Clerk UI related.
  */
 
 /*------------------------------------*\
@@ -505,31 +520,6 @@ kbd {
   }
 }
 
-/* MAINS */
-
-.dashboard-main {
-  max-width: 50rem;
-  margin: 0.5rem auto;
-  padding: 1.5rem;
-}
-
-@media (min-width: 768px) {
-  .dashboard-main {
-    margin: 1rem auto;
-  }
-}
-
-.study-main {
-  max-width: 60rem;
-  margin: 1rem auto;
-}
-
-@media (min-width: 768px) {
-  .study-main {
-    margin: 2rem auto;
-  }
-}
-
 /* SITE FOOTER */
 
 .site-footer {
@@ -601,8 +591,305 @@ kbd {
 }
 
 /*------------------------------------*\
+  #PAGES
+\*------------------------------------*/
+
+/* DASHBOARD */
+
+.dashboard-main {
+  max-width: 50rem;
+  margin: 0.5rem auto;
+  padding: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .dashboard-main {
+    margin: 1rem auto;
+  }
+}
+
+/* STUDY APP */
+
+.study-app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto 7rem auto;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .study-app {
+    gap: 2rem;
+  }
+}
+
+.study-main {
+  max-width: 60rem;
+  margin: 1rem auto;
+}
+
+@media (min-width: 768px) {
+  .study-main {
+    margin: 2rem auto;
+  }
+}
+
+.study-app__count {
+  align-self: flex-end;
+  margin-right: 1rem;
+}
+
+.study-app__buttons-container {
+  position: fixed;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.759);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .study-app__buttons-container {
+    gap: 2rem;
+  }
+}
+
+.study-app__tooltip-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.study-app__button {
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  color: white;
+  padding: 1rem 1.6rem;
+  font-size: 1rem;
+  transition: background-color 0.3s ease-in-out;
+  min-width: 7rem;
+}
+
+@media (min-width: 768px) {
+  .study-app__button {
+    font-size: 1.25rem;
+    padding: 1.25 2rem;
+    min-width: 10rem;
+  }
+}
+
+.study-app__button--front {
+  background-color: #e04976;
+}
+
+.study-app__button--front:hover,
+.study-app__button--front:active,
+.study-app__button--front:focus {
+  background-color: #e00748;
+}
+
+.study-app__button--back {
+  background-color: #4788e9;
+}
+
+.study-app__button--back:hover,
+.study-app__button--back:active,
+.study-app__button--back:focus {
+  background-color: #186ae6;
+}
+
+.card {
+  width: 100%;
+  min-height: 62vh;
+  border-radius: 0.375rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .card {
+    font-size: 1.875rem;
+  }
+}
+
+.card__container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding: 0.5rem 0;
+}
+
+@media (min-width: 768px) {
+  .card__container {
+    padding: 1rem 0;
+  }
+}
+
+.card--front {
+  background: radial-gradient(
+    circle at 10% -20%,
+    #e94d4d,
+    #e64575,
+    #df44a3,
+    #ae50ce
+  );
+}
+
+.card--back {
+  background: radial-gradient(
+    circle at 10% -20%,
+    #756ddf,
+    #4788e9,
+    #1c9be6,
+    #08aadb
+  );
+}
+
+.card__text {
+  text-align: center;
+  margin: 0;
+  padding: 1rem;
+  color: white;
+}
+
+.card__separator {
+  color: #eee;
+  background-color: #e1e1e1;
+  height: 1px;
+  width: 100%;
+  border: 0;
+}
+
+/* LOG PAGE */
+
+.log-container {
+  padding: 4rem 0 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* LOADING PAGE */
+
+.loading-block {
+  padding: 4rem 0 4rem;
+  display: flex;
+  justify-content: center;
+}
+
+/**
+ * Spinner Loading Animation
+ * Author: Temani Afif
+ * Source: https://css-tricks.com/single-element-loaders-the-spinner/
+ * Notes:
+ *
+ * 1. Spinner size.
+ * 2. Border thickness.
+ * 3. Spinner color.
+ */
+
+.spinner {
+  width: 2rem; /* 1 */
+  padding: 0.25rem; /* 2 */
+  background: #ea7070; /* 3 */
+
+  aspect-ratio: 1;
+  border-radius: 50%;
+  --_m: conic-gradient(#0000, #000), linear-gradient(#000 0 0) content-box;
+  -webkit-mask: var(--_m);
+  mask: var(--_m);
+  -webkit-mask-composite: source-out;
+  mask-composite: subtract;
+  box-sizing: border-box;
+  animation: spinner__load 1s linear infinite;
+}
+
+@keyframes spinner__load {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+/* PRIVACY - TOS */
+
+.terms {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f8f8f8;
+  padding: 2.5rem 1.5rem;
+}
+
+.terms__element {
+  max-width: 50rem;
+}
+
+.terms__title {
+  font-size: 1.375rem;
+  font-weight: 600;
+  margin: 0 0 2rem 0;
+}
+
+@media (min-width: 768px) {
+  .terms {
+    padding: 5rem 0;
+  }
+
+  .terms__title {
+    font-size: 1.875rem;
+    margin-bottom: 3rem;
+  }
+}
+
+/*------------------------------------*\
   #COMPONENTS
 \*------------------------------------*/
+
+/* LOGO */
+
+.logo {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+.logo:hover,
+.logo:active,
+.logo:focus {
+  color: #ea7070;
+}
+
+.logo__title {
+  margin: 0;
+  font-size: 1.5rem;
+  transition: all 0.3s ease-in-out;
+  user-select: none;
+}
+
+.logo__icon {
+  font-size: 1.875rem;
+  color: #ea7070;
+}
+
+@media (min-width: 768px) {
+  .logo__title {
+    font-size: 2rem;
+  }
+
+  .logo__icon {
+    font-size: 2.5rem;
+  }
+}
 
 /* HERO */
 
@@ -901,40 +1188,128 @@ kbd {
   }
 }
 
-/* LOGO */
+/* BUTTONS */
 
-.logo {
-  display: flex;
-  gap: 0.25rem;
-  align-items: center;
+.button {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  font-size: 1rem;
+  transition: color 0.3s ease-in-out;
+  padding: 0;
+  line-height: 0;
 }
 
-.logo:hover,
-.logo:active,
-.logo:focus {
-  color: #ea7070;
-}
-
-.logo__title {
-  margin: 0;
-  font-size: 1.5rem;
-  transition: all 0.3s ease-in-out;
-  user-select: none;
-}
-
-.logo__icon {
-  font-size: 1.875rem;
-  color: #ea7070;
+.button:hover,
+.button:active,
+.button:focus {
+  color: #e94d4d;
 }
 
 @media (min-width: 768px) {
-  .logo__title {
+  .button {
+    font-size: 1.25rem;
+  }
+}
+
+.button--close {
+  font-size: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .button--close {
     font-size: 2rem;
   }
+}
 
-  .logo__icon {
-    font-size: 2.5rem;
+.button--alert {
+  color: orangered;
+}
+
+.button--danger:hover,
+.button--danger:active,
+.button--danger:focus {
+  color: red;
+}
+
+.button--link {
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0;
+  margin-top: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .button--link {
+    font-size: 1rem;
   }
+}
+
+.button--accept {
+  color: green;
+}
+
+.button--accept:hover,
+.button--accept:active,
+.button--accept:focus {
+  color: green;
+}
+
+.button--reject {
+  color: red;
+}
+
+.button--reject:hover,
+.button--reject:active,
+.button--reject:focus {
+  color: red;
+}
+
+.button--accept,
+.button--reject {
+  font-size: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .button--accept,
+  .button--reject {
+    font-size: 1.5rem;
+  }
+}
+
+/* LINKS */
+
+.link {
+  color: #186ae6;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: all 0.3s ease-in-out;
+}
+
+.link:visited {
+  color: #186ae6;
+}
+
+.link:hover,
+.link:active,
+.link:focus {
+  text-decoration-color: #186ae6;
+}
+
+.link--footer {
+  color: #ea7070;
+}
+
+.link--footer:visited {
+  color: #ea7070;
+}
+
+.link--footer:hover,
+.link--footer:active,
+.link--footer:focus {
+  text-decoration-color: #ea7070;
 }
 
 /* DIALOGS */
@@ -1090,199 +1465,6 @@ kbd {
   gap: 1rem;
 }
 
-/* LOG PAGE */
-
-.log-container {
-  padding: 4rem 0 4rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* TOS PAGE */
-
-/* CLERK'S COMPONENTS */
-
-/* Clerk's sign modal, mutes the bright blue 'Secured by Clerk' sign. */
-.cl-internal-b3fm6y {
-  color: white;
-  background-color: #ea7070;
-}
-
-/* Clerk's user button, adjusts size. */
-
-@media (min-width: 768px) {
-  .cl-avatarBox {
-    width: 2.5rem;
-    height: 2.5rem;
-  }
-}
-
-/* LOADING PAGE */
-
-.loading-block {
-  padding: 4rem 0 4rem;
-  display: flex;
-  justify-content: center;
-}
-
-/**
- * Spinner Loading Animation
- * Author: Temani Afif
- * Source: https://css-tricks.com/single-element-loaders-the-spinner/
- * Notes:
- *
- * 1. Spinner size.
- * 2. Border thickness.
- * 3. Spinner color.
- */
-
-.spinner {
-  width: 2rem; /* 1 */
-  padding: 0.25rem; /* 2 */
-  background: #ea7070; /* 3 */
-
-  aspect-ratio: 1;
-  border-radius: 50%;
-  --_m: conic-gradient(#0000, #000), linear-gradient(#000 0 0) content-box;
-  -webkit-mask: var(--_m);
-  mask: var(--_m);
-  -webkit-mask-composite: source-out;
-  mask-composite: subtract;
-  box-sizing: border-box;
-  animation: spinner__load 1s linear infinite;
-}
-
-@keyframes spinner__load {
-  to {
-    transform: rotate(1turn);
-  }
-}
-
-/* BUTTONS */
-
-.button {
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
-  font-size: 1rem;
-  transition: color 0.3s ease-in-out;
-  padding: 0;
-  line-height: 0;
-}
-
-.button:hover,
-.button:active,
-.button:focus {
-  color: #e94d4d;
-}
-
-@media (min-width: 768px) {
-  .button {
-    font-size: 1.25rem;
-  }
-}
-
-.button--close {
-  font-size: 1.5rem;
-}
-
-@media (min-width: 768px) {
-  .button--close {
-    font-size: 2rem;
-  }
-}
-
-.button--alert {
-  color: orangered;
-}
-
-.button--danger:hover,
-.button--danger:active,
-.button--danger:focus {
-  color: red;
-}
-
-.button--link {
-  font-size: 0.875rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0;
-  margin-top: 0.75rem;
-}
-
-@media (min-width: 768px) {
-  .button--link {
-    font-size: 1rem;
-  }
-}
-
-.button--accept {
-  color: green;
-}
-
-.button--accept:hover,
-.button--accept:active,
-.button--accept:focus {
-  color: green;
-}
-
-.button--reject {
-  color: red;
-}
-
-.button--reject:hover,
-.button--reject:active,
-.button--reject:focus {
-  color: red;
-}
-
-.button--accept,
-.button--reject {
-  font-size: 1.25rem;
-}
-
-@media (min-width: 768px) {
-  .button--accept,
-  .button--reject {
-    font-size: 1.5rem;
-  }
-}
-
-/* LINKS */
-
-.link {
-  color: #186ae6;
-  text-decoration: underline;
-  text-decoration-color: transparent;
-  transition: all 0.3s ease-in-out;
-}
-
-.link:visited {
-  color: #186ae6;
-}
-
-.link:hover,
-.link:active,
-.link:focus {
-  text-decoration-color: #186ae6;
-}
-
-.link--footer {
-  color: #ea7070;
-}
-
-.link--footer:visited {
-  color: #ea7070;
-}
-
-.link--footer:hover,
-.link--footer:active,
-.link--footer:focus {
-  text-decoration-color: #ea7070;
-}
-
 /* BREADCRUMB */
 
 .breadcrumb {
@@ -1320,184 +1502,19 @@ kbd {
   margin: 0 0.5rem;
 }
 
-/* STUDY APP */
+/* CLERK'S COMPONENTS */
 
-.study-app {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 auto 7rem auto;
-  gap: 1rem;
-}
-
-@media (min-width: 768px) {
-  .study-app {
-    gap: 2rem;
-  }
-}
-
-.study-app__count {
-  align-self: flex-end;
-  margin-right: 1rem;
-}
-
-.study-app__buttons-container {
-  position: fixed;
-  bottom: 0;
-  background: rgba(255, 255, 255, 0.759);
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem;
-  gap: 1rem;
-}
-
-@media (min-width: 768px) {
-  .study-app__buttons-container {
-    gap: 2rem;
-  }
-}
-
-.study-app__tooltip-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.study-app__button {
-  border: none;
-  border-radius: 0.375rem;
-  cursor: pointer;
+/* Clerk's sign modal, mutes the bright blue 'Secured by Clerk' sign. */
+.cl-internal-b3fm6y {
   color: white;
-  padding: 1rem 1.6rem;
-  font-size: 1rem;
-  transition: background-color 0.3s ease-in-out;
-  min-width: 7rem;
+  background-color: #ea7070;
 }
+
+/* Clerk's user button, adjusts size. */
 
 @media (min-width: 768px) {
-  .study-app__button {
-    font-size: 1.25rem;
-    padding: 1.25 2rem;
-    min-width: 10rem;
-  }
-}
-
-.study-app__button--front {
-  background-color: #e04976;
-}
-
-.study-app__button--front:hover,
-.study-app__button--front:active,
-.study-app__button--front:focus {
-  background-color: #e00748;
-}
-
-.study-app__button--back {
-  background-color: #4788e9;
-}
-
-.study-app__button--back:hover,
-.study-app__button--back:active,
-.study-app__button--back:focus {
-  background-color: #186ae6;
-}
-
-.card {
-  width: 100%;
-  min-height: 62vh;
-  border-radius: 0.375rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.25rem;
-}
-
-@media (min-width: 768px) {
-  .card {
-    font-size: 1.875rem;
-  }
-}
-
-.card__container {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex-direction: column;
-  padding: 0.5rem 0;
-}
-
-@media (min-width: 768px) {
-  .card__container {
-    padding: 1rem 0;
-  }
-}
-
-.card--front {
-  background: radial-gradient(
-    circle at 10% -20%,
-    #e94d4d,
-    #e64575,
-    #df44a3,
-    #ae50ce
-  );
-}
-
-.card--back {
-  background: radial-gradient(
-    circle at 10% -20%,
-    #756ddf,
-    #4788e9,
-    #1c9be6,
-    #08aadb
-  );
-}
-
-.card__text {
-  text-align: center;
-  margin: 0;
-  padding: 1rem;
-  color: white;
-}
-
-.card__separator {
-  color: #eee;
-  background-color: #e1e1e1;
-  height: 1px;
-  width: 100%;
-  border: 0;
-}
-
-/* PRIVACY - TOS */
-
-.terms {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #f8f8f8;
-  padding: 2.5rem 1.5rem;
-}
-
-.terms__element {
-  max-width: 50rem;
-}
-
-.terms__title {
-  font-size: 1.375rem;
-  font-weight: 600;
-  margin: 0 0 2rem 0;
-}
-
-@media (min-width: 768px) {
-  .terms {
-    padding: 5rem 0;
-  }
-
-  .terms__title {
-    font-size: 1.875rem;
-    margin-bottom: 3rem;
+  .cl-avatarBox {
+    width: 2.5rem;
+    height: 2.5rem;
   }
 }
