@@ -20,9 +20,9 @@ https://github.com/borjaMarti/educard/assets/86715948/f9519bbd-e775-4091-b4d0-1e
 <summary>Table of contents</summary>
 
 - [Overview](#overview)
+  - [Link](#link)
   - [The challenge](#the-challenge)
   - [Features](#features)
-  - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
   - [How I did it](#how-i-did-it)
@@ -39,6 +39,15 @@ https://github.com/borjaMarti/educard/assets/86715948/f9519bbd-e775-4091-b4d0-1e
 </details>
 
 ## Overview
+
+### Link
+
+- Live Site: [https://educard.es](https://educard.es)
+
+Note - If you don't want to create a new user to test the application, you can log using the following account:
+
+Email: **educardtest@proton.me**<br>
+Password: **edutesting123**
 
 ### The challenge
 
@@ -61,16 +70,6 @@ As a teacher, you create courses and populate them with the subjects' flashcards
 🗃️ Create courses and organize your flashcards into decks<br>
 ✉️ Invite your students to share the cards with them<br>
 📈 Practice active recall efficiently by following a spaced repetition algorithm<br>
-
-### Links
-
-- Live Site: [https://educard.es](https://educard.es)
-- GitHub Repository: [https://github.com/borjaMarti/educard](https://github.com/borjaMarti/educard)
-
-Note - If you don't want to create a new user to test the application, you can log using the following account:
-
-Email: **educardtest@proton.me**<br>
-Password: **edutesting123**
 
 ## My process
 
