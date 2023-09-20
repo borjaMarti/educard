@@ -100,7 +100,9 @@ And also...
 
 When I had a clear idea of what EduCard's purpose would be, I started thinking about which features would be needed for the minimal expression of the idea (that is to say, the Minimal Viable Product). To organize my thinking, I used Miro to make a mock-up of the application and the business logic of the database. You can check it out here, including the iterations I went over for the database structure:
 
-[EduCard's Miro board](https://miro.com/app/board/uXjVMEoRV0k=/?share_link_id=891155910537)
+[Link to EduCard's Miro board](https://miro.com/app/board/uXjVMEoRV0k=/?share_link_id=891155910537).
+![EduCard App Miro Board](./public/readme/miro-app.png)
+![EduCard's Database Miro Board](./public/readme/miro-database.png)
 
 Once I was happy with the design and structure, it was time to code it. I needed data persistence across devices as well as user authentication, which spelled full-stack application. I'd already been working with React for a while and knew it would fit the study part of the application well, so it seemed like a good option. I also needed a web framework to handle the routing. Next.js had just marked its new app directory [as stable](https://nextjs.org/blog/next-13-4), and I was intrigued by the features it offered - specifically, the distinction between client and server components, the way route handlers are structured, and data fetching from server components - so I decided to give it a shot and learn the most current techonolgy.
 
@@ -186,7 +188,7 @@ These guidelines helped me improve the way I structure my HTML and CSS.
 
 ## Installation
 
-If you want to make your own copy of EduCard, you'll first need configure a couple of things.
+If you want to make your own copy of EduCard, you'll first need to configure a couple of things.
 
 Start by installing the dependencies:
 
@@ -194,7 +196,7 @@ Start by installing the dependencies:
 
 ### External dependencies
 
-EduCard makes use of [MongoDB Atlas](https://www.mongodb.com/atlas/database) for its documents database, and [Clerk](https://clerk.com/) for authentication and user management.
+EduCard makes use of [MongoDB Atlas](https://www.mongodb.com/atlas/database) for its database, and [Clerk](https://clerk.com/) for authentication and user management.
 
 You'll need to create accounts and projects for both. Follow their respective instructions for the project creation part. In the next section, you can find about what you'll need to get from them to set up the app.
 
