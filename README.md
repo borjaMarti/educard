@@ -141,7 +141,9 @@ Then, for any components that needed interactivity (or the usage of React's hook
 
 One of my goals for this project was building my components without using any libraries to consolidate my React knowledge, leading me to learn some new things, which I'll go more in-depth about in the following section. My main focus when building components was accessibility. The [A11y Project](https://www.a11yproject.com/checklist/) and [MDN Docs](https://developer.mozilla.org/) guided my decisions on the topic. [React Aria](https://react-spectrum.adobe.com/react-aria/), with its focus on accessibility, was also an inspiration.
 
-The UI design of the application strives for clarity, letting users complete its principal objective: to teach and to (meaningfully) learn.
+Another significant part of the front-end creation process was following a mobile-first workflow. My target userbase (students, young people) mainly use the internet through mobile phones, so it only made sense to cater the design towards that.
+
+The UI design of the application strives for clarity, letting users fulfill its chief objective: to teach and to (meaningfully) learn.
 
 ### What I Learned
 
@@ -149,15 +151,17 @@ Here are some of the topics I learned about while working on the project:
 
 - Webhooks
 
+When I decided to use an external provider for user management and authentication, one of the core issues was synchronizing their database with EduCard's. EduCard needs the users emails and names so it can manage course invitations and student-teacher interactions. This info must be linked to the user id, and all of this is handled by the service, not EduCard. So the need to replicate
+
 - Next.js routing
 
 - Dialogs
 
-Dialogs serve as one of the central UI components of EduCard, letting users have a quick access to an interface when creating/modifying/deleting courses, decks, cards, and invitations.
+Dialogs serve as one of the central UI components of EduCard, allowing users to have quick access to an interface when creating/modifying/deleting courses, decks, cards, and invitations.
 
-They permit the main interface to be clean, adding the required parts for the requested interaction on the fly on top of all the other content. When researching how to implement dialogs, I paid attention to the many [accessibility considerations](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog#accessibility_considerations) raised by them. Because of this, I was considering using an already accessibility-centered implementation, [a11y-dialog](https://a11y-dialog.netlify.app/), which as a react version, [React a11y-dialog](https://github.com/KittyGiraudel/react-a11y-dialog). The problem is that this version relys on [React portals](https://react.dev/reference/react-dom/createPortal), which, by the nature of Next.js, require further configuration.
+They permit the main interface to be clean, adding the required parts for the requested interaction on the fly on top of all the other content. When researching how to implement dialogs, I heeded the many [accessibility considerations](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog#accessibility_considerations) raised. Because of this, I considered using an already accessibility-centered implementation, [a11y-dialog](https://a11y-dialog.netlify.app/), which has a React version, [React a11y-dialog](https://github.com/KittyGiraudel/react-a11y-dialog). The problem is that this version relies on [React portals](https://react.dev/reference/react-dom/createPortal), which require further configuration because of Next.js.
 
-On first
+Then I came across the native [`<dialog>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog) element. Just at the start of 2022, it had achieved support in all major browsers, now having a [>90 percent of usage](https://caniuse.com/dialog) across browser versions. After reading various articles supporting the adoption of the native element over custom-made solutions, such as [this one](https://www.scottohara.me/blog/2023/01/26/use-the-dialog-element.html) by Scott O'Hara, a prominent voice in the accessibility community, I decided to build my component with it. [This tutorial](https://dev.to/link2twenty/react-using-native-dialogs-to-make-a-modal-popup-4b25) was positively helpful for implementing some missing functionality (namely, closing the modal on backdrop click).
 
 - React context provider
 
