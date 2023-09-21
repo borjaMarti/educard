@@ -151,9 +151,9 @@ Here are some (not all) of the topics I learned about while working on the proje
 
 - Webhooks
 
-When I decided to use an external provider for user management and authentication, one of the core issues was synchronizing their database with EduCard's. EduCard needs the users emails and names to manage course invitations and student-teacher interactions, but the external service handles this info, not EduCard.
+When I decided to use an external provider for user management and authentication, one of the core issues was synchronizing their database with EduCard's. EduCard needs the users' emails and names to manage course invitations and student-teacher interactions, but the external service handles this info, not EduCard.
 
-[Clerk](https://clerk.com/) solves this by facilitating connections to a project's back end using webhooks. You set up an endpoint on the back end and configure Clerk to send the required data when a specified event happens (such as a user creation). To secure and ensure a reliable connection between Clerk's database and your endpoint, Clerk uses [Svix](https://www.svix.com/) to handle the webhooks. The following is a snippet of my `/api/webhooks/user` endpoint showing how it's configured:
+[Clerk](https://clerk.com/) solves this by facilitating webhook connections to a project's back end. You set up an endpoint on the back end and configure Clerk to send the required data when a specified event happens (such as a user creation). To secure and ensure a reliable connection between the Clerk database and your endpoint, Clerk uses [Svix](https://www.svix.com/) to handle the webhooks. The following is a snippet of my `/api/webhooks/user` endpoint showing how it's configured:
 
 ```js
 const webhookSecret = process.env.WEBHOOK_SECRET;
@@ -207,22 +207,22 @@ Then I came across the native [`<dialog>`](https://developer.mozilla.org/en-US/d
 
 - React Server Components
 
-[Server Components](https://react.dev/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components) run during build or on the server, and get excluded from the JavaScript bundle. There are multiple advantages to using server components. I'll recap some of them here:
+[Server Components](https://react.dev/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components) run during build or on the server and get excluded from the JavaScript bundle. There are multiple advantages to using server components. I'll recap some of them here:
 
 <ol>
-  <li>Data Fetching: Done from the server, reduces the amount request made from the client.</li>
-  <li>Security: Tokens and API keys don't get exposed to the client.</li>
-  <li>Caching: Results can be cached and reused for subsequent requests and across users.</li>
-  <li>Bundle Sizes: Reduded as dependencies are kept on server.</li>
-  <li>Initial Page Load: Fater Fist Contentful Paint as we can serve HTML immediately without waiting for the client to download, parse, and execute the JS that renders the page.</li>
-  <li>Streaming: Rendering work can be split into chunks and send them as they are ready, so the user sees parts of the page earlier without waiting for everything to be rendered on the server.</li>
+  <li>**Data Fetching**: Accomplished from the server, reducing the number of requests made from the client.</li>
+  <li>**Security**: Tokens and API keys aren't exposed to the client.</li>
+  <li>**Caching**: Results can be cached and reused for subsequent requests and across users.</li>
+  <li>**Bundle Sizes**: Reduced size as dependencies stay on the server.</li>
+  <li>**Initial Page Load**: Faster First Contentful Paint as we can serve HTML immediately without waiting for the client to download, parse, and execute the JS that renders the page.</li>
+  <li>**Streaming**: Rendering work can be split into chunks sent as soon as they are ready, so the user sees parts of the page earlier without waiting for everything to render on the server.</li>
 </ol>
 
 I highly recommend [Next.js's article on their docs](https://nextjs.org/docs/app/building-your-application/rendering/server-components#streaming) for an in-depth look at how they work.
 
 - React Suspense
 
-React's [Suspense](https://react.dev/reference/react/Suspense) component let's us display a fallback until its children have finished loading. Because a loading component will trigger its nearest parent Suspense Boundary (meaning all children have to load until the fallback is replaced), we can adjust the granularity by nesting multiple Suspense Boundaries.
+React's [Suspense](https://react.dev/reference/react/Suspense) component lets us display a fallback until all its children have finished loading. Because a loading component will trigger its nearest parent Suspense Boundary, we can adjust the granularity by nesting multiple Suspense Boundaries.
 
 Here's a code snippet showing this in practice:
 
@@ -233,7 +233,7 @@ Here's a code snippet showing this in practice:
 </Suspense>
 ```
 
-In the previous code, both `<Comp />` components have to finished loading before they substitute the `<Loading />` fallback, even if one finishes loading faster than the other.
+In the previous code, both `<Comp />` components must finish loading before substituting the `<Loading />` fallback, even if one loads faster.
 
 If we introduce a new Suspense Boundary, such as:
 
@@ -248,19 +248,37 @@ If we introduce a new Suspense Boundary, such as:
 
 Let's say `<Comp1 />` is faster. `<Loading />` will be substituted by `<Comp1 />` and `<LoadingComp2 />`, until `<Comp2 />` is ready.
 
-[Next.js uses Suspense to create a loading UI](https://nextjs.org/docs/app/building-your-application/routing/loading-ui-and-streaming#instant-loading-states) for a given route by adding a `loading.jsx` file. This loading state will be shown instantly on navigation while the content of the route segment is loaded. Of course, regular Suspense Boundaries can still be used.
+[Next.js uses Suspense to create a loading UI](https://nextjs.org/docs/app/building-your-application/routing/loading-ui-and-streaming#instant-loading-states) for a given route by adding a `loading.jsx` file. This loading state will be shown instantly on navigation while the content of the route segment is loaded. Of course, regular Suspense Boundaries still work.
 
 ### Continued Development
 
-Room for improvement:
+There are some things I'd change about this project if I had to do it again, and others that I'll try to improve and implement over time. All of them I'll keep in mind for future endeavors. Here is a non-exhaustive list:
 
-1- Server response handling
+(Live and learn!)
 
-2- Client state vs constant fetches
+- Server Responses
 
-3- Relational database
+At the moment, the Server Response System implemented is very barebones. A proper Server Response System would include all relevant status codes, but most endpoints resort to logging errors on the console. For example, if a fetch fails, the client gets nothing, and there is no appropriate handling.
 
-4- CSS modularization
+- Client State in addition to Cached Fetches
+
+EduCard handles data fetching through [Next.js's server fetching](https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch), which automatically manages caching and revalidation.
+
+Some of EduCard's functionality modifies the data fetched. For example, when a user connects, their courses are fetched. When the user creates a new course, the list has to be updated. The app triggers a reload to handle it, which retrieves the updated list with the new course from the database.
+
+One way to improve this is by saving the initial list of courses to state, so we do the fetch on the server and then save the data on the client. Then, whenever we send a request to modify the server data, we can return in the response the modified item and alter our list set in state on the client, preventing a reload/re-fetch and keeps the UI updated.
+
+The only reason this wasn't the original architecture of the app is that I was learning Next.js as I was building it, so I tried to simplify things where I could.
+
+- Relational Database
+
+I chose to persist data on MongoDB because of familiarity. I hadn't worked with relational databases yet, and as I was already using unfamiliar technologies with the project, I didn't want to overburden myself.
+
+Looking at EduCard's [database structure](https://miro.com/app/board/uXjVMEoRV0k=/?share_link_id=891155910537), a relational database is the more sensible choice. Most of the entities relate in one way or another. For example, deleting a course means deleting its decks, cards, invitations, and reminders. A relational database does this efficiently and securely without the risk of orphan documents. With MongoDB, each entity has to be deleted on its own, opening the door to failure if halfway through an operation fails and the course gets deleted before all the other elements are because the key linking to them was the course id.
+
+- CSS modularization
+
+- Custom hooks
 
 ### Useful Resources
 
