@@ -149,7 +149,7 @@ The UI design of the application strives for clarity, letting users fulfill its 
 
 Here are some (not all) of the topics I learned about while working on the project:
 
-- Next.js Routing
+- React Server Components
 
 - Webhooks
 
@@ -188,8 +188,13 @@ export async function POST(req) {
   // Connect to DB.
   await dbConnect();
 
-  // Now the msg variable contains the message sent from Clerk. msg.type will indicate which event type happened on their end, and we can access the relevant data through msg.data.
-  // Check the route.js file on app/api/webhooks/user to see the full implementation.
+  // Now the msg variable contains the message sent from Clerk. msg.type will
+  // indicate which event type happened on their end, and we can access the
+  // relevant data through msg.data.
+
+  // Check the route.js file on app/api/webhooks/user to see the full
+  // implementation.
+
   //[...]
 }
 ```
