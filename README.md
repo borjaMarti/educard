@@ -210,12 +210,12 @@ Then I came across the native [`<dialog>`](https://developer.mozilla.org/en-US/d
 [Server Components](https://react.dev/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components) run during build or on the server and get excluded from the JavaScript bundle. There are multiple advantages to using server components. I'll recap some of them here:
 
 <ol>
-  <li>**Data Fetching**: Accomplished from the server, reducing the number of requests made from the client.</li>
-  <li>**Security**: Tokens and API keys aren't exposed to the client.</li>
-  <li>**Caching**: Results can be cached and reused for subsequent requests and across users.</li>
-  <li>**Bundle Sizes**: Reduced size as dependencies stay on the server.</li>
-  <li>**Initial Page Load**: Faster First Contentful Paint as we can serve HTML immediately without waiting for the client to download, parse, and execute the JS that renders the page.</li>
-  <li>**Streaming**: Rendering work can be split into chunks sent as soon as they are ready, so the user sees parts of the page earlier without waiting for everything to render on the server.</li>
+  <li>Data Fetching: Accomplished from the server, reducing the number of requests made from the client.</li>
+  <li>Security: Tokens and API keys aren't exposed to the client.</li>
+  <li>Caching: Results can be cached and reused for subsequent requests and across users.</li>
+  <li>Bundle Sizes: Reduced size as dependencies stay on the server.</li>
+  <li>Initial Page Load: Faster First Contentful Paint as we can serve HTML immediately without waiting for the client to download, parse, and execute the JS that renders the page.</li>
+  <li>Streaming: Rendering work can be split into chunks sent as soon as they are ready, so the user sees parts of the page earlier without waiting for everything to render on the server.</li>
 </ol>
 
 I highly recommend [Next.js's article on their docs](https://nextjs.org/docs/app/building-your-application/rendering/server-components#streaming) for an in-depth look at how they work.
@@ -321,6 +321,8 @@ This article helped me organize my components by feature, improving clarity.
 - [How to Study for Exams - Evidence-based revision tips](https://www.youtube.com/watch?v=ukLnPbIffxE)
 
 - [How to Study for Exams - Spaced Repetition](https://www.youtube.com/watch?v=Z-zNHHpXoMM)
+
+Must-watch videos to understand why spaced repetition and active recall are essential techniques to effective study.
 
 ## Installation
 
