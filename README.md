@@ -14,7 +14,10 @@ As a student, study cards and get individual reminders to review them based on y
 
 (Or do both!)
 
-https://github.com/borjaMarti/educard/assets/86715948/ec3edf9e-2f33-4256-bbb6-16bcaf1aa0d1
+<video controls>
+  <source src="https://github.com/borjaMarti/educard/assets/86715948/ec3edf9e-2f33-4256-bbb6-16bcaf1aa0d1" type="video/mov" />
+  <a href="https://github.com/borjaMarti/educard/assets/86715948/ec3edf9e-2f33-4256-bbb6-16bcaf1aa0d1">Watch EduCard's Showcase Video</a>
+</video>
 
 <details>
 <summary>Table of contents</summary>
@@ -149,8 +152,6 @@ The UI design of the application strives for clarity, letting users fulfill its 
 
 Here are some (not all) of the topics I learned about while working on the project:
 
-- React Server Components
-
 - Webhooks
 
 When I decided to use an external provider for user management and authentication, one of the core issues was synchronizing their database with EduCard's. EduCard needs the users emails and names to manage course invitations and student-teacher interactions, but the external service handles this info, not EduCard.
@@ -206,6 +207,51 @@ Dialogs serve as one of the central UI components of EduCard, allowing users to 
 They permit the main interface to be clean, adding the required parts for the requested interaction on the fly on top of all the other content. When researching how to implement dialogs, I heeded the many [accessibility considerations](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog#accessibility_considerations) raised. Because of this, I considered using an already accessibility-centered implementation, [a11y-dialog](https://a11y-dialog.netlify.app/), which has a React version, [React a11y-dialog](https://github.com/KittyGiraudel/react-a11y-dialog). The problem is that this version relies on [React portals](https://react.dev/reference/react-dom/createPortal), which require further configuration because of Next.js.
 
 Then I came across the native [`<dialog>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog) element. Just at the start of 2022, it had achieved support in all major browsers, now having a [>90 percent of usage](https://caniuse.com/dialog) across browser versions. After reading various articles supporting the adoption of the native element over custom-made solutions, such as [this one](https://www.scottohara.me/blog/2023/01/26/use-the-dialog-element.html) by Scott O'Hara, a prominent voice in the accessibility community, I decided to build my component with it. It was a breeze because the native element already incorporates the logic to handle most of the functionality. [This tutorial](https://dev.to/link2twenty/react-using-native-dialogs-to-make-a-modal-popup-4b25) was positively helpful for implementing some missing actions (namely, closing modals on backdrop click).
+
+- React Server Components
+
+[Server Components](https://react.dev/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components) run during build or on the server, and get excluded from the JavaScript bundle. There are multiple advantages to using server components. I'll recap some of them here:
+
+<ol>
+  <li>Data Fetching: Done from the server, reduces the amount request made from the client.</li>
+  <li>Security: Tokens and API keys don't get exposed to the client.</li>
+  <li>Caching: Results can be cached and reused for subsequent requests and across users.</li>
+  <li>Bundle Sizes: Reduded as dependencies are kept on server.</li>
+  <li>Initial Page Load: Fater Fist Contentful Paint as we can serve HTML immediately without waiting for the client to download, parse, and execute the JS that renders the page.</li>
+  <li>Streaming: Rendering work can be split into chunks and send them as they are ready, so the user sees parts of the page earlier without waiting for everything to be rendered on the server.</li>
+</ol>
+
+I highly recommend [Next.js's article on their docs](https://nextjs.org/docs/app/building-your-application/rendering/server-components#streaming) for an in-depth look at how they work.
+
+- React Suspense
+
+React's [Suspense](https://react.dev/reference/react/Suspense) component let's us display a fallback until its children have finished loading. Because a loading component will trigger its nearest parent Suspense Boundary (meaning all children have to load until the fallback is replaced), we can adjust the granularity by nesting multiple Suspense Boundaries.
+
+Here's a code snippet showing this in practice:
+
+```js
+<Suspense fallback={<Loading />}>
+  <Comp1 />
+  <Comp2 />
+</Suspense>
+```
+
+In the previous code, both `<Comp />` components have to finished loading before they substitute the `<Loading />` fallback, even if one finishes loading faster than the other.
+
+If we introduce a new Suspense Boundary, such as:
+
+```js
+<Suspense fallback={<Loading />}>
+  <Comp1 />
+  <Suspense fallback={<LoadingComp2 />}>
+    <Comp2 />
+  </Suspense>
+</Suspense>
+```
+
+Let's say `<Comp1 />` is faster. `<Loading />` will be substituted by `<Comp1 />` and `<LoadingComp2 />`, until `<Comp2 />` is ready.
+
+[Next.js uses Suspense to create a loading UI](https://nextjs.org/docs/app/building-your-application/routing/loading-ui-and-streaming#instant-loading-states) for a given route by adding a `loading.jsx` file. This loading state will be shown instantly on navigation while the content of the route segment is loaded. Of course, regular Suspense Boundaries can still be used.
 
 ### Continued Development
 
