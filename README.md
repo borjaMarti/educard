@@ -14,10 +14,7 @@ As a student, study cards and get individual reminders to review them based on y
 
 (Or do both!)
 
-<video controls>
-  <source src="https://github.com/borjaMarti/educard/assets/86715948/ec3edf9e-2f33-4256-bbb6-16bcaf1aa0d1" type="video/mov" />
-  <a href="https://github.com/borjaMarti/educard/assets/86715948/ec3edf9e-2f33-4256-bbb6-16bcaf1aa0d1">Watch EduCard's Showcase Video</a>
-</video>
+https://github.com/borjaMarti/educard/assets/86715948/ec3edf9e-2f33-4256-bbb6-16bcaf1aa0d1
 
 <details>
 <summary>Table of contents</summary>
