@@ -147,13 +147,52 @@ The UI design of the application strives for clarity, letting users fulfill its 
 
 ### What I Learned
 
-Here are some of the topics I learned about while working on the project:
+Here are some (not all) of the topics I learned about while working on the project:
+
+- Next.js Routing
 
 - Webhooks
 
-When I decided to use an external provider for user management and authentication, one of the core issues was synchronizing their database with EduCard's. EduCard needs the users emails and names so it can manage course invitations and student-teacher interactions. This info must be linked to the user id, and all of this is handled by the service, not EduCard. So the need to replicate
+When I decided to use an external provider for user management and authentication, one of the core issues was synchronizing their database with EduCard's. EduCard needs the users emails and names to manage course invitations and student-teacher interactions, but the external service handles this info, not EduCard.
 
-- Next.js routing
+[Clerk](https://clerk.com/) solves this by facilitating connections to a project's back end using webhooks. You set up an endpoint on the back end and configure Clerk to send the required data when a specified event happens (such as a user creation). To secure and ensure a reliable connection between Clerk's database and your endpoint, Clerk uses [Svix](https://www.svix.com/) to handle the webhooks. The following is a snippet of my `/api/webhooks/user` endpoint showing how it's configured:
+
+```js
+const webhookSecret = process.env.WEBHOOK_SECRET;
+
+// @desc This webhook activates whenever a user is created/modified/deleted
+// in the Clerk database (authentication provider), allowing to mirror the
+// action in the project's MongoDataBase database.
+// @route POST /api/webhooks/user
+export async function POST(req) {
+  const payload = await req.json();
+  const headersList = headers();
+  // We use svix to verify the webhook's validity against our secret.
+  // First we extract the relevant info from the headers:
+  const heads = {
+    "svix-id": headersList.get("svix-id"),
+    "svix-timestamp": headersList.get("svix-timestamp"),
+    "svix-signature": headersList.get("svix-signature"),
+  };
+  // We create a new webhook with our secret.
+  const wh = new Webhook(webhookSecret);
+  let msg;
+  // Then we verify the headers and payload.
+  try {
+    msg = await wh.verify(JSON.stringify(payload), heads);
+  } catch (err) {
+    console.error(err.message);
+    return NextResponse.json({}, { status: 400 });
+  }
+
+  // Connect to DB.
+  await dbConnect();
+
+  // Now the msg variable contains the message sent from Clerk. msg.type will indicate which event type happened on their end, and we can access the relevant data through msg.data.
+  // Check the route.js file on app/api/webhooks/user to see the full implementation.
+  //[...]
+}
+```
 
 - Dialogs
 
@@ -161,9 +200,7 @@ Dialogs serve as one of the central UI components of EduCard, allowing users to 
 
 They permit the main interface to be clean, adding the required parts for the requested interaction on the fly on top of all the other content. When researching how to implement dialogs, I heeded the many [accessibility considerations](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog#accessibility_considerations) raised. Because of this, I considered using an already accessibility-centered implementation, [a11y-dialog](https://a11y-dialog.netlify.app/), which has a React version, [React a11y-dialog](https://github.com/KittyGiraudel/react-a11y-dialog). The problem is that this version relies on [React portals](https://react.dev/reference/react-dom/createPortal), which require further configuration because of Next.js.
 
-Then I came across the native [`<dialog>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog) element. Just at the start of 2022, it had achieved support in all major browsers, now having a [>90 percent of usage](https://caniuse.com/dialog) across browser versions. After reading various articles supporting the adoption of the native element over custom-made solutions, such as [this one](https://www.scottohara.me/blog/2023/01/26/use-the-dialog-element.html) by Scott O'Hara, a prominent voice in the accessibility community, I decided to build my component with it. [This tutorial](https://dev.to/link2twenty/react-using-native-dialogs-to-make-a-modal-popup-4b25) was positively helpful for implementing some missing functionality (namely, closing the modal on backdrop click).
-
-- React context provider
+Then I came across the native [`<dialog>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog) element. Just at the start of 2022, it had achieved support in all major browsers, now having a [>90 percent of usage](https://caniuse.com/dialog) across browser versions. After reading various articles supporting the adoption of the native element over custom-made solutions, such as [this one](https://www.scottohara.me/blog/2023/01/26/use-the-dialog-element.html) by Scott O'Hara, a prominent voice in the accessibility community, I decided to build my component with it. It was a breeze because the native element already incorporates the logic to handle most of the functionality. [This tutorial](https://dev.to/link2twenty/react-using-native-dialogs-to-make-a-modal-popup-4b25) was positively helpful for implementing some missing actions (namely, closing modals on backdrop click).
 
 ### Continued Development
 
