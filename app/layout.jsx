@@ -31,13 +31,6 @@ export const metadata = {
   twitter: {
     card: "summary",
   },
-  icons: {
-    other: {
-      rel: "mask-icon",
-      url: "/safari-pinned-tab.svg",
-      color: "#ea7070",
-    },
-  },
 };
 
 export default function RootLayout({ children }) {
