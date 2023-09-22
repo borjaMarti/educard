@@ -943,7 +943,7 @@ kbd {
   font-size: 0.875rem;
   font-weight: bold;
   color: white;
-  background-color: #4788e9;
+  background-color: #186ae6;
   padding: 0.75rem 1.625rem;
   width: fit-content;
   transition: background-color 0.3s ease-in-out;
@@ -952,7 +952,7 @@ kbd {
 .hero__button:hover,
 .hero__button:active,
 .hero__button:focus {
-  background-color: #186ae6;
+  background-color: #4788e9;
 }
 
 @media (min-width: 768px) {
