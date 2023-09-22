@@ -10,7 +10,7 @@ const HomePage = async () => {
           <div className="hero__picture">
             <Image
               src="/hero.svg"
-              alt=""
+              alt="Image of a student sitting cross-legged in their room reading a book."
               height={0}
               width={0}
               className="hero__image"
@@ -28,9 +28,11 @@ const HomePage = async () => {
               Proporciona a tus alumnas una manera efectiva y personalizada de
               estudiar, impulsando su retención y comprensión.
             </p>
-            <SignUpButton>
-              <button className="hero__button">Regístrate</button>
-            </SignUpButton>
+            <div className="hero__button-container">
+              <SignUpButton>
+                <button className="hero__button">Regístrate</button>
+              </SignUpButton>
+            </div>
           </div>
         </section>
         <section className="feature">
@@ -39,7 +41,7 @@ const HomePage = async () => {
             <div className="feature__element">
               <Image
                 src="/exam.svg"
-                alt=""
+                alt="Icon of a test next to a pencil."
                 height={0}
                 width={0}
                 className="feature__image"
@@ -53,7 +55,7 @@ const HomePage = async () => {
             <div className="feature__element">
               <Image
                 src="/calendar-time.svg"
-                alt=""
+                alt="Icon of a calendar with a clock in front of it."
                 height={0}
                 width={0}
                 className="feature__image"
