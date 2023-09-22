@@ -464,7 +464,7 @@ kbd {
   padding: 1.5rem;
   margin-left: auto;
   margin-right: auto;
-  height: 6.375rem;
+  height: 5rem;
   width: 100%;
   max-width: 77.5rem;
 }
@@ -515,6 +515,10 @@ kbd {
 }
 
 @media (min-width: 768px) {
+  .site-header__nav {
+    height: 6.375rem;
+  }
+
   .site-header__link {
     padding: 0.875rem 1rem;
     font-size: 1rem;
