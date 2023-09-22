@@ -26,7 +26,7 @@ const Footer = () => {
             <a
               href="https://borjamarti.dev/"
               className="link link--footer"
-              title="Borja Martí Personal Website"
+              title="Sitio Web de Borja Martí"
             >
               borjaMartí
             </a>
@@ -35,7 +35,7 @@ const Footer = () => {
             <a
               href="https://github.com/borjaMarti/educard"
               className="site-footer__link site-footer__icon"
-              title="EduCard's GitHub Repository"
+              title="Repositorio de GitHub de EduCard"
             >
               <FaGithub />
             </a>

@@ -10,7 +10,7 @@ const HomePage = async () => {
           <div className="hero__picture">
             <Image
               src="/hero.svg"
-              alt="Image of a student sitting cross-legged in their room reading a book."
+              alt="Imagen de una estudiante sentada en su habitación leyendo un libro."
               height={0}
               width={0}
               className="hero__image"
@@ -41,7 +41,7 @@ const HomePage = async () => {
             <div className="feature__element">
               <Image
                 src="/exam.svg"
-                alt="Icon of a test next to a pencil."
+                alt="Icono de un test al lado de un lápiz."
                 height={0}
                 width={0}
                 className="feature__image"
@@ -55,7 +55,7 @@ const HomePage = async () => {
             <div className="feature__element">
               <Image
                 src="/calendar-time.svg"
-                alt="Icon of a calendar with a clock in front of it."
+                alt="Icono de un calendario con un reloj delante."
                 height={0}
                 width={0}
                 className="feature__image"
