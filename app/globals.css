@@ -516,7 +516,7 @@ kbd {
 
 @media (min-width: 768px) {
   .site-header__nav {
-    height: 6.375rem;
+    height: 5.5rem;
   }
 
   .site-header__link {
