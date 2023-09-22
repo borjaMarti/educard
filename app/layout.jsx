@@ -28,6 +28,16 @@ export const metadata = {
     locale: "es_ES",
     type: "website",
   },
+  twitter: {
+    card: "summary",
+  },
+  icons: {
+    other: {
+      rel: "mask-icon",
+      url: "/safari-pinned-tab.svg",
+      color: "#ea7070",
+    },
+  },
 };
 
 export default function RootLayout({ children }) {
