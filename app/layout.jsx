@@ -28,9 +28,6 @@ export const metadata = {
     locale: "es_ES",
     type: "website",
   },
-  twitter: {
-    card: "summary_large_image",
-  },
 };
 
 export default function RootLayout({ children }) {
