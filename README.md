@@ -266,9 +266,7 @@ EduCard handles data fetching through [Next.js's server fetching](https://nextjs
 
 Some of EduCard's functionality modifies the data fetched. For example, when a user connects, their courses are fetched. When the user creates a new course, the list has to be updated. The app triggers a reload to handle it, which retrieves the updated list with the new course from the database.
 
-One way to improve this is by saving the initial list of courses to state, so we do the fetch on the server and then save the data on the client. Then, whenever we send a request to modify the server data, we can return in the response the modified item and alter our list set in state on the client, preventing a reload/re-fetch and keeps the UI updated.
-
-The only reason this wasn't the original architecture of the app is that I was learning Next.js as I was building it, so I tried to simplify things where I could.
+One way to improve this is by saving the initial list of courses to state, so we do the fetch on the server and then save the data on the client. Then, whenever we send a request to modify the server data, we can return in the response the modified item and alter our list set in state on the client, preventing a reload/re-fetch and keeping the UI updated.
 
 - Relational Database
 
@@ -278,7 +276,9 @@ Looking at EduCard's [database structure](https://miro.com/app/board/uXjVMEoRV0k
 
 - CSS modularization
 
-Test.
+For this project, I followed [BEM](https://getbem.com/)'s methodology for implementing CSS classes and [CSS guidelines](https://cssguidelin.es/) to maintain my CSS structure organized, which includes a table of contents and different sections for general styles, particular components, etc. All CSS styles are in a `global.css` file, which my main `layout.jsx` imports and applies to all routes.
+
+One thing I didn't take advantage of was [Next.js's CSS modules](https://nextjs.org/docs/app/building-your-application/styling/css-modules). These modules let us have discrete `.css` files with the `module.css` extension which can be imported by components. CSS Modules locally scope CSS by automatically creating a unique class name, and they get bundled and minified into code-split `.css` files representing hot execution paths for optimized CSS loading.
 
 - Custom hooks
 
