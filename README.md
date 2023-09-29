@@ -260,7 +260,7 @@ There are some things I'd change about this project if I had to do it again, and
 
 At the moment, the Server Response System implemented is very barebones. A proper Server Response System would include all relevant status codes, but most endpoints resort to logging errors on the console. For example, if a fetch fails, the client gets nothing, and there is no appropriate handling.
 
-- Client State in addition to Cached Fetches
+- Client State in addition to Caching Fetches
 
 EduCard handles data fetching through [Next.js's server fetching](https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch), which automatically manages caching and revalidation.
 
@@ -274,13 +274,17 @@ I chose to persist data on MongoDB because of familiarity. I hadn't worked with 
 
 Looking at EduCard's [database structure](https://miro.com/app/board/uXjVMEoRV0k=/?share_link_id=891155910537), a relational database is the more sensible choice. Most of the entities relate in one way or another. For example, deleting a course means deleting its decks, cards, invitations, and reminders. A relational database does this efficiently and securely without the risk of orphan documents. With MongoDB, each entity has to be deleted on its own, opening the door to failure if halfway through an operation fails and the course gets deleted before all the other elements are because the key linking to them was the course id.
 
-- CSS modularization
+- CSS Modularization
 
 For this project, I followed [BEM](https://getbem.com/)'s methodology for implementing CSS classes and [CSS guidelines](https://cssguidelin.es/) to maintain my CSS structure organized, which includes a table of contents and different sections for general styles, particular components, etc. All CSS styles are in a `global.css` file, which my main `layout.jsx` imports and applies to all routes.
 
 One thing I didn't take advantage of was [Next.js's CSS modules](https://nextjs.org/docs/app/building-your-application/styling/css-modules). These modules let us have discrete `.css` files with the `module.css` extension which can be imported by components. CSS Modules locally scope CSS by automatically creating a unique class name, and they get bundled and minified into code-split `.css` files representing hot execution paths for optimized CSS loading.
 
-- Custom hooks
+- Custom Hooks and More Components
+
+At the moment, fetch functions are declared inside the components and pages that use them. I don't think any component or page shares these functions, but moving them to custom hooks would help make the code look cleaner.
+
+There are also some parts of the pages that could be transformed into components. At the start, my intuition was creating distinct components whenever I needed reactive functionality (using the "use-client" declaration) and leaving the rest of the code related to a given page inside the `page.jsx` file. Thinking about it, using separate server components for some of the sections would also improve code readability.
 
 ### Useful Resources
 
