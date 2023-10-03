@@ -1022,7 +1022,7 @@ kbd {
 .feature__element {
   display: flex;
   align-items: center;
-  max-width: 30rem;
+  max-width: 28rem;
   gap: 2rem;
 }
 
