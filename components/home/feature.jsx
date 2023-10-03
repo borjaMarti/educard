@@ -13,11 +13,13 @@ const Feature = () => {
             width={0}
             className="feature__image"
           />
-          <h3 className="feature__header">Recuerdo Activo</h3>
-          <span className="feature__text">
-            Promueve un estudio activo, fortaleciendo la memoria e indicando qué
-            áreas necesitan más atención.
-          </span>
+          <div className="feature__info">
+            <h3 className="feature__header">Recuerdo Activo</h3>
+            <span className="feature__text">
+              Practica un estudio activo mediante el uso de flashcards,
+              fortaleciendo tu memoria y entendimiento.
+            </span>
+          </div>
         </div>
         <div className="feature__element">
           <Image
@@ -27,11 +29,13 @@ const Feature = () => {
             width={0}
             className="feature__image"
           />
-          <h3 className="feature__header">Repaso Espaciado</h3>
-          <span className="feature__text">
-            Optimiza el estudio. Refuerza la memoria de manera gradual para un
-            aprendizaje duradero.
-          </span>
+          <div className="feature__info">
+            <h3 className="feature__header">Repaso Espaciado</h3>
+            <span className="feature__text">
+              Optimiza tu estudio gracias a un algoritmo basado en tu
+              rendimiento, permitiéndote priorizar lo más importante.
+            </span>
+          </div>
         </div>
       </div>
       <small className="feature__small">
