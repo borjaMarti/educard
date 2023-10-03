@@ -3,7 +3,9 @@ import Image from "next/image";
 const Feature = () => {
   return (
     <section className="feature">
-      <h2 className="feature__title">Por qué EduCard funciona</h2>
+      <h2 className="feature__title">
+        Utiliza los métodos de estudio más efectivos
+      </h2>
       <div className="feature__block">
         <div className="feature__element">
           <Image
@@ -38,15 +40,6 @@ const Feature = () => {
           </div>
         </div>
       </div>
-      <small className="feature__small">
-        ¿Quieres saber más acerca del recuerdo activo y la repeteción espaciada
-        y por qué son eficaces?
-        <br /> ¡Visita{" "}
-        <a href="https://ncase.me/remember/es.html" className="link">
-          este cómic interactivo
-        </a>
-        !
-      </small>
     </section>
   );
 };

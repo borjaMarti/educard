@@ -26,6 +26,7 @@
  * Logo.................The app logo, including icon and title.
  * Hero.................Hero structure.
  * Feature..............Feature display block.
+ * Tutorial.............Tutorial showcase.
  * Section..............Flex section block.
  * List.................Courses/decks/pages lists.
  * Buttons..............Button components.
@@ -1001,7 +1002,7 @@ kbd {
   align-items: center;
   text-align: center;
   background-color: #f8f8f8;
-  padding: 2rem 1.5rem;
+  padding: 2.375rem 1.5rem;
 }
 
 .feature__title {
@@ -1016,7 +1017,6 @@ kbd {
   justify-content: center;
   flex-wrap: wrap;
   gap: 3rem;
-  margin-bottom: 4rem;
 }
 
 .feature__element {
@@ -1047,17 +1047,15 @@ kbd {
   font-size: 0.875rem;
 }
 
-.feature__small {
-  font-size: 0.75rem;
-}
-
 @media (min-width: 768px) {
   .feature__title {
     font-size: 1.875rem;
+    margin-bottom: 6rem;
   }
 
   .feature__block {
     gap: 5rem;
+    margin-bottom: 4rem;
   }
 
   .feature__header {
@@ -1075,8 +1073,117 @@ kbd {
   .feature__text {
     font-size: 1rem;
   }
+}
 
-  .feature__small {
+/* TUTORIAL */
+
+.tutorial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 3rem 1.5rem;
+  max-width: 67.5rem;
+  margin: 0 auto;
+}
+
+.tutorial__title {
+  font-size: 1.375rem;
+  font-weight: 700;
+  margin: 0 0 3rem 0;
+}
+
+.tutorial__block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 3rem;
+  margin-bottom: 4rem;
+}
+
+.tutorial__element {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 2rem;
+}
+
+.tutorial__info {
+  max-width: 30rem;
+  text-align: start;
+}
+
+.tutorial__image {
+  width: 20rem;
+  height: auto;
+}
+
+.tutorial__header {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.tutorial__text {
+  font-size: 0.875rem;
+}
+
+.tutorial__small {
+  font-size: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .tutorial__title {
+    font-size: 1.875rem;
+  }
+
+  .tutorial__block {
+    gap: 5rem;
+  }
+
+  .tutorial__element {
+    flex-direction: row;
+  }
+
+  .tutorial__element--reverse {
+    flex-direction: row-reverse;
+  }
+
+  .tutorial__image {
+    width: 25rem;
+    height: auto;
+  }
+
+  .tutorial__header {
+    font-size: 1.5rem;
+  }
+
+  .tutorial__header {
+    margin-bottom: 1rem;
+  }
+
+  .tutorial__text {
+    font-size: 1rem;
+  }
+
+  .tutorial__small {
+    font-size: 0.875rem;
+  }
+}
+
+/* CLOSING */
+
+.closing__small {
+  font-size: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .closing__small {
     font-size: 0.875rem;
   }
 }
