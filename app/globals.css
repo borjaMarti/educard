@@ -27,6 +27,8 @@
  * Hero.................Hero structure.
  * Feature..............Feature display block.
  * Tutorial.............Tutorial showcase.
+ * Closing..............Final section.
+ * Divider..............Graphic divider.
  * Section..............Flex section block.
  * List.................Courses/decks/pages lists.
  * Buttons..............Button components.
@@ -507,6 +509,7 @@ kbd {
 
 .site-header__link:hover,
 .site-header__link:focus {
+  color: #ea7070;
   border-color: #ea7070;
 }
 
@@ -928,7 +931,7 @@ kbd {
 }
 
 .hero__title {
-  font-size: 1.5rem;
+  font-size: calc(min(max(1.75rem, 3.8vw), 3rem));
   font-weight: 600;
   margin: 0;
 }
@@ -938,7 +941,7 @@ kbd {
 }
 
 .hero__text {
-  font-size: 0.875rem;
+  font-size: calc(min(max(1rem, 1.8vw), 1.375rem));
   margin: 0;
 }
 
@@ -980,12 +983,7 @@ kbd {
   }
 
   .hero__title {
-    font-size: 2.5rem;
     margin: 0;
-  }
-
-  .hero__text {
-    font-size: 1.125rem;
   }
 
   .hero__button {
@@ -1045,6 +1043,7 @@ kbd {
 
 .feature__text {
   font-size: 0.875rem;
+  color: #525252;
 }
 
 @media (min-width: 768px) {
@@ -1063,7 +1062,7 @@ kbd {
   }
 
   .feature__image {
-    width: 6rem;
+    width: 5.75rem;
   }
 
   .feature__header {
@@ -1071,7 +1070,7 @@ kbd {
   }
 
   .feature__text {
-    font-size: 1rem;
+    font-size: 1.125rem;
   }
 }
 
@@ -1082,15 +1081,15 @@ kbd {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 3rem 1.5rem;
+  padding: 0 1.5rem;
   max-width: 67.5rem;
-  margin: 0 auto;
+  margin: 3rem auto 0 auto;
 }
 
 .tutorial__title {
   font-size: 1.375rem;
-  font-weight: 700;
-  margin: 0 0 3rem 0;
+  font-weight: bold;
+  margin: 0 0 1.25rem 0;
 }
 
 .tutorial__block {
@@ -1099,8 +1098,6 @@ kbd {
   align-items: center;
   justify-content: center;
   width: 100%;
-  gap: 3rem;
-  margin-bottom: 4rem;
 }
 
 .tutorial__element {
@@ -1108,8 +1105,12 @@ kbd {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 2rem;
   width: 100%;
-  gap: 2rem;
+}
+
+.tutorial__element--reverse {
+  margin-bottom: 4rem;
 }
 
 .tutorial__info {
@@ -1120,21 +1121,28 @@ kbd {
 .tutorial__image {
   width: 20rem;
   height: auto;
+  margin-bottom: 0.5rem;
+}
+
+.tutorial__image--extra {
+  margin-bottom: 3rem;
 }
 
 .tutorial__header {
   margin-top: 0;
-  margin-bottom: 0.5rem;
-  font-size: 1.125rem;
-  font-weight: 500;
+  margin-bottom: 1.25rem;
+  font-size: 1.25rem;
+  font-weight: bold;
 }
 
 .tutorial__text {
   font-size: 0.875rem;
+  color: #525252;
+  margin: 0 0 0.625rem 0;
 }
 
-.tutorial__small {
-  font-size: 0.75rem;
+.tutorial__text--intro {
+  margin-bottom: 2rem;
 }
 
 @media (min-width: 768px) {
@@ -1142,10 +1150,12 @@ kbd {
     font-size: 1.875rem;
   }
 
-  .tutorial__block {
-    gap: 5rem;
+  .tutorial__text--intro {
+    font-weight: 600;
+    max-width: 45rem;
+    margin-top: 0;
+    margin-bottom: 3.5rem;
   }
-
   .tutorial__element {
     flex-direction: row;
   }
@@ -1155,37 +1165,73 @@ kbd {
   }
 
   .tutorial__image {
-    width: 25rem;
-    height: auto;
+    width: 22rem;
+    margin-bottom: 0;
+  }
+
+  .tutorial__image--extra {
+    margin-bottom: 0;
   }
 
   .tutorial__header {
-    font-size: 1.5rem;
-  }
-
-  .tutorial__header {
-    margin-bottom: 1rem;
+    font-size: 1.75rem;
   }
 
   .tutorial__text {
-    font-size: 1rem;
-  }
-
-  .tutorial__small {
-    font-size: 0.875rem;
+    font-size: 1.25rem;
   }
 }
 
 /* CLOSING */
 
+.closing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 1.5rem;
+  max-width: 67.5rem;
+  margin: 0 auto 5.5rem auto;
+}
+
+.closing__title {
+  font-size: 1.375rem;
+  font-weight: bold;
+  margin: 0 0 3rem 0;
+}
+
 .closing__small {
-  font-size: 0.75rem;
+  margin-top: 3rem;
+  font-size: 0.875rem;
+}
+
+.closing__small--link {
+  margin-top: 1rem;
 }
 
 @media (min-width: 768px) {
-  .closing__small {
-    font-size: 0.875rem;
+  .closing__title {
+    font-size: 1.875rem;
   }
+
+  .closing__small {
+    font-size: 1rem;
+  }
+}
+
+/* DIVIDER */
+
+.divider {
+  max-width: 67.5rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.divider__line {
+  width: 100%;
+  height: 0.125rem;
+  margin: 4rem 0;
+  background-color: black;
 }
 
 /* SECTION */

@@ -2,13 +2,13 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="70.724297mm"
-   height="96.579842mm"
-   viewBox="0 0 70.724298 96.579842"
+   width="70.723999mm"
+   height="63.147861mm"
+   viewBox="0 0 70.724 63.147862"
    version="1.1"
    id="svg912"
    xml:space="preserve"
-   sodipodi:docname="invite2.svg"
+   sodipodi:docname="invite.svg"
    inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -27,7 +27,7 @@
      showgrid="false"
      inkscape:zoom="1.8138823"
      inkscape:cx="77.73382"
-     inkscape:cy="199.29628"
+     inkscape:cy="135.89636"
      inkscape:window-width="1920"
      inkscape:window-height="1121"
      inkscape:window-x="-9"
@@ -470,7 +470,7 @@
          d="m 256,480 h 8.812 v 8 H 256 Z"
          id="path3592-6" /></clipPath></defs><g
      id="g713"
-     transform="matrix(0.6485573,0,0,0.6485573,1.47667e-4,16.715992)"><g
+     transform="matrix(0.6485573,0,0,0.6485573,-2.1978309e-7,2.4385754e-6)"><g
        id="g3372"
        transform="matrix(0.35277776,0,0,0.35277778,-50.601736,-108.65556)"><g
          id="g3374"

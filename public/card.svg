@@ -2,13 +2,13 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="70.724297mm"
-   height="96.579842mm"
-   viewBox="0 0 70.724298 96.579842"
+   width="70.723999mm"
+   height="70.935997mm"
+   viewBox="0 0 70.723999 70.935997"
    version="1.1"
    id="svg912"
    xml:space="preserve"
-   sodipodi:docname="card2.svg"
+   sodipodi:docname="card.svg"
    inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -26,8 +26,8 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="1.8138823"
-     inkscape:cx="77.73382"
-     inkscape:cy="199.29628"
+     inkscape:cx="103.09379"
+     inkscape:cy="130.38332"
      inkscape:window-width="1920"
      inkscape:window-height="1121"
      inkscape:window-x="-9"
@@ -631,7 +631,7 @@
          d="m 422.25,945.5 h 8.5 c 0.965,0 1.75,0.785 1.75,1.75 v 9.5 c 0,0.965 -0.785,1.75 -1.75,1.75 h -8.5 c -0.965,0 -1.75,-0.785 -1.75,-1.75 v -9.5 c 0,-0.965 0.785,-1.75 1.75,-1.75 z"
          id="path5601" /></clipPath></defs><g
      id="g1975"
-     transform="matrix(0.44604179,0,0,0.44604179,6.1179601,12.821773)"><g
+     transform="matrix(0.44604179,0,0,0.44604179,6.1178114,0)"><g
        id="g6061"
        transform="translate(-178.5268,-58.208351)"><g
          id="g5197"

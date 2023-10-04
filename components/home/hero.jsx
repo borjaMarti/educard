@@ -17,9 +17,7 @@ const Hero = () => {
         <h1 className="hero__title">
           Potencia el aprendizaje
           <br />
-          en el aula
-          <br />
-          <span className="hero__title--em">y más allá</span>
+          en el aula <span className="hero__title--em">y más allá</span>
         </h1>
         <p className="hero__text">
           Proporciona a tus alumnas una manera efectiva y personalizada de
