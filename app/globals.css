@@ -27,7 +27,7 @@
  * Hero.................Hero structure.
  * Feature..............Feature display block.
  * Tutorial.............Tutorial showcase.
- * Closing..............Final section.
+ * Closing..............Final homepage section.
  * Divider..............Graphic divider.
  * Section..............Flex section block.
  * List.................Courses/decks/pages lists.
@@ -876,22 +876,24 @@ kbd {
   align-items: center;
 }
 
-.logo:hover,
-.logo:active,
-.logo:focus {
-  color: #ea7070;
-}
-
 .logo__title {
   margin: 0;
   font-size: 1.5rem;
   transition: all 0.3s ease-in-out;
   user-select: none;
+  border-bottom: 0.25rem solid transparent;
+}
+
+.logo__title:hover,
+.logo__title:active,
+.logo__title:focus {
+  border-bottom: 0.25rem solid #ea7070;
 }
 
 .logo__icon {
   font-size: 1.875rem;
   color: #ea7070;
+  border-bottom: 0.25rem solid transparent;
 }
 
 @media (min-width: 768px) {
