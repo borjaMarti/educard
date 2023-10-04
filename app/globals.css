@@ -566,6 +566,10 @@ kbd {
   width: 100%;
 }
 
+.site-footer__sublist {
+  padding: 0;
+}
+
 .site-footer__link {
   color: white;
   transition: color 0.3s ease-in-out;

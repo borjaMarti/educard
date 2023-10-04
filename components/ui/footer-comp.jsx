@@ -8,7 +8,7 @@ const Footer = () => {
       <nav className="site-footer__nav">
         <ul className="site-footer__list">
           <li>
-            <ul>
+            <ul className="site-footer__sublist">
               <li>
                 <Link href="/tos" className="site-footer__link">
                   Condiciones
