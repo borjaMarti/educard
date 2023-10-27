@@ -14,13 +14,21 @@ As a student, study cards and get individual reminders to review them based on y
 
 (Or do both!)
 
+### Live Site
+
+[https://educard.es](https://educard.es)
+
+**Demo Account**:
+
+Email: **educardtest@proton.me**<br>
+Password: **edutesting123**
+
 https://github.com/borjaMarti/educard/assets/86715948/ec3edf9e-2f33-4256-bbb6-16bcaf1aa0d1
 
 <details>
 <summary>Table of contents</summary>
 
 - [Overview](#overview)
-  - [Link](#link)
   - [The Challenge](#the-challenge)
   - [Features](#features)
 - [My Process](#my-process)
@@ -39,15 +47,6 @@ https://github.com/borjaMarti/educard/assets/86715948/ec3edf9e-2f33-4256-bbb6-16
 </details>
 
 ## Overview
-
-### Link
-
-- Live Site: [https://educard.es](https://educard.es)
-
-Note - If you don't want to create a new user to test the application, you can log in using the following account:
-
-Email: **educardtest@proton.me**<br>
-Password: **edutesting123**
 
 ### The Challenge
 
